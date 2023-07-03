@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Title</title>
+
+  </head>
+  <body>
+    
+    <div>
+      <button id="getBtn">Get Test</button>
+    </div>
+    
+    <div>
+      <input id="testInput" />
+      <button id="postBtn">Post Test</button>
+    </div>
+    
+    <script>
+      
+      const $getBtn = document.querySelector('#getBtn');
+      const $testInput = document.querySelector('#testInput');
+      const $postBtn = document.querySelector('#postBtn');
+
+      $getBtn.addEventListener('click', async () => {
+        const res = await fetch('http://127.0.0.1:5555/get-test');
+        const data = await res.json();
+        console.log('data', data);
+      });
+
+      $postBtn.addEventListener('click', async () => {
+        const value = $testInput.value.trim();
+
+        if (value === '') {
+          alert('값 필요');
+          return;
+        }
+
+        try {
+          const res = await fetch('http://127.0.0.1:5555/post-test', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              testValue: value
+            }),
+          });
+          console.log('res', res);
+
+        } catch (err) {
+          console.error(err);
+        }
+
+      });
+
+    </script>
+
+  </body>
+</html>
