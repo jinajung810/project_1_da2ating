@@ -1,0 +1,44 @@
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 숫자 input의 위 아래 화살표 제거 */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.product-sum {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+.product-info-table > tr {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* 구매자 정보 테이블 */
+.delivery-info-table {
+  margin-bottom: 3rem;
+}
+
+/* 버튼 */
+.purchase {
+  text-align: center;
+}
+
+#purchaseButton {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 800;
+  width: 7rem;
+  height: 3rem;
+}
