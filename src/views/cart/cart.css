@@ -1,0 +1,205 @@
+/* order-payment {
+    display: flex;
+    
+} */
+
+body {
+    min-width: 1240px;
+}
+
+section {
+    display: block;
+}
+
+a { text-decoration: none;}
+
+.container {
+    box-sizing: border-box;
+    position: relative;
+}
+
+.content {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.subtitle-wrap {
+    position: relative;
+    min-width: 1000px;
+    padding: 55px 0 88px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.subtitle-wrap #subtitle {
+    line-height: 10px;
+    float: left;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+ul, li { list-style: none; }
+
+.subtitle-wrap .order-step {
+    float: right;
+    line-height: 40px;
+    padding-right: 15px;
+}
+
+.subtitle-wrap .order-step li {
+    display: inline;
+    font-size: 19px;
+    color: #b6b6b6;
+}
+
+.subtitle-wrap .order-step li span {
+    font-style: 20px;
+    font-weight: 500;
+    padding: 0 10px;
+    vertical-align: -6px;
+}
+
+
+/* 페이지 변환시 active class 추가 */
+.subtitle-wrap .order-step li:first-child {
+    color: #159925;
+    font-weight: 900;
+}
+
+.cartlist-wrap {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.itemlist {
+    width: 920px;
+    margin: 0 auto;
+}
+
+#cart-cnt {
+    position: relative;
+}
+
+table {
+    width: 100%;
+    border-top: 2px solid #2c2c2c;
+    border-bottom: 1px solid #2c2c2c;
+    table-layout: fixed;
+}
+
+col {
+    display: table-column;
+}
+
+colgroup {
+    display: table-column-group;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+}
+
+tr {
+    display: table-row;
+}
+
+th {
+    padding: 10px 0;
+}
+
+table.cols thead th {
+    height: 45px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #888888;
+}
+
+tbody {
+    height: 150px;
+    display: table-row-group;
+    vertical-align: middle;
+}
+
+tbody tr td {
+    height: 100px;
+    padding: 14px 0;
+}
+
+.cartlist-payment {
+    
+    width:920px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.cartlist-payment dl {
+    display: table;
+    width: 100%;
+    margin: 0 0 15px 0;
+}
+
+.cartlist-payment dl dt {
+    display: table-cell;
+    width: 50%;
+    font-size: 13px;
+    color: #2c2c2c;
+    padding-left: 15px;
+}
+
+dd {    margin-inline-start: 40px; }
+
+.cartlist-payment dl dd {
+    display: table-cell;
+    width: 50%;
+    text-align: right;
+    color: #2c2c2c;
+    padding-right: 15px;
+}
+
+.cartlist-payment dl.total {
+    padding: 15px 0 15px 0;
+    border-top: 1px solid #a9a9a9;
+}
+
+.cartlist-payment dl.total dd span {
+    color: rgb(255, 101, 18);
+}
+
+.order-buttons {
+    padding: 20px 10px;
+}
+
+.order-buttons ul {
+    display: table;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.order-buttons li a {
+    /* display: table-cell; */
+    width: 30%;
+    align-items: center;
+    display: inline-block;
+    text-align: center;
+    background-color: #fff;
+    border: 2px #005c0b solid;
+    color: #005c0b;
+    font-weight: 700;
+    box-sizing: border-box;
+    font-size: 20px;
+    border-radius: 3px;
+    padding: 10px 0 10px 0;
+    margin: 10px;
+}
+
+.order-buttons #continue-btn {
+    color: #005c0b;
+}
+
+.order-buttons #order-btn {
+    background: #005c0b;
+    color: white;
+}
+
