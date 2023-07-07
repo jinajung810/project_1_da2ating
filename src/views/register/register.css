@@ -63,6 +63,15 @@ td > .important {
   font-weight: 700;
 }
 
+.error-warning {
+  margin: 0.3rem;
+  margin-left: 5rem;
+  color: #00af85;
+  font-size: 13px;
+}
+
+/* 버튼 */
+
 #submitButton {
   border: 0 none;
   cursor: pointer;
