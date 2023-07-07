@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다2ating - 샐러드 판매 쇼핑몰</title>
+    <link rel="stylesheet" href="mainstyle.css">
+    <link rel="stylesheet" href="slide.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script src="https://kit.fontawesome.com/8eb5905426.js" crossorigin="anonymous"></script>
+    <script src="new-product.js" defer></script>
+    <script src="best-product.js" defer></script>
+    <script src="search-product.js" defer></script>
+    <script src="E:\d2ating-upload\f2ting_client\index.html" defer></script>
+    <style type="text/css" media="screen and (min-width:512px) and (max-width:1024px)"></style>
+</head>
+<body>
+    <section class="wrap">
+        <!-- 메인 상단 -->
+        <header>
+            <!-- 헤더(로고) -->
+            <nav class="header1">
+                <div class="diat">
+                    <a class="logo" href="http://127.0.0.1:5500/main.html">
+                        <img src="saladimg\logo\logo.png" style="height:300px; width:auto;">
+                    </a>
+                    <div class="search">
+                        <i class="fas fa-search" type="button" onclick="doSearch()"></i>
+                        <input class="keyword" type="search" placeholder="상품검색" onKeyup="onKeyUp()">
+                    </div>
+                </div>
+                <div class="form">
+                    <a href="" class="join">회원가입</a>
+                    <a href="" class="login">로그인</a>
+                    <a class="mypage" href="">
+                        <span class="material-symbols-outlined">face</span>
+                    </a>
+                    <a class="cart" href="">
+                        <span class="material-symbols-outlined">shopping_cart</span>
+                    </a>
+                </div>
+            </nav>
+            <!-- 헤더(메뉴카테고리) -->
+            <nav class="header2"><br>
+                <div class="category">
+                    <input type="checkbox" id="menuicon">
+                    <label for="menuicon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                    <div class="sidebar">
+                        <div class="cate1">
+                            <a href="" class="objectname">샐러드</a>
+                            <a href="" class="object">데일리 샐러드</a>
+                            <a href="" class="object">채소만 샐러드</a>
+                            <a href="" class="object">테이스티 샐러드</a>
+                            <a href="" class="object">그린 샐러드</a>
+                        </div>
+                        <div class="cate2">
+                            <a href="" class="objectname">도시락</a>
+                            <a href="" class="object">라이스 도시락</a>
+                            <a href="" class="object">곤약 라이스</a>
+                            <a href="" class="object">미니컵밥</a>
+                        </div>
+                        <div class="cate3">
+                            <a href="" class="objectname">닭가슴살</a>
+                            <a href="" class="object">슬라이스</a>
+                            <a href="" class="object">소시지</a>
+                            <a href="" class="object">큐브&볼</a>
+                        </div>
+                        <div class="cate4">
+                            <a href="" class="objectname">간식&드레싱</a>
+                            <a href="" class="object">간식</a>
+                            <a href="" class="object">드레싱</a>
+                        </div>
+                    </div>
+                    <a href="" class="totalCategory">전체 카테고리</a>
+                    <a href="" class="salad">샐러드</a>
+                    <a href="" class="sandwitch">도시락</a>
+                    <a href="" class="lunchBox">닭가슴살</a>
+                    <a href="" class="chickenBreast">간식&드레싱</a>
+                </div>        
+            </nav>
+        </header>
+
+        <!-- 메인 본문 -->
+        <main>
+            <div id="slide-div">
+                <!-- 이미지 자동 슬라이드 -->
+                <div id="slide">
+                    <div class="slider-container">
+                        <p class="leftBtn">
+                            <span class="material-symbols-outlined">arrow_back_ios</span>
+                        </p>
+                        <div class="slider">
+                            <span class="first-img">
+                                <img src="saladimg\slideimg\slide3.jpg" href="" alt="0" />
+                            </span>
+                            <span>
+                                <img src="saladimg\slideimg\slide1.jpg" href="" alt="1" />
+                            </span>
+                            <span>
+                                <img src="saladimg\slideimg\slide2.jpg" href="" alt="2" />
+                            </span>
+                            <span>
+                                <img src="saladimg\slideimg\slide3.jpg" href="" alt="3" />
+                            </span>
+                            <span class="last-img">
+                                <img src="saladimg\slideimg\slide1.jpg" href="" alt="4" />
+                            </span>
+                        </div>
+                        <p class="rightBtn">
+                            <span class="material-symbols-outlined">arrow_forward_ios</span>
+                        </p>
+                        <ul class="pagination">
+                            <p class="active" data-index="1"></p>
+                            <p data-index="2"></p>
+                            <p data-index="3"></p>
+                          </ul>
+                    </div>
+                </div>
+                <script src="slide.js" defer></script>
+            </div>
+
+            <div class="division">
+                <article>
+                    <!-- 대표 메뉴 소개 -->
+                    <div class="menu">
+                        <h2>BEST</h2>
+                        <div id="bestMenu">
+                            <!-- <span class="bestMenu">
+                                <img src="saladimg\bestmenu\minicuphot.jpg" href="" alt="best2">
+                                <a class="innerCart" href="">
+                                    <span class="material-symbols-outlined">shopping_cart</span>
+                                </a>
+                                <a href="">미니컵밥-핫소스치킨</a>
+                                <label class="price">
+                                    <h2 class="discount">24%</h2>
+                                    <h4 class="discountPrice">4,700원 </h4>
+                                    <h6 class="basicPrice">6,200원</h6>
+                                </label>
+                                <p class="reviewNum">review : 1</p>
+                            </span>
+                            <span class="bestMenu">
+                                <img src="saladimg\bestmenu\minicuppork.jpg" href="" alt="best2">
+                                <a class="innerCart" href="">
+                                    <span class="material-symbols-outlined">shopping_cart</span>
+                                </a>
+                                <a href="">미니컵밥-돼지고기전주비빔</a>
+                                <label class="price">
+                                    <h2 class="discount">24%</h2>
+                                    <h4 class="discountPrice">4,700원</h4>
+                                    <h6 class="basicPrice">6,200원</h6>
+                                </label>
+                                <p class="reviewNum">review : 1</p>
+                            </span>
+                            <span class="bestMenu">
+                                <img src="saladimg\bestmenu\chickensalad.jpg" href="" alt="best2">
+                                <a class="innerCart" href="">
+                                    <span class="material-symbols-outlined">shopping_cart</span>
+                                </a>
+                                <a href="">닭가슴살 샐러드</a>
+                                <label class="price">
+                                    <h2 class="discount">24%</h2>
+                                    <h4 class="discountPrice">4,700원</h4>
+                                    <h6 class="basicPrice">6,200원</h6>
+                                </label>
+                                <p class="reviewNum">review : 1</p>
+                            </span>
+                            <span class="bestMenu">
+                                <img src="saladimg\bestmenu\crabsalad.jpg" href="" alt="best3">
+                                <a class="innerCart" href="">
+                                    <span class="material-symbols-outlined">shopping_cart</span>
+                                </a>
+                                <a href="">크래미 샐러드</a>
+                                <label class="price">
+                                    <h2 class="discount">24%</h2>
+                                    <h4 class="discountPrice">4,700원</h4>
+                                    <h6 class="basicPrice">6,200원</h6>
+                                </label>
+                                <p class="reviewNum">review : 1</p>
+                            </span>
+                            <span class="bestMenu">
+                                <img src="saladimg\bestmenu\galbisalad.jpg" href="" alt="best4">
+                                <a class="innerCart" href="">
+                                    <span class="material-symbols-outlined">shopping_cart</span>
+                                </a>
+                                <a href="">닭가슴살 숯불갈비맛 샐러드</a>
+                                <label class="price">
+                                    <h2 class="discount">24%</h2>
+                                    <h4 class="discountPrice">4,700원</h4>
+                                    <h6 class="basicPrice">6,200원</h6>
+                                </label>
+                                <p class="reviewNum">review : 1</p>
+                            </span>
+                            <span class="bestMenu">
+                                <img src="saladimg\bestmenu\ducksalad.jpg" href="" alt="best5">
+                                <a class="innerCart" href="">
+                                    <span class="material-symbols-outlined">shopping_cart</span>
+                                </a>
+                                <a href="">훈제오리 샐러드</a>
+                                <label class="price">
+                                    <h2 class="discount">24%</h2>
+                                    <h4 class="discountPrice">4,700원</h4>
+                                    <h6 class="basicPrice">6,200원</h6>
+                                </label>
+                                <p class="reviewNum">review : 1</p>
+                            </span>
+                            <span class="bestMenu">
+                                <img src="saladimg\bestmenu\basicmixsalad.jpg" href="" alt="best6">
+                                <a class="innerCart" href="">
+                                    <span class="material-symbols-outlined">shopping_cart</span>
+                                </a>
+                                <a href="">채소만 베이직플러스 믹스 샐러드</a>
+                                <label class="price">
+                                    <h2 class="discount">24%</h2>
+                                    <h4 class="discountPrice">4,700원</h4>
+                                    <h6 class="basicPrice">6,200원</h6>
+                                </label>
+                                <p class="reviewNum">review : 1</p>
+                            </span>
+                            <span class="bestMenu">
+                                <img src="saladimg\bestmenu\greensalad.jpg" href="" alt="best7">
+                                <a class="innerCart" href="">
+                                    <span class="material-symbols-outlined">shopping_cart</span>
+                                </a>
+                                <a href="">그린 샐러드</a>
+                                <label class="price">
+                                    <h2 class="discount">24%</h2>
+                                    <h4 class="discountPrice">4,700원</h4>
+                                    <h6 class="basicPrice">6,200원</h6>
+                                </label>
+                                <p class="reviewNum">review : 1</p>   
+                            </span> -->
+                        </div>
+                    </div>
+                    <div class="menu">
+                        <h2>NEW</h2>
+                        <div id="newMenu">
+                            <!-- <span class="newMenu">
+                                <img src="saladimg\newmenu\garlicsalad.jpg" href="" alt="new1">
+                                <a class="innerCart" href="">
+                                    <span class="material-symbols-outlined">shopping_cart</span>
+                                </a>
+                                <a href="">갈릭페퍼 로스트 닭다리살 샐러드</a>
+                                <label class="price">
+                                    <h2 class="discount">24%</h2>
+                                    <h4 class="discountPrice">4,700원</h4>
+                                    <h6 class="basicPrice">6,200원</h6>
+                                </label>
+                            </span>
+                            <span class="newMenu">
+                                <img src="saladimg\newmenu\bailpestosalad.jpg" href="" alt="new2">
+                                <a class="innerCart" href="">
+                                    <span class="material-symbols-outlined">shopping_cart</span>
+                                </a>
+                                <a href="">바질페스토 두부면 샐러드</a>
+                                <label class="price">
+                                    <h2 class="discount">24%</h2>
+                                    <h4 class="discountPrice">4,700원</h4>
+                                    <h6 class="basicPrice">6,200원</h6>
+                                </label>
+                            </span>
+                            <span class="newMenu">
+                                <img src="saladimg\newmenu\cheesesalad.jpg" href="" alt="new3">
+                                <a class="innerCart" href="">
+                                    <span class="material-symbols-outlined">shopping_cart</span>
+                                </a>
+                                <a href="">치즈 샐러드</a>
+                                <label class="price">
+                                    <h2 class="discount">24%</h2>
+                                    <h4 class="discountPrice">4,700원</h4>
+                                    <h6 class="basicPrice">6,200원</h6>
+                                </label>
+                            </span>
+                            <span class="newMenu">
+                                <img src="saladimg\newmenu\pastasalad.jpg" href="" alt="new4">
+                                <a class="innerCart" href="">
+                                    <span class="material-symbols-outlined">shopping_cart</span>
+                                </a>
+                                <a href="">파스타 샐러드</a>
+                                <label class="price">
+                                    <h2 class="discount">24%</h2>
+                                    <h4 class="discountPrice">4,700원</h4>
+                                    <h6 class="basicPrice">6,200원</h6>
+                                </label>
+                            </span> -->
+                        </div>
+                    </div>
+                    <div class="event">
+                        <a class="event1" href="">
+                            <img src="saladimg\event\join.jpg" alt="회원 혜택">
+                        </a>
+                        <a class="event2" href="">
+                            <img src="saladimg\event\review.jpg" alt="리뷰">
+                        </a>
+                    </div>
+                </article>            
+                <!-- 사이드바 -->
+                <aside>
+                    <div class="menu-side">
+                        <div class="easyskills">
+                            <span class="material-symbols-outlined" href="" style="cursor: pointer;">local_shipping</span></br>
+                            <span class="material-symbols-outlined">maximize</span></br>
+                            <span class="material-symbols-outlined" href="" style="cursor: pointer;">shopping_cart</span> </br>                           
+                            <span class="material-symbols-outlined">maximize</span></br>
+                            <a href="">
+                                <span class="material-symbols-outlined">expand_less</span> </br>
+                            </a>
+                            <div class="currently">
+                                <img src="saladimg\bestmenu\crabsalad.jpg" alt="최근 본 상품1"></br>
+                                <img src="saladimg\bestmenu\galbisalad.jpg" alt="최근 본 상품2"></br>
+                                <img src="saladimg\bestmenu\greensalad.jpg" alt="최근 본 상품3"></br>    
+                            </div>
+                            <a href="">
+                                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                            </a>
+                        </div>
+                        <div class="topBottom">
+                            <a href="#">
+                                <span class="material-symbols-outlined">arrow_circle_up</span></br>
+                            </a>
+                            <a href="#footer">
+                                <span class="material-symbols-outlined">arrow_circle_down</span>
+                            </a>
+                        </div>
+                    </div>
+                    <script src="sidebar.css" defer></script>
+                </aside>
+            </main>
+        </div>
+        <!-- 메인 하단 -->
+        <footer id="footer">
+            <div class="information">
+                <div class="serviceCenter">
+                    <div>
+                        <h1>고객센터</h1>
+                        <button type="button" class="qnaBtn" href="">1:1문의</button>    
+                    </div>
+                    <div>
+                        <h2>7777-7777</h2>
+                        <button type="button" class="deliveryBtn" href="">배송조회</button>    
+                    </div>
+                    <h3>월 ~ 금 : 오전 10시 ~ 오후 5시<br>
+                    점심시간 : 오후 12시 30분 ~ 오후 1시 30분<br>
+                    토요일/일요일/공휴일은 휴무 입니다.</h3>
+                    <h5>고객센터가 종료된 5시 이후와 토요일/일요일/공휴일에는 1:1 문의 게시판을 이용바랍니다.</h5>
+                </div>
+            </div>
+            <div class="information">
+                <div class="accountNumber">
+                    <h1>입금계좌 안내</h1>
+                    <p>
+                        신한은행: 0000-0000-0000<br>
+                        농협은행: 1111-1111-1111<br>
+                        국민은행: 2222-2222-2222<br>
+                        우리은행: 3333-3333-3333<br>
+                    </p>
+                </div>
+            </div>
+            <div class="information">
+                <div class="announcement">
+                    <h1>공지사항</h1>
+                    <a href="">
+                        <p>더보기</p>
+                    </a>
+                    <!-- 공지사항 등록 -->
+                </div>
+            </div>
+        </footer>
+    </section>
+</body>
+</html>
