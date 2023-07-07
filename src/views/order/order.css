@@ -17,28 +17,105 @@ input[type='number']::-webkit-outer-spin-button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0.5rem;
+  padding: 0.5rem 7rem;
+  font-size: 20px;
 }
-.product-info-table > tr {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+
+/* 구매 상품 테이블 */
+.product-info-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tbody:not(:last-child) {
+  width: 100%;
+  line-height: 3rem;
+  border-bottom: 0.5px solid rgba(197, 193, 193, 0.753);
+}
+
+.trhr {
+  height: 10px;
 }
 
 /* 구매자 정보 테이블 */
 .delivery-info-table {
-  margin-bottom: 3rem;
+  padding: 0.5rem 2rem;
+}
+
+input {
+  height: 2rem;
+  line-height: 50px;
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  outline: none;
+  margin: 0.5rem;
+  padding: 5px 10px;
+}
+
+input[type='text'] {
+  margin: 0.5rem;
+  margin-left: 5rem;
+}
+
+.deliveryName {
+  width: 15rem;
+}
+
+.phonenumber {
+  width: 4rem;
+}
+
+#phoneNumber1 {
+  margin-left: 5rem;
+}
+
+.explanation {
+  font-size: 13px;
+}
+
+#deliveryMessage,
+#addressBasic,
+#addressDetail {
+  width: 25rem;
+}
+
+td > .important {
+  font-size: 1px;
+  color: #00af85;
+  margin-left: 3px;
+  font-weight: 700;
 }
 
 /* 버튼 */
 .purchase {
+  width: 100%;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  border: 0 none;
+  cursor: pointer;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background: #00af85;
+}
+
+#addressCodeBtn {
+  height: 100%;
+  padding: 5px 10px;
+  height: 2rem;
 }
 
 #purchaseButton {
   display: inline-block;
   font-size: 1.2rem;
-  font-weight: 800;
-  width: 7rem;
-  height: 3rem;
+  font-weight: 600;
+  width: 13rem;
+  height: 3.5rem;
+  margin: 5rem 0 2rem 0;
+  padding: 5px 10px;
 }
