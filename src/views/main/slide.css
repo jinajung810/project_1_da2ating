@@ -1,0 +1,97 @@
+#slide {
+    width:100%;
+    padding: 0 5px;
+    position: relative;
+    margin:0;
+}
+
+#slide i{
+    font-size: 30px;
+}
+
+#slide .slider-container {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+#slide .slider-container span{
+    position: absolute;
+    z-index: 1;
+    top:50%;
+    cursor: pointer;
+}
+.pagination{
+    width: 13%;
+    background-color:#ffffff00;
+    transform: translate(-100%,120%);
+
+}
+.leftBtn > span{
+    left: 1.5%;
+    transform: translate(0,-50%);
+    border-radius: 100%;
+}
+
+.rightBtn > span{
+    right: 1.5%;
+    transform: translate(0,-50%);
+    border-radius: 100%;
+    text-align: center;
+}
+
+#slide .slider-container .slider{
+    display:flex;
+    width: 101%;
+}
+
+#slide .slider-container .slider span{
+    display: block;
+    position: relative;
+    min-width: 100%;
+}
+
+#slide .slider-container .slider span .text-wrap{
+    position: absolute;
+    top:50%;
+    left:5%;
+    transform:translate(0,-50%);
+    width:29%;
+    color:#fff;
+}
+
+#slide .slider-container .slider span .text-wrap h1{
+    line-height: 140%;
+    font-size: 33px;
+}
+
+#slide .slider-container .slider span .text-wrap h4{
+    font-size: 13px;
+    margin:30px 0 0 0;
+}
+
+#slide .slider-container .slider span .text-wrap h5{
+    line-height: 140%;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin:0 0 10px 0;
+}
+
+/*하단바*/
+.pagination{
+    display:flex;
+    position: absolute;
+    bottom:60px;
+    left:18.5%;
+    z-index: 1;
+}
+
+.pagination p{
+    width:60px;
+    height:2px;
+    background:#fff;
+}
+
+.pagination .active{
+    background:#000;
+}
