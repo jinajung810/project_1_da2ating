@@ -493,7 +493,7 @@ aside {
 }
 
 /* 푸터 */
-footer {
+#service {
     width: 1200px;
     height: 300px;
     display: flex;
@@ -592,7 +592,7 @@ footer {
 }
 
 
-/* search 아이템 */
+/* search 아이템
 #newMenu{
     max-width: 1200px;
     margin-top: 85px;
@@ -623,39 +623,3 @@ footer {
     margin-bottom: 20px;
     border-radius: 10px;
 }
-/* 메인-메뉴가격 */
-.item-container > .price {
-    display: flex;
-    align-content: start;
-    justify-content: space-around;
-    align-items: baseline;
-    width: 270px;
-}
-.item-container > .discount{
-    font-size: 40px;
-    color:red;
-    position: relative;
-    line-height: 1;
-    text-align: left;
-    margin-top: 16px;
-    padding: 0 0 0 0;
-}
-.item-container > .discountPrice {
-    font-size: 25px;
-    padding: 0px 0 10px 0;
-    line-height: 1;
-    position: relative;
-    text-align: center;
-    color: black;
-}
-.basicPrice {
-    font-size: 18px;
-    color:#a5a5a5;
-    text-decoration: line-through;
-}
-
-
-.item-container{
-
-}
-"><img src="http://127.0.0.1:5555/public/708dfa01-8701-47db-ba99-780868cf052b-img_3.jpg" alt="파스타 샐러드"><span class="image-name">파스타 샐러드</span></div>

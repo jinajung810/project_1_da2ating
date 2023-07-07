@@ -22,11 +22,11 @@
             <nav class="header1">
                 <div class="diat">
                     <a class="logo" href="http://127.0.0.1:5500/main.html">
-                        <img src="saladimg\logo\logo.png" style="height:300px; width:auto;">
+                        <img src="images\logo\logo.png" style="height:300px; width:auto;">
                     </a>
                     <div class="search">
                         <i class="fas fa-search" type="button" onclick="doSearch()"></i>
-                        <input class="keyword" type="search" placeholder="상품검색" onKeyup="onKeyUp()">
+                        <input class="keyword" type="search" placeholder="상품검색" onkeyup="performSearch(event)">
                     </div>
                 </div>
                 <div class="form">
@@ -95,19 +95,19 @@
                         </p>
                         <div class="slider">
                             <span class="first-img">
-                                <img src="saladimg\slideimg\slide3.jpg" href="" alt="0" />
+                                <img src="images\slideimg\slide3.jpg" href="" alt="0" />
                             </span>
                             <span>
-                                <img src="saladimg\slideimg\slide1.jpg" href="" alt="1" />
+                                <img src="images\slideimg\slide1.jpg" href="" alt="1" />
                             </span>
                             <span>
-                                <img src="saladimg\slideimg\slide2.jpg" href="" alt="2" />
+                                <img src="images\slideimg\slide2.jpg" href="" alt="2" />
                             </span>
                             <span>
-                                <img src="saladimg\slideimg\slide3.jpg" href="" alt="3" />
+                                <img src="images\slideimg\slide3.jpg" href="" alt="3" />
                             </span>
                             <span class="last-img">
-                                <img src="saladimg\slideimg\slide1.jpg" href="" alt="4" />
+                                <img src="images\slideimg\slide1.jpg" href="" alt="4" />
                             </span>
                         </div>
                         <p class="rightBtn">
@@ -290,10 +290,10 @@
                     </div>
                     <div class="event">
                         <a class="event1" href="">
-                            <img src="saladimg\event\join.jpg" alt="회원 혜택">
+                            <img src="images\event\join.jpg" alt="회원 혜택">
                         </a>
                         <a class="event2" href="">
-                            <img src="saladimg\event\review.jpg" alt="리뷰">
+                            <img src="images\event\review.jpg" alt="리뷰">
                         </a>
                     </div>
                 </article>            
@@ -309,9 +309,9 @@
                                 <span class="material-symbols-outlined">expand_less</span> </br>
                             </a>
                             <div class="currently">
-                                <img src="saladimg\bestmenu\crabsalad.jpg" alt="최근 본 상품1"></br>
-                                <img src="saladimg\bestmenu\galbisalad.jpg" alt="최근 본 상품2"></br>
-                                <img src="saladimg\bestmenu\greensalad.jpg" alt="최근 본 상품3"></br>    
+                                <img src="images\bestmenu\crabsalad.jpg" alt="최근 본 상품1"></br>
+                                <img src="images\bestmenu\galbisalad.jpg" alt="최근 본 상품2"></br>
+                                <img src="images\bestmenu\greensalad.jpg" alt="최근 본 상품3"></br>    
                             </div>
                             <a href="">
                                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
@@ -331,7 +331,7 @@
             </main>
         </div>
         <!-- 메인 하단 -->
-        <footer id="footer">
+        <div id="service">
             <div class="information">
                 <div class="serviceCenter">
                     <div>
@@ -368,7 +368,7 @@
                     <!-- 공지사항 등록 -->
                 </div>
             </div>
-        </footer>
+        </div>
     </section>
 </body>
 </html>
