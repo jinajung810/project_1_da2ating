@@ -1,61 +1,25 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <meta charset="utf-8" />
-
-    <title>Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>da2ating</title>
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  
+    <!-- GOOGLE FONT & ICON-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  
+    <link rel="stylesheet" href="./src/views/common/common.css">
 
   </head>
   <body>
     
-    <div>
-      <button id="getBtn">Get Test</button>
-    </div>
-    
-    <div>
-      <input id="testInput" />
-      <button id="postBtn">Post Test</button>
-    </div>
-    
-    <script>
-      
-      const $getBtn = document.querySelector('#getBtn');
-      const $testInput = document.querySelector('#testInput');
-      const $postBtn = document.querySelector('#postBtn');
 
-      $getBtn.addEventListener('click', async () => {
-        const res = await fetch('http://127.0.0.1:5555/get-test');
-        const data = await res.json();
-        console.log('data', data);
-      });
-
-      $postBtn.addEventListener('click', async () => {
-        const value = $testInput.value.trim();
-
-        if (value === '') {
-          alert('값 필요');
-          return;
-        }
-
-        try {
-          const res = await fetch('http://127.0.0.1:5555/post-test', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              testValue: value
-            }),
-          });
-          console.log('res', res);
-
-        } catch (err) {
-          console.error(err);
-        }
-
-      });
-
-    </script>
 
   </body>
 </html>

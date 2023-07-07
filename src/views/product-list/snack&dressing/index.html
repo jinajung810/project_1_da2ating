@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
   <link rel="stylesheet" href="../product-list.css">
+  <link rel="stylesheet" href="/f2ting_client/src/views/common/common.css">
 
   <script defer src="./snack-dressing.js"></script>
 </head>
@@ -30,5 +31,13 @@
 
   <!-- FOOTER -->
   <footer></footer>
+
+  <script>
+    const footer = document.querySelector('footer');
+    
+    fetch('/f2ting_client/src/views/common/footer.html')
+      .then(res => res.text())
+      .then(data => footer.innerHTML = data);
+  </script>
 </body>
 </html>
