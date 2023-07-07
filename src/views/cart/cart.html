@@ -36,7 +36,7 @@
 						<colgroup>
 							<col style="width: 20px;">
 							<col>
-							<col style="width: 60px;">
+							<col style="width: 120px;">
 							<col style="width: 117px;">
 							<col style="width: 90px;">
 							<col style="width: 110px;">
@@ -59,10 +59,43 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td colspan="7" style="text-align: center;">
+							<tr class="empty-cart">
+								<td colspan="7" style="text-align: center; display: none;">
+								<!-- 장바구니 비었을 때	 -->
 									<p>장바구니에 담긴 상품이 없습니다.</p>
-									<p></p>
+								</td>
+							</tr>
+							<!-- 상품 표시 -->
+							<tr class="exist-cart">
+								<td class="item-chk">
+									<div class="item-chkbox">
+										<input type="checkbox" id="chknum1" checked="checked" onclick="">
+										<label for="chknum1"></label>
+									</div>
+								</td>
+								<td class="item-info">
+									<a href="#">
+										<div id="item-img"><img src='https://via.placeholder.com/150' alt=""></div>
+										<div id="item-des">
+											<p class="item-name">1주 클린핏 샐러드+라이스</p>
+										</div>
+									</a>
+								</td>
+								<td class="order-amount">
+									<div class="each">
+										<button type="button" name="button" class="btn_up btn_plus"><img src="./assets/add.png" alt=""></button>
+										<input type="text" id="orderstyle_163190659" value="1" onchange="WCKBasket.ChangeStock(this, '1', '986','163190659');" data-rowcnt="0" readonly="readonly">
+										<button type="button" name="button" class="btn_down btn_minus"><img src="./assets/remove.png" alt=""></button>
+									</div>
+								</td>
+								<td class="order-price">
+									<p id="order-price">19,800</p>
+								</td>
+								<td class="delivery">
+									<p id="delivery">3,500</p>
+								</td>
+								<td>
+									<p id="total" style="color: orange; font-weight: 700;">23,300</p>
 								</td>
 							</tr>
 						</tbody>
@@ -104,6 +137,7 @@
 					<div class="order-buttons">
 						<ul>
 							<li><a href="#" id="continue-btn">쇼핑 계속하기</a></li>
+							<!-- button으로 변환 -->
 							<li><a href="#" id="order-btn">주문하기</a></li>
 						</ul>
 						

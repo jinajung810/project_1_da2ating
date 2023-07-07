@@ -109,6 +109,10 @@ th {
     padding: 10px 0;
 }
 
+td {
+    text-align: center;
+}
+
 table.cols thead th {
     height: 45px;
     text-align: center;
@@ -125,6 +129,88 @@ tbody {
 tbody tr td {
     height: 100px;
     padding: 14px 0;
+}
+
+#item-img {
+    margin: 10px 20px;
+    width: 100px;
+    height: 100px;
+    float: left;
+    position: relative;
+}
+
+#item-img img {
+    display: block;
+    width: 100%;
+}
+
+#item-img {
+    box-sizing: border-box;
+}
+
+#item-des p {
+    padding-top: 5px;
+}
+
+.order-amount .each {
+    width: 110px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.order-amount .each button {
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    font-weight: 400;
+    width: 25px;
+    background-color: #d0d0d0;
+    border: 1px #b8b8b8 solid;
+    line-height: 1.5;
+    height: 27px;
+    /* text-indent: -999em; */
+    cursor: pointer;
+
+}
+
+.order-amount .each button img {
+    width: 9px;
+}
+
+.order-amount .each button .btn_up {
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin: 0 -3px 0 0;
+    background-image: url("./assets/add.png");
+    background-position: 7px -46px;
+}
+
+.order-amount .each button .btn_down {
+    float: left;
+    width: 30px;
+    height: 30px;
+    
+    background: url("./assets/remove.png");
+    top: auto;
+    bottom: 0;
+}
+
+.order-amount .each input {
+    width: 23px;
+    height: 23px;
+    float: left;
+    line-height: 28px;
+    vertical-align: top;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    visibility: visible;
+    border: 1px solid #888888;
+    text-align: center;
+    font-size: 12px;
 }
 
 .cartlist-payment {
@@ -169,17 +255,26 @@ dd {    margin-inline-start: 40px; }
 
 .order-buttons {
     padding: 20px 10px;
+    text-align: center;
 }
 
 .order-buttons ul {
-    display: table;
-    width: 100%;
-    margin: 0 auto;
+    padding-left: 0;
 }
+
+.order-buttons li {
+    display: inline;
+}
+
+/* media query
+.order-buttons ul {
+    display: flex;
+    flex-direction: column;
+} */
 
 .order-buttons li a {
     /* display: table-cell; */
-    width: 30%;
+    width: 27%;
     align-items: center;
     display: inline-block;
     text-align: center;
@@ -191,9 +286,12 @@ dd {    margin-inline-start: 40px; }
     font-size: 20px;
     border-radius: 3px;
     padding: 10px 0 10px 0;
-    margin: 10px;
+    margin: 3px;
 }
-
+/* .order-buttons  {
+    width: 360px;
+    margin: 0 auto;
+} */
 .order-buttons #continue-btn {
     color: #005c0b;
 }
