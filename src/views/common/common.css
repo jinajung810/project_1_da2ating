@@ -1,0 +1,129 @@
+body {
+  color: #333;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+img {
+  display: block;
+}
+a {
+  text-decoration: none;
+  color:#333
+}
+.inner {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+
+/* footer */
+footer {
+  width: 100%;
+  background: #f7f7f7;
+}
+footer .inner {
+  padding: 40px 0;
+}
+footer .top {
+  position: relative;
+}
+footer .top::after {
+  content: "";
+  display: block;
+  width: 1200px;
+  height: .8px;
+  background-color: #333;
+  margin-top: 50px;
+}
+footer .top .footerMenu {
+  display: flex;
+}
+footer .top .footerMenu li {
+  margin-right: 40px;
+}
+footer .top .footerMenu li:last-child {
+  margin-right: 0;
+}
+footer .top .footerMenu li a {
+  color:#999;
+  letter-spacing: -.8px;
+}
+footer .top .sns {
+  position: absolute;
+  top: 0;
+  right: 0;  
+  display: flex;
+}
+footer .top .sns li {
+  margin-left: 10px;
+}
+footer .top .sns li a img {
+  width: 30px;
+  height: 30px;
+}
+footer .companyInfo {
+  margin-top: 40px;
+  position: relative;
+}
+footer .companyInfo .infoList {
+  display: flex;
+  margin-bottom: 7px;
+}
+footer .companyInfo .infoList li {
+  font-size: 15px;
+  color: #999;
+  margin-right: 28px;
+  position: relative;
+}
+footer .companyInfo .infoList li::after {
+  content:"";
+  display: block;
+  width: 1px;
+  height: 10px;
+  background-color: #999;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -14px;
+  margin: auto;
+}
+footer .companyInfo .infoList li:last-child::after {
+  display: none;
+}
+footer .companyInfo .infoList li:last-child {
+  margin-right: 0;
+}
+footer .companyInfo .infoList li span {
+  font-weight: 700;
+}
+footer .companyInfo .infoList li button {
+  width: 105px;
+  height: 24px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  color:#999;
+  cursor: pointer;
+  font-size: 13px;
+  text-align: center;
+}
+
+footer .companyInfo .copyright {
+  font-weight: 400;
+  color:#999;
+}
+footer .companyInfo .copyright span {
+  font-weight: 700;
+}
+
+footer .companyInfo .footerLogo {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+footer .companyInfo .footerLogo img {
+  width: 100px;
+  height: 100px;
+}
