@@ -48,6 +48,8 @@ const onCheckInfo = () => {
     !addressDetail.value
   ) {
     alert('주소를 입력해주세요.');
+  } else {
+    return true;
   }
 };
 
@@ -55,7 +57,9 @@ const onCheckInfo = () => {
 const onClickPurchaseBtn = (e) => {
   e.preventDefault();
 
-  onCheckInfo();
+  if (onCheckInfo()) {
+    // 맞게 입력 했을 경우 주문 post
+  }
 };
 
 // 버튼
@@ -97,12 +101,14 @@ addressBtn.addEventListener('click', onSearchAddress);
 // 구매 상품 정보 데이터 출력
 productData.forEach((v, i) => {
   document.querySelector('.product-info-table').innerHTML += `
+    <tr class="trhr"></tr>
     <tr>
       <td><a href ='#'><img src=${v.img} ${v.productName}/></a></td>
       <td>${v.productName}</td>
       <td>${v.amount}개</td>
       <td>${v.price.toLocaleString()}원</td>
     </tr>
+    <tr class="trhr"></tr>
   `;
 });
 
@@ -115,5 +121,5 @@ const getProductSum = () => {
 
 // 총 상품 금액 출력
 document.querySelector('.product-sum').innerHTML += `
-  <h3>${getProductSum().toLocaleString()}원</h3>
+  <h3 class="sum-number">${getProductSum().toLocaleString()}원</h3>
 `;
