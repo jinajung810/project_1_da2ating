@@ -3,9 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>장바구니 페이지</title>
+		<link rel="stylesheet" href="cart.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+		<script src="cart.js"></script>
 </head>
 <body>
-    <h1>test1</h1>
+	<!-- <header></header> -->
+	<!-- <nav></nav> -->
+	<section class="container">
+		<div class="content">
+			<div class="subtitle-wrap">
+				<h2 id="subtitle">장바구니</h2>
+				<ul class="order-step">
+					<li>01 장바구니<span class="material-symbols-outlined">
+						chevron_right
+						</span></li>
+					<li>02 주문/결제<span class="material-symbols-outlined">
+						chevron_right
+						</span></li>
+					<li>03 주문완료</li>
+				</ul>
+			</div>
+			<div class="cartlist-wrap">
+				<div class="itemlist">
+					<h3 id="cart-cnt">
+						상품 
+						<span style="padding-left: 5px;">(<strong></strong>개)</span>
+					</h3>
+					<table class="cols table-pdg">
+						<colgroup>
+							<col style="width: 20px;">
+							<col>
+							<col style="width: 120px;">
+							<col style="width: 117px;">
+							<col style="width: 90px;">
+							<col style="width: 110px;">
+							<col style="width: 110px;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>
+									<span class="chk-button">
+										<input type="checkbox" name="chkAll" id="chkAll" checked="checked" placeholder="">
+										<label for="chkAll"></label>
+									</span>
+								</th>
+								<th>상품정보</th>
+								<th>수량</th>
+								<th>가격</th>
+								<th>배송비</th>
+								<th>상품금액</th>
+								<th>주문 선택</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="empty-cart">
+								<td colspan="7" style="text-align: center; display: none;">
+								<!-- 장바구니 비었을 때	 -->
+									<p>장바구니에 담긴 상품이 없습니다.</p>
+								</td>
+							</tr>
+							<!-- 상품 표시 -->
+							<tr class="exist-cart">
+								<td class="item-chk">
+									<div class="item-chkbox">
+										<input type="checkbox" id="chknum1" checked="checked" onclick="">
+										<label for="chknum1"></label>
+									</div>
+								</td>
+								<td class="item-info">
+									<a href="#">
+										<div id="item-img"><img src='https://via.placeholder.com/150' alt=""></div>
+										<div id="item-des">
+											<p class="item-name">1주 클린핏 샐러드+라이스</p>
+										</div>
+									</a>
+								</td>
+								<td class="order-amount">
+									<div class="each">
+										<button type="button" name="button" class="btn_up btn_plus"><img src="./assets/add.png" alt=""></button>
+										<input type="text" id="orderstyle_163190659" value="1" onchange="WCKBasket.ChangeStock(this, '1', '986','163190659');" data-rowcnt="0" readonly="readonly">
+										<button type="button" name="button" class="btn_down btn_minus"><img src="./assets/remove.png" alt=""></button>
+									</div>
+								</td>
+								<td class="order-price">
+									<p id="order-price">19,800</p>
+								</td>
+								<td class="delivery">
+									<p id="delivery">3,500</p>
+								</td>
+								<td>
+									<p id="total" style="color: orange; font-weight: 700;">23,300</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="total-price">
+					
+				</div>
+				<div class="cartlist-payment">
+					<div class="receipt">
+						<!-- <h3>주문 금액</h3> -->
+								<dl>
+									<dt>
+										<strong>총 상품금액</strong>
+									</dt>
+									<dd id="counter-items-price"><span><em>0</em>원</span></dd>
+								</dl>
+								<dl>
+									<dt>
+										<strong>총 할인금액</strong>
+									</dt>
+										<dd id="counter-discount-fee"><span>- <em>0</em>원</span></dd>
+								</dl>
+								<dl>
+									<dt>
+										<strong>배송비</strong>
+									</dt>
+										<dd id="counter-delivery-fee"><span>+ <em>0</em>원</span></dd>
+								</dl>
+								<dl class="total">
+									<dt><strong>총 합계금액</strong></dt>
+									<dd><strong>
+										<span id="total2">0원</span>
+										<br>
+									</strong></dd>
+								</dl>
+								
+					</div>
+					<div class="order-buttons">
+						<ul>
+							<li><a href="#" id="continue-btn">쇼핑 계속하기</a></li>
+							<!-- button으로 변환 -->
+							<li><a href="#" id="order-btn">주문하기</a></li>
+						</ul>
+						
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</section>
+	
+  <footer></footer>
 </body>
 </html>
