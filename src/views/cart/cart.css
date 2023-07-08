@@ -121,7 +121,7 @@ table.cols thead th {
 }
 
 tbody {
-    height: 150px;
+    height: 100%;
     display: table-row-group;
     vertical-align: middle;
 }
@@ -149,7 +149,7 @@ tbody tr td {
 }
 
 #item-des p {
-    padding-top: 5px;
+    padding-top: 10px;
 }
 
 .order-amount .each {
