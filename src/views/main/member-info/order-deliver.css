@@ -162,12 +162,15 @@ input {
     color:#000000;
 }
 
-/* 헤더 카테고리 */
+/* 헤더 카테고리  */
+/* 7/8 header2 변경 */
 .header2 {
+    flex-wrap: wrap;
+    width:100%;
     position: relative;
-    margin-top: 100px;
+    margin-top: 0px;
+    padding-top: 50px;
     border-bottom: 1px solid #e2e2e2;
-    height: 49px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -249,6 +252,7 @@ input {
 }
 
 /* 카테고리 하단 메뉴 */
+/* sidebar 위치변경 */
 .sidebar {
     width: 1200px;
     height: 350px;
@@ -260,8 +264,7 @@ input {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding: 50px 20px;
-    left: 250px;
+    padding: 50px 0;
     border-radius: 10px;
 }
 .cate1{
@@ -309,293 +312,58 @@ input {
 section {
     width: 100%;
 }
-
-/* 메인-슬라이드 */
-/* slide.css, slide.js 참조 */
-#slide-div{
-    width: 100%;
+/* main */
+main{
+  margin-top: 300px;
+  width: 100%;
+  min-height: 500px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-.slider-container {
-    margin: 300px 0 100px 0;
+/* 마이페이지 좌측 사이드바 */
+aside{
+  width: 300px;
+  justify-content:flex-start;
+  text-align: left;
+  padding: 50px 0 50px 30px;
+  border-right: #a5a5a5 solid 1px;
 }
-.slider-container > span{
-    background-color: #ffffff00;
+aside h1 {
+  font-size: 35px;
+  margin-bottom: 40px;
 }
-
-/* 메인 */
-main {
-    top:0;
-    position: relative;
-    width: 1200px;
-    margin-left: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
+aside div {
+  padding: 30px 0px;
+  line-height: 35px;
 }
-
-.menu > h2 {
-    font-size: 60px;
-    text-align: center;
-    margin-top: 50px;
+aside h2 {
+  padding-bottom: 15px;
+  font-size: 25px;
 }
-.innerCart {
-    margin-top: -70px;
-    margin-right: -210px;
-    background-color: #ffffff00;
-}
-.innerCart > span{
-    border-radius: 100%;
-    font-size: 25px;
-    width: 50px;
-    height: 50px;
-    background-color: #edffcd;
-    align-self: center;
-    padding-top: 12px;
+aside a {
+  padding-bottom: 20px;
+  font-size: 20px;
 }
 
-/* 메인-베스트메뉴 */
-#bestMenu{
-    max-width: 1200px;
-    margin-top: 85px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding-bottom: 0px;
+/* 마이페이지 정보 확인창-주문/배송조회 */
+article{
+  width: 900px;
+  padding: 100px 0 50px 50px;
 }
-.bestMenu{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 200px;
-    margin: 20px 50px;
-}
-.bestMenu > a {
-    color: black;
-    text-align: center;
-    font-size: 17px;
-    width: 270px;
-}
-.bestMenu > img{
-    height: 270px;
-    width: auto;
-    margin-bottom: 20px;
-    border-radius: 10px;
-}
-
-/* 메인-뉴메뉴 */
-#newMenu{
-    max-width: 1200px;
-    margin-top: 85px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding-bottom: 0px;
-}
-.newMenu{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 200px;
-    margin: 20px 50px;
-}
-.newMenu > a {
-    color: black;
-    text-align: center;
-    font-size: 17px;
-    width: 270px;
-}
-.newMenu > img{
-    height: 270px;
-    width: auto;
-    margin-bottom: 20px;
-    border-radius: 10px;
-}
-/* 메인-메뉴가격 */
-.price {
-    display: flex;
-    align-content: start;
-    justify-content: space-around;
-    align-items: baseline;
-    width: 270px;
-}
-.discount{
-    font-size: 40px;
-    color:red;
-    position: relative;
-    line-height: 1;
-    text-align: left;
-    margin-top: 16px;
-    padding: 0 0 0 0;
-}
-.discountPrice {
-    font-size: 25px;
-    padding: 0px 0 10px 0;
-    line-height: 1;
-    position: relative;
-    text-align: center;
-    color: black;
-}
-.basicPrice {
-    font-size: 18px;
-    color:#a5a5a5;
-    text-decoration: line-through;
-}
-
-/* 메인-이벤트 */
-.event {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 100px
-}
-
-/* 사이드바 */
-aside {
-    width: 200px;
-    margin-left: 80px;
-    box-sizing: border-box;
-}
-.menu-side {    /*사이드바고정*/
-    line-height: 30px;
-    position: fixed;
-    right: 100px;
-    bottom: 150px;
-    z-index: 9999;
-}
-.easyskills {
-    width: 40px;
-    height: 300px;
-    border-radius: 20px;
-    border: #636363 solid 1px;
-    text-align: center;
-    padding-top: 20px;
-    line-height: 20px;
-}
-.currently > img{
-    width: 30px;
-    height: 30px;
-}
-.topBottom {
-    margin-left: 1.5px;
-    line-height: 15px;
-}
-.topBottom > a > span {
-    font-size: 40px;
-    color: #636363;
-}
-
-/* 서비스 */
-#service {
-    width: 1200px;
-    height: 300px;
-    display: flex;
-    flex-direction: row;
-    margin-top: 130px;
-    left: 0px;
-    justify-content: space-between;
-    position: relative;
-    overflow: hidden;
-    padding: 0 0 0px 0;
-}
-.information{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-}
-
-.serviceCenter {
-    width: 550px;
-    height: 300px;
-    line-height: 30px;
-}
-.serviceCenter > div{
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: space-around;
-}
-.serviceCenter > div:nth-child(1){
-    margin-left:-70px;
-}
-.serviceCenter > div:nth-child(2){
-    margin-left:-70px;
-}
-
-.qnaBtn{
-    width: 150px;
-    height: 40px;
-    font-size: 20px;
-    font-family: "Noto Sans KR", sans-serif !important;
-    margin: 0 0 10px 60px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-.deliveryBtn{
-    width: 150px;
-    height: 40px;
-    font-size: 20px;
-    font-family: "Noto Sans KR", sans-serif !important;
-    border-radius: 10px;
-    cursor: pointer;
-}
-.serviceCenter > div > h1 {
-    font-size: 35px;
-}
-.serviceCenter > div > h2 {
-    font-size: 40px;
-}
-.serviceCenter > div > h3 {
-    font-size: 30px;
-}
-
-.accountNumber {
-    width: 300px;
-    height: 300px;
-    line-height: 35px;
-    margin-left: 30px;
-}
-.accountNumber > h1 {
-    font-size: 35px;
-    margin-bottom: 10px;
-}
-
-.announcement{
-    width: 450px;
-    height: 300px;
-    line-height: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-}
-.announcement > h1{
-    margin-top: 6px;
-    font-size: 35px;
-    margin-bottom: 10px;
-}
-.announcement > a{
-    width: 320px;
-}
-
-.announcement > a > p{
-    font-size: 18px;
-    display: flex;
-    justify-content: end;
-    color: #bbb
+article h1{
+  font-size: 35px;
+  margin-bottom: 20px;
 }
 
 /* footer */
 footer {
+    margin-top: 500px;
     width: 100%;
     background-color: #f7f7f7;
+
   }
   footer .inner {
     padding: 40px 0;
@@ -706,7 +474,6 @@ footer {
     font-size: 13px;
     text-align: center;
     background-color: #f7f7f7;
-
   }
   
   footer .companyInfo .copyright {
@@ -738,45 +505,9 @@ footer {
     font-weight: 400;
     line-height: 1.4;
     font-family: 'Noto Sans KR', sans-serif;
-    
   }
   .inner {
     width: 1200px;
     margin: 0 auto;
     position: relative;
   }
-  
-  
-
-
-/* search 아이템
-#newMenu{
-    max-width: 1200px;
-    margin-top: 85px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding-bottom: 0px;
-}
-.item-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 200px;
-    margin: 20px 50px;
-}
-.item-container > a {
-    color: black;
-    text-align: center;
-    font-size: 17px;
-    width: 270px;
-}
-.item-container > img{
-    height: 270px;
-    width: auto;
-    margin-bottom: 20px;
-    border-radius: 10px;
-}
