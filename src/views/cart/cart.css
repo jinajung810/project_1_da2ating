@@ -142,10 +142,12 @@ tbody tr td {
 #item-img img {
     display: block;
     width: 100%;
+    box-sizing: border-box;
 }
 
-#item-img {
-    box-sizing: border-box;
+#item-des {
+    padding-top: 23px;
+    
 }
 
 #item-des p {
@@ -159,42 +161,45 @@ tbody tr td {
     justify-content: center;
 }
 
-.order-amount .each button {
+.order-amount .each img {
     margin: 0;
     padding: 0;
     vertical-align: top;
     font-weight: 400;
-    width: 25px;
     background-color: #d0d0d0;
     border: 1px #b8b8b8 solid;
     line-height: 1.5;
-    height: 27px;
+    width: 8px;
+    height: 8px;
     /* text-indent: -999em; */
     cursor: pointer;
 
 }
 
-.order-amount .each button img {
-    width: 9px;
+.order-amount .each span {
+    padding: 0 10px;
+    text-align: center;
+    vertical-align: middle;
 }
 
-.order-amount .each button .btn_up {
+#btn-up {
     float: left;
-    width: 30px;
-    height: 30px;
-    margin: 0 -3px 0 0;
-    background-image: url("./assets/add.png");
+    width: 20px;
+    height: 20px;
+    /* background-image: url("./assets/add.png"); */
     background-position: 7px -46px;
+    cursor: pointer;
 }
 
-.order-amount .each button .btn_down {
+#btn-down {
     float: left;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     
-    background: url("./assets/remove.png");
+    /* background: url("./assets/remove.png"); */
     top: auto;
     bottom: 0;
+    cursor: pointer;
 }
 
 .order-amount .each input {
@@ -301,3 +306,14 @@ dd {    margin-inline-start: 40px; }
     color: white;
 }
 
+.del-btn {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 22px;
+    padding: 8px 10px;
+    color: black;
+    background-color: white;
+    border: 1px solid rgb(174, 174, 174);
+    text-align: center;
+}
