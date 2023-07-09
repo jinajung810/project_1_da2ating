@@ -1,0 +1,141 @@
+body {
+  color: #333;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+img {
+  display: block;
+}
+a {
+  text-decoration: none;
+  color:#333
+}
+.inner {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* HEADER */
+header {
+  width: 100%;
+  height: 178px;
+  background-color: #333;
+}
+
+.productList {
+  width: 100%;
+}
+.productList h2 {
+  margin: 50px 0;
+  font-size: 32px;
+  font-weight: 700;
+}
+.productList p {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+.productList p span.list-num {
+  font-weight: 700;
+  margin: 0 3px;
+}
+
+#lunchBox, 
+#salad,
+#chickenBreast,
+#snackDressing {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 150px;
+}
+#lunchBox li, 
+#salad li,
+#chickenBreast li,
+#snackDressing li {
+  width: 278px;
+  margin-bottom: 20px;
+  position: relative;
+  margin-right: 29px;
+}
+#lunchBox li:nth-child(4n), 
+#salad li:nth-child(4n),
+#chickenBreast li:nth-child(4n),
+#snackDressing li:nth-child(4n) {
+  margin-right: 0
+}
+#lunchBox li a img, 
+#salad li a img,
+#chickenBreast li a img,
+#snackDressing li a img {
+  width: 278px;
+}
+#lunchBox li a h3, 
+#salad li a h3,
+#chickenBreast li a h3,
+#snackDressing li a h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+#lunchBox li .cart, 
+#salad li .cart,
+#chickenBreast li .cart,
+#snackDressing li .cart{
+  position: absolute;
+  right: 15px;
+  bottom: 85px;
+}
+#lunchBox li .cart a img, 
+#salad li .cart a img,
+#chickenBreast .cart a img,
+#snackDressing .cart a img {
+  width: 51px;
+  height: 50px;
+}
+
+#lunchBox li > span, 
+#salad li > span,
+#chickenBreast li > span,
+#snackDressing li > span {
+  color:#f5634b;
+  font-size: 24px;
+  font-weight: 700;
+}
+#lunchBox li strong, 
+#salad li strong,
+#chickenBreast li strong,
+#snackDressing li strong {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -.5px;
+  float: right;
+}
+#lunchBox li strong span, 
+#salad li strong span,
+#chickenBreast li strong span,
+#snackDressing li strong span {
+  font-size: 18px; 
+  font-weight: 400;
+}
+#lunchBox li strong b, 
+#salad li strong b,
+#chickenBreast li strong b,
+#snackDressing li strong b {
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration:line-through;
+  color: #afafaf;
+  margin-right: 50px;
+}
+
+
+/* FOOTER */
+footer {
+  width: 100%;
+  height: 290px;
+  background-color: #333;
+}

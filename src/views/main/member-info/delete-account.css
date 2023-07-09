@@ -1,0 +1,576 @@
+
+/* material-icons */
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+      local('MaterialIcons-Regular'),
+      url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+      url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+      url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+  }
+  .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    /* font-size: 24px;  Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+  
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+  
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+  }
+/* 폰트 */
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+/* 전체 */
+* {
+    background-color: #FFF;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: 40;
+    line-height: 1.5;
+    margin:0;
+    padding: 0;
+    width: 1200px;
+    font-family: "Noto Sans KR", sans-serif !important;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+.division {
+    display: flex;
+    flex-direction: row;
+    align-content: start;
+}
+.wrap {
+    display: inline-block;
+    padding-top: 40px;
+    height: 100%;
+    flex-wrap: wrap;
+    position:relative;
+    min-width: 1200px;
+}
+a {
+    text-decoration: none;
+    color:#000000
+}
+/* 헤더로고 */
+header {
+    width: 1200px;
+    flex-direction: column;
+    display: flex;
+    position: relative;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 178px;
+    z-index: 2;
+    background: #fff;
+}
+.header1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 1200px;
+    height: 250px;
+    margin: 0 auto;
+    position: relative;
+}
+.diat {
+    display: flex;
+    align-items: center;
+}
+.logo {
+    height: 250px;
+    margin: 10px;
+}
+.search {
+    position: relative;
+    text-align: center;
+    width: 250px;
+    margin: 0 auto;
+}
+input {
+    border-radius: 20px;
+    border: 1px solid #bbb;
+    margin: 10px 0;
+    padding: 10px 12px;
+    width: 253px;
+    height: 42px;
+    line-height: 42px;
+    border-radius: 999px;
+    background: #f8f8f8;
+    font-family: "Noto Sans KR", sans-serif !important;
+    font-size: 20px;
+}
+.fa-search {
+    position: absolute;
+    left: 220px;
+    top: 25px;
+    margin: 0;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.form {
+    display: inline-block;
+    position: absolute;
+    right: 8px;
+    z-index: 0;
+    line-height: 1;
+}
+.join { 
+    font-size: 25px;
+    padding-right: 25px;
+    color:#000000;
+}
+.login {
+    font-size: 25px;
+    padding-right: 30px;
+    color:#000000;
+}
+.mypage > span {
+    font-size: 30px;
+    padding-right: 30px;
+    color:#000000;
+}
+.cart > span {
+    font-size: 30px;
+    color:#000000;
+}
+
+/* 헤더 카테고리  */
+/* 7/8 header2 변경 */
+.header2 {
+    flex-wrap: wrap;
+    width:100%;
+    position: relative;
+    margin-top: 0px;
+    padding-top: 50px;
+    border-bottom: 1px solid #e2e2e2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.category {
+    display: flex;
+    margin-left: 80px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px 70px 20px;
+}
+.category > a {
+    font-size : 28px;
+    color:#000000;
+    padding: 0 55px;
+}
+/* 카테고리 아이콘 */
+#menuicon {
+    display: none;
+}
+#menuicon+label {
+    display: block;
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    cursor: pointer;
+    margin: 0 -30px;
+}
+#menuicon+label span {
+    display: block;
+    position: absolute;
+    
+    width: 100%;
+    height: 5px;
+    border-radius: 30px;
+    background: #000000;
+    transition: all .35s;
+}
+#menuicon+label span:nth-child(1) {
+    top:0;
+}
+#menuicon+label span:nth-child(2) {
+    top:50%;
+    transform: translateY(-50%);
+}
+#menuicon+label span:nth-child(3) {
+    bottom: 0;
+}
+
+#menuicon:checked + label span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    background: #000000;
+}
+#menuicon:checked + label span:nth-child(2) {
+    opacity: 0;
+}
+#menuicon:checked + label span:nth-child(3) {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+    background: #000000;
+}
+
+/* 메뉴카테고리바 */
+#menuicon:checked + label + div {
+    top: 70px;
+}
+#menuicon:checked + label {
+    display: block;
+    width: 40px;
+    height: 50px;
+    position: fixed;
+    top: calc(50% -25px);
+    transition: all .55s;
+    cursor: pointer;
+}
+#menuicon:checked + label{
+    z-index: 2;
+}
+
+/* 카테고리 하단 메뉴 */
+/* sidebar 위치변경 */
+.sidebar {
+    width: 1200px;
+    height: 350px;
+    border: #a5a5a5 solid 1px;
+    position: fixed;
+    top: -400px;
+    z-index: 1;
+    transition: all .35s;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 50px 0;
+    border-radius: 10px;
+}
+.cate1{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    line-height: 30px;
+    text-align: center;
+    color:#000000;
+}
+.cate2{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    line-height: 30px;
+    text-align: center;
+    color:#000000;
+}
+.cate3{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    line-height: 30px;
+    text-align: center;
+    color:#000000;
+}
+.cate4{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    line-height: 30px;
+    text-align: center;
+    color:#000000;
+}
+.objectname{
+    font-size: 28px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #000000;
+}
+.object{
+    font-size: 20px;
+    color:#000000;
+}
+section {
+    width: 100%;
+}
+/* main */
+main{
+  margin-top: 300px;
+  width: 100%;
+  min-height: 500px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+/* 마이페이지 좌측 사이드바 */
+aside{
+  width: 300px;
+  justify-content:flex-start;
+  text-align: left;
+  padding: 50px 0 50px 30px;
+  border-right: #a5a5a5 solid 1px;
+}
+aside h1 {
+  font-size: 35px;
+  margin-bottom: 40px;
+}
+aside div {
+  padding: 30px 0px;
+  line-height: 35px;
+}
+aside h2 {
+  padding-bottom: 15px;
+  font-size: 25px;
+}
+aside a {
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+
+/* 마이페이지 정보 확인창-회원탈퇴 */
+article{
+  width: 900px;
+  padding: 100px 0 50px 50px;
+}
+article h1{
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+#deleteAcount{
+ margin-top: 50px;
+}
+/* 01.회원탈퇴 안내 */
+.deleteInfo{
+  margin: 20px 0;
+  font-size: 18px;
+  line-height: 30px;
+  border: #8d8d8d solid 1px;
+  padding: 20px;
+}
+.deleteInfo h2{
+  font-size: 23px;
+  margin-bottom: 20px;
+}
+
+/* 02.회원탈퇴하기 */
+.deleteReason{
+  margin: 20px 0;
+  font-size: 23px;
+  line-height: 30px;
+  padding: 20px;
+}
+.deleteReason h2{
+  font-size: 23px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+.table{
+  border-top: #8d8d8d solid 0.5px;
+  border-bottom: #8d8d8d solid 0.5px;
+}
+.classReason{
+  font-size: 20px;
+  width: 200px;
+  text-align: center;
+  background-color: #eeeeee;
+}
+.reason1 input{
+  margin: 10px;
+  width:30px;
+  height: 20px;
+  font-size: 30px;
+}
+.reason2 input{
+  width: 600px;
+  height: 150px;
+  margin: 10px;
+  border-radius: 2px;
+}
+
+/* 탈퇴 버튼 */
+button{
+  margin: 50px 100px;
+  padding: 15px;
+  width: 200px;
+  font-size: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+button:nth-child(2){
+  background-color: #12d44c;
+}
+
+/* footer */
+footer {
+    margin-top: 500px;
+    width: 100%;
+    background-color: #f7f7f7;
+
+  }
+  footer .inner {
+    padding: 40px 0;
+    background-color: #f7f7f7;
+  }
+  footer .top {
+    position: relative;
+    background-color: #f7f7f7;
+
+  }
+  footer .top::after {
+    content: "";
+    display: block;
+    width: 1200px;
+    height: .8px;
+    background-color: #333;
+    margin-top: 50px;
+    background-color: #f7f7f7;
+
+  }
+  footer .top .footerMenu {
+    display: flex;
+    background-color: #f7f7f7;
+  }
+  footer .top .footerMenu li {
+    margin-right: 40px;
+    background-color: #f7f7f7;
+  }
+  footer .top .footerMenu li:last-child {
+    margin-right: 0;
+    background-color: #f7f7f7;
+
+  }
+  footer .top .footerMenu li a {
+    color:#999;
+    letter-spacing: -.8px;
+    background-color: #f7f7f7;
+
+  }
+  footer .top .sns {
+    position: absolute;
+    top: 0;
+    right: 0;  
+    display: flex;
+    background-color: #f7f7f7;
+  }
+  footer .top .sns li {
+    margin-left: 10px;
+    background-color: #f7f7f7;
+  }
+  footer .top .sns li a img {
+    width: 30px;
+    height: 30px;
+    background-color: #f7f7f7;
+  }
+  footer .companyInfo {
+    margin-top: 40px;
+    position: relative;
+    background-color: #f7f7f7;
+
+  }
+  footer .companyInfo .infoList {
+    display: flex;
+    margin-bottom: 7px;
+    background-color: #f7f7f7;
+  }
+  footer .companyInfo .infoList li {
+    font-size: 15px;
+    color: #999;
+    margin-right: 28px;
+    position: relative;
+    background-color: #f7f7f7;
+
+  }
+  footer .companyInfo .infoList li::after {
+    content:"";
+    display: block;
+    width: 1px;
+    height: 10px;
+    background-color: #999;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -14px;
+    margin: auto;
+    background-color: #f7f7f7;
+  }
+  footer .companyInfo .infoList li:last-child::after {
+    display: none;
+    background-color: #f7f7f7;
+  }
+  footer .companyInfo .infoList li:last-child {
+    margin-right: 0;
+    background-color: #f7f7f7;
+  }
+  footer .companyInfo .infoList li span {
+    font-weight: 700;
+    background-color: #f7f7f7;
+
+  }
+  footer .companyInfo .infoList li button {
+    width: 105px;
+    height: 24px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    color:#999;
+    cursor: pointer;
+    font-size: 13px;
+    text-align: center;
+    background-color: #f7f7f7;
+  }
+  
+  footer .companyInfo .copyright {
+    font-weight: 400;
+    color:#999;
+    background-color: #f7f7f7;
+
+  }
+  footer .companyInfo .copyright span {
+    font-weight: 700;
+    background-color: #f7f7f7;
+
+  }
+  
+  footer .companyInfo .footerLogo {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #f7f7f7;
+  }
+  footer .companyInfo .footerLogo img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  body {
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .inner {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }

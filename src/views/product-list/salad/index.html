@@ -6,22 +6,33 @@
   <title>da2ating</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+
+  <!-- GOOGLE FONT & ICON-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
-  <link rel="stylesheet" href="./product-detail.css">
+  <link rel="stylesheet" href="../product-list.css">
   <link rel="stylesheet" href="/f2ting_client/src/views/common/footer.css">
 
-  <script defer src="./product-detail.js"></script>
-
+  <script defer src="./salad.js"></script>
 </head>
 <body>
-  <!-- header -->
+  <!-- HEADER -->
   <header></header>
 
-  <!-- footer -->
+  <section class="productList">
+    <div class="inner">
+      <h2>샐러드</h2>
+      <img src="../images/salad_banner.jpg" alt="식단관리에 가장 기본이 되는 데일리 샐러드 10종 모음" />
+      <p>상품<span class="list-num">n</span>개</p>
+      <ul id="salad"></ul>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer></footer>
 
   <script>
