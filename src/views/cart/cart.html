@@ -47,7 +47,7 @@
 			<div class="cartlist-wrap">
 				<div class="itemlist">
 					<h3 id="cart-cnt">
-						<button onclick="itemClear()">전체 삭제</button>
+						<button onclick="itemAllClear()">전체 삭제</button>
 					</h3>
 					<table class="cols table-pdg">
 						<colgroup>
@@ -76,44 +76,6 @@
 							</tr>
 						</thead>
 						<tbody>
-							
-							<!-- 장바구니 비지 않았을 때 (cnt > 0)  -->
-							<!-- <tr class="exist-cart">
-							<tr class="exist-cart">
-								<td class="item-chk">
-									<div class="item-chkbox">
-										<input type="checkbox" id="chknum" checked="checked" onclick="">
-										<label for="chknum"></label>
-									</div>
-								</td>
-								<td class="item-info">
-									<a href="#">
-										<div id="item-img"><img src='https://via.placeholder.com/150' alt=""></div>
-										<div id="item-des">
-											<p class="item-name">1주 클린핏 샐러드+라이스</p>
-										</div>
-									</a>
-								</td>
-								<td class="order-amount">
-									<div class="each">
-										<button type="button" name="button" class="btn_up btn_plus"><img src="./assets/add.png" alt=""></button>
-										<input type="text" id="orderstyle_163190659" value="1" onchange="WCKBasket.ChangeStock(this, '1', '986','163190659');" data-rowcnt="0" readonly="readonly">
-										<button type="button" name="button" class="btn_down btn_minus"><img src="./assets/remove.png" alt=""></button>
-									</div>
-								</td>
-								<td class="order-price">
-									<p id="order-price">19800</p>
-								</td>
-								<td class="delivery">
-									<p id="delivery">3500</p>
-								</td>
-								<td>
-									<p id="total" style="color: orange; font-weight: 700;">23300</p>
-								</td>
-								<td>
-									<a href="javascript:void(0)" onclick="" class="del-btn">삭제하기</a>
-								</td>
-							</tr> -->
 						</tbody>
 					</table>
 				</div>
@@ -157,8 +119,11 @@
 						
 					</div>
 				</div>
+				
 			</div>
-			
+			<!-- 데이터 불러오기 -->
+			<div class="list-num"></div>
+			<div id="chickenBreast"></div>
 		</div>
 	</section>
 	

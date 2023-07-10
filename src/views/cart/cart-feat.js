@@ -10,12 +10,12 @@ const cartNum = document.querySelector('.cart span');
 
 // 장바구니에 담겨있는 임시 데이터
 const salad = [
-    { imgSrc: 'https://via.placeholder.com/150', name: "닭가슴살 샐러드 ", price: 18900, quantity: 1, delivery: 3500, tag: "cSalad", inCart: 0 },
-    { imgSrc: 'https://via.placeholder.com/150', name: "단호박 샐러드", price: 15800, quantity: 3, delivery: 3500, tag: "sSalad",  inCart: 0 },
-    { imgSrc: 'https://via.placeholder.com/150', name: "리코타치즈 샐러드", price: 19800, quantity: 5, delivery: 3500, tag: "lSalad", inCart: 0  },
+    { imgSrc: 'https://via.placeholder.com/150', name: "닭가슴살 샐러드 ", price: 18900,  delivery: 3500, tag: "cSalad", inCart: 0 },
+    { imgSrc: 'https://via.placeholder.com/150', name: "단호박 샐러드", price: 15800, delivery: 3500, tag: "sSalad",  inCart: 0 },
+    { imgSrc: 'https://via.placeholder.com/150', name: "리코타치즈 샐러드", price: 19800, delivery: 3500, tag: "lSalad", inCart: 0  },
 ];
 
-// 장바구니 클릭시 발생
+// 장바구니 클릭시 발생하는 이벤트
 carts.forEach((v, i)=>{
     v.addEventListener('click', () => {
         //  장바구니에 물건 추가 (수량 증가)
@@ -55,7 +55,7 @@ function cartNumbers(product, action) {
     setItems(product);
 }
 
-// 장바구니 데이터 set
+// 장바구니에 담기는 물건 JSON 구조
 function setItems(product) {
     // let productNumbers = localStorage.getItem('cartNumbers');
     // productNumbers = parseInt(productNumbers);
@@ -86,15 +86,15 @@ function setItems(product) {
 function totalCost( product, action ) {
     let cart = localStorage.getItem("totalCost");
 
-    if( action) {
+    if (action) {
         cart = parseInt(cart);
-
         localStorage.setItem("totalCost", cart - product.price);
     } else if(cart != null) {
-        
         cart = parseInt(cart);
         localStorage.setItem("totalCost", cart + product.price);
     
+    } else if (cart === 0) {
+        localStorage.setItem("totalCost", 0);
     } else {
         localStorage.setItem("totalCost", product.price);
     }
@@ -126,15 +126,16 @@ function displayCart() {
             <a href="#">
                 <div id="item-img"><img src='${v.imgSrc}' alt=""></div>
                 <div id="item-des">
+                    <p style="display: none;">${v.tag}</p>
                     <p class="item-name">${v.name}</p>
                 </div>
             </a>
         </td>
         <td class="order-amount">
             <div class="each">
-                <img src="./assets/add.png" class="decrease" id="btn-up">
+                <img src="./assets/add.png" class="increase" id="btn-up">
                     <span>${v.inCart}</span>
-                <img src="./assets/remove.png" class="increase" id="btn-down">
+                <img src="./assets/remove.png" class="decrease" id="btn-down">
             </div>
         </td>
         <td>
@@ -147,6 +148,7 @@ function displayCart() {
             <p id="order-price${i}" style="color: orange; font-weight: 700;">${ v.price * v.inCart + v.delivery}</p>
         </td>
         <td>
+            <span style="display: none;">${v.tag}</span>
             <span class="del-btn">삭제하기</span>
         </td>
     </tr>
@@ -179,15 +181,18 @@ function manageQuantity() {
             console.log(cartItems);
             currentQuantity = decreaseButtons[i].parentElement.querySelector('span').textContent;
             console.log(currentQuantity);
-            currentProduct = decreaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g,'').trim();
+            currentProduct = decreaseButtons[i].parentElement.parentElement.previousElementSibling.firstElementChild.children[1].childNodes[1].textContent;
             console.log(currentProduct);
-
+            
+            // 해당 물건의 수량, 전체 가격 변경
             if( cartItems[currentProduct].inCart > 1 ) {
                 cartItems[currentProduct].inCart -= 1;
                 cartNumbers(cartItems[currentProduct], "decrease");
                 totalCost(cartItems[currentProduct], "decrease");
                 localStorage.setItem('productsInCart', JSON.stringify(cartItems));
                 displayCart();
+            } else {
+                alert('1개 이상 구매 가능합니다.');
             }
         });
 
@@ -195,7 +200,7 @@ function manageQuantity() {
             console.log(cartItems);
             currentQuantity = increaseButtons[i].parentElement.querySelector('span').textContent;
             console.log(currentQuantity);
-            currentProduct = increaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g,'').trim();
+            currentProduct = increaseButtons[i].parentElement.parentElement.previousElementSibling.firstElementChild.children[1].childNodes[1].textContent;
             console.log(currentProduct);
 
             cartItems[currentProduct].inCart += 1;
@@ -243,7 +248,7 @@ function calcPrice() {
 
 }
 
-// 장바구니 데이터 삭제
+// 장바구니 상품 삭제
 function deleteButtons() {
     let deleteButtons = document.querySelectorAll('td .del-btn');
     let productNumbers = localStorage.getItem('cartNumbers');
@@ -255,9 +260,9 @@ function deleteButtons() {
 
     for(let i=0; i < deleteButtons.length; i++) {
         deleteButtons[i].addEventListener('click', () => {
-            // console.log(deleteButtons[i].parentElement.textContent);
-            productName = deleteButtons[i].parentElement.textContent.toLocaleLowerCase().replace(/ /g,'').trim();
-           
+            console.log(deleteButtons[i].parentElement.children[0].textContent);
+            productName = deleteButtons[i].parentElement.children[0].textContent;
+            console.log(productName, cartItems[productName]);
             localStorage.setItem('cartNumbers', productNumbers - cartItems[productName].inCart);
             localStorage.setItem('totalCost', cartCost - ( cartItems[productName].price * cartItems[productName].inCart));
 
@@ -271,10 +276,46 @@ function deleteButtons() {
 }
 
 // 장바구니 상품 전체 삭제
-function itemClear() {
+function itemAllClear() {
     localStorage.clear();
 }
 
 onLoadCartNumbers();
 displayCart();
 
+
+
+// fetch('http://127.0.0.1:5555/api/products', {
+//   method: 'GET',
+//   headers: {
+//     'Content-Type': 'application/json;charset=utf-8'
+//   },
+// })
+//   .then((res)=> res.json())
+//   .then((data)=>{
+//     console.log(data)
+//     const chickenBreastInfo = data; 
+    
+//     document.querySelector('.list-num').textContent = chickenBreastInfo.length; 
+
+//     for (let i = 0; i < chickenBreastInfo.length; i++) {
+//       document.getElementById("chickenBreast").innerHTML += `
+//         <li>
+//           <a href="javascript:void(0)">
+//             <img src= './images/salad-list-item01.jpg' alt="" />
+//             <h3>${chickenBreastInfo[i].name}</h3>
+//           </a>
+//           <div class="cart">
+//             <a href="javascript:void(0)">
+//               <img src="./images/cart_icn.png" alt="">
+//             </a>
+//           </div>
+//           <span>${chickenBreastInfo[i].discountRate}%</span>
+//           <strong>
+//             ${chickenBreastInfo[i].originPrice}<span>원</span>
+//             <b>${chickenBreastInfo[i].originPrice}원</b>
+//           </strong>
+//         </li>
+//       `
+//     }
+//   })
