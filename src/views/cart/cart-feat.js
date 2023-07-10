@@ -6,6 +6,7 @@ const itemPrice = document.querySelector('#order-price');
 const deliveryFee = document.querySelector('#delivery');
 const totalPrice = document.querySelector('#item-img');
 const cbArr = document.getElementsByName('price');
+const cartNum = document.querySelector('.cart span');
 
 // 장바구니에 담겨있는 임시 데이터
 const salad = [
@@ -14,22 +15,25 @@ const salad = [
     { imgSrc: 'https://via.placeholder.com/150', name: "리코타치즈 샐러드", price: 19800, quantity: 5, delivery: 3500, tag: "lSalad", inCart: 0  },
 ];
 
-// 장바구니 클릭
+// 장바구니 클릭시 발생
 carts.forEach((v, i)=>{
     v.addEventListener('click', () => {
+        //  장바구니에 물건 추가 (수량 증가)
         cartNumbers(salad[i]);
+        // 장바구니에 물건 추가 (금액 증가)
         totalCost(salad[i]);
     })
 })
 
-// 장바구니 개수 출력
+// 장바구니에 담긴 상품 개수 화면에 출력
 function onLoadCartNumbers() {
     let productNumbers = localStorage.getItem('cartNumbers');
     if( productNumbers ) {
-        document.querySelector('.cart span').textContent = productNumbers;
+        cartNum.textContent = productNumbers;
     }
 }
 
+// 장바구니에 담긴 상품 개수 증감
 function cartNumbers(product, action) {
     let productNumbers = localStorage.getItem('cartNumbers');
     productNumbers = parseInt(productNumbers);
@@ -39,14 +43,14 @@ function cartNumbers(product, action) {
 
     if( action ) {
         localStorage.setItem("cartNumbers", productNumbers - 1);
-        document.querySelector('.cart span').textContent = productNumbers - 1;
+        cartNum.textContent = productNumbers - 1;
         console.log("action running");
     } else if( productNumbers ) {
         localStorage.setItem("cartNumbers", productNumbers + 1);
-        document.querySelector('.cart span').textContent = productNumbers + 1;
+        cartNum.textContent = productNumbers + 1;
     } else {
         localStorage.setItem("cartNumbers", 1);
-        document.querySelector('.cart span').textContent = 1;
+        cartNum.textContent = 1;
     }
     setItems(product);
 }
@@ -107,13 +111,6 @@ function displayCart() {
     let productContainer = document.querySelector('tbody');
     let productNumbers = localStorage.getItem('cartNumbers');
     productNumbers = parseInt(productNumbers);
-    if ( productNumbers === 0 ) {
-        productContainer.innerHTML += `<tr class="empty-cart">
-            <td colspan="7" style="text-align: center;>
-                <p>장바구니에 담긴 상품이 없습니다.</p>
-            </td>
-        </tr>`;
-    }
     if( cartItems && productContainer ) {
         productContainer.innerHTML = '';
         Object.values(cartItems).map( (v, i) => {
@@ -121,7 +118,7 @@ function displayCart() {
             `<tr class="exist-cart">
         <td class="item-chk">
             <div class="item-chkbox">
-                <input type="checkbox" name="price" id="chknum${i}" value="${v.inCart}" onclick="calcPrice()">
+                <input type="checkbox" name="price" id="chknum${i}" value="${v.inCart}" checked="checked" onclick="calcPrice()">
                 <label for="chknum${i}"></label>
             </div>
         </td>
@@ -162,7 +159,10 @@ function displayCart() {
         
         deleteButtons();
         manageQuantity();
-    } 
+    } else if (isNaN(parseInt(productNumbers))) {
+        productContainer.innerHTML = `<tr class="empty-cart"><td colspan="7"><p>장바구니에 담긴 상품이 없습니다.</p></td></tr>`;
+    }
+    
 }
 
 // 장바구니 수량 변경
@@ -247,7 +247,7 @@ function calcPrice() {
 function deleteButtons() {
     let deleteButtons = document.querySelectorAll('td .del-btn');
     let productNumbers = localStorage.getItem('cartNumbers');
-    let cartCost = localStorage.getItem("totalCost");
+    let cartCost = localStorage.getItem('totalCost');
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
     let productName;
