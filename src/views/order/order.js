@@ -54,11 +54,56 @@ const onCheckInfo = () => {
 };
 
 // 구매버튼 클릭 이벤트
-const onClickPurchaseBtn = (e) => {
+const onClickPurchaseBtn = async (e) => {
   e.preventDefault();
 
+  // 맞게 입력 했을 경우 주문 post
   if (onCheckInfo()) {
-    // 맞게 입력 했을 경우 주문 post
+    // 필요한 상품 정보만 추출(임시 데이터)
+    const products = productData.reduce((list, product) => {
+      list.push({
+        id: product.productId,
+        amount: product.amount,
+      });
+
+      return list;
+    }, []);
+
+    const orderData = {
+      // 임시 상품 데이터
+      products: products,
+      receiver: {
+        name: deliveryName.value,
+        phone: phoneNumber1.value + phoneNumber2.value + phoneNumber3.value,
+        address: addressBasic.value + addressDetail.value,
+      },
+      deliveryMessage: deliveryMessage.value,
+    };
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: '토큰',
+      },
+      body: JSON.stringify(orderData),
+    };
+
+    try {
+      const res = await fetch(
+        'http://127.0.0.1:5555/api/users/sign-up',
+        options
+      );
+
+      // 가입 성공 시 페이지 이동
+      if (res.ok) {
+        //로그인 페이지로 이동?
+      } else {
+        alert('다시 시도해주세요!');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 
