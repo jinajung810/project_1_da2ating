@@ -90,14 +90,11 @@ const onClickPurchaseBtn = async (e) => {
     };
 
     try {
-      const res = await fetch(
-        'http://127.0.0.1:5555/api/users/sign-up',
-        options
-      );
+      const res = await fetch('http://127.0.0.1:5555/api/orders', options);
 
-      // 가입 성공 시 페이지 이동
+      // 성공 시 페이지 이동
       if (res.ok) {
-        //로그인 페이지로 이동?
+        //주문완료 페이지로 이동?
       } else {
         alert('다시 시도해주세요!');
       }
