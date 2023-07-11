@@ -11,10 +11,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
-  <link rel="stylesheet" href="../product-list.css">
+  <link rel="stylesheet" href="./product-list.css">
   <link rel="stylesheet" href="/f2ting_client/src/views/common/footer.css">
 
-  <script defer src="./lunch-box.js"></script>
+  <script defer src="./snack-dressing.js"></script>
 </head>
 <body>
   <!-- HEADER -->
@@ -22,10 +22,9 @@
 
   <section class="productList">
     <div class="inner">
-      <h2>도시락</h2>
-      <img src="../images/lunch box_banner.png" alt="맛있게 칼로리 줄이고 싶을 때 가벼운 라이스 모음" />
+      <div id="dressingCategory"></div>
       <p>상품<span class="list-num">n</span>개</p>
-      <ul id="lunchBox"></ul>
+      <ul id="snackDressing"></ul>
     </div>
   </section>
 
@@ -39,6 +38,5 @@
       .then(res => res.text())
       .then(data => footer.innerHTML = data);
   </script>
-
 </body>
 </html>

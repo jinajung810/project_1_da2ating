@@ -24,43 +24,19 @@
   <section class="productDetail">
     <div class="inner">
       <div class="productDetailInfo">
-        <div class="productImg">
-          <img src="./images/salad-detail-item01.jpg" alt="">
-        </div>
-        <div class="productInfo">
-          <h2>상품명</h2>
-          <span>23%</span>
-          <div class="productPrice">
-            <p>9,000<span>원</span></p>
-            <strong>6,900<span>원</span></strong>
-          </div>
-
-          <div class="deliveryInfo">
-            <p>배송정보</p>
-            <img src="./images/s_detail_caution_icn1.png" alt="">
-          </div>
-
-          <div class="deliveryFee">
-            <span>3,000원 / 주문시결제(선결제) <button>지역별 추가 배송비</button></span>
-          </div>
-
-          <div class="count">
-            <p> 크래미 샐러드 </p>
-            <div class="btnCount">
-              <button class="minus"></button>
-              <input type="text" value="1"></input>
-              <button class="plus"></button>
-            </div>
-          </div>
-
-            <strong class="totalAmount">총 합계 금액 <span>6,900<b>원</b></span></strong>
-
-            <div class="btn">
-              <button class="btnCart">장바구니</button>
-              <button class="btnBuynow">바로 구매</button>
-            </div>
-        </div>
+        <div id="productImg"></div>
+        <div id="productInfo"></div>
       </div>
+
+      <div class="productDescription">
+        <ul>
+          <li>
+            <a href="javascript:void(0)">상품설명</a>
+          </li>
+        </ul>
+        <div id="desImg"></div>
+      </div>
+
     </div>
   </section>
 
@@ -75,5 +51,6 @@
       .then(res => res.text())
       .then(data => footer.innerHTML = data);
   </script>
+
 </body>
 </html>
