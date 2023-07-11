@@ -6,30 +6,55 @@ const itemPrice = document.querySelector('#order-price');
 const deliveryFee = document.querySelector('#delivery');
 const totalPrice = document.querySelector('#item-img');
 const cbArr = document.getElementsByName('price');
+const cartNum = document.querySelector('#cnt1');
+const itemNum = document.querySelector('#cnt2');
 
-// 장바구니에 담겨있는 임시 데이터
+// 쇼핑몰 상품 임시 데이터
 const salad = [
-    { imgSrc: 'https://via.placeholder.com/150', name: "닭가슴살 샐러드 ", price: 18900, quantity: 1, delivery: 3500, tag: "cSalad", inCart: 0 },
-    { imgSrc: 'https://via.placeholder.com/150', name: "단호박 샐러드", price: 15800, quantity: 3, delivery: 3500, tag: "sSalad",  inCart: 0 },
-    { imgSrc: 'https://via.placeholder.com/150', name: "리코타치즈 샐러드", price: 19800, quantity: 5, delivery: 3500, tag: "lSalad", inCart: 0  },
+    { imgSrc: 'https://via.placeholder.com/150', name: "닭가슴살 샐러드 ", price: 18900,  delivery: 3500, tag: "cSalad", inCart: 0 },
+    { imgSrc: 'https://via.placeholder.com/150', name: "단호박 샐러드", price: 15800, delivery: 3500, tag: "sSalad",  inCart: 0 },
+    { imgSrc: 'https://via.placeholder.com/150', name: "리코타치즈 샐러드", price: 19800, delivery: 3500, tag: "lSalad", inCart: 0  },
 ];
 
-// 장바구니 클릭
+// 장바구니 클릭시 발생하는 이벤트
 carts.forEach((v, i)=>{
     v.addEventListener('click', () => {
+        //  장바구니에 물건 추가 (수량 증가)
         cartNumbers(salad[i]);
+        // 장바구니에 물건 추가 (금액 증가)
         totalCost(salad[i]);
+        itemNumbers(salad[i]);
     })
 })
 
-// 장바구니 개수 출력
+// 장바구니에 담긴 상품 화면에 출력
 function onLoadCartNumbers() {
     let productNumbers = localStorage.getItem('cartNumbers');
+    let itemLen = localStorage.getItem("itemLen");
     if( productNumbers ) {
-        document.querySelector('.cart span').textContent = productNumbers;
+        cartNum.textContent = productNumbers;
+        itemNum.textContent = itemLen;
     }
+    
 }
 
+// 장바구니에 담긴 상품 종류 개수
+function itemNumbers(product, action) {
+    let cartItems = localStorage.getItem("productsInCart");
+    cartItems = JSON.parse(cartItems);
+    let itemlistLength = Object.keys(cartItems).length;
+    itemlistLength = parseInt(itemlistLength);
+    if ( cartItems) {
+        localStorage.setItem('itemLen', Object.keys(cartItems).length);
+        itemNum.textContent = Object.keys(cartItems).length;
+    } else {
+        localStorage.setItem('itemLen', '0');
+        itemNum.textContent = "0";
+    }
+    
+}
+
+// 장바구니에 담긴 상품 개수 증감
 function cartNumbers(product, action) {
     let productNumbers = localStorage.getItem('cartNumbers');
     productNumbers = parseInt(productNumbers);
@@ -39,19 +64,19 @@ function cartNumbers(product, action) {
 
     if( action ) {
         localStorage.setItem("cartNumbers", productNumbers - 1);
-        document.querySelector('.cart span').textContent = productNumbers - 1;
+        cartNum.textContent = productNumbers - 1;
         console.log("action running");
     } else if( productNumbers ) {
         localStorage.setItem("cartNumbers", productNumbers + 1);
-        document.querySelector('.cart span').textContent = productNumbers + 1;
+        cartNum.textContent = productNumbers + 1;
     } else {
         localStorage.setItem("cartNumbers", 1);
-        document.querySelector('.cart span').textContent = 1;
+        cartNum.textContent = 1;
     }
     setItems(product);
 }
 
-// 장바구니 데이터 set
+// 장바구니에 담기는 물건 JSON 구조
 function setItems(product) {
     // let productNumbers = localStorage.getItem('cartNumbers');
     // productNumbers = parseInt(productNumbers);
@@ -82,15 +107,15 @@ function setItems(product) {
 function totalCost( product, action ) {
     let cart = localStorage.getItem("totalCost");
 
-    if( action) {
+    if (action) {
         cart = parseInt(cart);
-
         localStorage.setItem("totalCost", cart - product.price);
     } else if(cart != null) {
-        
         cart = parseInt(cart);
         localStorage.setItem("totalCost", cart + product.price);
     
+    } else if (cart === 0) {
+        localStorage.setItem("totalCost", 0);
     } else {
         localStorage.setItem("totalCost", product.price);
     }
@@ -103,17 +128,12 @@ function displayCart() {
 
     let cart = localStorage.getItem("totalCost");
     cart = parseInt(cart);
+    console.log(cartItems === null);
 
     let productContainer = document.querySelector('tbody');
     let productNumbers = localStorage.getItem('cartNumbers');
     productNumbers = parseInt(productNumbers);
-    if ( productNumbers === 0 ) {
-        productContainer.innerHTML += `<tr class="empty-cart">
-            <td colspan="7" style="text-align: center;>
-                <p>장바구니에 담긴 상품이 없습니다.</p>
-            </td>
-        </tr>`;
-    }
+    
     if( cartItems && productContainer ) {
         productContainer.innerHTML = '';
         Object.values(cartItems).map( (v, i) => {
@@ -121,7 +141,7 @@ function displayCart() {
             `<tr class="exist-cart">
         <td class="item-chk">
             <div class="item-chkbox">
-                <input type="checkbox" name="price" id="chknum${i}" value="${v.inCart}" onclick="calcPrice()">
+                <input type="checkbox" name="price" id="chknum${i}" value="${v.inCart}" checked="checked" onclick="calcPrice()">
                 <label for="chknum${i}"></label>
             </div>
         </td>
@@ -129,15 +149,16 @@ function displayCart() {
             <a href="#">
                 <div id="item-img"><img src='${v.imgSrc}' alt=""></div>
                 <div id="item-des">
+                    <p style="display: none;">${v.tag}</p>
                     <p class="item-name">${v.name}</p>
                 </div>
             </a>
         </td>
         <td class="order-amount">
             <div class="each">
-                <img src="./assets/add.png" class="decrease" id="btn-up">
+                <img src="./assets/add.png" class="increase" id="btn-up">
                     <span>${v.inCart}</span>
-                <img src="./assets/remove.png" class="increase" id="btn-down">
+                <img src="./assets/remove.png" class="decrease" id="btn-down">
             </div>
         </td>
         <td>
@@ -150,6 +171,7 @@ function displayCart() {
             <p id="order-price${i}" style="color: orange; font-weight: 700;">${ v.price * v.inCart + v.delivery}</p>
         </td>
         <td>
+            <span style="display: none;">${v.tag}</span>
             <span class="del-btn">삭제하기</span>
         </td>
     </tr>
@@ -162,7 +184,10 @@ function displayCart() {
         
         deleteButtons();
         manageQuantity();
-    } 
+    } else if (parseInt(cartNum.innerText) === 0 || productNumbers === 0 || cart === 0) {
+        productContainer.innerHTML = `<tr class="empty-cart"><td colspan="7"><p>장바구니에 담긴 상품이 없습니다.</p></td></tr>`;
+    }
+    
 }
 
 // 장바구니 수량 변경
@@ -179,15 +204,18 @@ function manageQuantity() {
             console.log(cartItems);
             currentQuantity = decreaseButtons[i].parentElement.querySelector('span').textContent;
             console.log(currentQuantity);
-            currentProduct = decreaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g,'').trim();
+            currentProduct = decreaseButtons[i].parentElement.parentElement.previousElementSibling.firstElementChild.children[1].childNodes[1].textContent;
             console.log(currentProduct);
-
+            
+            // 해당 물건의 수량, 전체 가격 변경
             if( cartItems[currentProduct].inCart > 1 ) {
                 cartItems[currentProduct].inCart -= 1;
                 cartNumbers(cartItems[currentProduct], "decrease");
                 totalCost(cartItems[currentProduct], "decrease");
                 localStorage.setItem('productsInCart', JSON.stringify(cartItems));
                 displayCart();
+            } else {
+                alert('1개 이상 구매 가능합니다.');
             }
         });
 
@@ -195,7 +223,7 @@ function manageQuantity() {
             console.log(cartItems);
             currentQuantity = increaseButtons[i].parentElement.querySelector('span').textContent;
             console.log(currentQuantity);
-            currentProduct = increaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g,'').trim();
+            currentProduct = increaseButtons[i].parentElement.parentElement.previousElementSibling.firstElementChild.children[1].childNodes[1].textContent;
             console.log(currentProduct);
 
             cartItems[currentProduct].inCart += 1;
@@ -227,14 +255,14 @@ function calcPrice() {
 
     document.querySelector('#receipt-price').innerText = receiptPrice + "원";
     
-    // 배송비 조건
-    if (receiptPrice >= 50000) {
-        receiptDelivery = 0;
-    } else if (receiptPrice === 0) {
-        receiptDelivery = 0;
-    } else {
-        receiptDelivery = 3500;
-    }
+    // // 배송비 조건
+    // if (receiptPrice >= 50000) {
+    //     receiptDelivery = 0;
+    // } else if (receiptPrice === 0) {
+    //     receiptDelivery = 0;
+    // } else {
+    //     receiptDelivery = 3500;
+    // }
 
     receiptTotal = receiptPrice + receiptDelivery;
 
@@ -243,38 +271,88 @@ function calcPrice() {
 
 }
 
-// 장바구니 데이터 삭제
+// 장바구니 상품 삭제
 function deleteButtons() {
     let deleteButtons = document.querySelectorAll('td .del-btn');
     let productNumbers = localStorage.getItem('cartNumbers');
-    let cartCost = localStorage.getItem("totalCost");
+    let cartCost = localStorage.getItem('totalCost');
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
     let productName;
-    console.log(cartItems);
+
 
     for(let i=0; i < deleteButtons.length; i++) {
         deleteButtons[i].addEventListener('click', () => {
-            // console.log(deleteButtons[i].parentElement.textContent);
-            productName = deleteButtons[i].parentElement.textContent.toLocaleLowerCase().replace(/ /g,'').trim();
-           
+            console.log(deleteButtons[i].parentElement.children[0].textContent);
+            productName = deleteButtons[i].parentElement.children[0].textContent;
+            console.log(productName, cartItems[productName]);
             localStorage.setItem('cartNumbers', productNumbers - cartItems[productName].inCart);
             localStorage.setItem('totalCost', cartCost - ( cartItems[productName].price * cartItems[productName].inCart));
-
+            localStorage.setItem('itemLen', Object.keys(cartItems).length);
             delete cartItems[productName];
             localStorage.setItem('productsInCart', JSON.stringify(cartItems));
-
+            
             displayCart();
             onLoadCartNumbers();
+
         })
     }
+    if (parseInt(productNumbers) === 0) {
+        itemAllClear();
+    }
+    localStorage.setItem('itemLen', Object.keys(cartItems).length);
 }
 
 // 장바구니 상품 전체 삭제
-function itemClear() {
+function itemAllClear() {
     localStorage.clear();
 }
 
 onLoadCartNumbers();
 displayCart();
+
+// 업데이트 날짜 순서로 new product 생성
+async function fetchTest() {
+    try {
+        const res = await fetch('http://127.0.0.1:5555/api/products', {
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8'
+            },
+          });
+          const data = await res.json();
+          console.log('data', data);
+          newProduct(data)
+    } catch (error) {
+      console.error('get 에러 발생', error);
+    }
+  }
+
+fetchTest();
+
+function newProduct (data) {
+  let newData = []
+  for(let i=0; i<data.length; i++){
+    if(data.length<=4){
+      newData.push(data[i])
+    }
+  }
+  for(let i=0; i<newData.length; i++){
+    document.querySelector("#newMenu").innerHTML += `<span class="newMenu">
+        <img src=${newData[i].thumbnail} href="" alt=${i+1}>
+        <a class="innerCart" href="">
+            <span class="material-symbols-outlined">shopping_cart</span>
+        </a>
+        <a href="">${newData[i].name}</a>
+        <label class="price">
+            <h2 class="discount">${newData[i].discountRate}%</h2>
+            <h4 class="discountPrice">${Math.floor(newData[i].originPrice*(1-newData[i].discountRate/100)/100)*100}원</h4>
+            <h6 class="basicPrice">${newData[i].originPrice}원</h6>
+        </label>
+        <p class="reviewNum">review : ${newData[i].tier1Category.order}</p>
+    </span>`
+}
+
+
+
+}
 
