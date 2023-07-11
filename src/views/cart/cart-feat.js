@@ -6,9 +6,10 @@ const itemPrice = document.querySelector('#order-price');
 const deliveryFee = document.querySelector('#delivery');
 const totalPrice = document.querySelector('#item-img');
 const cbArr = document.getElementsByName('price');
-const cartNum = document.querySelector('.cart span');
+const cartNum = document.querySelector('#cnt1');
+const itemNum = document.querySelector('#cnt2');
 
-// 장바구니에 담겨있는 임시 데이터
+// 쇼핑몰 상품 임시 데이터
 const salad = [
     { imgSrc: 'https://via.placeholder.com/150', name: "닭가슴살 샐러드 ", price: 18900,  delivery: 3500, tag: "cSalad", inCart: 0 },
     { imgSrc: 'https://via.placeholder.com/150', name: "단호박 샐러드", price: 15800, delivery: 3500, tag: "sSalad",  inCart: 0 },
@@ -22,15 +23,35 @@ carts.forEach((v, i)=>{
         cartNumbers(salad[i]);
         // 장바구니에 물건 추가 (금액 증가)
         totalCost(salad[i]);
+        itemNumbers(salad[i]);
     })
 })
 
-// 장바구니에 담긴 상품 개수 화면에 출력
+// 장바구니에 담긴 상품 화면에 출력
 function onLoadCartNumbers() {
     let productNumbers = localStorage.getItem('cartNumbers');
+    let itemLen = localStorage.getItem("itemLen");
     if( productNumbers ) {
         cartNum.textContent = productNumbers;
+        itemNum.textContent = itemLen;
     }
+    
+}
+
+// 장바구니에 담긴 상품 종류 개수
+function itemNumbers(product, action) {
+    let cartItems = localStorage.getItem("productsInCart");
+    cartItems = JSON.parse(cartItems);
+    let itemlistLength = Object.keys(cartItems).length;
+    itemlistLength = parseInt(itemlistLength);
+    if ( cartItems) {
+        localStorage.setItem('itemLen', Object.keys(cartItems).length);
+        itemNum.textContent = Object.keys(cartItems).length;
+    } else {
+        localStorage.setItem('itemLen', '0');
+        itemNum.textContent = "0";
+    }
+    
 }
 
 // 장바구니에 담긴 상품 개수 증감
@@ -107,10 +128,12 @@ function displayCart() {
 
     let cart = localStorage.getItem("totalCost");
     cart = parseInt(cart);
+    console.log(cartItems === null);
 
     let productContainer = document.querySelector('tbody');
     let productNumbers = localStorage.getItem('cartNumbers');
     productNumbers = parseInt(productNumbers);
+    
     if( cartItems && productContainer ) {
         productContainer.innerHTML = '';
         Object.values(cartItems).map( (v, i) => {
@@ -161,7 +184,7 @@ function displayCart() {
         
         deleteButtons();
         manageQuantity();
-    } else if (isNaN(parseInt(productNumbers))) {
+    } else if (parseInt(cartNum.innerText) === 0 || productNumbers === 0 || cart === 0) {
         productContainer.innerHTML = `<tr class="empty-cart"><td colspan="7"><p>장바구니에 담긴 상품이 없습니다.</p></td></tr>`;
     }
     
@@ -232,14 +255,14 @@ function calcPrice() {
 
     document.querySelector('#receipt-price').innerText = receiptPrice + "원";
     
-    // 배송비 조건
-    if (receiptPrice >= 50000) {
-        receiptDelivery = 0;
-    } else if (receiptPrice === 0) {
-        receiptDelivery = 0;
-    } else {
-        receiptDelivery = 3500;
-    }
+    // // 배송비 조건
+    // if (receiptPrice >= 50000) {
+    //     receiptDelivery = 0;
+    // } else if (receiptPrice === 0) {
+    //     receiptDelivery = 0;
+    // } else {
+    //     receiptDelivery = 3500;
+    // }
 
     receiptTotal = receiptPrice + receiptDelivery;
 
@@ -256,7 +279,7 @@ function deleteButtons() {
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
     let productName;
-    console.log(cartItems);
+
 
     for(let i=0; i < deleteButtons.length; i++) {
         deleteButtons[i].addEventListener('click', () => {
@@ -265,14 +288,19 @@ function deleteButtons() {
             console.log(productName, cartItems[productName]);
             localStorage.setItem('cartNumbers', productNumbers - cartItems[productName].inCart);
             localStorage.setItem('totalCost', cartCost - ( cartItems[productName].price * cartItems[productName].inCart));
-
+            localStorage.setItem('itemLen', Object.keys(cartItems).length);
             delete cartItems[productName];
             localStorage.setItem('productsInCart', JSON.stringify(cartItems));
-
+            
             displayCart();
             onLoadCartNumbers();
+
         })
     }
+    if (parseInt(productNumbers) === 0) {
+        itemAllClear();
+    }
+    localStorage.setItem('itemLen', Object.keys(cartItems).length);
 }
 
 // 장바구니 상품 전체 삭제
@@ -283,39 +311,48 @@ function itemAllClear() {
 onLoadCartNumbers();
 displayCart();
 
+// 업데이트 날짜 순서로 new product 생성
+async function fetchTest() {
+    try {
+        const res = await fetch('http://127.0.0.1:5555/api/products', {
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8'
+            },
+          });
+          const data = await res.json();
+          console.log('data', data);
+          newProduct(data)
+    } catch (error) {
+      console.error('get 에러 발생', error);
+    }
+  }
+
+fetchTest();
+
+function newProduct (data) {
+  let newData = []
+  for(let i=0; i<data.length; i++){
+    if(data.length<=4){
+      newData.push(data[i])
+    }
+  }
+  for(let i=0; i<newData.length; i++){
+    document.querySelector("#newMenu").innerHTML += `<span class="newMenu">
+        <img src=${newData[i].thumbnail} href="" alt=${i+1}>
+        <a class="innerCart" href="">
+            <span class="material-symbols-outlined">shopping_cart</span>
+        </a>
+        <a href="">${newData[i].name}</a>
+        <label class="price">
+            <h2 class="discount">${newData[i].discountRate}%</h2>
+            <h4 class="discountPrice">${Math.floor(newData[i].originPrice*(1-newData[i].discountRate/100)/100)*100}원</h4>
+            <h6 class="basicPrice">${newData[i].originPrice}원</h6>
+        </label>
+        <p class="reviewNum">review : ${newData[i].tier1Category.order}</p>
+    </span>`
+}
 
 
-// fetch('http://127.0.0.1:5555/api/products', {
-//   method: 'GET',
-//   headers: {
-//     'Content-Type': 'application/json;charset=utf-8'
-//   },
-// })
-//   .then((res)=> res.json())
-//   .then((data)=>{
-//     console.log(data)
-//     const chickenBreastInfo = data; 
-    
-//     document.querySelector('.list-num').textContent = chickenBreastInfo.length; 
 
-//     for (let i = 0; i < chickenBreastInfo.length; i++) {
-//       document.getElementById("chickenBreast").innerHTML += `
-//         <li>
-//           <a href="javascript:void(0)">
-//             <img src= './images/salad-list-item01.jpg' alt="" />
-//             <h3>${chickenBreastInfo[i].name}</h3>
-//           </a>
-//           <div class="cart">
-//             <a href="javascript:void(0)">
-//               <img src="./images/cart_icn.png" alt="">
-//             </a>
-//           </div>
-//           <span>${chickenBreastInfo[i].discountRate}%</span>
-//           <strong>
-//             ${chickenBreastInfo[i].originPrice}<span>원</span>
-//             <b>${chickenBreastInfo[i].originPrice}원</b>
-//           </strong>
-//         </li>
-//       `
-//     }
-//   })
+}
+
