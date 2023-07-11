@@ -48,7 +48,6 @@ function cartNumbers(product, action) {
 }
 
 
-
 // 상품 부분 선택 합계
 function calcPrice() {
     let receiptPrice = 0;
