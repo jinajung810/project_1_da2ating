@@ -2,7 +2,7 @@
     width:100%;
     padding: 0 5px;
     position: relative;
-    margin:0;
+    margin: 0 0 -50px 0;
 }
 
 #slide i{
@@ -29,20 +29,21 @@
 }
 .leftBtn > span{
     left: 1.5%;
-    transform: translate(0,-50%);
+    transform: translate(0,350%);
     border-radius: 100%;
+    background-color: #ffffff00;
 }
 
 .rightBtn > span{
     right: 1.5%;
-    transform: translate(0,-50%);
+    transform: translate(0,350%);
     border-radius: 100%;
-    text-align: center;
+    background-color: #ffffff00;
 }
 
 #slide .slider-container .slider{
     display:flex;
-    width: 101%;
+    width: 100%;
 }
 
 #slide .slider-container .slider span{
@@ -53,8 +54,8 @@
 
 #slide .slider-container .slider span .text-wrap{
     position: absolute;
-    top:50%;
-    left:5%;
+    top: 50%;
+    left: 5%;
     transform:translate(0,-50%);
     width:29%;
     color:#fff;
@@ -81,7 +82,7 @@
 .pagination{
     display:flex;
     position: absolute;
-    bottom:60px;
+    bottom:120px;
     left:18.5%;
     z-index: 1;
 }

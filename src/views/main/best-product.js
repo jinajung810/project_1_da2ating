@@ -6,7 +6,8 @@ async function fetchTest() {
               'Content-Type': 'application/json;charset=utf-8'
             },
           });
-          const data = await res.json();
+          const datas = await res.json();
+          const data = datas.data
           console.log('data', data);
           bestProduct(data)
     } catch (error) {
@@ -17,27 +18,36 @@ async function fetchTest() {
 fetchTest();
 
 function bestProduct (data) {
-    data.sort((a, b)=> b.tier1Category.order-a.tier1Category.order)
-    bestData = []
-    for(let i=0; i<data.length; i++){
-      if(data.length <= 8){
-        bestData.push(data[i])
+  data.sort((a, b) => b.tier1Category.order - a.tier1Category.order);
+  const bestData = data.slice(0, 8); // 구매 수가 많은 순서대로 최대 8개의 아이템 선택
+      for(let i=0; i<bestData.length; i++){
+      if(bestData[i].discountRate){
+        document.querySelector("#bestMenu").innerHTML += `<span class="newMenu">
+        <img src=${bestData[i].thumbnail.path} href="" alt=${i+1}>
+        <a class="innerCart" href="">
+            <img src="/f2ting_client/src/views/common/images/cart-icon.png">
+        </a>
+        <a href="">${bestData[i].name}</a>
+        <label class="price">
+            <h2 class="discount">${bestData[i].discountRate}%</h2>
+            <h4 class="discountPrice">${Math.floor(bestData[i].originPrice*(1-bestData[i].discountRate/100)/100)*100}원</h4>
+            <h6 class="basicPrice">${bestData[i].originPrice}원</h6>
+        </label>
+        <p class="reviewNum">review : ${bestData[i].tier1Category.order}</p>
+    </span>`
+      }else if(bestData[i].discountRate === null){
+        document.querySelector("#bestMenu").innerHTML += `<span class="newMenu">
+        <img src=${bestData[i].thumbnail.path} href="" alt=${i+1}>
+        <a class="innerCart" href="">
+            <img src="/f2ting_client/src/views/common/images/cart-icon.png">
+        </a>
+        <a href="">${bestData[i].name}</a>
+        <label class="price">
+            <h4 class="discountPrice">${bestData[i].originPrice}원</h4>
+        </label>
+        <p class="reviewNum">review : ${bestData[i].tier1Category.order}</p>
+    </span>`
       }
-    }
-    for(let i=0; i<data.length; i++){
-        document.querySelector("#bestMenu").innerHTML += `<span class="bestMenu">
-            <img src=${bestData[i].thumbnail} href="" alt=${i+1}>
-            <a class="innerCart" href="">
-                <span class="material-symbols-outlined">shopping_cart</span>
-            </a>
-            <a href="">${bestData[i].name}</a>
-            <label class="price">
-                <h2 class="discount">${bestData[i].discountRate}%</h2>
-                <h4 class="discountPrice">${Math.floor(bestData[i].originPrice*(1-bestData[i].discountRate/100)/100)*100}원</h4>
-                <h6 class="basicPrice">${bestData[i].originPrice}원</h6>
-            </label>
-            <p class="reviewNum">review : ${bestData[i].tier1Category.order}</p>
-        </span>`
-    }
+    }  
 }
 

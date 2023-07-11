@@ -1,0 +1,53 @@
+async function deleteAccount() {
+    try {
+        const res = await fetch('http://127.0.0.1:5555/api/users/my-info', {
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+        });
+        const datas = await res.json();
+        const data = datas.data
+        console.log('data', data);
+        const confirmed = confirm(`${data.name}님 정말 탈퇴하시겠습니까?`);
+        const reasonCheckboxes = document.querySelectorAll('input[name="reason"]');
+        const commentInput = document.querySelector('input[name="comment"]');
+        if (confirmed) {
+            postDelete(data); // 회원 탈퇴 요청
+            reasonCheckboxes.forEach((checkbox) => {
+                checkbox.checked = false;
+              });
+              // 텍스트 입력 필드 초기화
+            commentInput.value = '';
+            }
+    } catch (error) {
+        console.error('get 에러 발생', error);
+    }
+}
+
+async function postDelete(data) {
+    try {
+        const userId = `${data._id}`; // 실제 로그인된 사용자의 아이디로 대체해야 함
+        const reason = document.querySelector('input[checked]')
+        const memo = document.querySelector('input[name="comment"]')
+        const res = await fetch('http://127.0.0.1:5555/api/users/delete', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            // 요청에 필요한 데이터 전달
+            body: JSON.stringify({
+                userId: userId,
+                deleteReason: reason,
+                deleteMemo: memo
+            }),
+        });
+
+        const result = await res.json();
+        console.log('result', result);
+        alert('정상적으로 탈퇴가 되었습니다.');
+        // 탈퇴 성공 후 처리 로직 추가
+    } catch (error) {
+        console.error('회원 탈퇴 에러 발생', error);
+        // 탈퇴 실패 시 처리 로직 추가
+    }
+}

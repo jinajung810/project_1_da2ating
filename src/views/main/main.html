@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="slide.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <script src="https://kit.fontawesome.com/8eb5905426.js" crossorigin="anonymous"></script>
-    <script src="new-product.js" defer></script>
-    <script src="best-product.js" defer></script>
-    <script src="search-product.js" defer></script>
-    <script src="E:\d2ating-upload\f2ting_client\index.html" defer></script>
+    <script src="\f2ting_client\src\views\main\main.js" defer></script>
+    <script src="\f2ting_client\src\views\main\new-product.js" defer></script>
+    <script src="\f2ting_client\src\views\main\best-product.js" defer></script>
+    <script src="\f2ting_client\src\views\main\search-product.js" defer></script>
     <style type="text/css" media="screen and (min-width:512px) and (max-width:1024px)"></style>
 </head>
 <body>
@@ -21,8 +21,8 @@
             <!-- 헤더(로고) -->
             <nav class="header1">
                 <div class="diat">
-                    <a class="logo" href="http://127.0.0.1:5500/main.html">
-                        <img src="images\logo\logo.png" style="height:300px; width:auto;">
+                    <a class="logo" href="../main/main.html">
+                        <img src="/f2ting_client/src/views/common/images/logo2.gif" style="height:auto; width:270px;">
                     </a>
                     <div class="search">
                         <i class="fas fa-search" type="button" onclick="doSearch()"></i>
@@ -32,10 +32,10 @@
                 <div class="form">
                     <a href="" class="join">회원가입</a>
                     <a href="" class="login">로그인</a>
-                    <a class="mypage" href="">
+                    <a class="mypage" href="http://127.0.0.1:5500/f2ting_client/src/views/member-info/mypage-view.html">
                         <span class="material-symbols-outlined">face</span>
                     </a>
-                    <a class="cart" href="">
+                    <a class="cart" href="http://127.0.0.1:5500/f2ting_client/src/views/cart/cart.html">
                         <span class="material-symbols-outlined">shopping_cart</span>
                     </a>
                 </div>
@@ -43,8 +43,8 @@
             <!-- 헤더(메뉴카테고리) -->
             <nav class="header2"><br>
                 <div class="category">
-                    <input type="checkbox" id="menuicon">
-                    <label for="menuicon">
+                    <!-- <input type="checkbox" id="menuicon"> -->
+                    <!-- <label for="menuicon">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -75,11 +75,11 @@
                             <a href="" class="object">드레싱</a>
                         </div>
                     </div>
-                    <a href="" class="totalCategory">전체 카테고리</a>
-                    <a href="" class="salad">샐러드</a>
-                    <a href="" class="sandwitch">도시락</a>
-                    <a href="" class="lunchBox">닭가슴살</a>
-                    <a href="" class="chickenBreast">간식&드레싱</a>
+                    <a href="" class="totalCategory">전체 카테고리</a> -->
+                    <!-- <a href="" class="salad">샐러드</a>
+                    <a href="" class="lunchBox">도시락</a>
+                    <a href="" class="chicken">닭가슴살</a>
+                    <a href="" class="etc">간식&드레싱</a> -->
                 </div>        
             </nav>
         </header>
@@ -117,7 +117,7 @@
                             <p class="active" data-index="1"></p>
                             <p data-index="2"></p>
                             <p data-index="3"></p>
-                          </ul>
+                        </ul>
                     </div>
                 </div>
                 <script src="slide.js" defer></script>
@@ -301,21 +301,11 @@
                 <aside>
                     <div class="menu-side">
                         <div class="easyskills">
-                            <span class="material-symbols-outlined" href="" style="cursor: pointer;">local_shipping</span></br>
+                            <a href="http://127.0.0.1:5500/f2ting_client/src/views/member-info/order-deliver.html">
+                                <span class="material-symbols-outlined" style="cursor: pointer;">local_shipping</span></br>
+                            </a>
                             <span class="material-symbols-outlined">maximize</span></br>
                             <span class="material-symbols-outlined" href="" style="cursor: pointer;">shopping_cart</span> </br>                           
-                            <span class="material-symbols-outlined">maximize</span></br>
-                            <a href="">
-                                <span class="material-symbols-outlined">expand_less</span> </br>
-                            </a>
-                            <div class="currently">
-                                <img src="images\bestmenu\crabsalad.jpg" alt="최근 본 상품1"></br>
-                                <img src="images\bestmenu\galbisalad.jpg" alt="최근 본 상품2"></br>
-                                <img src="images\bestmenu\greensalad.jpg" alt="최근 본 상품3"></br>    
-                            </div>
-                            <a href="">
-                                <span class="material-symbols-outlined">keyboard_arrow_down</span>
-                            </a>
                         </div>
                         <div class="topBottom">
                             <a href="#">
@@ -326,7 +316,7 @@
                             </a>
                         </div>
                     </div>
-                    <script src="sidebar.css" defer></script>
+                    <link rel="stylesheet" href="sidebar.css">
                 </aside>
             </div>
                     <!-- 메인 하단 -->
@@ -339,7 +329,9 @@
                         </div>
                         <div>
                             <h2>7777-7777</h2>
-                            <button type="button" class="deliveryBtn" href="">배송조회</button>    
+                            <a href="http://127.0.0.1:5500/f2ting_client/src/views/member-info/order-deliver.html">
+                                <button type="button" class="deliveryBtn">배송조회</button>    
+                            </a>
                         </div>
                         <h3>월 ~ 금 : 오전 10시 ~ 오후 5시<br>
                         점심시간 : 오후 12시 30분 ~ 오후 1시 30분<br>
@@ -358,62 +350,60 @@
                         </p>
                     </div>
                 </div>
-                <div class="information">
+                <!-- <div class="information">
                     <div class="announcement">
                         <h1>공지사항</h1>
                         <a href="">
                             <p>더보기</p>
                         </a>
-                        <!-- 공지사항 등록 -->
                     </div>
-                </div>
+                </div> -->
             </div>
         </main>
           <!-- FOOTER -->
         <footer>
             <div class="inner">
-            <div class="top">
-                <ul class="footerMenu">
-                <li><a href="javascript:void(0)">회사소개</a></li>
-                <li><a href="javascript:void(0)">이용약관</a></li>
-                <li><a href="javascript:void(0)">개인정보 처리방침</a></li>
-                <li><a href="javascript:void(0)">이용안내</a></li>
-                </ul>
-                <ul class="sns">
-                <li><a href="javascript:void(0)"><img src="/f2ting_client/src/views/common/images/sns_insta.png" alt="Instagram"></a></li>
-                <li><a href="javascript:void(0)"><img src="/f2ting_client/src/views/common/images/sns_fb.png" alt="Facebook"></a></li>
-                <li><a href="javascript:void(0)"><img src="/f2ting_client/src/views/common/images/sns_you.png" alt="YouTube"></a></li>
-                </ul>
-            </div>
+                <div class="top">
+                    <ul class="footerMenu">
+                        <li><a href="javascript:void(0)">회사소개</a></li>
+                        <li><a href="javascript:void(0)">이용약관</a></li>
+                        <li><a href="javascript:void(0)">개인정보 처리방침</a></li>
+                        <li><a href="javascript:void(0)">이용안내</a></li>
+                    </ul>
+                    <ul class="sns">
+                        <li><a href="javascript:void(0)"><img src="/f2ting_client/src/views/common/images/sns_insta.png" alt="Instagram"></a></li>
+                        <li><a href="javascript:void(0)"><img src="/f2ting_client/src/views/common/images/sns_fb.png" alt="Facebook"></a></li>
+                        <li><a href="javascript:void(0)"><img src="/f2ting_client/src/views/common/images/sns_you.png" alt="YouTube"></a></li>
+                    </ul>
+                </div>
 
-            <div class="companyInfo">
-                <ul class="infoList">
-                <li>법인명(상호) : 주식회사 엘리스 2조</li>
-                <li>대표 : 2조</li>
-                <li>TEL : <span>2222-2222</span></li>
-                </ul>
-                <ul class="infoList">
-                <li>사업자등록번호 : 222-22-22222</li>
-                <li>통신판매업신고번호 : 2023-엘리스-222</li>
-                <li><button>사업자정보확인</button></li>
-                </ul>
-                <ul class="infoList">
-                <li>주소 : 엘리스 1차 프로젝트</li>
-                <li>개인정보관리책임자 : 엘리스</li>
-                <li>E-Mail : elice@elice.io</li>
-                </ul>
+                <div class="companyInfo">
+                    <ul class="infoList">
+                        <li>법인명(상호) : 주식회사 엘리스 2조</li>
+                        <li>대표 : 2조</li>
+                        <li>TEL : <span>2222-2222</span></li>
+                    </ul>
+                    <ul class="infoList">
+                        <li>사업자등록번호 : 222-22-22222</li>
+                        <li>통신판매업신고번호 : 2023-엘리스-222</li>
+                        <li><button>사업자정보확인</button></li>
+                    </ul>
+                    <ul class="infoList">
+                        <li>주소 : 엘리스 1차 프로젝트</li>
+                        <li>개인정보관리책임자 : 엘리스</li>
+                        <li>E-Mail : elice@elice.io</li>
+                    </ul>
 
-                <p class="copyright">
-                Copyright&copy; <span>elice-team2</span>  All Rights Reserved.
-                </p>
+                    <p class="copyright">
+                        Copyright&copy; <span>elice-team2</span>  All Rights Reserved.
+                    </p>
 
-                <div class="footerLogo">
-                <img src="/f2ting_client/src/views/common/images/logo.png" alt="">
+                    <div class="footerLogo">
+                        <img src="/f2ting_client/src/views/common/images/logo2.png" alt="logo">
+                    </div>
                 </div>
             </div>
-            </div>
         </footer>
-
     </section>
 </body>
 </html>

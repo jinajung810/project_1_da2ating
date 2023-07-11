@@ -6,7 +6,8 @@ async function fetchTest() {
               'Content-Type': 'application/json;charset=utf-8'
             },
           });
-          const data = await res.json();
+          const datas = await res.json();
+          const data = datas.data
           console.log('data', data);
           newProduct(data)
     } catch (error) {
@@ -16,30 +17,37 @@ async function fetchTest() {
 
 fetchTest();
 
-function newProduct (data) {
-  let newData = []
-  for(let i=0; i<data.length; i++){
-    if(data.length<=4){
-      newData.push(data[i])
-    }
+function newProduct(data) {
+  data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  const newData = data.slice(0, 8); // 최근 8개의 아이템 선택
+        for(let i=0; i<newData.length; i++){
+        if(newData[i].discountRate){
+          document.querySelector("#newMenu").innerHTML += `<span class="newMenu">
+          <img src=${newData[i].thumbnail.path} href="" alt=${i+1}>
+          <a class="innerCart" href="">
+              <img src="/f2ting_client/src/views/common/images/cart-icon.png">
+          </a>
+          <a href="">${newData[i].name}</a>
+          <label class="price">
+              <h2 class="discount">${newData[i].discountRate}%</h2>
+              <h4 class="discountPrice">${Math.floor(newData[i].originPrice*(1-newData[i].discountRate/100)/100)*100}원</h4>
+              <h6 class="basicPrice">${newData[i].originPrice}원</h6>
+          </label>
+          <p class="reviewNum">review : ${newData[i].tier1Category.order}</p>
+      </span>`
+        }else if(newData[i].discountRate === null){
+          document.querySelector("#newMenu").innerHTML += `<span class="newMenu">
+          <img src=${newData[i].thumbnail.path} href="" alt=${i+1}>
+          <a class="innerCart" href="">
+              <img src="/f2ting_client/src/views/common/images/cart-icon.png">
+          </a>
+          <a href="">${newData[i].name}</a>
+          <label class="price">
+              <h4 class="discountPrice">${newData[i].originPrice}원</h4>
+          </label>
+          <p class="reviewNum">review : ${newData[i].tier1Category.order}</p>
+      </span>`
+        }
+      }  
   }
-  for(let i=0; i<newData.length; i++){
-    document.querySelector("#newMenu").innerHTML += `<span class="newMenu">
-        <img src=${newData[i].thumbnail} href="" alt=${i+1}>
-        <a class="innerCart" href="">
-            <span class="material-symbols-outlined">shopping_cart</span>
-        </a>
-        <a href="">${newData[i].name}</a>
-        <label class="price">
-            <h2 class="discount">${newData[i].discountRate}%</h2>
-            <h4 class="discountPrice">${Math.floor(newData[i].originPrice*(1-newData[i].discountRate/100)/100)*100}원</h4>
-            <h6 class="basicPrice">${newData[i].originPrice}원</h6>
-        </label>
-        <p class="reviewNum">review : ${newData[i].tier1Category.order}</p>
-    </span>`
-}
-
-
-
-}
-
+  
