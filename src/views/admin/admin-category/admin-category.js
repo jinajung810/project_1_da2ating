@@ -2,34 +2,41 @@ const API_BASE_URL = 'http://127.0.0.1:5555';
 
 const categoryList = document.querySelector('#category-list');
 const categoryName = document.querySelector('#categoryName');
+const categoryImage = document.querySelector('#categoryImage');
+const preview = document.querySelector('#image-preview');
+const img = document.createElement('img');
 
-// 카테고리 임시 데이터
-const categoryData = [
-  {
-    _id: '1',
-    name: '샐러드',
-    order: 1,
-    chilren: [],
-  },
-  {
-    _id: '3',
-    name: '도시락',
-    order: 3,
-    chilren: [],
-  },
-  {
-    _id: '2',
-    name: '샌드위치',
-    order: 2,
-    chilren: [],
-  },
-  {
-    _id: '4',
-    name: '닭가슴살',
-    order: 4,
-    chilren: [],
-  },
-];
+// 버튼
+const submitButton = document.querySelector('#submitButton');
+const changeBtn = document.querySelector('#changeBtn');
+
+let token = '';
+
+// 카테고리 삭제
+const onDeleteCategory = async (id) => {
+  console.log('이벤트');
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: token,
+    },
+  };
+  try {
+    const res = await fetch(
+      `${API_BASE_URL}/api/categories/tier1/${id}`,
+      options
+    );
+    if (res.ok) {
+      alert('삭제되었습니다!');
+      window.location.reload();
+    } else {
+      alert('다시 시도해주세요!');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // 카테고리 목록 가져오기
 const onGetCategory = async () => {
@@ -43,49 +50,76 @@ const onGetCategory = async () => {
   try {
     const res = await fetch(`${API_BASE_URL}/api/categories`, options);
     const data = await res.json(); // 카테고리 데이터 -> 받아서 변수에 넣어주기
-    console.log('res', res);
+    if (res.ok) {
+      // order 순서대로 정렬 -> 리스트 나열
+      data.data
+        .sort((a, b) => a.order - b.order)
+        .forEach((v, i) => {
+          // 이미지가 있는 경우에만 출력함
+          let image =
+            v.bannerImage !== null
+              ? `<img src="${v.bannerImage.path}" alt="${v.bannerImage.originalName}" />`
+              : '';
+
+          categoryList.innerHTML += `
+        <li>
+            <span>${v.name}</span>
+            <div id="category-buttons">
+                <button id="changeBtn" >수정</button>
+                <button id="deleteBtn" onclick="onDeleteCategory('${v._id}')">삭제</button>
+            </div>
+        </li>
+        <div>${image}</div>
+    `;
+          // 삭제 이벤트 추가
+          // document
+          //   .querySelector('#deleteBtn')
+          //   .addEventListener('click', () => onDeleteCategory(v._id));
+        });
+    } else {
+      alert('다시 시도해주세요!');
+    }
   } catch (error) {
     console.log(error);
   }
 };
 
-// order 순서대로 정렬 -> 리스트 나열
-categoryData
-  .sort((a, b) => a.order - b.order)
-  .forEach((v, i) => {
-    categoryList.innerHTML += `
-        <li>
-            <span>${v.name}</span>
-            <div id="category-buttons">
-                <button id="changeBtn" onClick='onDeleteCategory(${v._id})'>수정</button>
-                <button id="deleteBtn">삭제</button>
-            </div>
-        </li>
-        
-    `;
-  });
-
 // 카테고리 등록
-const onAddCategory = async () => {
-  // 일단 사진 추가 있는 방향으로..
+const onAddCategory = async (e) => {
+  e.preventDefault();
+
+  if (categoryName.value === '') {
+    alert('카테고리 이름을 입력해주세요.');
+    return;
+  }
+
   let formData = new FormData();
 
   formData.append('name', categoryName.value);
-  formData.append('order', 1);
-  formData.append('bannerImage', '');
+  if (categoryImage.files.length !== 0) {
+    formData.append('bannerImage', categoryImage.files[0]);
+  }
 
   const options = {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      Authorization: token,
     },
     body: formData,
   };
 
   try {
     const res = await fetch(`${API_BASE_URL}/api/categories/tier1`, options);
-    const data = await res.json(); // 카테고리 데이터 -> 받아서 변수에 넣어주기
-    console.log('res', res);
+    console.log(res, token);
+
+    if (res.ok) {
+      categoryName.value = '';
+      categoryImage.value = '';
+      document.querySelector('.category-add-modal').classList.add('hidden');
+      window.location.reload();
+    } else {
+      alert('다시 시도해주세요!');
+    }
   } catch (error) {
     console.log(error);
   }
@@ -93,26 +127,51 @@ const onAddCategory = async () => {
 
 // 카테고리 수정
 
-// 카테고리 삭제
-const onDeleteCategory = async (id) => {
+// 미리보기 사진
+const imagePreview = (e) => {
+  const file = e.target.files[0];
+  const reader = new FileReader();
+
+  reader.onload = (e) => {
+    //preview.src = e.target.result;
+
+    img.setAttribute('src', e.target.result);
+    img.classList.add('preview');
+
+    preview.appendChild(img);
+  };
+  reader.readAsDataURL(file);
+};
+
+// 임시 테스트용 admin 로그인
+const adminLogin = async () => {
+  const data = {
+    email: 'admin@admin.com',
+    password: '1234',
+  };
+
   const options = {
-    method: 'DELETE',
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: null,
     },
+    body: JSON.stringify(data),
   };
 
   try {
-    const res = await fetch(
-      `${API_BASE_URL}/api/categories/tier1/${id}`,
-      options
-    );
-    const data = await res.json(); // 카테고리 데이터 -> 받아서 변수에 넣어주기
-    console.log('res', res);
+    const res = await fetch(`${API_BASE_URL}/api/users/login`, options);
+    const data = await res.json();
+    if (res.ok) {
+      token = data.data.token;
+    }
   } catch (error) {
-    console.log(error);
+    console.log('test admin login error', error);
   }
 };
+
+onGetCategory();
+adminLogin();
 
 // 카테고리 추가 모달 이벤트
 const open = () => {
@@ -120,9 +179,15 @@ const open = () => {
 };
 
 const close = () => {
+  // 초기화
+  categoryName.value = '';
+  categoryImage.value = '';
+
   document.querySelector('.category-add-modal').classList.add('hidden');
 };
 
 document.querySelector('#openBtn').addEventListener('click', open);
 document.querySelector('#closeBtn').addEventListener('click', close);
 document.querySelector('.bg').addEventListener('click', close);
+submitButton.addEventListener('click', onAddCategory);
+categoryImage.addEventListener('change', imagePreview);
