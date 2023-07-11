@@ -1,28 +1,27 @@
 /* 사이드바 */
 aside {
     width: 200px;
-    margin-left: 80px;
+    margin-left: 10px;
     box-sizing: border-box;
+
 }
 .menu-side {    /*사이드바고정*/
     line-height: 30px;
     position: fixed;
     right: 100px;
-    bottom: 150px;
+    bottom: 300px;
     z-index: 9999;
+    margin-top: 200px;
+    height: 120px;
 }
 .easyskills {
     width: 40px;
-    height: 300px;
+    height: 120px;
     border-radius: 20px;
     border: #636363 solid 1px;
     text-align: center;
     padding-top: 20px;
     line-height: 20px;
-}
-.currently > img{
-    width: 30px;
-    height: 30px;
 }
 .topBottom {
     margin-left: 1.5px;
