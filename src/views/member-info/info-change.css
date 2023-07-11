@@ -202,7 +202,6 @@ section {
   width: 100%;
 }
 
-/* 카테고리 하단 메뉴 */
 /* main */
 main{
   margin-top: 300px;
@@ -222,9 +221,6 @@ aside{
   padding: 50px 0 50px 30px;
   border-right: #a5a5a5 solid 1px;
 }
-.easyskills{
-  height: 100px;
-}
 aside h1 {
   font-size: 35px;
   margin-bottom: 40px;
@@ -242,71 +238,54 @@ aside a {
   font-size: 20px;
 }
 
-/* 마이페이지 정보 확인창-회원탈퇴 */
+/* 마이페이지 정보 확인창-회원정보변경 */
 article{
   width: 900px;
   padding: 100px 0 50px 50px;
 }
 article h1{
   font-size: 35px;
-  margin-bottom: 20px;
 }
-#deleteAcount{
+#memberInfo{
  margin-top: 50px;
 }
-/* 01.회원탈퇴 안내 */
-.deleteInfo{
-  margin: 20px 0;
-  font-size: 18px;
-  line-height: 30px;
-  border: #8d8d8d solid 1px;
-  padding: 20px;
-}
-.deleteInfo h2{
-  font-size: 23px;
-  margin-bottom: 20px;
-}
-
-/* 02.회원탈퇴하기 */
-.deleteReason{
-  margin: 20px 0;
-  font-size: 23px;
-  line-height: 30px;
-  padding: 20px;
-}
-.deleteReason h2{
-  font-size: 23px;
-  padding-bottom: 15px;
-  margin-bottom: 20px;
-}
-.table{
-  border-top: #8d8d8d solid 0.5px;
-  border-bottom: #8d8d8d solid 0.5px;
-}
-.classReason{
-  font-size: 20px;
-  width: 200px;
-  text-align: center;
-  background-color: #eeeeee;
-}
-.reason1 input{
-  margin: 10px;
-  width:30px;
-  height: 20px;
-  font-size: 30px;
-}
-.reason2 input{
-  width: 600px;
-  height: 150px;
-  margin: 10px;
-  border-radius: 2px;
-}
-
-/* 탈퇴 버튼 */
-button{
-  margin: 50px 100px;
+.changeInfo {
   padding: 15px;
+  font-size: 22px;
+  line-height: 70px;
+}
+td{
+  width: 230px;
+  font-size: 20px;
+}
+.changeInfo input{
   width: 200px;
+  border-radius: 10px;
+}
+select{
+  width: 200px;
+  border-radius: 10px;
+  height: 43px;
+  text-align: center;
+  font-size: 20px;
+}
+.changePsw{
+  padding: 15px;
+  font-size: 22px;
+  line-height: 70px;
+}
+.changePsw input{
+  width: 500px;
+  border-radius: 10px;
+}
+.button {
+  display:flex;
+  justify-content: center;
+}
+button{
+  margin: 50px;
+  padding: 15px;
+  width: 220px;
   font-size: 20px;
   border-radius: 10px;
   cursor: pointer;

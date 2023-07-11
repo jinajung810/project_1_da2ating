@@ -9,7 +9,7 @@ aside {
     line-height: 30px;
     position: fixed;
     right: 100px;
-    bottom: 300px;
+    bottom: 400px;
     z-index: 9999;
     margin-top: 200px;
     height: 120px;
@@ -18,10 +18,13 @@ aside {
     width: 40px;
     height: 120px;
     border-radius: 20px;
-    border: #636363 solid 1px;
+    border: #10a2a7 solid 3px;
     text-align: center;
     padding-top: 20px;
     line-height: 20px;
+}
+.material-symbols-outlined{
+    color: #10a2a7;
 }
 .topBottom {
     margin-left: 1.5px;
@@ -29,5 +32,5 @@ aside {
 }
 .topBottom > a > span {
     font-size: 40px;
-    color: #636363;
+    color: #10a2a7;
 }

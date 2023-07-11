@@ -1,24 +1,36 @@
+
+const token = sessionStorage.getItem('token');
+const isLoggedIn = token !== null && isValidToken(token);
+
 async function fetchOrders() {
-    try {
-      const response = await fetch('http://127.0.0.1:5555/api/orders', {
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8'
-        }
-      });
-      const orders = await response.json();
-      console.log('orders', orders);
-      return orders;
-    } catch (error) {
-      console.error('Error fetching orders', error);
-      return [];
+  if(isLoggedIn){
+      try {
+        const response = await fetch('http://127.0.0.1:5555/api/orders', {
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          }
+        });
+        const orders = await response.json();
+        console.log('orders', orders);
+        return orders;
+      } catch (error) {
+        console.error('Error fetching orders', error);
+        return [];
+      }
+  } else{
+    let answer = confirm("로그인이 필요한 페이지입니다.");
+    if(answer === true) {
+      //로그인페이지로 이동(로그인창으로 이동 필요)
+      location = 'http://127.0.0.1:5500/f2ting_client/src/views/main/main.html'
+    } else {
+      location= 'http://127.0.0.1:5500/f2ting_client/src/views/main/main.html'
     }
   }
-  
+} 
   function getSelectedDateRange() {
-    const startDateInput = document.querySelector('input[name="startDate"]');
-    const endDateInput = document.querySelector('input[name="endDate"]');
-    const startDate = startDateInput.value;
-    const endDate = endDateInput.value;
+    const startDate = document.querySelector('input[name="startDate"]').value;
+    const endDate = document.querySelector('input[name="endDate"]').value;
+
     return { startDate, endDate };
   }
   

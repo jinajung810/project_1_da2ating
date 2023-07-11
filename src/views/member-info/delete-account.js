@@ -1,26 +1,40 @@
+
+const token = sessionStorage.getItem('token');
+const isLoggedIn = token !== null && isValidToken(token);
+
 async function deleteAccount() {
-    try {
-        const res = await fetch('http://127.0.0.1:5555/api/users/my-info', {
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-        });
-        const datas = await res.json();
-        const data = datas.data
-        console.log('data', data);
-        const confirmed = confirm(`${data.name}님 정말 탈퇴하시겠습니까?`);
-        const reasonCheckboxes = document.querySelectorAll('input[name="reason"]');
-        const commentInput = document.querySelector('input[name="comment"]');
-        if (confirmed) {
-            postDelete(data); // 회원 탈퇴 요청
-            reasonCheckboxes.forEach((checkbox) => {
-                checkbox.checked = false;
-              });
-              // 텍스트 입력 필드 초기화
-            commentInput.value = '';
-            }
-    } catch (error) {
-        console.error('get 에러 발생', error);
+    if(isLoggedIn){
+        try {
+            const res = await fetch('http://127.0.0.1:5555/api/users/my-info', {
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+            });
+            const datas = await res.json();
+            const data = datas.data
+            console.log('data', data);
+            const confirmed = confirm(`${data.name}님 정말 탈퇴하시겠습니까?`);
+            const reasonCheckboxes = document.querySelectorAll('input[name="reason"]');
+            const commentInput = document.querySelector('input[name="comment"]');
+            if (confirmed) {
+                postDelete(data); // 회원 탈퇴 요청
+                reasonCheckboxes.forEach((checkbox) => {
+                    checkbox.checked = false;
+                  });
+                  // 텍스트 입력 필드 초기화
+                commentInput.value = '';
+                }
+        } catch (error) {
+            console.error('get 에러 발생', error);
+        }
+    } else{
+        let answer = confirm("로그인이 필요한 페이지입니다.");
+        if(answer === true){
+          //로그인페이지로 이동(로그인창으로 이동 필요)
+          location = 'http://127.0.0.1:5500/f2ting_client/src/views/main/main.html'
+        }else{
+          location= 'http://127.0.0.1:5500/f2ting_client/src/views/main/main.html'
+        }
     }
 }
 
@@ -45,6 +59,7 @@ async function postDelete(data) {
         const result = await res.json();
         console.log('result', result);
         alert('정상적으로 탈퇴가 되었습니다.');
+        window.location.href = 'http://127.0.0.1:5500/main.html';
         // 탈퇴 성공 후 처리 로직 추가
     } catch (error) {
         console.error('회원 탈퇴 에러 발생', error);

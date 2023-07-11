@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>다2ating - 샐러드 판매 쇼핑몰</title>
     <link rel="stylesheet" href="mainstyle.css">
-    <link rel="stylesheet" href="slide.css">
+    <link rel="stylesheet" href="sidebar.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <script src="https://kit.fontawesome.com/8eb5905426.js" crossorigin="anonymous"></script>
-    <script src="\f2ting_client\src\views\main\main.js" defer></script>
-    <script src="\f2ting_client\src\views\main\new-product.js" defer></script>
-    <script src="\f2ting_client\src\views\main\best-product.js" defer></script>
-    <script src="\f2ting_client\src\views\main\search-product.js" defer></script>
+    <script src="./new-product.js" defer></script>
+    <script src="./best-product.js" defer></script>
+    <script src="./search-product.js" defer></script>
     <style type="text/css" media="screen and (min-width:512px) and (max-width:1024px)"></style>
 </head>
 <body>
@@ -22,7 +21,7 @@
             <nav class="header1">
                 <div class="diat">
                     <a class="logo" href="../main/main.html">
-                        <img src="/f2ting_client/src/views/common/images/logo2.gif" style="height:auto; width:270px;">
+                        <img src="../common/images/logo2.gif" style="height:auto; width:220px;">
                     </a>
                     <div class="search">
                         <i class="fas fa-search" type="button" onclick="doSearch()"></i>
@@ -30,8 +29,8 @@
                     </div>
                 </div>
                 <div class="form">
-                    <p class="welcome">회원가입</p>
-                    <button class="logout" onclick="login()">로그인</button>
+                    <p class="welcome">반갑습니다.</p>
+                    <button class="logout" onclick="logout()">로그아웃</button>
                     <a class="mypage" href="http://127.0.0.1:5500/f2ting_client/src/views/member-info/mypage-view.html">
                         <span class="material-symbols-outlined">face</span>
                     </a>
@@ -43,6 +42,8 @@
             <!-- 헤더(메뉴카테고리) -->
             <nav class="header2"><br>
                 <div class="category">
+                    <!-- 카테고리 연결 -->
+                    <script src="./maincategory.js" defer></script>
                 </div>        
             </nav>
         </header>

@@ -21,12 +21,7 @@
     top:50%;
     cursor: pointer;
 }
-.pagination{
-    width: 13%;
-    background-color:#ffffff00;
-    transform: translate(-100%,120%);
 
-}
 .leftBtn > span{
     left: 1.5%;
     transform: translate(0,350%);

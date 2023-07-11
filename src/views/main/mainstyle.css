@@ -104,7 +104,7 @@ header {
     align-items: center;
 }
 .logo {
-    height: 250px;
+    height: 220px;
     margin: 50px 70px 10px 0;
 }
 .search {
@@ -112,19 +112,21 @@ header {
     text-align: center;
     width: 250px;
     margin: 0 auto;
+
 }
 input {
     border-radius: 20px;
-    border: 1px solid #bbb;
+    border: 4px solid #10a2a7;
     margin: 10px 0;
     padding: 10px 12px;
     width: 253px;
     height: 42px;
     line-height: 42px;
     border-radius: 999px;
-    background: #f8f8f8;
+    background: #ffffff;
     font-family: "Noto Sans KR", sans-serif !important;
     font-size: 20px;
+    color: rgb(14, 81, 83);
 }
 .fa-search {
     position: absolute;
@@ -134,7 +136,6 @@ input {
     border-radius: 100%;
     cursor: pointer;
 }
-
 .form {
     display: inline-block;
     position: absolute;
@@ -142,25 +143,33 @@ input {
     z-index: 0;
     line-height: 1;
 }
-.join { 
-    font-size: 25px;
-    padding-right: 25px;
+.welcome{
+    display: inline;
     color:#000000;
+    margin: 20px;
+    font-size: 18px;
 }
-.login {
-    font-size: 25px;
-    padding-right: 30px;
-    color:#000000;
+.logout{
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    border:#10a2a7 solid 3px;
+    margin: 20px;
+    font-family: "Noto Sans KR", sans-serif !important;
+    font-size: 16px;
 }
 .mypage > span {
     font-size: 30px;
     padding-right: 30px;
-    color:#000000;
+    color:#10a2a7;
+    font-weight: bold;
 }
 .cart > span {
     font-size: 30px;
-    color:#000000;
+    color:#10a2a7;
+    font-weight: bold;
 }
+
 
 /* 헤더 카테고리 */
 .header2 {
@@ -180,126 +189,13 @@ input {
     padding: 10px 10px 70px 20px;
 }
 .category > a {
-    font-size : 28px;
-    color:#000000;
+    font-size : 22px;
+    color:#10a2a7;
     padding: 0 100px;
     font-weight: bold;
 }
-  .category > a.clicked {
-    color: rgb(18, 167, 38); /* 클릭 후 색깔 */
-  }
-  
-/* 카테고리 아이콘 */
-#menuicon {
-    display: none;
-}
-#menuicon+label {
-    display: block;
-    width: 30px;
-    height: 20px;
-    position: absolute;
-    cursor: pointer;
-    margin: 0 -30px;
-}
-#menuicon+label span {
-    display: block;
-    position: absolute;
-    
-    width: 100%;
-    height: 5px;
-    border-radius: 30px;
-    background: #000000;
-    transition: all .35s;
-}
-#menuicon+label span:nth-child(1) {
-    top:0;
-}
-#menuicon+label span:nth-child(2) {
-    top:50%;
-    transform: translateY(-50%);
-}
-#menuicon+label span:nth-child(3) {
-    bottom: 0;
-}
-
-#menuicon:checked + label span:nth-child(1) {
-    top: 50%;
-    transform: translateY(-50%) rotate(45deg);
-    background: #000000;
-}
-#menuicon:checked + label span:nth-child(2) {
-    opacity: 0;
-}
-#menuicon:checked + label span:nth-child(3) {
-    bottom: 50%;
-    transform: translateY(50%) rotate(-45deg);
-    background: #000000;
-}
-
-/* 메뉴카테고리바 */
-#menuicon:checked + label + div {
-    top: 70px;
-}
-#menuicon:checked + label {
-    display: block;
-    width: 40px;
-    height: 50px;
-    position: fixed;
-    top: calc(50% -25px);
-    transition: all .55s;
-    cursor: pointer;
-}
-#menuicon:checked + label{
-    z-index: 2;
-}
-
-/* 카테고리 하단 메뉴 */
-.sidebar {
-    width: 1200px;
-    height: 350px;
-    border: #a5a5a5 solid 1px;
-    position: fixed;
-    top: -400px;
-    z-index: 1;
-    transition: all .35s;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 50px 20px;
-    left: 250px;
-    border-radius: 10px;
-}
-.cate1{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    line-height: 30px;
-    text-align: center;
-    color:#000000;
-}
-.cate2{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    line-height: 30px;
-    text-align: center;
-    color:#000000;
-}
-.cate3{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    line-height: 30px;
-    text-align: center;
-    color:#000000;
-}
-.cate4{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    line-height: 30px;
-    text-align: center;
-    color:#000000;
+.category > a.clicked {
+    color: rgb(0, 0, 0); /* 클릭 후 색깔 */
 }
 .objectname{
     font-size: 28px;
@@ -319,14 +215,13 @@ section {
 /* slide.css, slide.js 참조 */
 #slide-div{
     width: 950px;
-    justify-content:flex-start;
+    justify-content: flex-start;
     text-align: left;
     padding: 0 0 50px 30px;
     display: flex;
     justify-content: space-around;
     margin: 0 120px;
 }
-
 .slider-container {
     margin: 300px 0 100px 0;
 }
@@ -335,7 +230,7 @@ section {
 }
 .slider img{
     height: 100%;
-    width:100%;
+    width: 100%;
 }
 
 /* 메인 */
@@ -370,8 +265,6 @@ main {
     text-align: center;
     margin-top: 70px;
 }
-
-
 .innerCart {
     margin-top: -70px;
     margin-right: -210px;
@@ -502,7 +395,7 @@ aside {
     line-height: 30px;
     position: fixed;
     right: 100px;
-    bottom: 300px;
+    bottom: 400px;
     z-index: 9999;
     margin-top: 200px;
     height: 120px;
@@ -511,10 +404,13 @@ aside {
     width: 40px;
     height: 120px;
     border-radius: 20px;
-    border: #636363 solid 1px;
+    border: #10a2a7 solid 3px;
     text-align: center;
     padding-top: 20px;
     line-height: 20px;
+}
+.material-symbols-outlined{
+    color: #10a2a7;
 }
 .topBottom {
     margin-left: 1.5px;
@@ -522,7 +418,7 @@ aside {
 }
 .topBottom > a > span {
     font-size: 40px;
-    color: #636363;
+    color: #10a2a7;
 }
 
 /* 서비스 */
@@ -537,6 +433,8 @@ aside {
     position: relative;
     overflow: hidden;
     padding: 0 0 0px 0;
+    color:#858585;
+
 }
 .information{
     display: flex;
@@ -569,7 +467,9 @@ aside {
     font-family: "Noto Sans KR", sans-serif !important;
     margin: 0 0 10px 60px;
     border-radius: 10px;
+    border: #858585 solid 2px;
     cursor: pointer;
+    color: #858585;
 }
 .deliveryBtn{
     width: 150px;
@@ -577,7 +477,9 @@ aside {
     font-size: 20px;
     font-family: "Noto Sans KR", sans-serif !important;
     border-radius: 10px;
+    border: #858585 solid 2px;
     cursor: pointer;
+    color:#858585;
 }
 .serviceCenter > div > h1 {
     font-size: 35px;

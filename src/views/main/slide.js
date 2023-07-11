@@ -1,73 +1,69 @@
 const images = document.querySelectorAll('.slider span');
-const sliderContainer = document.querySelector('slider-container');
+const sliderContainer = document.querySelector('.slider-container');
 const slider = document.querySelector('.slider');
 const prevBtn = document.querySelector('.leftBtn');
 const nextBtn = document.querySelector('.rightBtn');
 
-let current = 1;
+let current = 0;
 const imgSize = images[0].clientWidth;
 
-slider.style.transform = `translateX(${-imgSize}px)`;
+slider.style.transform = `translateX(${-imgSize * current}px)`;
 
-prevBtn.addEventListener('click',()=>{
-    if( current <= 0) return;
+const goToSlide = (index) => {
+    if (index < 0 || index >= images.length) return;
+    current = index;
     slider.style.transition = '400ms ease-in-out transform';
-    current--;
     slider.style.transform = `translateX(${-imgSize * current}px)`;
-})
-
-nextBtn.addEventListener('click',()=>{
-    if( current >= images.length -1 ) return;
-    slider.style.transition = '400ms ease-in-out transform';
-    current++;
-    slider.style.transform = `translateX(${-imgSize * current}px)`;
-})
-
-slider.addEventListener('transitionend', ()=> {
-    if(images[current].classList.contains('first-img')){
-        slider.style.transition = 'none';
-        current = images.length - 2;
-        slider.style.transform = `translateX(${-imgSize * current}px)`;
-    }
-    if(images[current].classList.contains('last-img')){
-        slider.style.transition = 'none';
-        current = images.length - current;
-        slider.style.transform = `translateX(${-imgSize * current}px)`;
-    }
-})
-
-//하단바
-const dots = document.querySelectorAll('.slider-container ul p')
-
-const next = () => {
-    if (current >= images.length - 1) return;
-    slider.style.transition = '400ms ease-in-out transform';
-    current++;
-    slider.style.transform = `translateX(${-imgSize * current}px)`;
-
-    for (let i = 0; i < dots.length; i++) {
-        if (dots[i].dataset.index == current) {
-            dots[i].classList.add('active');
-        } else if (current === 4) {
-            dots[i].classList.remove('active');
-            dots[0].classList.add('active');
-        }
-        else {
-            dots[i].classList.remove('active');
-        }
-    }
 }
 
-let auto = setInterval(next, 4000);
+prevBtn.addEventListener('click',()=>{
+    goToSlide(current - 1);
+});
 
-slider.addEventListener('mouseleave', ()=>{
-    auto = setInterval(next, 4000)
+nextBtn.addEventListener('click',()=>{
+    goToSlide(current + 1);
+});
+
+slider.addEventListener('transitionend', ()=> {
+    if (current === images.length - 1) {
+       slider.style.transition = 'none';
+       current = 0;
+       slider.style.transform = `translateX(${-imgSize * current}px)`;
+    } else if (current === 0) {
+       slider.style.transition = 'none';
+       current = images.length - 1;
+       slider.style.transform = `translateX(${-imgSize * current}px)`;
+    }
+});
+
+// 하단바
+const dots = document.querySelectorAll('.slider-container ul p');
+
+const activateDot = (index) => {
+   dots.forEach(dot => dot.classList.remove('active'));
+   if (index >= 0 && index < dots.length) {
+       dots[index].classList.add('active');
+   }
+}
+
+dots.forEach((dot, index) => {
+   dot.addEventListener('click', () => {
+       goToSlide(index);
+   })
 })
 
-slider.addEventListener('mouseenter', ()=>{
-    clearInterval(auto)
-})
+activateDot(current);
 
-nextBtn.addEventListener('click', () => {
-    next()
-})
+let auto = setInterval(() => {
+    goToSlide(current + 1);
+}, 3000);
+
+sliderContainer.addEventListener('mouseleave', ()=>{
+    auto = setInterval(() => {
+        goToSlide(current + 1);
+    }, 3000);
+});
+
+sliderContainer.addEventListener('mouseenter', ()=>{
+    clearInterval(auto);
+});

@@ -11,7 +11,6 @@
     <script src="./new-product.js" defer></script>
     <script src="./best-product.js" defer></script>
     <script src="./search-product.js" defer></script>
-    <script src="./login-logout.js" defer></script>
     <style type="text/css" media="screen and (min-width:512px) and (max-width:1024px)"></style>
 </head>
 <body>
@@ -22,16 +21,16 @@
             <nav class="header1">
                 <div class="diat">
                     <a class="logo" href="../main/main.html">
-                        <img src="../common/images/logo2.gif" style="height:auto; width:220px;">
+                        <img src="../common/images/logo2.gif" style="height:auto; width:270px;">
                     </a>
                     <div class="search">
-                        <i class="fas fa-search" type="button" onclick="doSearch()"></i>
-                        <input class="keyword" type="search" placeholder="상품검색" onkeyup="performSearch(event)">
+                        <!-- <i class="fas fa-search" type="button" onclick="doSearch()"></i>
+                        <input class="keyword" type="search" placeholder="상품검색" onkeyup="performSearch(event)"> -->
                     </div>
                 </div>
                 <div class="form">
-                    <p class="welcome">회원가입</p>
-                    <button class="logout" type="submit" onclick="login()" style="cursor: pointer">로그인</button>
+                    <p class="welcome">반갑습니다.</p>
+                    <button class="logout" type="submit" onclick="logout()" style="cursor: pointer">로그아웃</button>
                     <a class="mypage" href="http://127.0.0.1:5500/f2ting_client/src/views/member-info/mypage-view.html">
                         <span class="material-symbols-outlined">face</span>
                     </a>
