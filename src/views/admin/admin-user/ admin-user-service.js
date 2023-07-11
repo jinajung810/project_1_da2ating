@@ -1,6 +1,6 @@
 let url = "http://127.0.0.1:5555";
 
-fetch(`${url}/api/products`, {
+fetch(`${url}/api/`, {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json;charset=utf-8'
@@ -11,10 +11,10 @@ fetch(`${url}/api/products`, {
     let users = data.data;
     console.log(users);
     let userContents = '';
-    users.forEach(user => {
+    users.forEach((v, i) => {
         let userArr = `<div class="user">
-        <h2>${user.id} </h2>
-        <div class="email">${user.email}</div>
+        <h2>${v.email} </h2>
+        <div class="email">${v}</div>
     </div>`
     userContents += userArr;
     });
