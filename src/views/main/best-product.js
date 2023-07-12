@@ -23,11 +23,11 @@ fetchTest();
 
 function bestProduct (data) {
   data.sort((a, b) => b.discountRate - a.discountRate);
-  const bestData = data.slice(0, 8); // 할인율이 높은 순서대로 최대 8개의 아이템 선택
+  const bestData = data.slice(0, 6); // 할인율이 높은 순서대로 최대 6개의 아이템 선택
   for(let i=0; i < bestData.length; i++){
     if(bestData[i].discountRate){
       document.querySelector("#bestMenu").innerHTML += `<span class="bestMenu">
-      <img src=${bestData[i].thumbnail.path} href="" alt=${bestData[i].name}>
+      <img src="${bestData[i].descriptions[0].path}" href="" alt=${bestData[i].name}>
       <a class="innerCart" href="">
       <img src="../common/images/cart-icon.png">
       </a>
@@ -41,7 +41,7 @@ function bestProduct (data) {
       </span>`
     }else if(bestData[i].discountRate === null){
       document.querySelector("#bestMenu").innerHTML += `<span class="bestMenu">
-      <img src=${bestData[i].thumbnail.path} href="" alt=${bestData[i].name}>
+      <img src="//127.0.0.1:5555/${bestData[i].descriptions[0].path}" href="" alt=${bestData[i].name}>
       <a class="innerCart" href="">
       <img src="../common/images/cart-icon.png">
       </a>

@@ -107,6 +107,27 @@ header {
   height: 220px;
   margin: 50px 70px 10px 0;
 }
+.search {
+  position: relative;
+  text-align: center;
+  width: 250px;
+  margin: 0 auto;
+
+}
+input {
+  border-radius: 20px;
+  border: 4px solid #10a2a7;
+  margin: 10px 0;
+  padding: 10px 12px;
+  width: 253px;
+  height: 42px;
+  line-height: 42px;
+  border-radius: 999px;
+  background: #ffffff;
+  font-family: "Noto Sans KR", sans-serif !important;
+  font-size: 20px;
+  color: rgb(14, 81, 83);
+}
 .fa-search {
   position: absolute;
   left: 220px;
@@ -122,30 +143,6 @@ header {
   z-index: 0;
   line-height: 1;
 }
-.join { 
-  font-size: 25px;
-  padding-right: 25px;
-  color:#000000;
-  font-weight: bold;
-}
-.login {
-  font-size: 25px;
-  padding-right: 30px;
-  color:#000000;
-  font-weight: bold;
-}
-.mypage > span {
-  font-size: 30px;
-  padding-right: 30px;
-  color:#10a2a7;
-  font-weight: bold;
-}
-.cart > span {
-  font-size: 30px;
-  color:#10a2a7;
-  font-weight: bold;
-}
-
 .welcome{
   display: inline;
   color:#000000;
@@ -161,13 +158,25 @@ header {
   font-family: "Noto Sans KR", sans-serif !important;
   font-size: 16px;
 }
+.mypage > span {
+  font-size: 30px;
+  padding-right: 30px;
+  color:#10a2a7;
+  font-weight: bold;
+}
+.cart > span {
+  font-size: 30px;
+  color:#10a2a7;
+  font-weight: bold;
+}
+
 
 /* 헤더 카테고리 */
 .header2 {
   position: relative;
   margin-top: 100px;
   border-bottom: 1px solid #e2e2e2;
-  height: 49px;
+  height: 60px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -177,12 +186,12 @@ header {
   margin-left: 80px;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 10px 70px 20px;
+  padding: 10px 50px 50px 0px;
 }
 .category > a {
-  font-size : 22px;
+  font-size : 16px;
   color:#10a2a7;
-  padding: 0 100px;
+  padding: 0 80px;
   font-weight: bold;
 }
 .category > a.clicked {
@@ -201,6 +210,7 @@ header {
 section {
   width: 100%;
 }
+
 
 /* 카테고리 하단 메뉴 */
 /* main */

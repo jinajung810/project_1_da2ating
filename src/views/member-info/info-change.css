@@ -107,6 +107,27 @@ header {
   height: 220px;
   margin: 50px 70px 10px 0;
 }
+.search {
+  position: relative;
+  text-align: center;
+  width: 250px;
+  margin: 0 auto;
+
+}
+input {
+  border-radius: 20px;
+  border: 4px solid #10a2a7;
+  margin: 10px 0;
+  padding: 10px 12px;
+  width: 253px;
+  height: 42px;
+  line-height: 42px;
+  border-radius: 999px;
+  background: #ffffff;
+  font-family: "Noto Sans KR", sans-serif !important;
+  font-size: 20px;
+  color: rgb(14, 81, 83);
+}
 .fa-search {
   position: absolute;
   left: 220px;
@@ -122,30 +143,6 @@ header {
   z-index: 0;
   line-height: 1;
 }
-.join { 
-  font-size: 25px;
-  padding-right: 25px;
-  color:#000000;
-  font-weight: bold;
-}
-.login {
-  font-size: 25px;
-  padding-right: 30px;
-  color:#000000;
-  font-weight: bold;
-}
-.mypage > span {
-  font-size: 30px;
-  padding-right: 30px;
-  color:#10a2a7;
-  font-weight: bold;
-}
-.cart > span {
-  font-size: 30px;
-  color:#10a2a7;
-  font-weight: bold;
-}
-
 .welcome{
   display: inline;
   color:#000000;
@@ -161,13 +158,25 @@ header {
   font-family: "Noto Sans KR", sans-serif !important;
   font-size: 16px;
 }
+.mypage > span {
+  font-size: 30px;
+  padding-right: 30px;
+  color:#10a2a7;
+  font-weight: bold;
+}
+.cart > span {
+  font-size: 30px;
+  color:#10a2a7;
+  font-weight: bold;
+}
+
 
 /* 헤더 카테고리 */
 .header2 {
   position: relative;
   margin-top: 100px;
   border-bottom: 1px solid #e2e2e2;
-  height: 49px;
+  height: 60px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -177,12 +186,12 @@ header {
   margin-left: 80px;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 10px 70px 20px;
+  padding: 10px 50px 50px 0px;
 }
 .category > a {
-  font-size : 22px;
+  font-size : 16px;
   color:#10a2a7;
-  padding: 0 100px;
+  padding: 0 80px;
   font-weight: bold;
 }
 .category > a.clicked {
@@ -201,6 +210,7 @@ header {
 section {
   width: 100%;
 }
+
 
 /* main */
 main{
@@ -254,41 +264,68 @@ article h1{
   font-size: 22px;
   line-height: 70px;
 }
-td{
-  width: 230px;
-  font-size: 20px;
+.changeInfo table{
+  width: 950px;
 }
-.changeInfo input{
-  width: 200px;
-  border-radius: 10px;
+.className{
+  width: 180px;
 }
-select{
-  width: 200px;
+.infoInput{
   border-radius: 10px;
-  height: 43px;
-  text-align: center;
+  height: 40px;
   font-size: 20px;
+  padding-left: 10px;
+  border:#a5a5a5 solid 0.5px;
+}
+.changeBtn{
+  background-color: #10a2a7;
+  border: none;
+  color: #fff
 }
 .changePsw{
   padding: 15px;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 70px;
+
 }
 .changePsw input{
-  width: 500px;
   border-radius: 10px;
+  height: 40px;
+  border:#a5a5a5 solid 0.5px;
 }
 .button {
   display:flex;
   justify-content: center;
 }
 button{
-  margin: 50px;
+  margin: 50px 50px 0 0;
   padding: 15px;
   width: 220px;
   font-size: 20px;
   border-radius: 10px;
   cursor: pointer;
+}
+.table-address input {
+  height: 40px;
+  line-height: 50px;
+  border:#a5a5a5 solid 0.5px;
+  border-radius: 10px;
+  outline: none;
+  margin: 0.5rem;
+  padding: 5px 10px;
+}
+#addressCodeBtn {
+  height: 45px;
+  width: 100px;
+  padding: 0 10px;
+  background-color: #e7e4e4;
+  align-self: baseline;
+  border: none;
+}
+#deliveryMessage,
+#addressBasic,
+#addressDetail {
+  width: 25rem;
 }
 
 /* footer */

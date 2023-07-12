@@ -31,9 +31,9 @@ async function deleteAccount() {
         let answer = confirm("로그인이 필요한 페이지입니다.");
         if(answer === true){
           //로그인페이지로 이동(로그인창으로 이동 필요)
-          location = 'http://127.0.0.1:5500/f2ting_client/src/views/main/main.html'
+          location = 'http://127.0.0.1:5500/login-view.html'
         }else{
-          location= 'http://127.0.0.1:5500/f2ting_client/src/views/main/main.html'
+          location= 'http://127.0.0.1:5500/main.html'
         }
     }
 }
@@ -43,8 +43,8 @@ async function postDelete(data) {
         const userId = `${data._id}`; // 실제 로그인된 사용자의 아이디로 대체해야 함
         const reason = document.querySelector('input[checked]')
         const memo = document.querySelector('input[name="comment"]')
-        const res = await fetch('http://127.0.0.1:5555/api/users/delete', {
-            method: 'POST',
+        const res = await fetch('http://127.0.0.1:5555/api/users/my-info', {
+            method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },

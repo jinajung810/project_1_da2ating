@@ -9,7 +9,7 @@ async function fetchTest() {
       const res = await fetch('http://127.0.0.1:5555/api/users/my-info', {
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
-            'Authorization': `Bearer ${token}`
+            'Authorization': 'token'
           },
         });
         const datas = await res.json();
@@ -42,12 +42,12 @@ function memberView(data) {
     const phone = document.querySelector('.phone')
     const address = document.querySelector('.address')
 
-    userId.innerText = `${data.id}`
+    userId.innerText = `${data.account}`
     userName.innerText = `${data.name}`
     email.innerText = `${data.email}`
     phone.innerText = `${data.phone}`
     address.innerText = `${data.address}`
 }
 function changeInfo(){
-  window.location.href = 'http://127.0.0.1:5500/f2ting_client/src/views/member-info/mypage.html'
+  window.location.href = 'http://127.0.0.1:5500/f2ting_client/src/views/member-info/info-change.html'
 }

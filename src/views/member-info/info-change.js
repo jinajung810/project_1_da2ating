@@ -1,60 +1,137 @@
+// 로그인 정보 가져오기
+const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
 
-// 마이페이지-회원정보 조회
-const token = sessionStorage.getItem('token');
-const isLoggedIn = token !== null && isValidToken(token);
+// if (!userInfo) { // 로그인하지 않았다면
+//   alert('로그인 후 이용 가능합니다.');
+//   window.location.href = 'http://127.0.0.1:5500/login-view.html';
+// } else { // 로그인한 사용자만 사용 가능
+  // 회원정보 변경 폼
+  const infoForm = document.querySelector('.changeInfo');
 
-const form = document.querySelector('.changeInfo');
+  // 비밀번호 변경 폼
+  const pswForm = document.querySelector('.changePsw');
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
+  // 주소 검색 버튼
+  const addressCodeBtn = document.querySelector('#addressCodeBtn');
 
-  const idInput = form.querySelector('[name=id]');
-  const userNameInput = form.querySelector('[name=userName]');
-  const email1Input = form.querySelector('[name=email1]');
-  const email2Input = form.querySelector('[name=email2]');
-  const phone1Input = form.querySelector('[name=phone1]');
-  const phone2Input = form.querySelector('[name=phone2]');
-  const phone3Input = form.querySelector('[name=phone3]');
-  const addressInput = form.querySelector('[name=address]');
+  // input 태그 주소 입력 부분
+  const addressCodeInput = document.querySelector('#addressCode');
+  const addressBasicInput = document.querySelector('#addressBasic');
+  const addressDetailInput = document.querySelector('#addressDetail');
 
-  if (isLoggedIn) {
-    const id = idInput.value;
-    const userName = userNameInput.value;
-    const email = `${email1Input.value}@${email2Input.value}`;
-    const phone = `${phone1Input.value}-${phone2Input.value}-${phone3Input.value}`;
-    const address = `${addressInput.value}`
+  // 회원정보 변경 데이터 전송 함수
+  const handleInfoSubmit = async (event) => {
+    event.preventDefault();
 
-    fetch('http://127.0.0.1:5555/api/users/my-info', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        'Authorization': `Bearer ${token}`
-      },
-      body: JSON.stringify({
-        id: id,
-        userName: userName,
-        email: email,
-        phone: phone,
-        address: address
-      })
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.success) {
-          alert('회원정보가 수정되었습니다.');
-          window.location.href = 'http://127.0.0.1:5500/mypage-view.html';
-        } else {
-          alert('회원정보 수정에 실패하였습니다. 다시 시도해주세요.');
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
+    // 데이터 가져오기 
+    const userName = document.querySelector('.userName').value;
+    const email = document.querySelector('.email').value;
+    const phone1 = document.querySelector('.phone1').value;
+    const addressCode = addressCodeInput.value;
+    const addressBasic = addressBasicInput.value;
+    const addressDetail = addressDetailInput.value;
+
+    // 서버로 전송할 데이터 생성
+    const data = {
+      userName,
+      email,
+      phone1,
+      addressCode,
+      addressBasic,
+      addressDetail,
+    };
+
+    // 서버로 데이터 전송
+    try {
+      const response = await fetch('/api/user', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
       });
-  } else {
-    let answer = confirm('로그인이 필요한 페이지입니다. 로그인 페이지로 이동하시겠습니까?');
-    if (answer === true) {
-      // 로그인 페이지로 이동합니다.
-      window.location.href = 'http://127.0.0.1:5500/login.html';
+      if (response.ok) {
+        // 변경 성공 시 이벤트 작성
+        alert('회원정보 수정이 완료되었습니다.');
+        window.location.href = 'http://127.0.0.1:5500/mypage-view.html';
+      } else {
+        alert('회원정보 수정에 실패했습니다.');
+      }
+    } catch (err) {
+      console.error(`Error: ${err}`);
     }
   }
-});
+
+  // 비밀번호 변경 데이터 전송 함수
+  const handlePswSubmit = async (event) => {
+    event.preventDefault();
+
+    // 데이터 가져오기
+    const pw1 = document.querySelector('[name=pw1]').value;
+    const pw2 = document.querySelector('[name=pw2]').value;
+
+    // 서버로 전송할 데이터 생성
+    const data = {
+      pw1,
+      pw2,
+    };
+
+    // 서버로 데이터 전송
+    try {
+      const response = await fetch('/api/user/password', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      if (response.ok) {
+        // 변경 성공 시 이벤트 작성
+        alert('비밀번호 수정이 완료되었습니다.');
+        window.location.href = 'http://127.0.0.1:5500/mypage-view.html';
+      } else {
+        alert('비밀번호 수정에 실패했습니다.');
+      }
+    } catch (err) {
+      console.error(`Error: ${err}`);
+    }
+  }
+
+  // 주소 검색 이벤트 리스너 작성
+  function DaumPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {                                        
+            var addr = '';
+            var extraAddr = ''; 
+            if (data.userSelectedType === 'R') {
+                addr = data.roadAddress;
+            } else {
+                addr = data.jibunAddress;
+            }
+            if(data.userSelectedType === 'R'){
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraAddr += data.bname;
+                }
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                if(extraAddr !== ''){
+                    extraAddr = ' (' + extraAddr + ')';
+                }
+                document.getElementById("sample6_extraAddress").value = extraAddr;
+            } else {
+                document.getElementById("sample6_extraAddress").value = '';
+            }
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('addressCode').value = data.zonecode;
+            document.getElementById("addressBasic").value = addr;
+            // 커서를 상세주소 필드로 이동한다.
+            document.getElementById("addressDetail").focus();
+        }
+    }).open();
+}
+
+  // 이벤트 리스너 작성
+  infoForm.addEventListener('submit', handleInfoSubmit);
+  pswForm.addEventListener('submit', handlePswSubmit);
+// }
