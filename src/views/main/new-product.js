@@ -25,9 +25,10 @@ function newProduct(data) {
   data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   const newData = data.slice(0, 6); // 최근 6개의 아이템 선택
   for(let i=0; i < newData.length; i++){
+    console.log(newData[i])
     if(newData[i].discountRate){
       document.querySelector("#newMenu").innerHTML += `<span class="newMenu">
-      <img src="//127.0.0.1:5555/${newData[i].descriptions[0].path}" href="" alt=${newData[i].name}>
+      <img src="http://127.0.0.1:5555${newData[i].thumbnail.path}" href="" alt=${newData[i].name}>
       <a class="innerCart" href="">
       <img src="../common/images/cart-icon.png">
       </a>
@@ -41,7 +42,7 @@ function newProduct(data) {
       </span>`
     }else if(newData[i].discountRate === null){
       document.querySelector("#newMenu").innerHTML += `<span class="newMenu">
-      <img src="//127.0.0.1:5555/${newData[i].descriptions[0].path}" href="" alt=${newData[i].name}>
+      <img src="http://127.0.0.1:5555${newData[i].thumbnail.path}" href="" alt=${newData[i].name}>
       <a class="innerCart" href="">
       <img src="../common/images/cart-icon.png">
       </a>

@@ -27,7 +27,7 @@ function bestProduct (data) {
   for(let i=0; i < bestData.length; i++){
     if(bestData[i].discountRate){
       document.querySelector("#bestMenu").innerHTML += `<span class="bestMenu">
-      <img src="${bestData[i].descriptions[0].path}" href="" alt=${bestData[i].name}>
+      <img src="http://127.0.0.1:5555${bestData[i].thumbnail.path}" href="" alt=${bestData[i].name}>
       <a class="innerCart" href="">
       <img src="../common/images/cart-icon.png">
       </a>
@@ -40,17 +40,18 @@ function bestProduct (data) {
       <p class="reviewNum">review : ${bestData[i].tier1Category.order}</p>
       </span>`
     }else if(bestData[i].discountRate === null){
-      document.querySelector("#bestMenu").innerHTML += `<span class="bestMenu">
-      <img src="//127.0.0.1:5555/${bestData[i].descriptions[0].path}" href="" alt=${bestData[i].name}>
-      <a class="innerCart" href="">
-      <img src="../common/images/cart-icon.png">
-      </a>
-      <a href="">${bestData[i].name}</a>
-      <label class="price">
-      <h4 class="discountPrice">${bestData[i].originPrice}원</h4>
-      </label>
-      <p class="reviewNum">review : ${bestData[i].tier1Category.order}</p>
-      </span>`
+      return;
+      // document.querySelector("#bestMenu").innerHTML += `<span class="bestMenu">
+      // <img src="http://127.0.0.1:5555${bestData[i].thumbnail.path}" href="" alt=${bestData[i].name}>
+      // <a class="innerCart" href="">
+      // <img src="../common/images/cart-icon.png">
+      // </a>
+      // <a href="">${bestData[i].name}</a>
+      // <label class="price">
+      // <h4 class="discountPrice">${bestData[i].originPrice}원</h4>
+      // </label>
+      // <p class="reviewNum">review : ${bestData[i].tier1Category.order}</p>
+      // </span>`
     }
   }  
 }

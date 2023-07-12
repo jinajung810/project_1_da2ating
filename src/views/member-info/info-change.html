@@ -75,76 +75,71 @@
                     <div id="memberInfo">
                         <form class="changeInfo" action="" method="post">
                             <table>
-                                <tr>
-                                    <td class="className">아이디</td>
-                                    <td>
-                                        <input class="infoInput userId" type="text" name="id" style="width:500px" readonly>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="className">이름</td>
-                                    <td>
-                                        <input class="infoInput userName" name="userName" type="text" value="" style="width:500px" maxlength=12>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="className">이메일</td>
-                                    <td><input class="infoInput email" type="text" name="email" style="width:500px"></td>
-                                </tr>
-                                <tr>
-                                    <td class="className">휴대폰번호</td>
-                                    <td>
-                                        <input type="number phone1" class="infoInput" id="phone1" style="width:500px" />
-                                      </td>
-                                </tr>
-                                <tr>
-                                    <td class="className">주소＊</td>
-                                    <td class="table-address">
-                                        <input type="text" id="addressCode" placeholder="우편번호">
-                                        <input type="button" id="addressCodeBtn" onclick="DaumPostcode()" value="우편번호 찾기"><br>
-                                        <input type="text" id="addressBasic" placeholder="주소"><br>
-                                        <input type="text" id="addressDetail" placeholder="상세주소">
-                                        <input type="text" id="sample6_extraAddress" placeholder="참고항목">
-                                        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-                                    </td>
-                                </tr>
-
-                            </table>    
-                            <div class="button">
-                                <a href="http://127.0.0.1:5500/info-change.html">
-                                    <button type="reset" value="다시작성">취소</button>
-                                </a>
-                                <a href="http://127.0.0.1:5500/mypage-view.html">
-                                    <button class="changeBtn" type="submit" value="변경" onclick="">변경</button>
-                                </a>
-                            </div>
-                        </form>
-                        <form class="changePsw" action="" method="post" >
-                            <h1>비밀번호 변경</h1>
-                            <table>
-                                <tr>
-                                    <td class="className">새 비밀번호</td>
-                                    <td>
-                                        <input type="password" name="pw1" maxlength=15 style="width:500px">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="className">새 비밀번호 확인</td>
-                                    <td>
-                                        <input type="password" name="pw2" maxlength=15 style="width:500px">
-                                    </td>
-                                </tr>
+                              <tr>
+                                <td class="className">이름</td>
+                                <td>
+                                  <input class="infoInput userName" name="userName" type="text" value="" style="width:500px" maxlength="12">
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="className">이메일</td>
+                                <td>
+                                  <input class="infoInput email" type="email" name="email" placeholder="email@example.com" style="width:500px" />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="className">휴대폰번호</td>
+                                <td>
+                                  <input type="text" class="infoInput phone1" id="phone1" style="width:500px" />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="className">주소＊</td>
+                                <td class="table-address">
+                                  <input type="text" id="addressCode" placeholder="우편번호">
+                                  <input type="button" id="addressCodeBtn" onclick="DaumPostcode()" value="우편번호 찾기"><br>
+                                  <input type="text" id="addressBasic" placeholder="주소"><br>
+                                  <input type="text" id="addressDetail" placeholder="상세주소">
+                                  <input type="text" id="sample6_extraAddress" placeholder="참고항목">
+                                  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+                                </td>
+                              </tr>
                             </table>
                             <div class="button">
-                                <a href="http://127.0.0.1:5500/info-change.html">
-                                    <button type="reset" value="다시작성">취소</button>
-                                </a>
-                                <a href="http://127.0.0.1:5500/mypage-view.html">
-                                    <button class="changeBtn" type="submit" value="수정" onclick="">비밀번호 재설정</button>
-                                </a>
-                            </div>    
-                        </form>
-                    </div>
+                              <button type="reset" value="다시작성">취소</button>
+                              <button class="changeBtn" type="submit" value="변경">변경</button>
+                            </div>
+                          </form>
+                          <form class="changePsw" action="" method="post">
+                            <h1>비밀번호 변경</h1>
+                            <table>
+                              <tr>
+                                <td class="className">새 비밀번호</td>
+                                <td>
+                                  <input type="password" id="userPw" name="pw1" maxlength="15" style="width:500px" autocomplete="off" required>
+                                </td>
+                              </tr>
+                              <tr id="pwError">
+                                <td class="className"></td>
+                                <td>
+                                  <p class="userPwError">*변경할 비밀번호를 작성해주세요.</p>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="className">새 비밀번호 확인</td>
+                                <td>
+                                  <input type="password" id="userPwConfirm" name="pw2" maxlength="15" style="width:500px" autocomplete="off" required>
+                                </td>
+                              </tr>
+                            </table>
+                            <div class="button">
+                              <a href="http://127.0.0.1:5500/info-change.html">
+                                <button type="reset" value="다시작성">취소</button>
+                              </a>
+                              <button class="changeBtn" type="submit" value="수정">비밀번호 재설정</button>
+                            </div>
+                          </form>
+                        </div>
                 </article>
             </main>
             <!-- 메인 하단 -->

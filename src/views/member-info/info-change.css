@@ -293,6 +293,11 @@ article h1{
   height: 40px;
   border:#a5a5a5 solid 0.5px;
 }
+.userPwError{
+  margin: -40px 0 -40px 20px;
+  color: #10a2a7;
+  font-size: 13px;
+}
 .button {
   display:flex;
   justify-content: center;
@@ -316,7 +321,7 @@ button{
 }
 #addressCodeBtn {
   height: 45px;
-  width: 100px;
+  width: 150px;
   padding: 0 10px;
   background-color: #e7e4e4;
   align-self: baseline;

@@ -275,6 +275,7 @@ main {
     width: 50px;
     align-self: center;
     padding-top: 12px;
+    background-color: #ffffff00;
 }
 
 /* 메인-베스트메뉴 */
@@ -304,7 +305,6 @@ main {
 .bestMenu > img{
     height: 270px;
     width: auto;
-    margin-bottom: 20px;
     border-radius: 10px;
 }
 
@@ -336,7 +336,6 @@ main {
 .newMenu > img{
     height: 270px;
     width: auto;
-    margin-bottom: 20px;
     border-radius: 10px;
 }
 /* 메인-메뉴가격 */
