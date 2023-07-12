@@ -310,4 +310,3 @@ function itemAllClear() {
 
 onLoadCartNumbers();
 displayCart();
-
