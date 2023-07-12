@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>da2ating</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+  <link rel="stylesheet" href="./login.css">
+  <link rel="stylesheet" href="../common/footer.css">
+
+  <script defer src="./login.js"></script>
+
+</head>
+<body>
+
+    <!-- HEADER -->
+  <header></header>
+
+  <section class="loginPage">
+    <div class="inner">
+      <div class="loginBox">
+        <h2>로그인</h2>
+        <form>
+          <input type="email" placeholder="Email" id="emailInput"/>
+          <input type="password" placeholder="password" id="passwordInput"/>
+          <input type="submit" value="로그인" id="submitInput"/>
+        </form>
+        <button class="joinBtn">회원가입</button>
+      </div>
+
+      <button id="logoutBtn"></button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer></footer>
+
+  <script>
+    const footer = document.querySelector('footer');
+    
+    fetch('/f2ting_client/src/views/common/footer.html')
+      .then(res => res.text())
+      .then(data => footer.innerHTML = data);
+  </script>
+</body>
+</html>
