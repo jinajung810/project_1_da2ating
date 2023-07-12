@@ -26,27 +26,48 @@ const getUserData = async () =>{
           throw new Error(reason);
         }
 
-        console.log(data.data);
-
         data.data.forEach((v, i) => {
-            // const {type} = user
-            container.innerHTML += `<div class="userData">
-            <div class="userInfo">
-                <p id="userName">${v.name}</p>
-                <p id="userEmail">${v.email}</p>
-                <p id="userPwd">${v.createdAt}</p>
-            </div>
-            <button class="modifyBtn" id=mod}>회원정보 수정</button>
-            <button class="deleteBtn" id=del}>회원정보 삭제</button>
-        </div>` 
+            const { account, address, createdAt, email, name, phone, type, updatedAt, val, id } = v;
+            container.innerHTML += `<div class="user-data">
+              <div class="user-info">
+                <p id="user-name">이름: ${name}</p>
+                <p id="user-email">이메일: ${email}</p>
+                <p id="user-num">전화번호: ${phone}</p>
+                <p id="user-date">가입일자: ${createdAt.split('T')[0]}</p>
+            
+                <button class="modify-btn" id=mod${id} onclick="modifyUserData(${id})"}>회원 주문 정보</button>
+                <button class="delete-btn" id=del${id} onclick="deleteUserData(${id})"}>회원 삭제</button>
+              </div>
+            </div>` 
+
         });
 
       } catch (error) {
         console.log(err);
       }
     };
-getUserData();
 
+// 회원 정보 삭제
+const deleteUserData = async (id) => {
+  const delBtn = document.querySelector(`#del${id}`);
+  console.log(JSON.stringify(id));
+
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: sessionStorage.getItem('key')
+      },
+    body: JSON.stringify(id),
+    }
+  try {
+    const res = await fetch(`${url}/api/users`, options);
+    console.log(res);
+    location.reload();
+  } catch (err) {
+      console.log('삭제 실패');
+  }
+} 
 
 // 임시 테스트용 admin 로그인
 const adminLogin = async () => {
@@ -69,7 +90,6 @@ const adminLogin = async () => {
     const data = await res.json();
     if (res.ok) {
       token = data.data.token;
-      console.log(token);
       // 로그인할 때 생성된 토큰 sessionStorage에 저장
       sessionStorage.setItem('key', token);
     }
@@ -78,10 +98,18 @@ const adminLogin = async () => {
   }
 };
 
+// // 회원 주문 상태 수정
+// const open = () => {
+//   document.querySelector('.modal').classList.remove('hidden');
+// }
+
+// const close = () => {
+//   document.querySelector('.modal').classList.add('hidden');
+// }
+
+// // document.querySelector('.modify-btn').addEventListener('click', open);
+// // document.querySelector('.close-btn').addEventListener('click', close);
+
+
 adminLogin();
-
-// 회원 수정
-
-// 회원 삭제
-
-
+getUserData();
