@@ -44,7 +44,7 @@ function bestProduct (data) {
       // document.querySelector("#bestMenu").innerHTML += `<span class="bestMenu">
       // <img src="http://127.0.0.1:5555${bestData[i].thumbnail.path}" href="" alt=${bestData[i].name}>
       // <a class="innerCart" href="">
-      // <img src="../common/images/cart-icon.png">
+      // <img src="resources/icons/cart-icon.png">
       // </a>
       // <a href="">${bestData[i].name}</a>
       // <label class="price">

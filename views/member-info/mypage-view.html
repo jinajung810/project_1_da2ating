@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>다2ating - 샐러드 판매 쇼핑몰</title>
-    <link rel="stylesheet" href="./mainstyle.css">
-    <link rel="stylesheet" href="./sidebar.css">
-    <link rel="stylesheet" href="./mypage-view.css">
+    <title>Da2Ating - 샐러드 판매 쇼핑몰</title>
+    <!-- <link rel="stylesheet" href="./mainstyle.css"> -->
+    <!-- <link rel="stylesheet" href="./sidebar.css"> -->
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <script src="https://kit.fontawesome.com/8eb5905426.js" crossorigin="anonymous"></script>
+
+    <!-- Common Import -->
+    <link rel="stylesheet" href="/common/common.css">
+    <link rel="stylesheet" href="/common/layout.css">
+    <link rel="stylesheet" href="./mypage-view.css">
+    <script src="/common/makeLayout.js" defer></script>
+    <script src="/common/maincategory.js" defer></script>
+
     <script src="./mypage-view.js" defer></script>
-    <style type="text/css" media="screen and (min-width:512px) and (max-width:1024px)"></style>
+    <script src="./search-product.js" defer></script>
+    <script src="./login-logout.js" defer></script>
+    <script src="./mypage-view.js" defer></script>
+    <!-- <style type="text/css" media="screen and (min-width:512px) and (max-width:1024px)"></style> -->
 </head>
 <body>
     <section class="wrap">
@@ -24,13 +35,13 @@
                 <h1>마이페이지</h1>
                 <div>
                     <h2>회원정보</h2>
-                    <a href="http://127.0.0.1:5500/f2ting_client/src/views/member-info/mypage-view.html" style="font-weight:bold; color:#10a2a7">-회원정보 조회</a></br>
-                    <a href="http://127.0.0.1:5500/f2ting_client/src/views/member-info/info-change.html">-회원정보 변경</a></br>
-                    <a href="http://127.0.0.1:5500/f2ting_client/src/views/member-info/delete-account.html">-회원탈퇴</a></br>
+                    <a href="http://127.0.0.1:5500/views/member-info/mypage-view.html" style="font-weight:bold; color:#10a2a7">-회원정보 조회</a></br>
+                    <a href="http://127.0.0.1:5500/views/member-info/info-change.html">-회원정보 변경</a></br>
+                    <a href="http://127.0.0.1:5500/views/member-info/delete-account.html">-회원탈퇴</a></br>
                 </div>
                 <div>
                     <h2>주문/배송 조회</h2>
-                    <a href="http://127.0.0.1:5500/f2ting_client/src/views/member-info/order-deliver.html">-주문목록/배송조회</a></br>
+                    <a href="http://127.0.0.1:5500/views/member-info/order-deliver.html">-주문목록/배송조회</a></br>
                 </div>
                 <div>
                     <h2>나의 상품문의</h2>
@@ -75,9 +86,6 @@
           <!-- FOOTER -->
           <footer id="footer">
         </footer>
-    </section>
-
-    <script src="../../common/makeLayout.js"></script>
-    <script src="../../common/maincategory.js"></script>
+    </section
 </body>
 </html>
