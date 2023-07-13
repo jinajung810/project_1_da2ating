@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Da2ating</title>
+    <link rel="stylesheet" href="./admin-order.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+    </style>
+  </head>
+  <body>
+    <!-- side bar -->
+    <nav id="sidebar">
+      <div class="left-sidebar">
+        <h2>관리자 메뉴</h2>
+        <ul class="menu-list">
+          <li>
+            <a href="/src/views/admin/admin-product/admin-product.html"
+              >상품 관리</a
+            >
+          </li>
+          <li>
+            <a href="/src/views/admin/admin-order/admin-order.html"
+              >주문 관리</a
+            >
+          </li>
+          <li>
+            <a href="/src/views/admin/admin-category/admin-category.html"
+              >카테고리 관리</a
+            >
+          </li>
+          <li><a href="#">회원 관리</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- 주문 관리 테이블 -->
+    <div class="container">
+      <section class="order-section">
+        <h2>주문 관리</h2>
+        <div class="order-control">
+          <table class="cols table-pdg">
+            <colgroup>
+              <col style="width: 150px"/>
+              <col style="width: 70px" />
+              <col style="width: 200px" />
+              <col style="width: 80px" />
+              <col style="width: 150px" />
+              <col style="width: 150px" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th>주문 일자</th>
+                <th>주문자명</th>
+                <th>주문 정보</th>
+                <th>주문 금액</th>
+                <th>주문 상태</th>
+                <th>수정/삭제</th>
+              </tr>
+            </thead>
+            <tbody class="order-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+    <script src="./admin-order.js" defer></script>
+  </body>
+</html>
