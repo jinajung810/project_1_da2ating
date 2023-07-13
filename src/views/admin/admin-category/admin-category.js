@@ -126,6 +126,48 @@ const onAddCategory = async (e) => {
 };
 
 // 카테고리 수정
+const onChangeCategory = async (e) => {
+  e.preventDefault();
+
+  if (categoryName.value === '') {
+    alert('카테고리 이름을 입력해주세요.');
+    return;
+  }
+
+  let formData = new FormData();
+
+  formData.append('name', categoryName.value);
+  if (categoryImage.files.length !== 0) {
+    formData.append('bannerImage', categoryImage.files[0]);
+  }
+
+  const options = {
+    method: 'PUT',
+    headers: {
+      Authorization: token,
+    },
+    body: formData,
+  };
+
+  try {
+    const res = await fetch(
+      `${API_BASE_URL}/api/categories/tier1/${id}`,
+      options
+    );
+    console.log(res, token);
+
+    if (res.ok) {
+      categoryName.value = '';
+      categoryImage.value = '';
+      document.querySelector('.category-add-modal').classList.add('hidden');
+      window.location.reload();
+    } else {
+      alert('다시 시도해주세요!');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // 미리보기 사진
 const imagePreview = (e) => {
@@ -162,6 +204,7 @@ const adminLogin = async () => {
   try {
     const res = await fetch(`${API_BASE_URL}/api/users/login`, options);
     const data = await res.json();
+    console.log(res);
     if (res.ok) {
       token = data.data.token;
     }
