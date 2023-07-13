@@ -1,11 +1,17 @@
 async function fetchTest() {
+
+console.log('fetchTestfetchTestfetchTestfetchTest');
+
   try {
-    const res = await fetch('http://127.0.0.1:5555/api/categories', {
+    const res = await fetch('http://kdt-sw-5-team02.elicecoding.com/api/categories', {
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
       },
     });
     const datas = await res.json();
+
+
+
     const data = datas.data;
     console.log('datas', datas);
     console.log('data', data);
