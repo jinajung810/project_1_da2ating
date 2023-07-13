@@ -1,6 +1,9 @@
+
+const token = sessionStorage.getItem('token');
+const isLoggedIn = token !== null && isValidToken(token);
+
 // 로그인 정보 가져오기
 const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-
 const infoForm = document.querySelector('.changeInfo');
 
 // 주소 검색 버튼
@@ -36,7 +39,7 @@ const handleInfoSubmit = async (event) => {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${userInfo.token}`
+          'Authorization': `${token}`
         },
         body: JSON.stringify(data)
       });
