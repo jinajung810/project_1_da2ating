@@ -66,19 +66,6 @@ const onGetOrder = async () => {
           </td>
         </tr>
         `;
-
-        const selected = document.querySelector(`#status-change${i}`);
-        for (let i = 0; i < selected.options.length; i++) {
-          console.log(selected.options[i].value, v.status);
-
-          if (selected.options[i].value === v.status) {
-            selected.options[i].selected = true;
-            selected.options[i].classList.add('selected');
-          } else {
-            selected.options[i].selected = false;
-            selected.options[i].classList.remove('selected');
-          }
-        }
       });
     } else {
       alert('다시 시도해주세요!');
