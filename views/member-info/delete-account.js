@@ -4,36 +4,24 @@ const isLoggedIn = token !== null && isValidToken(token);
 
 async function deleteAccount() {
     if(isLoggedIn){
-        try {
-            const res = await fetch('http://127.0.0.1:5555/api/users/my-info', {
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
-            });
-            const datas = await res.json();
-            const data = datas.data
-            console.log('data', data);
-            const confirmed = confirm(`${data.name}님 정말 탈퇴하시겠습니까?`);
-            const reasonCheckboxes = document.querySelectorAll('input[name="reason"]');
-            const commentInput = document.querySelector('input[name="comment"]');
-            if (confirmed) {
-                postDelete(data); // 회원 탈퇴 요청
-                reasonCheckboxes.forEach((checkbox) => {
-                    checkbox.checked = false;
-                  });
-                  // 텍스트 입력 필드 초기화
-                commentInput.value = '';
-                }
-        } catch (error) {
-            console.error('get 에러 발생', error);
+        const confirmed = confirm(`${data.name}님 정말 탈퇴하시겠습니까?`);
+        const reasonCheckboxes = document.querySelectorAll('input[name="reason"]');
+        const commentInput = document.querySelector('input[name="comment"]');
+        if (confirmed) {
+            postDelete(data); // 회원 탈퇴 요청
+            reasonCheckboxes.forEach((checkbox) => {
+                checkbox.checked = false;
+              });
+              // 텍스트 입력 필드 초기화
+            commentInput.value = '';
         }
-    } else{
+    }else{
         let answer = confirm("로그인이 필요한 페이지입니다.");
         if(answer === true){
           //로그인페이지로 이동(로그인창으로 이동 필요)
           location = 'http://127.0.0.1:5500/login-view.html'
         }else{
-          location= 'http://127.0.0.1:5500/main.html'
+          location = 'http://127.0.0.1:5500/main.html'
         }
     }
 }
@@ -47,6 +35,7 @@ async function postDelete(data) {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
+                'Authorization': `${token}`
             },
             // 요청에 필요한 데이터 전달
             body: JSON.stringify({

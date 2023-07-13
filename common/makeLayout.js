@@ -11,27 +11,27 @@ function initHeader() {
 
   const headerTags = `
     <nav class="header-top">
-        <a class="logo" href="/">
-            <img src="/resources/logo2.gif">
-        </a>
-        <div class="search">
-            <i class="fas fa-search" type="button" onclick="doSearch()"></i>
-            <input class="keyword" type="search" placeholder="상품검색" onkeyup="performSearch(event)">
-        </div>
-
-        <div class="form">
-            <p class="welcome">회원가입</p>
-            <button class="logout" type="submit" onclick="login()" style="cursor: pointer">로그인</button>
-            <a class="mypage" href="/views/member-info/mypage-view.html">
-                <span class="material-symbols-outlined" onclick="mypage()">face</span>
-            </a>
-            <a class="cart" href="/views/cart/cart.html">
-                <span class="material-symbols-outlined" onclick="mypage()">shopping_cart</span>
-            </a>
-        </div>
+      <a class="logo" href="/">
+          <img src="/resources/logo2.gif">
+      </a>
+      <div class="search">
+          <i class="fas fa-search" type="button" onclick="doSearch()"></i>
+          <input class="keyword" type="search" placeholder="상품검색" onkeyup="performSearch(event)">
+      </div>
+      <div class="form">
+          <p class="welcome">회원가입</p>
+          <button class="login" type="submit" onclick="login()" style="cursor: pointer">로그인</button>
+          <a class="mypage" href="/views/member-info/mypage-view.html">
+              <span class="material-symbols-outlined" onclick="mypage()">face</span>
+          </a>
+          <a class="cart" href="/views/cart/cart.html">
+              <span class="material-symbols-outlined" onclick="mypage()">shopping_cart</span>
+          </a>
+      </div>
     </nav>
-
-    <nav class="header-category"></nav>
+    <nav class="header2">
+      <div class="header-category"></div>
+    </nav>
   `;
 
   $header.innerHTML = headerTags;
