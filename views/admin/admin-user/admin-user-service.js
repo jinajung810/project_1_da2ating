@@ -33,10 +33,10 @@ const getUserData = async () =>{
                 <p id="user-name">이름: ${name}</p>
                 <p id="user-email">이메일: ${email}</p>
                 <p id="user-num">전화번호: ${phone}</p>
+                <p id="user-address">주소: ${address}</p>
                 <p id="user-date">가입일자: ${createdAt.split('T')[0]}</p>
             
-                <button class="modify-btn" id=mod${id} onclick="modifyUserData(${id})"}>회원 주문 정보</button>
-                <button class="delete-btn" id=del${id} onclick="deleteUserData(${id})"}>회원 삭제</button>
+                
               </div>
             </div>` 
 
