@@ -25,11 +25,11 @@ function initHeader() {
           <a href="http://127.0.0.1:5500/views/login/login.html">
             <button class="login" type="submit" onclick="login()" style="cursor: pointer">로그인</button>
           </a>
-          <a class="mypage" href="/views/member-info/mypage-view.html">
-              <span class="material-symbols-outlined" onclick="mypage()">face</span>
+          <a class="mypage" href="">
+              <span class="material-symbols-outlined" onclick="mypage(e)">face</span>
           </a>
-          <a class="cart" href="/views/cart/cart.html">
-              <span class="material-symbols-outlined" onclick="mypage()">shopping_cart</span>
+          <a class="cart" href="http://127.0.0.1:5500/views/cart/cart.html">
+              <span class="material-symbols-outlined" onclick="">shopping_cart</span>
           </a>
       </div>
     </nav>

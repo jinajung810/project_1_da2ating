@@ -1,8 +1,5 @@
 // 할인율이 높은 순서로 best product 생성
 
-
-
-
 async function fetchTest() {
   try {
     const res = await fetch('http://127.0.0.1:5555/api/products', {
@@ -28,8 +25,8 @@ function bestProduct (data) {
     if(bestData[i].discountRate){
       document.querySelector("#bestMenu").innerHTML += `<span class="bestMenu">
       <img src="http://127.0.0.1:5555${bestData[i].thumbnail.path}" href="" alt=${bestData[i].name}>
-      <a class="innerCart" href="">
-      <img src="../common/images/cart-icon.png">
+      <a class="innerCart" href="cartPage()">
+        <img src="/resources/icons/cart-icon.png">
       </a>
       <a href="">${bestData[i].name}</a>
       <label class="price">
@@ -43,7 +40,7 @@ function bestProduct (data) {
       return;
       // document.querySelector("#bestMenu").innerHTML += `<span class="bestMenu">
       // <img src="http://127.0.0.1:5555${bestData[i].thumbnail.path}" href="" alt=${bestData[i].name}>
-      // <a class="innerCart" href="">
+      // <a class="innerCart" href="cartPage()">
       // <img src="resources/icons/cart-icon.png">
       // </a>
       // <a href="">${bestData[i].name}</a>
@@ -56,23 +53,23 @@ function bestProduct (data) {
   }  
 }
 
-function addCart(e){
-  e.preventDefault();
-  const productInfo = {
-    imgSrc: e.target.preventNode.querySelector('#bestMenu img').src,
-    name: e.target.preventNode.querySelector('.name').textContent,
-    price: e.target.parentNode.querySelector('.discountPrice').textContent,
-    quantity: 1,
-    delivery: 3500,
-    inCart: 0,
-    basicPrice : e.target.parentNode.querySelector('.basicPrice').textContent,
-  }
-  if(isLoggedIn){
-    localStorage.setItem('selectedProduct', JSON.stringify(productInfo));
-    window.location.href = '../cart/cart.html';
-  }else{
-    sessionStorage.setItem('selectedProduct', JSON.stringify(productInfo));
-    window.location.href = '../cart/cart.html';
-  }
-}
+// function addCart(e){
+//   e.preventDefault();
+//   const productInfo = {
+//     imgSrc: e.target.preventNode.querySelector('#bestMenu img').src,
+//     name: e.target.preventNode.querySelector('.name').textContent,
+//     price: e.target.parentNode.querySelector('.discountPrice').textContent,
+//     quantity: 1,
+//     delivery: 3500,
+//     inCart: 0,
+//     basicPrice : e.target.parentNode.querySelector('.basicPrice').textContent,
+//   }
+//   if(isLoggedIn){
+//     localStorage.setItem('selectedProduct', JSON.stringify(productInfo));
+//     window.location.href = '/cart/cart.html';
+//   }else{
+//     sessionStorage.setItem('selectedProduct', JSON.stringify(productInfo));
+//     window.location.href = '/cart/cart.html';
+//   }
+// }
     
