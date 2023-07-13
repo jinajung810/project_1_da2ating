@@ -79,4 +79,35 @@ fetch('http://127.0.0.1:5555/api/products?category=64aa942d862807652685b488', {
       let totalPriceValue = saledPriceValue * cartCount;
       totalPrice.innerHTML = totalPriceValue.toLocaleString();
     });
+
+    // 장바구니에 추가
+    const btnCart = document.querySelector('.btnCart');
+    btnCart.addEventListener('click', () => {
+      // TODO confirm
+      cartInert(detailInfo[0], cartCountInput.value);
+    });
+
+    function cartInert(product, count) {
+
+      let cartItems = localStorage.getItem('productsInCart');
+      cartItems = JSON.parse(cartItems);
+
+      if (cartItems !== null) {
+        let currentProduct = product._id;
+        if (cartItems[currentProduct] !== undefined) {
+          cartItems = {
+            ...cartItems,
+            ...cartItems[currentProduct]
+          }
+        }
+        cartItems[currentProduct].inCart += Number(count);
+      } else {
+        product.inCart = Number(count);
+        cartItems = {
+          [product._id]: product
+        }
+      }
+
+      localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+    }
   })
