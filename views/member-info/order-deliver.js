@@ -7,6 +7,7 @@ async function fetchOrders() {
     const response = await fetch('http://127.0.0.1:5555/api/users/my-orders', {
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
+        'Authorization': `${token}`
       }
     });
     const orders = await response.json();

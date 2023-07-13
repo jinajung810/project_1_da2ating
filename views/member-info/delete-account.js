@@ -34,7 +34,7 @@ async function postDelete(data) {
         const res = await fetch('http://127.0.0.1:5555/api/users/my-info', {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json;charset=utf-8'
+                'Content-Type': 'application/json;charset=utf-8',
                 'Authorization': `${token}`
             },
             // 요청에 필요한 데이터 전달

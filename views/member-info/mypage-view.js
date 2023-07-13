@@ -1,8 +1,13 @@
+
+const token = sessionStorage.getItem('token');
+const isLoggedIn = token !== null && isValidToken(token);
+
 async function fetchTest() {
   try {
     const res = await fetch('http://127.0.0.1:5555/api/users/my-info', {
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
+        'Authorization': `${token}`
       },
     });
     const data = await res.json();
