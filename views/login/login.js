@@ -29,27 +29,29 @@ submitInput.addEventListener("click", async (event) => {
 
   // 로그인 요청
   try {
-    const response = await fetch('http://127.0.0.1:5555/api/login', {
+    const response = await fetch('http://127.0.0.1:5555/api/users/login', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization : null,
       },
       body: JSON.stringify({
         email: email,
         password: password
       })
     });
+    console.log(email, password)
 
     const data = await response.json();
-
+    console.log(data);
     // 서버 응답 처리
-    if (data.success) {
+    if (data.data !== null) {
       // 로그인 성공
       console.log('로그인 성공!');
-      sessionStorage.setItem('token', data.token);
+      sessionStorage.setItem('token', data.data.token);
       alert(`로그인되었습니다.`)
 
-      // window.location.href = "/";
+      window.location.href = "/";
       
     } else {
       // 로그인 실패
