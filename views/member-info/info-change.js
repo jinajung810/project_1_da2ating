@@ -1,6 +1,11 @@
 
 const token = sessionStorage.getItem('token');
 const isLoggedIn = token !== null && isValidToken(token);
+ 
+// 토큰 유효성 검사 로직 작성
+function isValidToken(token) {
+  return token !== null && token !== undefined && token.trim() !== '';
+}
 
 // 로그인 정보 가져오기
 const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -34,27 +39,36 @@ const handleInfoSubmit = async (event) => {
     addressDetail,
   };
     // 서버로 데이터 전송
-    try {
-      const response = await fetch('http://127.0.0.1:5555/api/users/my-info', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `${token}`
-        },
-        body: JSON.stringify(data)
-      });
-      if (response.ok) {
-        // 변경 성공 시 이벤트 작성
-        alert('회원정보 수정이 완료되었습니다.');
-        location.href = 'http://127.0.0.1:5500/f2ting_client/src/views/member-info/mypage-view.html';
-      } else {
-        alert('회원정보 수정에 실패했습니다.');
+    if(isLoggedIn){
+      try {
+        const response = await fetch('http://127.0.0.1:5555/api/users/my-info', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${token}`
+          },
+          body: JSON.stringify(data)
+        });
+        if (response.ok) {
+          // 변경 성공 시 이벤트 작성
+          alert('회원정보 수정이 완료되었습니다.');
+          location.href = 'http://127.0.0.1:5500/f2ting_client/src/views/member-info/mypage-view.html';
+        } else {
+          alert('회원정보 수정에 실패했습니다.');
+        }
+      } catch (err) {
+        console.error(`Error: ${err}`);
+      }  
+    }else{
+      let answer = confirm("로그인이 필요한 페이지입니다.");
+      if(answer === true){
+        //로그인페이지로 이동(로그인창으로 이동 필요)
+        location.href = 'http://127.0.0.1:5500/views/login/login.html'
+      }else{
+        location.href = 'http://127.0.0.1:5500/views/main/main.html'
       }
-    } catch (err) {
-      console.error(`Error: ${err}`);
-    }
+   }   
 }
-
 // 주소 검색 이벤트 리스너 작성
 function DaumPostcode() {
   new daum.Postcode({
