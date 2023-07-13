@@ -1,8 +1,9 @@
 #slide {
-    width:100%;
+    width:1000px;
     padding: 0 5px;
     position: relative;
     display: flex;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 #slide p{
@@ -23,13 +24,13 @@
 .leftBtn > span{
 
     left: 1.5%;
-    transform: translate(0,50%);
+    transform: translate(0,-200%);
     background-color: #ffffff00;
 }
 
 .rightBtn > span{
     right: 1.5%;
-    transform: translate(0,50%);
+    transform: translate(0,-200%);
     background-color: #ffffff00;
 }
 

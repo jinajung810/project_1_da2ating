@@ -1,18 +1,17 @@
 
 const token = sessionStorage.getItem('token');
-const isLoggedIn = token !== null && isValidToken(token);
- 
-// 토큰 유효성 검사 로직 작성
+
+// 토큰 유효성 검사 함수
 function isValidToken(token) {
   return token !== null && token !== undefined && token.trim() !== '';
 }
-
 console.log(isLoggedIn)
 console.log(token)
 
+
   // 로그아웃 버튼 클릭 이벤트 등록
 function logout() {
-  if(isLoggedIn){
+  if(isValidToken(token)){
     const logout = document.querySelector(".logout");
 
 // 로그아웃 버튼 클릭 이벤트 핸들러 추가
@@ -26,9 +25,10 @@ function logout() {
   });
 }}
 
+
 function mypage(e){
   e.preventDefault()
-  if(isLoggedIn){
+  if(isValidToken(token)){
       async function fetchOrders() {
         try {
           const response = await fetch('http://127.0.0.1:5555/api/users/my-orders', {

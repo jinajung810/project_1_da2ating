@@ -1,4 +1,3 @@
-
 // 토큰 가져오기
 const token = sessionStorage.getItem('token');
 
@@ -11,8 +10,10 @@ if (isValidToken(token)) {
   fetchMemberInfo();
 } else {
   // 로그인되지 않은 상태 처리
-  console.log('로그인되지 않은 상태입니다.');
+  alert('로그인이 필요한 페이지입니다.');
+  location.href = 'http://127.0.0.1:5500/views/login/login.html'
 }
+
 // 회원정보 조회 함수
 async function fetchMemberInfo() {
   try {
@@ -22,11 +23,12 @@ async function fetchMemberInfo() {
         'Authorization': `Bearer ${token}`
       }
     });
+
     if (response.ok) {
-      const data = await response.json();
+      const orders = await response.json();
       console.log('orders:', orders);
       // 회원정보를 화면에 표시하는 함수 호출
-      fetchOrders();
+      fetchOrders(orders);
     } else {
       // 회원정보 조회 실패 처리
       console.error('회원정보 조회 실패');
@@ -36,34 +38,28 @@ async function fetchMemberInfo() {
   }
 }
 
-if(isLoggedIn){
-  async function fetchOrders() {
-    try {
-      const response = await fetch('http://127.0.0.1:5555/api/users/my-orders', {
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-          'Authorization': `${token}`
-        }
-      });
-      const orders = await response.json();
-      console.log('orders', orders);
-      fetchOrders();
-      return orders;
-    } catch (error) {
-      console.error('Error fetching orders', error);
-      return [];
+async function fetchOrders(orders) {
+  try {
+    const response = await fetch('http://127.0.0.1:5555/api/users/my-orders', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (response.ok) {
+      orders = await response.json();
+      console.log('orders:', orders);
+      // 주문정보를 화면에 표시하는 함수 호출
+      orderView(orders);
+    } else {
+      // 주문정보 조회 실패 처리
+      console.error('주문정보 조회 실패');
     }
-  }
-} else{
-  let answer = confirm("로그인이 필요한 페이지입니다.");
-  if(answer === true){
-    //로그인페이지로 이동(로그인창으로 이동 필요)
-    location.href = 'http://127.0.0.1:5500/views/login/login.html'
-  }else{
-    location.href = 'http://127.0.0.1:5500/views/main/main.html'
+  } catch (error) {
+    console.error('주문정보 조회 에러:', error);
   }
 }
-
 //달력에서 시작날짜와 종료날짜 지정
 function getSelectedDateRange() {
   const startDate = document.querySelector('input[name="startDate"]').value;
