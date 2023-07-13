@@ -1,4 +1,10 @@
-fetch('http://127.0.0.1:5555/api/products?category=64aa942d862807652685b488', {
+const receivedDetailData = location.href.split('?')[1];
+console.log(receivedDetailData); // data
+
+// 전달받은 데이터가 한글일 경우
+console.log(decodeURI(receivedDetailData));
+
+fetch(`http://127.0.0.1:5555/api/products/${receivedDetailData}`, {
   method: 'GET',
   headers: {
     'Content-Type': 'application/json;charset=utf-8'
@@ -7,20 +13,20 @@ fetch('http://127.0.0.1:5555/api/products?category=64aa942d862807652685b488', {
   .then((res)=> res.json())
   .then((data)=>{
     const detailInfo = data.data; 
-    console.log(detailInfo)
+    console.log('detailInfo', detailInfo)
 
     document.getElementById("productImg").innerHTML = `
-    <img src="./images/salad-detail-item01.jpg" alt="">
+    <img src="http://127.0.0.1:5555${detailInfo.thumbnail.path}" alt="">
     `
 
-    const saledPriceValue = detailInfo[0].originPrice - (detailInfo[0].originPrice * (detailInfo[0].discountRate / 100))
+    const saledPriceValue = detailInfo.originPrice - (detailInfo.originPrice * (detailInfo.discountRate / 100))
     const saledPrice = saledPriceValue.toLocaleString()
 
     document.getElementById("productInfo").innerHTML = `
-    <h2>${detailInfo[0].name}</h2>
-    <span>${detailInfo[0].discountRate}%</span>
+    <h2>${detailInfo.name}</h2>
+    <span>${detailInfo.discountRate}%</span>
     <div class="productPrice">
-      <p>${detailInfo[0].originPrice}<span>원</span></p>
+      <p>${detailInfo.originPrice}<span>원</span></p>
       <strong>${saledPrice}<span>원</span></strong>
     </div>
 
@@ -34,7 +40,7 @@ fetch('http://127.0.0.1:5555/api/products?category=64aa942d862807652685b488', {
     </div>
 
     <div class="count">
-      <p>${detailInfo[0].name}</p>
+      <p>${detailInfo.name}</p>
       <div class="btnCount">
         <button class="minus"></button>
         <input type="text" value="1" class="cartCount"></input>
@@ -50,15 +56,17 @@ fetch('http://127.0.0.1:5555/api/products?category=64aa942d862807652685b488', {
     </div>
     `
 
-    document.getElementById("desImg").innerHTML = `
-    <img src="./images/rice_detail__intro02.jpg" alt="">
-    `
+    for(let i = 0; i < detailInfo.descriptions.length; i++) {
+      document.getElementById("desImg").innerHTML += `
+      <img src="http://127.0.0.1:5555${detailInfo.descriptions[i].path}" alt="">
+      `
+    }
 
     // 상품 수량 버튼 클릭 이벤트 처리 
     const minusBtn = document.querySelector('.minus')
     const plusBtn = document.querySelector('.plus')
     const cartCountInput = document.querySelector('.cartCount');
-    const totalPrice = document.querySelector('.totalPrice')
+    const totalPrice = document.querySelector('.totalPrice');
 
     // minus 버튼 클릭 이벤트 처리
     minusBtn.addEventListener('click', function() {

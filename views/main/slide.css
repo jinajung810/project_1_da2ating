@@ -2,10 +2,10 @@
     width:100%;
     padding: 0 5px;
     position: relative;
-    margin: 0 0 -50px 0;
+    display: flex;
+    flex-wrap: wrap;
 }
-
-#slide i{
+#slide p{
     font-size: 30px;
 }
 
@@ -14,25 +14,22 @@
     overflow: hidden;
     border-radius: 15px;
 }
-
 #slide .slider-container span{
     position: absolute;
     z-index: 1;
-    top:50%;
+    top: 50%;
     cursor: pointer;
 }
-
 .leftBtn > span{
+
     left: 1.5%;
-    transform: translate(0,350%);
-    border-radius: 100%;
+    transform: translate(0,50%);
     background-color: #ffffff00;
 }
 
 .rightBtn > span{
     right: 1.5%;
-    transform: translate(0,350%);
-    border-radius: 100%;
+    transform: translate(0,50%);
     background-color: #ffffff00;
 }
 
@@ -73,7 +70,7 @@
     margin:0 0 10px 0;
 }
 
-/*하단바*/
+/* 하단바
 .pagination{
     display:flex;
     position: absolute;
@@ -90,4 +87,4 @@
 
 .pagination .active{
     background:#000;
-}
+} */
