@@ -7,13 +7,6 @@ const deliveryFee = document.querySelector('#delivery');
 const totalPrice = document.querySelector('#item-img');
 const cbArr = document.getElementsByName('price');
 
-// 장바구니에 담겨있는 임시 데이터
-const salad = [
-    { imgSrc: 'https://via.placeholder.com/150', name: "닭가슴살 샐러드 ", price: 18900, quantity: 1, delivery: 3500, inCart: 0 },
-    { imgSrc: 'https://via.placeholder.com/150', name: "단호박 샐러드", price: 15800, quantity: 3, delivery: 0, inCart: 0 },
-    { imgSrc: 'https://via.placeholder.com/150', name: "리코타치즈 샐러드", price: 19800, quantity: 5, delivery: 3500, inCart: 0  },
-];
-
 // 장바구니 클릭
 carts.forEach((v, i)=>{
     v.addEventListener('click', () => {
