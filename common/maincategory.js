@@ -26,9 +26,11 @@ function categoryAdd(data) {
     categoryContent.textContent = `${data[i].name}`;
     const sanitizedToken = data[i].name.replace(/[\s<>]/g, '_');
     categoryContent.classList.add(sanitizedToken);
-    categoryContent.href = data[i]._id;
+    // categoryContent.href = data[i]._id;
+    categoryContent.href = `../product-list/product-list.html?${data[i]._id}`;
     category.appendChild(categoryContent);
   }
+
 
   // 카테고리 클릭 시 글자색 변화
   const categoryLinks = document.querySelectorAll('.category a');
