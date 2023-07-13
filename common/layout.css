@@ -1,4 +1,7 @@
 /* 헤더로고 */
+header{
+  position: relative;
+}
 .header-top {
     display: flex;
     align-items: center;
@@ -18,6 +21,14 @@
     position: relative;
     width: 250px;
 }
+.header-top .search .fa-search {
+  position: absolute;
+  left: 220px;
+  top: 25px;
+  margin: 0;
+  border-radius: 100%;
+  cursor: pointer;
+}
 .header-top .search input {
     border-radius: 20px;
     border: 4px solid #10a2a7;
@@ -32,14 +43,6 @@
     font-size: 20px;
     color: rgb(14, 81, 83);
 }
-.header-top .search .fa-search {
-    position: absolute;
-    left: 220px;
-    top: 25px;
-    margin: 0;
-    border-radius: 100%;
-    cursor: pointer;
-}
 .header-top .form {
     flex: 1;
     display: flex;
@@ -52,7 +55,7 @@
     margin: 20px;
     font-size: 18px;
 }
-.header-top .form .logout{
+.header-top .form .login{
     width: 100px;
     height: 40px;
     border-radius: 5px;
@@ -74,27 +77,27 @@
 }
 
 /* 헤더 카테고리 */
-.header-category {
+.header2 {
     position: relative;
-    margin-top: 100px;
+    margin: 30px 0;
     border-bottom: 1px solid #e2e2e2;
-    height: 60px;
+    height: 100px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
 }
-
 .header-category {
     display: flex;
-    margin-left: 80px;
+    margin-left: 150px;
+    margin-right: 150px;
     justify-content: space-between;
     align-items: center;
     padding: 10px 50px 50px 0px;
 }
 .header-category > a {
-    font-size : 16px;
+    font-size : 20px;
     color:#10a2a7;
-    padding: 0 80px;
+    padding: 0 60px;
     font-weight: bold;
 }
 .header-category > a.clicked {
@@ -107,8 +110,10 @@ aside {
     margin-left: 10px;
     box-sizing: border-box;
 
+
 }
-.menu-side {    /*사이드바고정*/
+/*사이드바고정*/
+.menu-side {
     line-height: 30px;
     position: fixed;
     right: 100px;
@@ -140,18 +145,21 @@ aside {
 
 
 
-
-
 /* footer */
 footer {
     width: 100%;
     background: #f7f7f7;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   footer .inner {
     padding: 40px 0;
+    background: #f7f7f7;
   }
   footer .top {
     position: relative;
+    background: #f7f7f7;
   }
   footer .top::after {
     content: "";
@@ -163,43 +171,56 @@ footer {
   }
   footer .top .footerMenu {
     display: flex;
+    color:#999;
+    background: #f7f7f7;
+    background: #f7f7f7;
   }
   footer .top .footerMenu li {
     margin-right: 40px;
+    background: #f7f7f7;
+    background: #f7f7f7;
   }
   footer .top .footerMenu li:last-child {
     margin-right: 0;
+    background: #f7f7f7;
   }
   footer .top .footerMenu li a {
     color:#999;
     letter-spacing: -.8px;
+    background: #f7f7f7;
   }
   footer .top .sns {
     position: absolute;
     top: 0;
     right: 0;  
     display: flex;
+    background: #f7f7f7;
   }
   footer .top .sns li {
     margin-left: 10px;
+    background: #f7f7f7;
   }
   footer .top .sns li a img {
     width: 30px;
     height: 30px;
+    background: #f7f7f7;
   }
   footer .companyInfo {
     margin-top: 40px;
     position: relative;
+    background: #f7f7f7;
   }
   footer .companyInfo .infoList {
     display: flex;
     margin-bottom: 7px;
+    background: #f7f7f7;
   }
   footer .companyInfo .infoList li {
     font-size: 15px;
     color: #999;
     margin-right: 28px;
     position: relative;
+    background: #f7f7f7;
   }
   footer .companyInfo .infoList li::after {
     content:"";
@@ -221,6 +242,7 @@ footer {
   }
   footer .companyInfo .infoList li span {
     font-weight: 700;
+    background: #f7f7f7;
   }
   footer .companyInfo .infoList li button {
     width: 105px;
@@ -231,22 +253,27 @@ footer {
     cursor: pointer;
     font-size: 13px;
     text-align: center;
+    background: #f7f7f7;
   }
   
   footer .companyInfo .copyright {
     font-weight: 400;
     color:#999;
+    background: #f7f7f7;
   }
   footer .companyInfo .copyright span {
     font-weight: 700;
+    background: #f7f7f7;
   }
   
   footer .companyInfo .footerLogo {
     position: absolute;
     right: 0;
     top: 0;
+    background: #f7f7f7;
   }
   footer .companyInfo .footerLogo img {
     width: 100px;
     height: 100px;
+    background: #f7f7f7;
   }
