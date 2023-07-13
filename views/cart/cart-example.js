@@ -1,51 +1,51 @@
-initTestProductList();
+//initTestProductList();
 
-async function initTestProductList() {
-  const res = await fetch('http://kdt-sw-5-team02.elicecoding.com/api/products');
-  const resJson = await res.json();
-  let productTags = '';
-  resJson.data.forEach(item => {
-    productTags += `
-      <li>
-        <span>${item.name}</span>
-        <button onclick="confirmCart(this)" data-id="${item._id}">장바구니에 추가</button>
-      </li>
-    `;
-  });
-  document.querySelector('#testProductList').innerHTML = productTags;
-}
+//async function initTestProductList() {
+//  const res = await fetch('http://kdt-sw-5-team02.elicecoding.com/api/products');
+//  const resJson = await res.json();
+//  let productTags = '';
+//  resJson.data.forEach(item => {
+//    productTags += `
+//      <li>
+//        <span>${item.name}</span>
+//        <button onclick="confirmCart(this)" data-id="${item._id}">장바구니에 추가</button>
+//      </li>
+//    `;
+//  });
+//  document.querySelector('#testProductList').innerHTML = productTags;
+//}
 
-async function confirmCart(elm) {
-  const productId = elm.getAttribute('data-id');
+//async function confirmCart(elm) {
+//  const productId = elm.getAttribute('data-id');
 
-  const res = await fetch(`http://kdt-sw-5-team02.elicecoding.com/api/products/${productId}`);
-  const resJson = await res.json();
-  const productInfo = resJson.data;
+//  const res = await fetch(`http://kdt-sw-5-team02.elicecoding.com/api/products/${productId}`);
+//  const resJson = await res.json();
+//  const productInfo = resJson.data;
 
-  if (window.confirm("장바구니에 담으시겠습니까?")) {
-    addCart(productInfo);
-  }
-}
+//  if (window.confirm("장바구니에 담으시겠습니까?")) {
+//    addCart(productInfo);
+//  }
+//}
 
-function addCart(productInfo) {
-  const prevProducts = getProductsInCart();
-  const sameProductIndex = prevProducts.findIndex(item => item.productInfo._id === productInfo._id);
+//function addCart(productInfo) {
+//  const prevProducts = getProductsInCart();
+//  const sameProductIndex = prevProducts.findIndex(item => item.productInfo._id === productInfo._id);
 
-  if (sameProductIndex === -1) {
-    const newProducts = [
-      ...prevProducts,
-      { productInfo: productInfo, amount: 1 }
-    ];
-    setProductsInCart(newProducts);
+//  if (sameProductIndex === -1) {
+//    const newProducts = [
+//      ...prevProducts,
+//      { productInfo: productInfo, amount: 1 }
+//    ];
+//    setProductsInCart(newProducts);
 
-  } else {
-    prevProducts[sameProductIndex].amount += 1;
-    setProductsInCart(prevProducts);
+//  } else {
+//    prevProducts[sameProductIndex].amount += 1;
+//    setProductsInCart(prevProducts);
 
-  }
+//  }
 
-  location.reload();
-}
+//  location.reload();
+//}
 
 /////////////////////////////////////////////////////////////////////
 const $receiptPrice = document.querySelector('#receipt-price');

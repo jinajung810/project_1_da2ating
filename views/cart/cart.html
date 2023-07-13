@@ -7,8 +7,16 @@
 		<link rel="stylesheet" href="cart.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+		
+		<!-- Common Import -->
+    <link rel="stylesheet" href="/common/common.css">
+    <link rel="stylesheet" href="/common/layout.css">
+    <script src="/common/makeLayout.js" defer></script>
+    <script src="/common/maincategory.js" defer></script>
+		
 		<!--<script src="cart-feat.js" defer></script>-->
 		<script src="cart-example.js" defer></script>
+		
 		<style>
       @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
     </style>
@@ -31,8 +39,12 @@
   	<input type="hidden" value="15800" />
 	<a class="add-cart" href="#">리코타치즈 샐러드 (19800)</a>
   	<input type="hidden" value="19800" />-->
-		<ul id="testProductList"></ul>
+		<!--<ul id="testProductList"></ul>-->
 	<!-- 장바구니 테스트 -->
+	
+	<!-- 메인 상단 -->
+	<header id="header"></header>
+	<aside id="sidebar"></aside>
 
 	<section class="container">
 		<div class="content">
@@ -125,6 +137,8 @@
 			</div>
 			<div id="chickenCategory"></div>
 		</div>
+		
+		<footer id="footer"></footer>
 	</section>
 </body>
 </html>
