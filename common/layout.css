@@ -155,9 +155,11 @@ footer {
   }
   footer .inner {
     padding: 40px 0;
+    background: #f7f7f7;
   }
   footer .top {
     position: relative;
+    background: #f7f7f7;
   }
   footer .top::after {
     content: "";
@@ -169,44 +171,56 @@ footer {
   }
   footer .top .footerMenu {
     display: flex;
-    color:#999
+    color:#999;
+    background: #f7f7f7;
+    background: #f7f7f7;
   }
   footer .top .footerMenu li {
     margin-right: 40px;
+    background: #f7f7f7;
+    background: #f7f7f7;
   }
   footer .top .footerMenu li:last-child {
     margin-right: 0;
+    background: #f7f7f7;
   }
   footer .top .footerMenu li a {
     color:#999;
     letter-spacing: -.8px;
+    background: #f7f7f7;
   }
   footer .top .sns {
     position: absolute;
     top: 0;
     right: 0;  
     display: flex;
+    background: #f7f7f7;
   }
   footer .top .sns li {
     margin-left: 10px;
+    background: #f7f7f7;
   }
   footer .top .sns li a img {
     width: 30px;
     height: 30px;
+    background: #f7f7f7;
   }
   footer .companyInfo {
     margin-top: 40px;
     position: relative;
+    background: #f7f7f7;
   }
   footer .companyInfo .infoList {
     display: flex;
     margin-bottom: 7px;
+    background: #f7f7f7;
   }
   footer .companyInfo .infoList li {
     font-size: 15px;
     color: #999;
     margin-right: 28px;
     position: relative;
+    background: #f7f7f7;
   }
   footer .companyInfo .infoList li::after {
     content:"";
@@ -228,6 +242,7 @@ footer {
   }
   footer .companyInfo .infoList li span {
     font-weight: 700;
+    background: #f7f7f7;
   }
   footer .companyInfo .infoList li button {
     width: 105px;
@@ -238,22 +253,27 @@ footer {
     cursor: pointer;
     font-size: 13px;
     text-align: center;
+    background: #f7f7f7;
   }
   
   footer .companyInfo .copyright {
     font-weight: 400;
     color:#999;
+    background: #f7f7f7;
   }
   footer .companyInfo .copyright span {
     font-weight: 700;
+    background: #f7f7f7;
   }
   
   footer .companyInfo .footerLogo {
     position: absolute;
     right: 0;
     top: 0;
+    background: #f7f7f7;
   }
   footer .companyInfo .footerLogo img {
     width: 100px;
     height: 100px;
+    background: #f7f7f7;
   }
