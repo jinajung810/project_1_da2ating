@@ -89,8 +89,12 @@
                         </table>
                       </form>
                       <div>
-                        <button type="reset" href="http://127.0.0.1:5500/f2ting_client/src/views/member-info/mypage-view.html">이전으로</button>
-                        <button type="submit" onclick="deleteAccount()">탈퇴</button>
+                        <a href="http://127.0.0.1:5500/views/member-info/mypage-view.html">
+                          <button type="reset">취소</button>
+                        </a>
+                        <a href="">
+                          <button class="deleteBtn" type="submit" onclick="fetchMemberInfo()">탈퇴</button>
+                        </a>
                       </div>
                     </article>
                 </main>

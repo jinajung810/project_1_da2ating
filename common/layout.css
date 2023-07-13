@@ -109,11 +109,11 @@ aside {
     width: 200px;
     margin-left: 10px;
     box-sizing: border-box;
-
-
 }
+
 /*사이드바고정*/
 .menu-side {
+    justify-content: start;
     line-height: 30px;
     position: fixed;
     right: 100px;
@@ -152,13 +152,14 @@ footer {
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 100px;
   }
   footer .inner {
     padding: 40px 0;
     background: #f7f7f7;
   }
   footer .top {
-    position: relative;
+    position:relative;
     background: #f7f7f7;
   }
   footer .top::after {
@@ -176,7 +177,7 @@ footer {
     background: #f7f7f7;
   }
   footer .top .footerMenu li {
-    margin-right: 40px;
+    margin-left: 40px;
     background: #f7f7f7;
     background: #f7f7f7;
   }
@@ -218,7 +219,7 @@ footer {
   footer .companyInfo .infoList li {
     font-size: 15px;
     color: #999;
-    margin-right: 28px;
+    margin-left: 28px;
     position: relative;
     background: #f7f7f7;
   }
@@ -259,6 +260,7 @@ footer {
   footer .companyInfo .copyright {
     font-weight: 400;
     color:#999;
+    margin-left: 10px;
     background: #f7f7f7;
   }
   footer .companyInfo .copyright span {
