@@ -1,7 +1,5 @@
+
 async function fetchTest() {
-
-console.log('fetchTestfetchTestfetchTestfetchTest');
-
   try {
     const res = await fetch('http://kdt-sw-5-team02.elicecoding.com/api/categories', {
       headers: {
@@ -9,13 +7,11 @@ console.log('fetchTestfetchTestfetchTestfetchTest');
       },
     });
     const datas = await res.json();
-
-
-
     const data = datas.data;
     console.log('datas', datas);
     console.log('data', data);
     categoryAdd(data);
+
   } catch (error) {
     console.error('get 에러 발생', error);
   }
@@ -24,7 +20,7 @@ console.log('fetchTestfetchTestfetchTestfetchTest');
 fetchTest();
 
 function categoryAdd(data) {
-  const category = document.querySelector('.category');
+  const category = document.querySelector('.header-category');
   for (let i = 0; i < data.length; i++) {
     const categoryContent = document.createElement('a');
     categoryContent.textContent = `${data[i].name}`;

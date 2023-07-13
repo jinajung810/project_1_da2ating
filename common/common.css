@@ -1,0 +1,79 @@
+/* material-icons */
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+      local('MaterialIcons-Regular'),
+      url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+      url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+      url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+}
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    /* font-size: 24px;  Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+  
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+  
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+/* 폰트 */
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+/* 전체 */
+* {
+    background-color: #FFF;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: 40;
+    line-height: 1.5;
+    margin:0;
+    padding: 0;
+    width: 1200px;
+    font-family: "Noto Sans KR", sans-serif !important;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+.division {
+    display: flex;
+    flex-direction: row;
+    align-content: start;
+}
+.wrap {
+    /* display: inline-block;
+    padding-top: 40px;
+    height: 100%;
+    flex-wrap: wrap;
+    position:relative;
+    min-width: 1200px; */
+}
+a {
+    text-decoration: none;
+    color:#000000
+}
+

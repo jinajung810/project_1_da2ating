@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>da2ating</title>
 
+  <link rel="stylesheet" href="../main/mainstyle.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +21,7 @@
 <body>
 
     <!-- HEADER -->
-  <header></header>
+  <header id="header"></header>
 
   <section class="loginPage">
     <div class="inner">
@@ -39,14 +40,10 @@
   </section>
 
   <!-- FOOTER -->
-  <footer></footer>
+  <footer id="footer"></footer>
 
-  <script>
-    const footer = document.querySelector('footer');
-    
-    fetch('/f2ting_client/src/views/common/footer.html')
-      .then(res => res.text())
-      .then(data => footer.innerHTML = data);
-  </script>
+  <script src="../../common/makeLayout.js"></script>
+  <script src="../../common/maincategory.js"></script>
+
 </body>
 </html>
