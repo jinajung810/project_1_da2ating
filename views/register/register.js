@@ -1,3 +1,5 @@
+const API_BASE_URL = 'http://127.0.0.1:5555';
+
 // 회원가입 정보
 const userName = document.querySelector('#userName');
 const userEmail = document.querySelector('#userEmail');
@@ -27,11 +29,46 @@ const validatePassword = (pw) => {
   return valid.test(pw);
 };
 
-// 이메일 중복검사 -> 추후 예정
+// 이메일 중복검사
+const emailDoubleCheck = async () => {
+  const userData = {
+    email: userEmail.value,
+  };
+
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: null,
+    },
+    body: JSON.stringify(userData),
+  };
+
+  try {
+    const res = await fetch(
+      `${API_BASE_URL}/api/users/sign-up/duplicated-email-check`,
+      options
+    );
+    const data = await res.json();
+    console.log(userEmail.value, data);
+    // 가입 성공 시 페이지 이동
+    if (res.ok) {
+      return data.data.isExists;
+    } else {
+      alert('다시 시도해주세요!');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // input 유효성 이벤트
 const onEmailInput = (e) => {
   if (!validateEmail(e.target.value)) {
     userEmailError.textContent = '올바른 이메일을 입력해주세요';
+    userEmail.focus();
+  } else if (emailDoubleCheck()) {
+    userEmailError.textContent = '중복된 이메일입니다.';
     userEmail.focus();
   } else {
     userEmailError.textContent = '';
@@ -87,6 +124,8 @@ const onSubmit = async (e) => {
     return;
   } else if (!validatePassword(userPw.value)) {
     return;
+  } else if (emailDoubleCheck()) {
+    return;
   }
 
   // 유효성 검사 통과시 회원가입 api 요청
@@ -106,7 +145,7 @@ const onSubmit = async (e) => {
   };
 
   try {
-    const res = await fetch('http://127.0.0.1:5555/api/users/sign-up', options);
+    const res = await fetch(`${API_BASE_URL}/api/users/sign-up`, options);
 
     // 가입 성공 시 페이지 이동
     if (res.ok) {

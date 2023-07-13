@@ -72,14 +72,16 @@ td > .important {
 
 /* 버튼 */
 
-#submitButton {
+.register-box button {
   border: 0 none;
   cursor: pointer;
   color: white;
   border: none;
   border-radius: 4px;
   background: #00af85;
+}
 
+#submitButton {
   display: inline-block;
   font-size: 20px;
   font-weight: 500;
@@ -87,4 +89,11 @@ td > .important {
   height: 3.5rem;
   margin: 5rem 0 0 0;
   padding: 5px 10px;
+}
+
+.email-check-button {
+  width: 70px;
+  height: 30px;
+  padding: 5px 5px;
+  position: fixed;
 }
