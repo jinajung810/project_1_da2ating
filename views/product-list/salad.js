@@ -7,7 +7,7 @@ fetch('http://127.0.0.1:5555/api/categories?category=64aa942d862807652685b488', 
   .then((res) => res.json())
   .then((data) => {
     const saladCategory = data.data;
-    console.log(saladCategory)
+    // console.log(saladCategory)
 
     document.getElementById("saladCategory").innerHTML += `
       <h2>${saladCategory[0].name}</h2>
@@ -35,7 +35,7 @@ fetch('http://127.0.0.1:5555/api/categories?category=64aa942d862807652685b488', 
         const saledPrice = saledPriceValue.toLocaleString()
         document.getElementById("salad").innerHTML += `
           <li>
-            <a href="javascript:void(0)">
+            <a href="../product-detail/product-detail.html">
               <img src= './images/salad-list-item01.jpg' alt="" />
               <h3>${saladListInfo[i].name}</h3>
             </a>

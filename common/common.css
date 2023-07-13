@@ -65,12 +65,12 @@ html, body{
     align-content: start;
 }
 .wrap {
-    /* display: inline-block;
+    display: inline-block;
     padding-top: 40px;
     height: 100%;
     flex-wrap: wrap;
     position:relative;
-    min-width: 1200px; */
+    min-width: 1200px;
 }
 a {
     text-decoration: none;
