@@ -91,31 +91,29 @@ fetch(`http://127.0.0.1:5555/api/products/${receivedDetailData}`, {
     // 장바구니에 추가
     const btnCart = document.querySelector('.btnCart');
     btnCart.addEventListener('click', () => {
-      // TODO confirm
-      cartInert(detailInfo[0], cartCountInput.value);
+      if (window.confirm("장바구니에 담으시겠습니까?")) {
+        addCart(detailInfo, Number(cartCountInput.value));
+      }
     });
 
-    function cartInert(product, count) {
+    function addCart(productInfo, count) {
+      let prevProducts = localStorage.getItem('cartProducts');
+      prevProducts = (prevProducts === null) ? [] : JSON.parse(prevProducts);
 
-      let cartItems = localStorage.getItem('productsInCart');
-      cartItems = JSON.parse(cartItems);
+      const sameProductIndex = prevProducts.findIndex(item => item.productInfo._id === productInfo._id);
+      if (sameProductIndex === -1) {
+        const newProducts = [
+          ...prevProducts,
+          { productInfo: productInfo, amount: count }
+        ];
+        localStorage.setItem('cartProducts', JSON.stringify(newProducts));
 
-      if (cartItems !== null) {
-        let currentProduct = product._id;
-        if (cartItems[currentProduct] !== undefined) {
-          cartItems = {
-            ...cartItems,
-            ...cartItems[currentProduct]
-          }
-        }
-        cartItems[currentProduct].inCart += Number(count);
       } else {
-        product.inCart = Number(count);
-        cartItems = {
-          [product._id]: product
-        }
+        prevProducts[sameProductIndex].amount += count;
+        localStorage.setItem('cartProducts', JSON.stringify(prevProducts));
+
       }
 
-      localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+      alert('장바구니에 상품이 추가되었습니다.');
     }
   })
