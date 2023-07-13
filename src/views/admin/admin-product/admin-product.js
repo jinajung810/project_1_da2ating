@@ -17,7 +17,6 @@ const onGetProduct = async () => {
   try {
     const res = await fetch(`${API_BASE_URL}/api/products`, options);
     const data = await res.json();
-    console.log(data.data);
     if (res.ok) {
       data.data.forEach((v, i) => {
         productList.innerHTML += `
