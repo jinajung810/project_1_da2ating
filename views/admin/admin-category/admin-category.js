@@ -3,14 +3,17 @@ const API_BASE_URL = 'http://127.0.0.1:5555';
 const categoryList = document.querySelector('#category-list');
 const categoryName = document.querySelector('#categoryName');
 const categoryImage = document.querySelector('#categoryImage');
+const categoryChangeName = document.querySelector('#change-categoryName');
 const preview = document.querySelector('#image-preview');
 const img = document.createElement('img');
 
 // 버튼
 const submitButton = document.querySelector('#submitButton');
 const changeBtn = document.querySelector('#changeBtn');
+const changeSubmitButton = document.querySelector('#changeSubmitButton');
 
 let token = '';
+let selectedId = '';
 
 // 카테고리 삭제
 const onDeleteCategory = async (id) => {
@@ -58,23 +61,19 @@ const onGetCategory = async () => {
           // 이미지가 있는 경우에만 출력함
           let image =
             v.bannerImage !== null
-              ? `<img src="${v.bannerImage.path}" alt="${v.bannerImage.originalName}" />`
+              ? `<img src="http://127.0.0.1:5555${v.bannerImage.path}" alt="${v.bannerImage.originalName}" />`
               : '';
 
           categoryList.innerHTML += `
         <li>
             <span>${v.name}</span>
             <div id="category-buttons">
-                <button id="changeBtn" >수정</button>
+                <button id="changeBtn" onclick = "changeOpen('${v._id}', '${v.name}')">수정</button>
                 <button id="deleteBtn" onclick="onDeleteCategory('${v._id}')">삭제</button>
             </div>
         </li>
-        <div>${image}</div>
+        
     `;
-          // 삭제 이벤트 추가
-          // document
-          //   .querySelector('#deleteBtn')
-          //   .addEventListener('click', () => onDeleteCategory(v._id));
         });
     } else {
       alert('다시 시도해주세요!');
@@ -96,9 +95,9 @@ const onAddCategory = async (e) => {
   let formData = new FormData();
 
   formData.append('name', categoryName.value);
-  if (categoryImage.files.length !== 0) {
-    formData.append('bannerImage', categoryImage.files[0]);
-  }
+  // if (categoryImage.files.length !== 0) {
+  //   formData.append('bannerImage', categoryImage.files[0]);
+  // }
 
   const options = {
     method: 'POST',
@@ -114,7 +113,7 @@ const onAddCategory = async (e) => {
 
     if (res.ok) {
       categoryName.value = '';
-      categoryImage.value = '';
+      //categoryImage.value = '';
       document.querySelector('.category-add-modal').classList.add('hidden');
       window.location.reload();
     } else {
@@ -129,17 +128,18 @@ const onAddCategory = async (e) => {
 const onChangeCategory = async (e) => {
   e.preventDefault();
 
-  if (categoryName.value === '') {
+  if (categoryChangeName.value === '') {
     alert('카테고리 이름을 입력해주세요.');
     return;
   }
 
   let formData = new FormData();
 
-  formData.append('name', categoryName.value);
-  if (categoryImage.files.length !== 0) {
-    formData.append('bannerImage', categoryImage.files[0]);
-  }
+  formData.append('name', categoryChangeName.value);
+  // if (categoryImage.files.length !== 0) {
+  //   formData.append('bannerImage', categoryImage.files[0]);
+  // }
+  console.log(selectedId);
 
   const options = {
     method: 'PUT',
@@ -151,14 +151,14 @@ const onChangeCategory = async (e) => {
 
   try {
     const res = await fetch(
-      `${API_BASE_URL}/api/categories/tier1/${id}`,
+      `${API_BASE_URL}/api/categories/tier1/${selectedId}`,
       options
     );
     console.log(res, token);
 
     if (res.ok) {
-      categoryName.value = '';
-      categoryImage.value = '';
+      categoryChangeName.value = '';
+      //categoryImage.value = '';
       document.querySelector('.category-add-modal').classList.add('hidden');
       window.location.reload();
     } else {
@@ -221,16 +221,41 @@ const open = () => {
   document.querySelector('.category-add-modal').classList.remove('hidden');
 };
 
+// 카테고리 수정 모달 이벤트
+const changeOpen = (selected, name) => {
+  console.log(name, selected);
+  document.querySelector('.category-change-modal').classList.remove('hidden');
+  categoryChangeName.value = name;
+  selectedId = selected;
+};
+
 const close = () => {
   // 초기화
   categoryName.value = '';
-  categoryImage.value = '';
+  //categoryImage.value = '';
 
   document.querySelector('.category-add-modal').classList.add('hidden');
 };
 
+const changeClose = () => {
+  // 초기화
+  categoryName.value = '';
+  //categoryImage.value = '';
+
+  document.querySelector('.category-change-modal').classList.add('hidden');
+};
+
 document.querySelector('#openBtn').addEventListener('click', open);
 document.querySelector('#closeBtn').addEventListener('click', close);
-document.querySelector('.bg').addEventListener('click', close);
+document
+  .querySelector('#change-closeBtn')
+  .addEventListener('click', changeClose);
+document
+  .querySelector('.category-add-modal .bg')
+  .addEventListener('click', close);
+document
+  .querySelector('.category-change-modal .bg')
+  .addEventListener('click', changeClose);
 submitButton.addEventListener('click', onAddCategory);
-categoryImage.addEventListener('change', imagePreview);
+//categoryImage.addEventListener('change', imagePreview);
+changeSubmitButton.addEventListener('click', onChangeCategory);
