@@ -54,7 +54,7 @@ submitInput.addEventListener("click", async (event) => {
       window.location.href = "/";
       
     } else {
-      // 로그인 실패
+      // 로그인 실패 
       console.log('로그인 실패:', data.error);
       alert(`로그인에 실패했습니다.`);
     }
