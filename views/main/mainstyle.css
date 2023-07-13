@@ -13,7 +13,7 @@
     margin: 0 120px;
 }
 .slider-container {
-    margin: 300px 0 100px 0;
+    margin: 30px 0 100px 0;
 }
 .slider-container > span{
     background-color: #ffffff00;
@@ -41,8 +41,6 @@ main {
 }
 .division article{
     width: 950px;
-    justify-content:flex-start;
-    text-align: left;
     padding: 0 0 50px 30px;
 
 }
@@ -175,26 +173,16 @@ main {
 
 
 
-
 /* 서비스 */
 #service {
     width: 1200px;
     height: 300px;
     display: flex;
     flex-direction: row;
-    margin-top: 130px;
-    left: 0px;
     justify-content: center;
-    position: relative;
-    overflow: hidden;
-    padding: 0 0 0px 0;
+    position: absolute;
+    bottom:50px;
     color:#858585;
-
-}
-.information{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
 }
 
 .serviceCenter {
@@ -281,160 +269,7 @@ main {
     color: #bbb
 } */
 
-/* footer */
-footer {
-    width: 100%;
-    background-color: #f7f7f7;
-  }
-  footer .inner {
-    padding: 40px 0;
-    background-color: #f7f7f7;
-  }
-  footer .top {
-    position: relative;
-    background-color: #f7f7f7;
-
-  }
-  footer .top::after {
-    content: "";
-    display: block;
-    width: 1200px;
-    height: .8px;
-    background-color: #333;
-    margin-top: 50px;
-    background-color: #f7f7f7;
-
-  }
-  footer .top .footerMenu {
-    display: flex;
-    background-color: #f7f7f7;
-  }
-  footer .top .footerMenu li {
-    margin-right: 40px;
-    background-color: #f7f7f7;
-  }
-  footer .top .footerMenu li:last-child {
-    margin-right: 0;
-    background-color: #f7f7f7;
-
-  }
-  footer .top .footerMenu li a {
-    color:#999;
-    letter-spacing: -.8px;
-    background-color: #f7f7f7;
-
-  }
-  footer .top .sns {
-    position: absolute;
-    top: 0;
-    right: 0;  
-    display: flex;
-    background-color: #f7f7f7;
-  }
-  footer .top .sns li {
-    margin-left: 10px;
-    background-color: #f7f7f7;
-  }
-  footer .top .sns li a img {
-    width: 30px;
-    height: 30px;
-    background-color: #f7f7f7;
-  }
-  footer .companyInfo {
-    margin-top: 40px;
-    position: relative;
-    background-color: #f7f7f7;
-
-  }
-  footer .companyInfo .infoList {
-    display: flex;
-    margin-bottom: 7px;
-    background-color: #f7f7f7;
-  }
-  footer .companyInfo .infoList li {
-    font-size: 15px;
-    color: #999;
-    margin-right: 28px;
-    position: relative;
-    background-color: #f7f7f7;
-
-  }
-  footer .companyInfo .infoList li::after {
-    content:"";
-    display: block;
-    width: 1px;
-    height: 10px;
-    background-color: #999;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: -14px;
-    margin: auto;
-    background-color: #f7f7f7;
-  }
-  footer .companyInfo .infoList li:last-child::after {
-    display: none;
-    background-color: #f7f7f7;
-  }
-  footer .companyInfo .infoList li:last-child {
-    margin-right: 0;
-    background-color: #f7f7f7;
-  }
-  footer .companyInfo .infoList li span {
-    font-weight: 700;
-    background-color: #f7f7f7;
-
-  }
-  footer .companyInfo .infoList li button {
-    width: 105px;
-    height: 24px;
-    border: 1px solid #999;
-    border-radius: 4px;
-    color:#999;
-    cursor: pointer;
-    font-size: 13px;
-    text-align: center;
-    background-color: #f7f7f7;
-
-  }
   
-  footer .companyInfo .copyright {
-    font-weight: 400;
-    color:#999;
-    background-color: #f7f7f7;
-
-  }
-  footer .companyInfo .copyright span {
-    font-weight: 700;
-    background-color: #f7f7f7;
-  }
-  
-  footer .companyInfo .footerLogo {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  footer .companyInfo .footerLogo img {
-    width: 100px;
-    height: 100px;
-  }
-  
-  body {
-    color: #333;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.4;
-    font-family: 'Noto Sans KR', sans-serif;
-    
-  }
-  .inner {
-    width: 1200px;
-    margin: 0 auto;
-    position: relative;
-  }
-  
-  
-
 
 /* search 아이템
 #newMenu{
@@ -466,4 +301,4 @@ footer {
     width: auto;
     margin-bottom: 20px;
     border-radius: 10px;
-}
+} */
