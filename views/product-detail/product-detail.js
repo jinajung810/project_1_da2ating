@@ -87,4 +87,33 @@ fetch(`http://127.0.0.1:5555/api/products/${receivedDetailData}`, {
       let totalPriceValue = saledPriceValue * cartCount;
       totalPrice.innerHTML = totalPriceValue.toLocaleString();
     });
+
+    // 장바구니에 추가
+    const btnCart = document.querySelector('.btnCart');
+    btnCart.addEventListener('click', () => {
+      if (window.confirm("장바구니에 담으시겠습니까?")) {
+        addCart(detailInfo, Number(cartCountInput.value));
+      }
+    });
+
+    function addCart(productInfo, count) {
+      let prevProducts = localStorage.getItem('cartProducts');
+      prevProducts = (prevProducts === null) ? [] : JSON.parse(prevProducts);
+
+      const sameProductIndex = prevProducts.findIndex(item => item.productInfo._id === productInfo._id);
+      if (sameProductIndex === -1) {
+        const newProducts = [
+          ...prevProducts,
+          { productInfo: productInfo, amount: count }
+        ];
+        localStorage.setItem('cartProducts', JSON.stringify(newProducts));
+
+      } else {
+        prevProducts[sameProductIndex].amount += count;
+        localStorage.setItem('cartProducts', JSON.stringify(prevProducts));
+
+      }
+
+      alert('장바구니에 상품이 추가되었습니다.');
+    }
   })

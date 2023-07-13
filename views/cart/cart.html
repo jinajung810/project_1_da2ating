@@ -7,7 +7,16 @@
 		<link rel="stylesheet" href="cart.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-		<script src="cart-feat.js" defer></script>
+		
+		<!-- Common Import -->
+    <link rel="stylesheet" href="/common/common.css">
+    <link rel="stylesheet" href="/common/layout.css">
+    <script src="/common/makeLayout.js" defer></script>
+    <script src="/common/maincategory.js" defer></script>
+		
+		<!--<script src="cart-feat.js" defer></script>-->
+		<script src="cart-example.js" defer></script>
+		
 		<style>
       @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
     </style>
@@ -15,7 +24,7 @@
 </head>
 <body>
 	<!-- 장바구니 테스트 -->
-	<ul>
+	<!--<ul>
 		<li class="cart">
 			<a href="cart.html">
 				장바구니에 담긴 상품의 수량 총합: <span id="cnt1">0</span>
@@ -29,8 +38,13 @@
 	<a class="add-cart" href="#">단호박 샐러드 (15800)</a>
   	<input type="hidden" value="15800" />
 	<a class="add-cart" href="#">리코타치즈 샐러드 (19800)</a>
-  	<input type="hidden" value="19800" />
+  	<input type="hidden" value="19800" />-->
+		<!--<ul id="testProductList"></ul>-->
 	<!-- 장바구니 테스트 -->
+	
+	<!-- 메인 상단 -->
+	<header id="header"></header>
+	<aside id="sidebar"></aside>
 
 	<section class="container">
 		<div class="content">
@@ -49,7 +63,7 @@
 			<div class="cartlist-wrap">
 				<div class="itemlist">
 					<h3 id="cart-cnt">
-						<button onclick="itemAllClear()">전체 삭제</button>
+						<button onclick="deleteAllProducts()">전체 삭제</button>
 					</h3>
 					<table class="cols table-pdg">
 						<colgroup>
@@ -57,7 +71,6 @@
 							<col>
 							<col style="width: 120px;">
 							<col style="width: 117px;">
-							<col style="width: 90px;">
 							<col style="width: 110px;">
 							<col style="width: 110px;">
 						</colgroup>
@@ -65,14 +78,13 @@
 							<tr>
 								<th>
 									<span class="chk-button">
-										<input type="checkbox" name="price" id="chkAll" onchange="allChk(this)" placeholder="" checked="checked">
+										<input type="checkbox" name="totalPrice" id="chkAll" onchange="changeAllCheckbox(this)" placeholder="" checked="checked">
 										<label for="chkAll"></label>
 									</span>
 								</th>
 								<th>상품정보</th>
 								<th>수량</th>
 								<th>가격</th>
-								<th>배송비</th>
 								<th>상품금액</th>
 								<th>주문 선택</th>
 							</tr>
@@ -125,6 +137,8 @@
 			</div>
 			<div id="chickenCategory"></div>
 		</div>
+		
+		<footer id="footer"></footer>
 	</section>
 </body>
 </html>

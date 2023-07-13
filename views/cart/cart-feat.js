@@ -9,13 +9,6 @@ const cbArr = document.getElementsByName('price');
 const cartNum = document.querySelector('#cnt1');
 const itemNum = document.querySelector('#cnt2');
 
-// 쇼핑몰 상품 임시 데이터
-const salad = [
-    { imgSrc: 'https://via.placeholder.com/150', name: "닭가슴살 샐러드 ", price: 18900,  delivery: 3500, tag: "cSalad", inCart: 0 },
-    { imgSrc: 'https://via.placeholder.com/150', name: "단호박 샐러드", price: 15800, delivery: 3500, tag: "sSalad",  inCart: 0 },
-    { imgSrc: 'https://via.placeholder.com/150', name: "리코타치즈 샐러드", price: 19800, delivery: 3500, tag: "lSalad", inCart: 0  },
-];
-
 // 장바구니 클릭시 발생하는 이벤트
 carts.forEach((v, i)=>{
     v.addEventListener('click', () => {
@@ -137,6 +130,9 @@ function displayCart() {
     if( cartItems && productContainer ) {
         productContainer.innerHTML = '';
         Object.values(cartItems).map( (v, i) => {
+            console.log('v', v);
+
+
             productContainer.innerHTML += 
             `<tr class="exist-cart">
         <td class="item-chk">
@@ -147,9 +143,8 @@ function displayCart() {
         </td>
         <td class="item-info product">
             <a href="#">
-                <div id="item-img"><img src='${v.imgSrc}' alt=""></div>
+                <div id="item-img"><img src='kdt-sw-5-team02.elicecoding.com${v.thumbnail.path}' alt=""></div>
                 <div id="item-des">
-                    <p style="display: none;">${v.tag}</p>
                     <p class="item-name">${v.name}</p>
                 </div>
             </a>
@@ -162,16 +157,15 @@ function displayCart() {
             </div>
         </td>
         <td>
-            <p>${v.price}</p>
+            <p>${v.originPrice}</p>
         </td>
         <td class="delivery">
-            <p id="delivery">${v.delivery}</p>
+            <p id="delivery">${v.discountRate}</p>
         </td>
         <td>
-            <p id="order-price${i}" style="color: orange; font-weight: 700;">${ v.price * v.inCart + v.delivery}</p>
+            <p id="order-price${i}" style="color: orange; font-weight: 700;">${ v.originPrice * v.inCart}</p>
         </td>
         <td>
-            <span style="display: none;">${v.tag}</span>
             <span class="del-btn">삭제하기</span>
         </td>
     </tr>
