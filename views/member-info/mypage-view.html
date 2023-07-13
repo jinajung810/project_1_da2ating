@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다2ating - 샐러드 판매 쇼핑몰</title>
+    <link rel="stylesheet" href="./mainstyle.css">
+    <link rel="stylesheet" href="./sidebar.css">
+    <link rel="stylesheet" href="./mypage-view.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script src="https://kit.fontawesome.com/8eb5905426.js" crossorigin="anonymous"></script>
+    <script src="./mypage-view.js" defer></script>
+    <style type="text/css" media="screen and (min-width:512px) and (max-width:1024px)"></style>
+</head>
+<body>
+    <section class="wrap">
+        <!-- 메인 상단 -->
+        <header id="header">
+        </header>
+
+        <!-- 메인 본문 -->
+        <main>
+            <aside id="mypage">
+                <h1>마이페이지</h1>
+                <div>
+                    <h2>회원정보</h2>
+                    <a href="http://127.0.0.1:5500/f2ting_client/src/views/member-info/mypage-view.html" style="font-weight:bold; color:#10a2a7">-회원정보 조회</a></br>
+                    <a href="http://127.0.0.1:5500/f2ting_client/src/views/member-info/info-change.html">-회원정보 변경</a></br>
+                    <a href="http://127.0.0.1:5500/f2ting_client/src/views/member-info/delete-account.html">-회원탈퇴</a></br>
+                </div>
+                <div>
+                    <h2>주문/배송 조회</h2>
+                    <a href="http://127.0.0.1:5500/f2ting_client/src/views/member-info/order-deliver.html">-주문목록/배송조회</a></br>
+                </div>
+                <div>
+                    <h2>나의 상품문의</h2>
+                    <a href="">-나의 상품 문의</a></br>
+                </div>
+            </aside>
+
+            <article>
+                <h1>회원정보 조회</h1>
+                <div id="memberInfo">
+                    <form class="changeInfo" action="" method="post">
+                        <table>
+                            <!-- <tr>
+                                <td class="className">아이디</td>
+                                <td><input class="userId" type="text" name="id" readonly></td>
+                            </tr> -->
+                            <tr>
+                                <td class="className">이름</td>
+                                <td><input class="userName" name="userName" type="text" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="className">이메일</td>
+                                <td><input class="email" type="text" name="email" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="className">휴대폰번호</td>
+                                <td><input class="phone" type="text" name="phone" value="" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="className">주소</td>
+                                <td><input class="address" type="text" name="address" value="" readonly></td>
+                            </tr>
+                        </table>    
+                        <div class="button">
+                            <button type="button" value="수정" onclick="changeInfo()">정보수정</button>
+                        </div>    
+                    </form>
+                </div>
+            </article>
+        </main>
+
+          <!-- FOOTER -->
+          <footer id="footer">
+        </footer>
+    </section>
+
+    <script src="../../common/makeLayout.js"></script>
+    <script src="../../common/maincategory.js"></script>
+</body>
+</html>

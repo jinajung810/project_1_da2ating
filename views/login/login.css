@@ -1,0 +1,82 @@
+body {
+  color: #333;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+img {
+  display: block;
+}
+a {
+  text-decoration: none;
+  color:#333
+}
+.inner {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* HEADER */
+header {
+  width: 100%;
+  height: 178px;
+  background-color: #333;
+}
+
+.loginPage {
+  width: 100%;
+}
+.loginPage .loginBox {
+  margin: 100px auto;
+  width: 620px;
+  height: 500px;
+  border: 1px solid #e2e2e2;
+  border-top: 2px solid #00af85;
+  position: relative;
+}
+.loginPage .loginBox h2 {
+  font-size: 22px;
+  text-align: center;
+  line-height: 68px;
+  margin-bottom: 60px;
+}
+.loginPage .loginBox form {
+  width: 500px;
+  margin: auto;
+}
+.loginPage .loginBox form input {
+  width: 494px;
+  height: 60px;
+  border: 1px solid #dbdbdb;
+  margin-bottom: 14px;
+  text-indent: 15px;
+  font-size: 15px;
+  border-radius: 5px;
+}
+.loginPage .loginBox form [type="submit"] {
+  width: 500px;
+  height: 60px;
+  line-height: 60px;
+  color:#fff;
+  font-size: 20px;
+  background-color: #00af85;
+  border: 1px solid #00af85;
+  cursor: pointer;
+}
+.loginPage .loginBox .joinBtn {
+  width: 500px;
+  height: 60px;
+  line-height: 60px;
+  color:#00af85;
+  font-size: 20px;
+  border: 1px solid #00af85;
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 80px;
+}

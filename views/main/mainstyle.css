@@ -1,0 +1,469 @@
+
+
+
+/* 메인-슬라이드 */
+/* slide.css, slide.js 참조 */
+#slide-div{
+    width: 950px;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 0 0 50px 30px;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 120px;
+}
+.slider-container {
+    margin: 300px 0 100px 0;
+}
+.slider-container > span{
+    background-color: #ffffff00;
+}
+.slider img{
+    height: 100%;
+    width: 100%;
+}
+
+/* 메인 */
+main {
+    top:0;
+    position: relative;
+    width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+.division{
+    display: flex;
+    justify-content: space-around;
+    margin: 0 0 0 120px;
+}
+.division article{
+    width: 950px;
+    justify-content:flex-start;
+    text-align: left;
+    padding: 0 0 50px 30px;
+
+}
+.menu:nth-child(1) > h2 {
+    font-size: 60px;
+    text-align: center;
+}
+.menu:nth-child(2) > h2 {
+    font-size: 60px;
+    text-align: center;
+    margin-top: 70px;
+}
+.innerCart {
+    margin-top: -70px;
+    margin-right: -210px;
+    background-color: #ffffff00;
+}
+.innerCart > img{
+    font-size: 25px;
+    width: 50px;
+    align-self: center;
+    padding-top: 12px;
+    background-color: #ffffff00;
+}
+
+/* 메인-베스트메뉴 */
+#bestMenu{
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 0px;
+}
+.bestMenu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    margin: 20px 50px;
+}
+.bestMenu > a {
+    color: black;
+    text-align: center;
+    font-size: 17px;
+    width: 270px;
+}
+.bestMenu > img{
+    height: 270px;
+    width: auto;
+    border-radius: 10px;
+}
+
+/* 메인-뉴메뉴 */
+#newMenu{
+    max-width: 1000px;
+    margin-top: 85px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 0px;
+}
+.newMenu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    margin: 20px 50px;
+}
+.newMenu > a {
+    color: black;
+    text-align: center;
+    font-size: 17px;
+    width: 270px;
+}
+.newMenu > img{
+    height: 270px;
+    width: auto;
+    border-radius: 10px;
+}
+/* 메인-메뉴가격 */
+.price {
+    display: flex;
+    align-content: start;
+    justify-content: space-around;
+    align-items: baseline;
+    width: 270px;
+}
+.discount{
+    font-size: 40px;
+    color:red;
+    position: relative;
+    line-height: 1;
+    text-align: left;
+    margin-top: 16px;
+    padding: 0 0 0 0;
+}
+.discountPrice {
+    font-size: 25px;
+    padding: 0px 0 10px 0;
+    line-height: 1;
+    position: relative;
+    text-align: center;
+    color: black;
+}
+.basicPrice {
+    font-size: 18px;
+    color:#a5a5a5;
+    text-decoration: line-through;
+}
+
+/* 메인-이벤트 */
+.event {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+.event img{
+    width: 100%;
+    padding-right: 50px;
+}
+
+
+
+
+/* 서비스 */
+#service {
+    width: 1200px;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 130px;
+    left: 0px;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 0 0 0px 0;
+    color:#858585;
+
+}
+.information{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.serviceCenter {
+    width: 550px;
+    height: 300px;
+    line-height: 30px;
+}
+.serviceCenter > div{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-around;
+}
+.serviceCenter > div:nth-child(1){
+    margin-left:-70px;
+}
+.serviceCenter > div:nth-child(2){
+    margin-left:-70px;
+}
+
+.qnaBtn{
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    font-family: "Noto Sans KR", sans-serif !important;
+    margin: 0 0 10px 60px;
+    border-radius: 10px;
+    border: #858585 solid 2px;
+    cursor: pointer;
+    color: #858585;
+}
+.deliveryBtn{
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    font-family: "Noto Sans KR", sans-serif !important;
+    border-radius: 10px;
+    border: #858585 solid 2px;
+    cursor: pointer;
+    color:#858585;
+}
+.serviceCenter > div > h1 {
+    font-size: 35px;
+}
+.serviceCenter > div > h2 {
+    font-size: 40px;
+}
+.serviceCenter > div > h3 {
+    font-size: 30px;
+}
+
+.accountNumber {
+    width: 300px;
+    height: 300px;
+    line-height: 35px;
+    margin-left: 300px;
+}
+.accountNumber > h1 {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+/* 
+.announcement{
+    width: 450px;
+    height: 300px;
+    line-height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.announcement > h1{
+    margin-top: 6px;
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+.announcement > a{
+    width: 320px;
+}
+
+.announcement > a > p{
+    font-size: 18px;
+    display: flex;
+    justify-content: end;
+    color: #bbb
+} */
+
+/* footer */
+footer {
+    width: 100%;
+    background-color: #f7f7f7;
+  }
+  footer .inner {
+    padding: 40px 0;
+    background-color: #f7f7f7;
+  }
+  footer .top {
+    position: relative;
+    background-color: #f7f7f7;
+
+  }
+  footer .top::after {
+    content: "";
+    display: block;
+    width: 1200px;
+    height: .8px;
+    background-color: #333;
+    margin-top: 50px;
+    background-color: #f7f7f7;
+
+  }
+  footer .top .footerMenu {
+    display: flex;
+    background-color: #f7f7f7;
+  }
+  footer .top .footerMenu li {
+    margin-right: 40px;
+    background-color: #f7f7f7;
+  }
+  footer .top .footerMenu li:last-child {
+    margin-right: 0;
+    background-color: #f7f7f7;
+
+  }
+  footer .top .footerMenu li a {
+    color:#999;
+    letter-spacing: -.8px;
+    background-color: #f7f7f7;
+
+  }
+  footer .top .sns {
+    position: absolute;
+    top: 0;
+    right: 0;  
+    display: flex;
+    background-color: #f7f7f7;
+  }
+  footer .top .sns li {
+    margin-left: 10px;
+    background-color: #f7f7f7;
+  }
+  footer .top .sns li a img {
+    width: 30px;
+    height: 30px;
+    background-color: #f7f7f7;
+  }
+  footer .companyInfo {
+    margin-top: 40px;
+    position: relative;
+    background-color: #f7f7f7;
+
+  }
+  footer .companyInfo .infoList {
+    display: flex;
+    margin-bottom: 7px;
+    background-color: #f7f7f7;
+  }
+  footer .companyInfo .infoList li {
+    font-size: 15px;
+    color: #999;
+    margin-right: 28px;
+    position: relative;
+    background-color: #f7f7f7;
+
+  }
+  footer .companyInfo .infoList li::after {
+    content:"";
+    display: block;
+    width: 1px;
+    height: 10px;
+    background-color: #999;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -14px;
+    margin: auto;
+    background-color: #f7f7f7;
+  }
+  footer .companyInfo .infoList li:last-child::after {
+    display: none;
+    background-color: #f7f7f7;
+  }
+  footer .companyInfo .infoList li:last-child {
+    margin-right: 0;
+    background-color: #f7f7f7;
+  }
+  footer .companyInfo .infoList li span {
+    font-weight: 700;
+    background-color: #f7f7f7;
+
+  }
+  footer .companyInfo .infoList li button {
+    width: 105px;
+    height: 24px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    color:#999;
+    cursor: pointer;
+    font-size: 13px;
+    text-align: center;
+    background-color: #f7f7f7;
+
+  }
+  
+  footer .companyInfo .copyright {
+    font-weight: 400;
+    color:#999;
+    background-color: #f7f7f7;
+
+  }
+  footer .companyInfo .copyright span {
+    font-weight: 700;
+    background-color: #f7f7f7;
+  }
+  
+  footer .companyInfo .footerLogo {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  footer .companyInfo .footerLogo img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  body {
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    font-family: 'Noto Sans KR', sans-serif;
+    
+  }
+  .inner {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  
+
+
+/* search 아이템
+#newMenu{
+    max-width: 1200px;
+    margin-top: 85px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 0px;
+}
+.item-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    margin: 20px 50px;
+}
+.item-container > a {
+    color: black;
+    text-align: center;
+    font-size: 17px;
+    width: 270px;
+}
+.item-container > img{
+    height: 270px;
+    width: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}

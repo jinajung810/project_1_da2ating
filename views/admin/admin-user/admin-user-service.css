@@ -1,0 +1,48 @@
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-info {
+    width: 900px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+}
+.modal .background {
+    width: 100%;
+    height: 100%;
+    background-color: beige;
+}
+.modal-window {
+    position: absolute;
+    width: 400px;
+    height: 800px;
+    padding: 40px;
+}
+.modal-window button {
+    display: block;
+    width: 70px;
+    margin: 0 auto;
+}
+.hidden {
+    display: none;
+}
