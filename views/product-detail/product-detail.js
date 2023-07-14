@@ -19,16 +19,11 @@ fetch(`http://127.0.0.1:5555/api/products/${receivedDetailData}`, {
     <img src="http://127.0.0.1:5555${detailInfo.thumbnail.path}" alt="">
     `;
 
-    const saledPriceValue =
-      detailInfo.originPrice -
-      detailInfo.originPrice * (detailInfo.discountRate / 100);
-    const saledPrice = saledPriceValue.toLocaleString();
+    let saledPrice = detailInfo.originPrice.toLocaleString();
 
     document.getElementById('productInfo').innerHTML = `
     <h2>${detailInfo.name}</h2>
-    <span>${detailInfo.discountRate}%</span>
     <div class="productPrice">
-      <p>${detailInfo.originPrice}<span>원</span></p>
       <strong>${saledPrice}<span>원</span></strong>
     </div>
 
@@ -77,7 +72,7 @@ fetch(`http://127.0.0.1:5555/api/products/${receivedDetailData}`, {
         cartCount--;
       }
       cartCountInput.value = cartCount;
-      let totalPriceValue = saledPriceValue * cartCount;
+      let totalPriceValue = detailInfo.originPrice * cartCount;
       totalPrice.innerHTML = totalPriceValue.toLocaleString();
     });
 
@@ -86,7 +81,7 @@ fetch(`http://127.0.0.1:5555/api/products/${receivedDetailData}`, {
       let cartCount = parseInt(cartCountInput.value);
       cartCount++;
       cartCountInput.value = cartCount;
-      let totalPriceValue = saledPriceValue * cartCount;
+      let totalPriceValue = detailInfo.originPrice * cartCount;
       totalPrice.innerHTML = totalPriceValue.toLocaleString();
     });
 

@@ -64,17 +64,3 @@ submitInput.addEventListener("click", async (event) => {
     alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${error.message}`);
   }
 });
-
-// 로그아웃 버튼 어디에? 
-// 로그아웃
-const logoutBtn = document.querySelector("#logoutBtn");
-
-// 로그아웃 버튼 클릭 이벤트 핸들러 추가
-logoutBtn.addEventListener("click", () => {
-  // 세션 정보 삭제
-  sessionStorage.removeItem("token");
-  sessionStorage.removeItem("admin");
-
-  // 로그아웃 후 페이지 이동
-  // window.location.href = "/";
-});

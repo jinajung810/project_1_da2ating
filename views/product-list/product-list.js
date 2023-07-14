@@ -19,7 +19,6 @@ fetch(`http://127.0.0.1:5555/api/categories?category/${receivedData}`, {
       <h2>${category[0].name}</h2>
       <img src="http://127.0.0.1:5555${category[0].bannerImage.path}" alt="식단관리에 가장 기본이 되는 데일리 샐러드 10종 모음" />
     `
-    // data.data로 변경
   });
 
   fetch(`http://127.0.0.1:5555/api/products?category=${receivedData}`, {
@@ -37,8 +36,7 @@ fetch(`http://127.0.0.1:5555/api/categories?category/${receivedData}`, {
   
       for (let i = 0; i < ListInfo.length; i++) {
 
-        const PriceValue = ListInfo[i].originPrice-(ListInfo[i].originPrice * (ListInfo[i].discountRate / 100))
-        const Price = PriceValue.toLocaleString()
+        const Price = ListInfo[i].originPrice.toLocaleString()
         document.getElementById("categoryList").innerHTML += `
           <li>
             <a href="../product-detail/product-detail.html?${ListInfo[i]._id}">
@@ -50,10 +48,8 @@ fetch(`http://127.0.0.1:5555/api/categories?category/${receivedData}`, {
                 <img src="./images/cart_icn.png" alt="">
               </a>
             </div>
-            <span>${ListInfo[i].discountRate}%</span>
             <strong>
               ${Price}<span>원</span>
-              <b>${ListInfo[i].originPrice}원</b>
             </strong>
           </li>
         `
