@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://127.0.0.1:5555';
+const API_BASE_URL = 'http://kdt-sw-5-team02.elicecoding.com';
 
 // 회원가입 정보
 const userName = document.querySelector('#userName');
@@ -149,7 +149,8 @@ const onSubmit = async (e) => {
 
     // 가입 성공 시 페이지 이동
     if (res.ok) {
-      //로그인 페이지로 이동?
+      alert('회원가입이 완료되었습니다.');
+      location.href = '../login/login.html'
     } else {
       alert('다시 시도해주세요!');
     }
