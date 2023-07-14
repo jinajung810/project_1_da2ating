@@ -79,6 +79,10 @@
                 </td>
               </tr>
               <tr>
+                <td></td>
+                <td><img id="thumbnail-preview"/><span class = "thumbnail-deleteBtn hidden" >X</span></td>
+              </tr>
+              <tr>
                 <td>상세 사진</td>
                 <td>
                   <label for="productDescriptions" class="imageButton"
@@ -89,13 +93,15 @@
                     id="productDescriptions"
                     name="productDescriptions"
                     accept="image/*"
+                    multiple
                   />
                 </td>
               </tr>
+              <tr>
+                <td></td>
+                <td><div class="descriptions-preview-container"><ul class="descriptions-preview-list"></div></ul></td>
+              </tr>
             </table>
-            <div>
-              <div id="image-preview"></div>
-            </div>
             <div class="button-container">
               <button type="submit" id="submitButton">추가하기</button>
             </div>

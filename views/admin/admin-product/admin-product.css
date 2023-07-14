@@ -58,6 +58,16 @@ a {
   height: 100px;
 }
 
+.product-images ul {
+  padding-left: 0;
+
+  display: flex;
+}
+
+.product-images li {
+  margin-right: 10px;
+}
+
 /* 상품 추가 버튼 */
 
 .add-button {

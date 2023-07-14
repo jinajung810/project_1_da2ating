@@ -18,11 +18,20 @@ const onGetProduct = async () => {
     const res = await fetch(`${API_BASE_URL}/api/products`, options);
     const data = await res.json();
     if (res.ok) {
+      console.log(data.data);
       data.data.forEach((v, i) => {
+        let desImages = '';
+
+        v.descriptions.forEach((image) => {
+          desImages += `<li><img src="http://127.0.0.1:5555${image.path}" alt=${image.originalName}/></li>`;
+        });
+
         productList.innerHTML += `
         <li>
-          <div class="product-thumbnail">
-            <img src="http://127.0.0.1:5555${v.thumbnail.path}" alt=${v.name}/>
+          <div class="product-images">
+            <ul><li><img src="http://127.0.0.1:5555${v.thumbnail.path}" alt=${
+          v.name
+        }/></li>${desImages}</ul>
           </div>
           <p>상품 이름 : ${v.name}</p>
           <p>상품 가격 : ${v.originPrice.toLocaleString()}원</p>
