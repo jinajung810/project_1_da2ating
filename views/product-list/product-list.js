@@ -29,7 +29,7 @@ function getCategoryInfo(categoryId) {
 }
 
 function getProductsInCategory(categoryId) {
-  fetch(`http://127.0.0.1:5555/api/products?category=${categoryId}`, {
+  fetch(`http://kdt-sw-5-team02.elicecoding.com/api/products?category=${categoryId}`, {
   method: 'GET',
   headers: {
     'Content-Type': 'application/json;charset=utf-8'
