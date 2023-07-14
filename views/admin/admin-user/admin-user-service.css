@@ -12,9 +12,13 @@ body {
 }
 
 .user-info {
-    width: 900px;
+    /* width: 900px; */
     margin: 0 auto;
-    padding: 30px 0;
+    width: 300px;
+    background-color: rgb(238, 238, 238);
+    border-radius: 20px;
+    padding: 30px 40px;
+    margin: 30px 0;
 }
 .modal {
     position: fixed;
@@ -46,3 +50,36 @@ body {
 .hidden {
     display: none;
 }
+#sidebar {
+    position: fixed;
+    z-index: 9999;
+    top: 20%;
+    left: 20px;
+  }
+  
+  #sidebar h2 {
+    padding-left: 20px;
+  }
+  
+  ul,
+  li,
+  .left-sidebar a {
+    list-style: none;
+    position: relative;
+    text-decoration: none;
+  }
+  
+  .left-sidebar li {
+    font-size: 20px;
+    padding: 20px 0;
+  }
+  
+  .left-sidebar li:hover {
+    text-decoration: underline;
+  }
+  
+  a {
+    color: black;
+  }
+  
+  

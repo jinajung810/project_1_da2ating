@@ -19,13 +19,17 @@ function initHeader() {
           <input class="keyword" type="search" placeholder="상품검색" onkeyup="performSearch(event)">
       </div>
       <div class="form">
-          <p class="welcome">회원가입</p>
-          <button class="login" type="submit" onclick="login()" style="cursor: pointer">로그인</button>
-          <a class="mypage" href="/views/member-info/mypage-view.html">
-              <span class="material-symbols-outlined" onclick="mypage()">face</span>
+          <a href="http://127.0.0.1:5500/views/register/register.html">
+            <p class="welcome">회원가입</p>
           </a>
-          <a class="cart" href="/views/cart/cart.html">
-              <span class="material-symbols-outlined" onclick="mypage()">shopping_cart</span>
+          <a href="http://127.0.0.1:5500/views/login/login.html">
+            <button class="login" type="submit" onclick="login()" style="cursor: pointer">로그인</button>
+          </a>
+          <a class="mypage" href="">
+              <span class="material-symbols-outlined" onclick="mypage(e)">face</span>
+          </a>
+          <a class="cart" href="http://127.0.0.1:5500/views/cart/cart.html">
+              <span class="material-symbols-outlined" onclick="">shopping_cart</span>
           </a>
       </div>
     </nav>
@@ -47,8 +51,10 @@ function initSidebar() {
           <span class="material-symbols-outlined" style="cursor: pointer;">local_shipping</span></br>
         </a>
         <span class="material-symbols-outlined">maximize</span></br>
-        <span class="material-symbols-outlined" href="" style="cursor: pointer;">shopping_cart</span></br>
-      </div>
+        <a href="http://127.0.0.1:5500/views/cart/cart.html">
+          <span class="material-symbols-outlined" style="cursor: pointer;">shopping_cart</span></br>
+        </a>
+        </div>
       <div class="topBottom">
         <a href="#">
           <span class="material-symbols-outlined">arrow_circle_up</span></br>

@@ -1,23 +1,65 @@
-
+// 토큰 가져오기
 const token = sessionStorage.getItem('token');
-const isLoggedIn = token !== null && isValidToken(token);
 
-async function fetchOrders() {
+// 토큰 유효성 검사 함수
+function isValidToken(token) {
+  return token !== null && token !== undefined && token.trim() !== '';
+}
+
+if (isValidToken(token)) {
+  fetchMemberInfo();
+} else {
+  // 로그인되지 않은 상태 처리
+  alert('로그인이 필요한 페이지입니다.');
+  location.href = 'http://127.0.0.1:5500/views/login/login.html'
+}
+
+// 회원정보 조회 함수
+async function fetchMemberInfo() {
   try {
     const response = await fetch('http://127.0.0.1:5555/api/users/my-orders', {
       headers: {
-        'Content-Type': 'application/json;charset=utf-8'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       }
     });
-    const orders = await response.json();
-    console.log('orders', orders);
-    return orders;
+
+    if (response.ok) {
+      const orders = await response.json();
+      console.log('orders:', orders);
+      // 회원정보를 화면에 표시하는 함수 호출
+      fetchOrders(orders);
+    } else {
+      // 회원정보 조회 실패 처리
+      console.error('회원정보 조회 실패');
+    }
   } catch (error) {
-    console.error('Error fetching orders', error);
-    return [];
+    console.error('회원정보 조회 에러:', error);
   }
 }
 
+async function fetchOrders(orders) {
+  try {
+    const response = await fetch('http://127.0.0.1:5555/api/users/my-orders', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (response.ok) {
+      orders = await response.json();
+      console.log('orders:', orders);
+      // 주문정보를 화면에 표시하는 함수 호출
+      orderView(orders);
+    } else {
+      // 주문정보 조회 실패 처리
+      console.error('주문정보 조회 실패');
+    }
+  } catch (error) {
+    console.error('주문정보 조회 에러:', error);
+  }
+}
 //달력에서 시작날짜와 종료날짜 지정
 function getSelectedDateRange() {
   const startDate = document.querySelector('input[name="startDate"]').value;
@@ -34,6 +76,7 @@ function handleSearchButtonClick(event) {
 async function performSearch() {
   const { startDate, endDate } = getSelectedDateRange();
   const orders = await fetchOrders();
+  //!오류발생)order-deliver.js:48 Uncaught (in promise) ReferenceError: fetchOrders is not defined at performSearch
 
   const filteredOrders = orders.filter(order => {
     const orderDate = new Date(order.createdAt.substring(0, 10));
@@ -56,47 +99,49 @@ function orderView(orders) {
     return;
   }
 
-  orders.forEach(order => {
-    const { createdAt, _id, repProductName, totalProductPrice, productCount, status  } = order;
-
-    const orderRow = document.createElement('tr');
-    orderRow.classList.add('orderview');
-
-    const dateCell = document.createElement('td');
-    dateCell.classList.add('date_id');
-    dateCell.textContent = `${createdAt.substring(0, 10)} / 주문번호: ${_id}`;
-    orderRow.appendChild(dateCell);
-
-    const productCell = document.createElement('td');
-    productCell.classList.add('option');
-    productCell.textContent = `${repProductName}`;
-    orderRow.appendChild(productCell);
-
-    const priceCell = document.createElement('td');
-    priceCell.classList.add('price');
-    priceCell.textContent = `${totalProductPrice}원`;
-    orderRow.appendChild(priceCell);
-
-    const countCell = document.createElement('td');
-    countCell.classList.add('count');
-    countCell.innerHTML = `${productCount}개`;
-    orderRow.appendChild(countCell);
-
-    const statusCell = document.createElement('td');
-    statusCell.classList.add('status');
-    statusCell.textContent = `${status}`;
-    orderRow.appendChild(statusCell);
-
-    orderTable.appendChild(orderRow);
-  });
-  }
-  //기간 버튼 별 클릭이벤트
-  const periodButtons = document.querySelectorAll('.period input[type="button"]');
-  periodButtons.forEach(button => {
-    button.addEventListener('click', function (event) {
+    orders.forEach(order => {
+      const { createdAt, _id, repProductName, totalProductPrice, productCount, status  } = order;
+  
+      const orderRow = document.createElement('tr');
+      orderRow.classList.add('orderview');
+  
+      const dateCell = document.createElement('td');
+      dateCell.classList.add('date_id');
+      dateCell.textContent = `${createdAt.substring(0, 10)} / 주문번호: ${_id}`;
+      orderRow.appendChild(dateCell);
+  
+      const productCell = document.createElement('td');
+      productCell.classList.add('option');
+      productCell.textContent = `${repProductName}`;
+      orderRow.appendChild(productCell);
+  
+      const priceCell = document.createElement('td');
+      priceCell.classList.add('price');
+      priceCell.textContent = `${totalProductPrice}원`;
+      orderRow.appendChild(priceCell);
+  
+      const countCell = document.createElement('td');
+      countCell.classList.add('count');
+      countCell.innerHTML = `${productCount}개`;
+      orderRow.appendChild(countCell);
+  
+      const statusCell = document.createElement('td');
+      statusCell.classList.add('status');
+      statusCell.textContent = `${status}`;
+      orderRow.appendChild(statusCell);
+  
+      orderTable.appendChild(orderRow);
+    });
+  
+}
+//기간 버튼 별 클릭이벤트
+const periodButtons = document.querySelectorAll('.period input[type="button"]');
+periodButtons.forEach(button => {
+    button.addEventListener('click', function (e) {
+      e.preventDefault()
       const calculateDateRange = (selectedPeriod) => {
         const currentDate = new Date();
-        let startDate, endDate;
+        let startDate, endDate ;
       
         if (selectedPeriod === '오늘') {
           startDate = formatDate(currentDate);
@@ -128,7 +173,7 @@ function orderView(orders) {
         return `${year}-${month}-${day}`;
       };
 
-      const selectedPeriod = event.target.value;
+      const selectedPeriod = e.target.value;
       const dateRange = calculateDateRange(selectedPeriod);
       const startDateInput = document.querySelector('input[name="startDate"]');
       const endDateInput = document.querySelector('input[name="endDate"]');

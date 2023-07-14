@@ -1,7 +1,7 @@
 // 업데이트 날짜 순서로 new product 생성
 
-const token = sessionStorage.getItem('token');
-const isLoggedIn = token !== null && isValidToken(token);
+
+
 
 async function fetchTest() {
   try {
@@ -29,8 +29,8 @@ function newProduct(data) {
     if(newData[i].discountRate){
       document.querySelector("#newMenu").innerHTML += `<span class="newMenu">
       <img src="http://127.0.0.1:5555${newData[i].thumbnail.path}" href="" alt=${newData[i].name}>
-      <a class="innerCart" href="">
-      <img src="../common/images/cart-icon.png">
+      <a class="innerCart" href="cartPage()">
+      <img src="/resources/icons/cart-icon.png">
       </a>
       <a href="">${newData[i].name}</a>
       <label class="price">
@@ -43,8 +43,8 @@ function newProduct(data) {
     }else if(newData[i].discountRate === null){
       document.querySelector("#newMenu").innerHTML += `<span class="newMenu">
       <img src="http://127.0.0.1:5555${newData[i].thumbnail.path}" href="" alt=${newData[i].name}>
-      <a class="innerCart" href="">
-      <img src="../common/images/cart-icon.png">
+      <a class="innerCart" href="cartPage()">
+        <img src="/resources/icons/cart-icon.png">
       </a>
       <a href="">${newData[i].name}</a>
       <label class="price">
@@ -60,23 +60,23 @@ for (let i = 0; i < cartButtons.length; i++) {
   cartButtons[i].addEventListener('click', addCart);
 }
   
-function addCart(e){
-  e.preventDefault();
-  const productInfo = {
-    imgSrc: e.target.preventNode.querySelector('#newMenu img').src,
-    name: e.target.preventNode.querySelector('.name').textContent,
-    price: e.target.parentNode.querySelector('.discountPrice').textContent,
-    quantity: 1,
-    delivery: 3500,
-    inCart: 0,
-    basicPrice : e.target.parentNode.querySelector('.basicPrice').textContent,
-  }
-  if(isLoggedIn){
-    localStorage.setItem('selectedProduct', JSON.stringify(productInfo));
-    window.location.href = '../cart/cart.html';
-  }else{
-    sessionStorage.setItem('selectedProduct', JSON.stringify(productInfo));
-    window.location.href = '../cart/cart.html';
-  }
-}
+// function addCart(e){
+//   e.preventDefault();
+//   const productInfo = {
+//     imgSrc: e.target.preventNode.querySelector('#newMenu img').src,
+//     name: e.target.preventNode.querySelector('.name').textContent,
+//     price: e.target.parentNode.querySelector('.discountPrice').textContent,
+//     quantity: 1,
+//     delivery: 3500,
+//     inCart: 0,
+//     basicPrice : e.target.parentNode.querySelector('.basicPrice').textContent,
+//   }
+//   if(isLoggedIn){
+//     localStorage.setItem('selectedProduct', JSON.stringify(productInfo));
+//     window.location.href = '/cart/cart.html';
+//   }else{
+//     sessionStorage.setItem('selectedProduct', JSON.stringify(productInfo));
+//     window.location.href = '/cart/cart.html';
+//   }
+// }
     

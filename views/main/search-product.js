@@ -42,14 +42,14 @@ async function fetchAndSearchImages(searchQuery) {
 
         // 이미지 요소 생성
         const imgElement = document.createElement("img");
-        imgElement.src = item.thumbnail;
+        imgElement.src = `http://127.0.0.1:5555${item.thumbnail.path}`;
         imgElement.alt = item.name;
-        imgElement.href = item.id;
+        imgElement.href = item._id;
 
         // 이미지 이름을 표시하는 a 요소 생성
         const nameElement = document.createElement("a");
         nameElement.textContent = item.name;
-        nameElement.href = item.id;
+        nameElement.href = item._id;
 
         // 가격을 감싸는 label 요소 생성
         const priceLavel = document.createElement("label");
