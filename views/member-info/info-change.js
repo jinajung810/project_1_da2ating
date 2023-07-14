@@ -50,7 +50,7 @@ async function handleInfoSubmit(event) {
   const token = sessionStorage.getItem('token');
 
   try {
-    const response = await fetch('http://127.0.0.1:5555/api/users/my-info', {
+    const response = await fetch('http://kdt-sw-5-team02.elicecoding.com/api/users/my-info', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
