@@ -15,61 +15,53 @@
     <script src="./mypage-view.js" defer></script>
 </head>
 <body>
-    <section class="wrap">
-        <!-- HEADER -->
-        <header id="header"></header>
-        <aside id="sidebar"></aside>
+    <!-- HEADER -->
+    <header id="header"></header>
+    <aside id="sidebar"></aside>
 
-        <!-- 메인 본문 -->
-        <main>
-            <aside id="mypage">
-                <h1>마이페이지</h1>
-                <div>
-                    <h2>회원정보</h2>
-                    <a href="./mypage-view.html" style="font-weight:bold; color:#10a2a7">-회원정보 조회</a></br>
-                    <a href="./info-change.html">-회원정보 변경</a></br>
-                    <a href="./delete-account.html">-회원탈퇴</a></br>
-                </div>
-                <div>
-                    <h2>주문/배송 조회</h2>
-                    <a href="./order-deliver.html">-주문목록/배송조회</a></br>
-                </div>
-                <!--<div>
-                    <h2>나의 상품문의</h2>
-                    <a href="">-나의 상품 문의</a></br>
-                </div>-->
-            </aside>
+    <!-- 메인 본문 -->
+    <main class="mypage-container">
+        <aside id="mypage-sidebar">
+            <h1>마이페이지</h1>
+            <div>
+                <h2>회원정보</h2>
+                <a href="./mypage-view.html" style="font-weight:bold; color:#10a2a7">-회원정보 조회</a></br>
+                <a href="./info-change.html">-회원정보 변경</a></br>
+                <a href="./delete-account.html">-회원탈퇴</a></br>
+            </div>
+            <div>
+                <h2>주문/배송 조회</h2>
+                <a href="./order-deliver.html">-주문목록/배송조회</a></br>
+            </div>
+            <!--<div>
+                <h2>나의 상품문의</h2>
+                <a href="">-나의 상품 문의</a></br>
+            </div>-->
+        </aside>
 
-            <article>
-                <h1>회원정보 조회</h1>
-                <div id="memberInfo">
-                    <form class="changeInfo" action="" method="post">
-                        <table>
-                            <tr>
-                                <td class="className">이름</td>
-                                <td><input class="userName" name="userName" type="text" readonly></td>
-                            </tr>
-                            <tr>
-                                <td class="className">이메일</td>
-                                <td><input class="email" type="text" name="email" readonly></td>
-                            </tr>
-                            <tr>
-                                <td class="className">휴대폰번호</td>
-                                <td><input class="phone" type="text" name="phone" value="" readonly></td>
-                            </tr>
-                            <tr>
-                                <td class="className">주소</td>
-                                <td><input class="address" type="text" name="address" value="" readonly></td>
-                            </tr>
-                        </table>    
-                    </form>
-                </div>
-            </article>
-        </main>
+        <article class="mypage-view-page">
+            <h1>회원정보 조회</h1>
 
-          <!-- FOOTER -->
-          <footer id="footer">
-        </footer>
-    </section>
+            <div class="my-info-row">
+                <div class="my-info-label">이름</div>
+                <div class="my-info-value" id="my-info-name"></div>
+            </div>
+            <div class="my-info-row">
+                <div class="my-info-label">이메일</div>
+                <div class="my-info-value" id="my-info-email"></div>
+            </div>
+            <div class="my-info-row">
+                <div class="my-info-label">휴대폰번호</div>
+                <div class="my-info-value" id="my-info-phone"></div>
+            </div>
+            <div class="my-info-row">
+                <div class="my-info-label">주소</div>
+                <div class="my-info-value" id="my-info-addr"></div>
+            </div>
+        </article>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer"></footer>
 </body>
 </html>

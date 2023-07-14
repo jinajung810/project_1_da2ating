@@ -16,13 +16,18 @@ function initMypageView() {
 async function memberView() {
   const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
   
-  const userName = document.querySelector('.userName');
-  const email = document.querySelector('.email');
-  const phone = document.querySelector('.phone');
-  const address = document.querySelector('.address');
+  const userName = document.querySelector('#my-info-name');
+  const email = document.querySelector('#my-info-email');
+  const phone = document.querySelector('#my-info-phone');
+  const address = document.querySelector('#my-info-addr');
 
-  userName.value = userInfo.name;
-  email.value = userInfo.email;
-  phone.value = userInfo.phone || '없음';
-  address.value = userInfo.address || '없음';
+  let addr = '';
+  if (userInfo.zipCode !== null) addr += `(${userInfo.zipCode})`;
+  if (userInfo.address !== null) addr += ` ${userInfo.address}`;
+  if (userInfo.detailAddress !== null) addr += ` ${userInfo.detailAddress}`;
+
+  userName.textContent = userInfo.name;
+  email.textContent = userInfo.email;
+  phone.textContent = userInfo.phone || '없음';
+  address.textContent = addr.length !== 0 ? addr : '없음';
 }
