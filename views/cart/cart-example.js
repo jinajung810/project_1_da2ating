@@ -110,12 +110,12 @@ function displayCart() {
           </div>
         </td>
         <td>
-          <p>${item.productInfo.originPrice}</p>
+          <p>${item.productInfo.originPrice.toLocaleString()}원</p>
         </td>
         <td>
-          <p class="order-price" style="color: orange; font-weight: 700;">${
-            item.productInfo.originPrice * item.amount
-          }</p>
+          <p class="order-price" style="color: #f5634b; font-weight: 700;">${
+            (item.productInfo.originPrice * item.amount).toLocaleString()
+          }원</p>
         </td>
         <td>
           <span class="del-btn" onclick="deleteProduct('${productId}')">삭제하기</span>
@@ -145,7 +145,7 @@ function increaseProductAmount(productId) {
   ).textContent = productsInCart[productInCartIndex].amount;
   document.querySelector(
     `.exist-cart[data-id="${productId}"] .order-price`
-  ).textContent = amount * productPrice;
+  ).textContent = (amount * productPrice).toLocaleString() + '원';
   calcCartPrice();
 }
 
@@ -171,7 +171,7 @@ function decreaseProductAmount(productId) {
   ).textContent = productsInCart[productInCartIndex].amount;
   document.querySelector(
     `.exist-cart[data-id="${productId}"] .order-price`
-  ).textContent = amount * productPrice;
+  ).textContent = (amount * productPrice).toLocaleString() + '원';
   calcCartPrice();
 }
 
@@ -247,7 +247,7 @@ function calcCartPrice() {
     totalProductPrice += productPrice * amount;
   });
 
-  $receiptPrice.textContent = `${totalProductPrice}원`;
+  $receiptPrice.textContent = `${totalProductPrice.toLocaleString()}원`;
 
   const freeDeliveryStandardAmount = 50000;
   let deliveryPrice = 3000;
@@ -255,8 +255,8 @@ function calcCartPrice() {
     deliveryPrice = 0;
   }
 
-  $receiptDelivery.textContent = `${deliveryPrice}원`;
-  $receiptTotal.textContent = `${totalProductPrice + deliveryPrice}원`;
+  $receiptDelivery.textContent = `${deliveryPrice.toLocaleString()}원`;
+  $receiptTotal.textContent = `${(totalProductPrice + deliveryPrice).toLocaleString()}원`;
 }
 
 function buyCartProducts() {

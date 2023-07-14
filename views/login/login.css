@@ -16,11 +16,13 @@
   position: relative;
 }
 .loginPage .loginBox h2 {
-  font-size: 22px;
+  font-size: 32px;
   text-align: center;
-  line-height: 68px;
-  margin-bottom: 60px;
+  padding: 40px 0;
+  font-weight: 700;
 }
+
+
 .loginPage .loginBox form {
   width: 500px;
   margin: auto;
