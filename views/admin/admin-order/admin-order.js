@@ -1,6 +1,8 @@
-const API_BASE_URL = 'http://127.0.0.1:5555';
+const API_BASE_URL = 'http://kdt-sw-5-team02.elicecoding.com';
 
 const orderList = document.querySelector('.order-tbody');
+
+const token = sessionStorage.getItem('token');
 
 const StringStatus = {
   'order-receipt': '주문 접수',
@@ -28,14 +30,13 @@ const onGetOrder = async () => {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('token'),
+      Authorization: token,
     },
   };
 
   try {
     const res = await fetch(`${API_BASE_URL}/api/orders`, options);
     const data = await res.json();
-    console.log(res, data.data);
 
     let selectoption = '';
 
@@ -81,12 +82,11 @@ const onDeleteOrder = async (id) => {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('token'),
+      Authorization: token,
     },
   };
   try {
     const res = await fetch(`${API_BASE_URL}/api/orders/${id}`, options);
-    console.log(res);
     if (res.ok) {
       alert('삭제되었습니다!');
       window.location.reload();
@@ -110,7 +110,7 @@ const onChangeOrder = async (id, status) => {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('token'),
+      Authorization: token,
     },
     body: JSON.stringify(data),
   };
@@ -128,33 +128,4 @@ const onChangeOrder = async (id, status) => {
   }
 };
 
-// 임시 테스트용 admin 로그인
-const adminLogin = async () => {
-  const data = {
-    email: 'admin@admin.com',
-    password: '1234',
-  };
-
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: null,
-    },
-    body: JSON.stringify(data),
-  };
-
-  try {
-    const res = await fetch(`${API_BASE_URL}/api/users/login`, options);
-    const data = await res.json();
-    console.log(res, data.data.token);
-    if (res.ok) {
-      localStorage.setItem('token', data.data.token);
-    }
-  } catch (error) {
-    console.log('test admin login error', error);
-  }
-};
-
 onGetOrder();
-adminLogin();
