@@ -8,13 +8,19 @@ const productCategoryList = document.querySelector('#category-select');
 const productThumbnail = document.querySelector('#productThumbnail');
 const productDescriptions = document.querySelector('#productDescriptions');
 const submitButton = document.querySelector('#submitButton');
-const img = document.createElement('img');
+
+const thumbnailPreview = document.querySelector('#thumbnail-preview');
+const descriptionsPreview = document.querySelector(
+  '.descriptions-preview-list'
+);
+
+const thumbnailDeleteBtn = document.querySelector('.thumbnail-deleteBtn');
 
 const receivedData = location.href.split('?')[1];
 
 let token = '';
 
-// 카테고리 목록 가져오기
+// 카테고리 목록 가져오기(select)
 const onGetCategory = async () => {
   const options = {
     method: 'GET',
@@ -50,17 +56,58 @@ const imagePreview = (e) => {
   const reader = new FileReader();
 
   reader.onload = (e) => {
-    //preview.src = e.target.result;
-
-    img.setAttribute('src', e.target.result);
-    img.classList.add('preview');
-
-    preview.appendChild(img);
+    thumbnailPreview.src = e.target.result;
   };
   reader.readAsDataURL(file);
+
+  thumbnailDeleteBtn.classList.remove('hidden');
 };
 
-// 상품 목록 가져오기
+// 상세 사진 파일 처리
+const getImageFiles = (e) => {
+  const uploadFiles = [];
+  const files = e.currentTarget.files;
+  const docFrag = new DocumentFragment();
+
+  console.log([...files], productDescriptions.files);
+
+  if ([...files].length >= 4) {
+    alert('이미지는 최대 3개까지 업로드가 가능합니다.');
+    return;
+  }
+
+  // 파일 타입 검사
+  [...files].forEach((file) => {
+    if (!file.type.match('image/.*')) {
+      alert('이미지 파일만 업로드가 가능합니다.');
+      return;
+    }
+
+    // 파일 갯수 검사
+    if ([...files].length < 4) {
+      uploadFiles.push(file);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const preview = createElement(e, file);
+        descriptionsPreview.appendChild(preview);
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+};
+
+// 상세 사진 ul li 추가
+const createElement = (e, file) => {
+  const li = document.createElement('li');
+  const img = document.createElement('img');
+  img.setAttribute('src', e.target.result);
+  img.setAttribute('data-file', file.name);
+  li.appendChild(img);
+
+  return li;
+};
+
+// 상품 목록 가져오기(수정 시 보여줄 기존 상품 데이터)
 const onGetProduct = async (id) => {
   const options = {
     method: 'GET',
@@ -76,13 +123,26 @@ const onGetProduct = async (id) => {
     if (res.ok) {
       const product = data.data;
 
+      console.log(product);
+
       productName.value = product.name;
       productPrice.value = product.originPrice;
       productDiscountRate.value = product.discountRate;
       productCategoryList.value = product.tier1Category._id;
-      //productThumbnail.files = product.thumbnail;
-      //productDescriptions.files = product.descriptions[0];d
+      thumbnailPreview.src = `${API_BASE_URL}${product.thumbnail.path}`;
 
+      //상세 사진 출력
+      product.descriptions.forEach((v, i) => {
+        const li = document.createElement('li');
+        const img = document.createElement('img');
+        img.setAttribute('src', `${API_BASE_URL}${v.path}`);
+        img.setAttribute('data-file', v.originalName);
+        li.appendChild(img);
+
+        descriptionsPreview.appendChild(li);
+      });
+
+      // selected 카테고리 보여주기
       for (let i = 0; i < productCategoryList.options.length; i++) {
         if (
           productCategoryList.options[i].value === product.tier1Category._id
@@ -165,13 +225,9 @@ const onChangeProduct = async (e) => {
   } else if (productPrice.value === '') {
     alert('상품 가격을 입력해주세요.');
     return;
-  } else if (productThumbnail.files.length === 0) {
-    alert('메인 사진을 업로드해주세요.');
-    return;
-  } else if (productDescriptions.files.length === 0) {
-    alert('상세 사진을 업로드해해주세요.');
-    return;
   }
+
+  console.log(productThumbnail.files.length, productDescriptions.files);
 
   let formData = new FormData();
 
@@ -227,6 +283,16 @@ if (receivedData !== undefined) {
   submitButton.addEventListener('click', onAddProduct);
 }
 
+onGetCategory();
+productThumbnail.addEventListener('change', imagePreview);
+productDescriptions.addEventListener('change', getImageFiles);
+
+thumbnailDeleteBtn.addEventListener('click', () => {
+  productThumbnail.value = ''; // input 요소의 값 초기화
+  thumbnailPreview.src = '';
+  thumbnailDeleteBtn.classList.add('hidden');
+});
+
 // 임시 테스트용 admin 로그인
 const adminLogin = async () => {
   const data = {
@@ -254,8 +320,4 @@ const adminLogin = async () => {
   }
 };
 
-onGetCategory();
 adminLogin();
-
-productThumbnail.addEventListener('change', imagePreview);
-productDescriptions.addEventListener('change', imagePreview);
