@@ -17,7 +17,6 @@ function getProductInfo(productId) {
     .then((res) => res.json())
     .then((data) => {
       const detailInfo = data.data;
-      console.log('detailInfo', detailInfo);
   
       document.getElementById('productImg').innerHTML = `
       <img src="http://kdt-sw-5-team02.elicecoding.com${detailInfo.thumbnail.path}" alt="">
