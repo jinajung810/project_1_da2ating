@@ -7,22 +7,24 @@ console.log(decodeURI(receivedDetailData));
 fetch(`http://127.0.0.1:5555/api/products/${receivedDetailData}`, {
   method: 'GET',
   headers: {
-    'Content-Type': 'application/json;charset=utf-8'
+    'Content-Type': 'application/json;charset=utf-8',
   },
 })
-  .then((res)=> res.json())
-  .then((data)=>{
-    const detailInfo = data.data; 
-    console.log('detailInfo', detailInfo)
+  .then((res) => res.json())
+  .then((data) => {
+    const detailInfo = data.data;
+    console.log('detailInfo', detailInfo);
 
-    document.getElementById("productImg").innerHTML = `
+    document.getElementById('productImg').innerHTML = `
     <img src="http://127.0.0.1:5555${detailInfo.thumbnail.path}" alt="">
-    `
+    `;
 
-    const saledPriceValue = detailInfo.originPrice - (detailInfo.originPrice * (detailInfo.discountRate / 100))
-    const saledPrice = saledPriceValue.toLocaleString()
+    const saledPriceValue =
+      detailInfo.originPrice -
+      detailInfo.originPrice * (detailInfo.discountRate / 100);
+    const saledPrice = saledPriceValue.toLocaleString();
 
-    document.getElementById("productInfo").innerHTML = `
+    document.getElementById('productInfo').innerHTML = `
     <h2>${detailInfo.name}</h2>
     <span>${detailInfo.discountRate}%</span>
     <div class="productPrice">
@@ -54,33 +56,33 @@ fetch(`http://127.0.0.1:5555/api/products/${receivedDetailData}`, {
       <button class="btnCart">장바구니</button>
       <button class="btnBuynow">바로 구매</button>
     </div>
-    `
+    `;
 
-    for(let i = 0; i < detailInfo.descriptions.length; i++) {
-      document.getElementById("desImg").innerHTML += `
+    for (let i = 0; i < detailInfo.descriptions.length; i++) {
+      document.getElementById('desImg').innerHTML += `
       <img src="http://127.0.0.1:5555${detailInfo.descriptions[i].path}" alt="">
-      `
+      `;
     }
 
-    // 상품 수량 버튼 클릭 이벤트 처리 
-    const minusBtn = document.querySelector('.minus')
-    const plusBtn = document.querySelector('.plus')
+    // 상품 수량 버튼 클릭 이벤트 처리
+    const minusBtn = document.querySelector('.minus');
+    const plusBtn = document.querySelector('.plus');
     const cartCountInput = document.querySelector('.cartCount');
     const totalPrice = document.querySelector('.totalPrice');
 
     // minus 버튼 클릭 이벤트 처리
-    minusBtn.addEventListener('click', function() {
+    minusBtn.addEventListener('click', function () {
       let cartCount = parseInt(cartCountInput.value);
       if (cartCount > 1) {
         cartCount--;
       }
-      cartCountInput.value = cartCount; 
+      cartCountInput.value = cartCount;
       let totalPriceValue = saledPriceValue * cartCount;
-      totalPrice.innerHTML = totalPriceValue.toLocaleString();  
+      totalPrice.innerHTML = totalPriceValue.toLocaleString();
     });
-    
+
     // plus 버튼 클릭 이벤트 처리
-    plusBtn.addEventListener('click', function() {
+    plusBtn.addEventListener('click', function () {
       let cartCount = parseInt(cartCountInput.value);
       cartCount++;
       cartCountInput.value = cartCount;
@@ -88,32 +90,25 @@ fetch(`http://127.0.0.1:5555/api/products/${receivedDetailData}`, {
       totalPrice.innerHTML = totalPriceValue.toLocaleString();
     });
 
-    // 장바구니에 추가
-    const btnCart = document.querySelector('.btnCart');
-    btnCart.addEventListener('click', () => {
-      if (window.confirm("장바구니에 담으시겠습니까?")) {
-        addCart(detailInfo, Number(cartCountInput.value));
-      }
-    });
+    const buyButton = document.querySelector('.btnBuynow');
 
-    function addCart(productInfo, count) {
-      let prevProducts = localStorage.getItem('cartProducts');
-      prevProducts = (prevProducts === null) ? [] : JSON.parse(prevProducts);
+    // 구매 이벤트
+    const onBuyProduct = () => {
+      const amount = document.querySelector('.cartCount');
 
-      const sameProductIndex = prevProducts.findIndex(item => item.productInfo._id === productInfo._id);
-      if (sameProductIndex === -1) {
-        const newProducts = [
-          ...prevProducts,
-          { productInfo: productInfo, amount: count }
-        ];
-        localStorage.setItem('cartProducts', JSON.stringify(newProducts));
+      const product = {
+        productId: receivedDetailData,
+        amount: Number(amount.value),
+        productImage: `http://127.0.0.1:5555${detailInfo.thumbnail.path}`,
+        productName: detailInfo.name,
+        productPrice: detailInfo.originPrice,
+      };
 
-      } else {
-        prevProducts[sameProductIndex].amount += count;
-        localStorage.setItem('cartProducts', JSON.stringify(prevProducts));
+      console.log(product);
 
-      }
+      localStorage.setItem('buyProduct', JSON.stringify([product]));
+      window.location.href = `/views/order/order.html`;
+    };
 
-      alert('장바구니에 상품이 추가되었습니다.');
-    }
-  })
+    buyButton.addEventListener('click', onBuyProduct);
+  });

@@ -17,17 +17,15 @@
         <h2>관리자 메뉴</h2>
         <ul class="menu-list">
           <li>
-            <a href="/src/views/admin/admin-product/admin-product.html"
+            <a href="/views/admin/admin-product/admin-product.html"
               >상품 관리</a
             >
           </li>
           <li>
-            <a href="/src/views/admin/admin-order/admin-order.html"
-              >주문 관리</a
-            >
+            <a href="/views/admin/admin-order/admin-order.html">주문 관리</a>
           </li>
           <li>
-            <a href="/src/views/admin/admin-category/admin-category.html"
+            <a href="/views/admin/admin-category/admin-category.html"
               >카테고리 관리</a
             >
           </li>
@@ -65,18 +63,33 @@
                     <input type="text" id="categoryName" />
                   </td>
                 </tr>
+              </table>
+              <div>
+                <div id="image-preview"></div>
+              </div>
+              <div class="button-container">
+                <button type="submit" id="submitButton">추가하기</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- 카테고리 수정 모달창 -->
+      <div class="category-change-modal hidden">
+        <div class="bg"></div>
+        <div class="category-change-container">
+          <div class="form-container">
+            <div class="close-container">
+              <span id="change-closeBtn">X</span>
+            </div>
+            <h2>카테고리 수정</h2>
+            <form class="category-change-form" enctype="multipart/form-data">
+              <table class="category-change-table">
                 <tr>
-                  <td>배너 사진</td>
+                  <td>카테고리 이름</td>
                   <td>
-                    <label for="categoryImage" class="imageButton"
-                      >파일 업로드</label
-                    >
-                    <input
-                      type="file"
-                      id="categoryImage"
-                      name="categoryImage"
-                      accept="image/*"
-                    />
+                    <input type="text" id="change-categoryName" />
                   </td>
                 </tr>
               </table>
@@ -84,7 +97,7 @@
                 <div id="image-preview"></div>
               </div>
               <div class="button-container">
-                <button type="submit" id="submitButton">추가하기</button>
+                <button type="submit" id="changeSubmitButton">수정하기</button>
               </div>
             </form>
           </div>

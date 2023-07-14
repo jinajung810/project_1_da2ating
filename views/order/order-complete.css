@@ -1,0 +1,42 @@
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  font-family: 'Noto Sans KR', sans-serif;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.delivery-complete-container,
+.delivery-border {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.delivery-border {
+  width: 500px;
+  height: 300px;
+  background-color: #60646313;
+  border: none;
+  border-radius: 15px;
+}
+
+.delivery-complete-container button {
+  border: 0 none;
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+  background: #00af85;
+}
+
+#delivery-main-button {
+  margin-top: 40px;
+  width: 200px;
+  height: 45px;
+  font-size: 20px;
+}

@@ -22,15 +22,15 @@ const onGetProduct = async () => {
         productList.innerHTML += `
         <li>
           <div class="product-thumbnail">
-            <img src='https://atowertr6856.cdn-nhncommerce.com/data/goods/20/10/43/1000000060/1000000060_list_075.jpg' alt=${
-              v.name
-            }/>
+            <img src="http://127.0.0.1:5555${v.thumbnail.path}" alt=${v.name}/>
           </div>
           <p>상품 이름 : ${v.name}</p>
           <p>상품 가격 : ${v.originPrice.toLocaleString()}원</p>
           <p>상품 카테고리 : ${v.tier1Category.name}</p>
           <div id="product-buttons">
-            <button id="changeBtn" >수정</button>
+            <button id="changeBtn" onclick="location.href = 'admin-productadd.html?${
+              v._id
+            }';">수정</button>
             <button id="deleteBtn" onclick="onDeleteProduct('${
               v._id
             }')">삭제</button>
@@ -48,7 +48,7 @@ const onGetProduct = async () => {
   }
 };
 
-// 카테고리 삭제
+// 상품 삭제
 const onDeleteProduct = async (id) => {
   const options = {
     method: 'DELETE',
