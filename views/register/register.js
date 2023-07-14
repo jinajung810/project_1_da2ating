@@ -74,7 +74,8 @@ const onEmailInput = (e) => {
 
 const onPwInput = (e) => {
   if (!validatePassword(e.target.value)) {
-    userPwError.textContent = '비밀번호 양식을 지켜주세요';
+    userPwError.textContent =
+      '8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요.';
     userEmail.focus();
   } else {
     userPwError.textContent = '';
@@ -122,19 +123,12 @@ const onSubmit = async (e) => {
   } else if (!validatePassword(userPw.value)) {
     return;
   }
-  
-  
+
   const isExists = await emailDoubleCheck();
   if (isExists === true || isExists === null || isExists === undefined) {
     alert('중복된 이메일입니다.');
     return;
   }
-  
-  
-  
-  
-  
-  
 
   // 유효성 검사 통과시 회원가입 api 요청
   const userData = {
@@ -158,7 +152,7 @@ const onSubmit = async (e) => {
     // 가입 성공 시 페이지 이동
     if (res.ok) {
       alert('회원가입이 완료되었습니다.');
-      location.href = '../login/login.html'
+      location.href = '../login/login.html';
     } else {
       alert('다시 시도해주세요!');
     }

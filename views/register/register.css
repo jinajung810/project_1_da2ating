@@ -36,7 +36,7 @@ h1 {
 .register-box {
   border: 1px solid #e2e2e2;
   padding: 70px;
-  width: 50%;
+  width: 60%;
 }
 
 form {
@@ -56,6 +56,10 @@ input {
   padding: 5px 10px;
   margin: 0.5rem;
   margin-left: 5rem;
+}
+
+#userPw::placeholder {
+  font-size: 10px;
 }
 
 td > .important {

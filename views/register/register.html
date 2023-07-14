@@ -6,8 +6,8 @@
     <title>Da2Ating - 샐러드 판매 쇼핑몰</title>
 
     <!-- Common Import -->
-    <link rel="stylesheet" href="../../common/common.css">
-    <link rel="stylesheet" href="../../common/layout.css">
+    <link rel="stylesheet" href="../../common/common.css" />
+    <link rel="stylesheet" href="../../common/layout.css" />
     <script src="../../common/makeLayout.js" defer></script>
 
     <link rel="stylesheet" href="./register.css" />
@@ -17,7 +17,7 @@
     <!-- HEADER -->
     <header id="header"></header>
     <aside id="sidebar"></aside>
-    
+
     <div class="container">
       <div class="register-title">
         <h1>회원가입</h1>
@@ -48,7 +48,12 @@
               <tr>
                 <td>비밀번호<span class="important">＊</span></td>
                 <td>
-                  <input type="password" id="userPw" autocomplete="off" />
+                  <input
+                    type="password"
+                    id="userPw"
+                    autocomplete="off"
+                    placeholder="8~16자의 영문 대/소문자, 숫자, 특수문자"
+                  />
                   <div id="pw-error" class="error-warning"></div>
                 </td>
               </tr>
@@ -73,6 +78,6 @@
     </div>
 
     <!-- FOOTER -->
-  <footer id="footer"></footer>
+    <footer id="footer"></footer>
   </body>
 </html>

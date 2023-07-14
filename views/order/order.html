@@ -6,14 +6,13 @@
     <title>Da2Ating - 샐러드 판매 쇼핑몰</title>
 
     <!-- Common Import -->
-    <link rel="stylesheet" href="../../common/common.css">
-    <link rel="stylesheet" href="../../common/layout.css">
+    <link rel="stylesheet" href="../../common/common.css" />
+    <link rel="stylesheet" href="../../common/layout.css" />
     <script src="../../common/makeLayout.js" defer></script>
 
     <link rel="stylesheet" href="./order.css" />
     <script src="order.js" defer></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
   </head>
   <body>
     <!-- 메인 상단 -->
@@ -30,7 +29,29 @@
         <!-- 총 금액 -->
         <hr />
         <div class="product-sum">
-          <h3>총 상품 금액</h3>
+          <div class="receipt">
+            <dl>
+              <dt>
+                <strong>총 상품금액</strong>
+              </dt>
+              <dd><span id="order-product-price">0원</span></dd>
+            </dl>
+            <dl>
+              <dt>
+                <strong>배송비</strong>
+              </dt>
+              <dd><span id="order-delivery-price">+ 0원</span></dd>
+            </dl>
+            <dl>
+              <dt><strong>총 합계금액</strong></dt>
+              <dd>
+                <strong>
+                  <span id="order-total">0원</span>
+                  <br />
+                </strong>
+              </dd>
+            </dl>
+          </div>
         </div>
 
         <!-- 주문 결제 -->

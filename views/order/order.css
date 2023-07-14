@@ -13,18 +13,29 @@
   appearance: none;
 }
 
-.product-sum {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0.5rem 7rem;
-  font-size: 20px;
+/* 구매 상품 테이블 */
+.delivery-order-container h1 {
+  font-size: 25px;
+  font-weight: 600;
+  margin: 30px 0 15px 0;
 }
 
-/* 구매 상품 테이블 */
+.delivery-order-container h3 {
+  font-size: 23px;
+  font-weight: 600;
+  margin: 20px 0;
+}
+
 .product-info-table {
   width: 100%;
   border-collapse: collapse;
+}
+
+.product-info-table tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
 }
 
 tbody:not(:last-child) {
@@ -122,4 +133,44 @@ td > .important {
 #order-product-img {
   width: 150px;
   height: 150px;
+}
+
+/* 주문 금액 */
+.product-sum {
+  margin: 30px 30px 0 20px;
+}
+
+.product-sum dl {
+  display: table;
+  width: 100%;
+  margin: 0 0 15px 0;
+}
+
+.product-sum dl dt {
+  display: table-cell;
+  width: 50%;
+  font-size: 17px;
+  color: #2c2c2c;
+  padding-left: 15px;
+}
+
+dd {
+  margin-inline-start: 40px;
+}
+
+.product-sum dl dd {
+  display: table-cell;
+  width: 50%;
+  text-align: right;
+  color: #2c2c2c;
+  padding-right: 15px;
+}
+
+.product-sum dl.total {
+  padding: 15px 0 15px 0;
+  border-top: 1px solid #a9a9a9;
+}
+
+.product-sum dl.total dd span {
+  color: rgb(255, 101, 18);
 }
