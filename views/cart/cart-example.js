@@ -57,12 +57,12 @@ displayCart();
 
 function getProductsInCart() {
   const productsInCart = localStorage.getItem('cartProducts');
-  return (productsInCart === null) ? [] : JSON.parse(productsInCart);
+  return productsInCart === null ? [] : JSON.parse(productsInCart);
 }
 
 function getProductInCartIndex(productId) {
   const productsInCart = getProductsInCart();
-  return productsInCart.findIndex(item => item.productInfo._id === productId);
+  return productsInCart.findIndex((item) => item.productInfo._id === productId);
 }
 
 function setProductsInCart(newProductsInCart) {
@@ -77,7 +77,7 @@ function displayCart() {
     return;
   }
 
-  let productsInCartTags = ''
+  let productsInCartTags = '';
   for (let i = 0; i < productsInCart.length; i++) {
     const item = productsInCart[i];
     const productId = item.productInfo._id;
@@ -86,13 +86,17 @@ function displayCart() {
       <tr class="exist-cart" data-id="${productId}">
         <td class="item-chk">
           <div class="item-chkbox">
-            <input type="checkbox" name="price" id="chknum${i}" value="${item.amount}" checked="checked" onchange="changeCheckbox()">
+            <input type="checkbox" name="price" id="chknum${i}" value="${
+      item.amount
+    }" checked="checked" onchange="changeCheckbox()">
             <label for="chknum${i}"></label>
           </div>
         </td>
         <td class="item-info product">
           <a href="#">
-            <div id="item-img"><img src='http://kdt-sw-5-team02.elicecoding.com${item.productInfo.thumbnail.path}' alt=""></div>
+            <div id="item-img"><img src='http://kdt-sw-5-team02.elicecoding.com${
+              item.productInfo.thumbnail.path
+            }' alt=""></div>
             <div id="item-des">
               <p class="item-name">${item.productInfo.name}</p>
             </div>
@@ -109,7 +113,9 @@ function displayCart() {
           <p>${item.productInfo.originPrice}</p>
         </td>
         <td>
-          <p class="order-price" style="color: orange; font-weight: 700;">${item.productInfo.originPrice * item.amount}</p>
+          <p class="order-price" style="color: orange; font-weight: 700;">${
+            item.productInfo.originPrice * item.amount
+          }</p>
         </td>
         <td>
           <span class="del-btn" onclick="deleteProduct('${productId}')">삭제하기</span>
@@ -128,14 +134,18 @@ function increaseProductAmount(productId) {
   const productInCartIndex = getProductInCartIndex(productId);
   if (productInCartIndex === -1) return;
 
-
   productsInCart[productInCartIndex].amount += 1;
   const amount = productsInCart[productInCartIndex].amount;
-  const productPrice = productsInCart[productInCartIndex].productInfo.originPrice;
+  const productPrice =
+    productsInCart[productInCartIndex].productInfo.originPrice;
 
   setProductsInCart(productsInCart);
-  document.querySelector(`.exist-cart[data-id="${productId}"] span`).textContent = productsInCart[productInCartIndex].amount;
-  document.querySelector(`.exist-cart[data-id="${productId}"] .order-price`).textContent = (amount * productPrice);
+  document.querySelector(
+    `.exist-cart[data-id="${productId}"] span`
+  ).textContent = productsInCart[productInCartIndex].amount;
+  document.querySelector(
+    `.exist-cart[data-id="${productId}"] .order-price`
+  ).textContent = amount * productPrice;
   calcCartPrice();
 }
 
@@ -152,11 +162,16 @@ function decreaseProductAmount(productId) {
 
   productsInCart[productInCartIndex].amount -= 1;
   const amount = productsInCart[productInCartIndex].amount;
-  const productPrice = productsInCart[productInCartIndex].productInfo.originPrice;
+  const productPrice =
+    productsInCart[productInCartIndex].productInfo.originPrice;
 
   setProductsInCart(productsInCart);
-  document.querySelector(`.exist-cart[data-id="${productId}"] span`).textContent = productsInCart[productInCartIndex].amount;
-  document.querySelector(`.exist-cart[data-id="${productId}"] .order-price`).textContent = (amount * productPrice);
+  document.querySelector(
+    `.exist-cart[data-id="${productId}"] span`
+  ).textContent = productsInCart[productInCartIndex].amount;
+  document.querySelector(
+    `.exist-cart[data-id="${productId}"] .order-price`
+  ).textContent = amount * productPrice;
   calcCartPrice();
 }
 
@@ -166,9 +181,9 @@ function changeAllCheckbox(elm) {
 
   const currentStatus = elm.checked;
   if (currentStatus === true) {
-    checkboxElms.forEach(item => item.checked = true);
+    checkboxElms.forEach((item) => (item.checked = true));
   } else {
-    checkboxElms.forEach(item => item.checked = false);
+    checkboxElms.forEach((item) => (item.checked = false));
   }
 
   calcCartPrice();
@@ -191,7 +206,9 @@ function changeCheckbox() {
 // 상품 하나 삭제
 function deleteProduct(productId) {
   const prevProductsInCart = getProductsInCart();
-  const newProductsInCart = prevProductsInCart.filter(item => item.productInfo._id !== productId);
+  const newProductsInCart = prevProductsInCart.filter(
+    (item) => item.productInfo._id !== productId
+  );
   setProductsInCart(newProductsInCart);
 
   document.querySelector(`.exist-cart[data-id="${productId}"]`).remove();
@@ -216,8 +233,10 @@ function calcCartPrice() {
 
   const productsInCart = getProductsInCart();
 
-  const checkedRows = document.querySelectorAll('.exist-cart input[name="price"]:checked');
-  checkedRows.forEach(elm => {
+  const checkedRows = document.querySelectorAll(
+    '.exist-cart input[name="price"]:checked'
+  );
+  checkedRows.forEach((elm) => {
     const rowElm = elm.parentNode.parentNode.parentNode;
     const productId = rowElm.getAttribute('data-id');
     const productIndex = getProductInCartIndex(productId);
@@ -225,7 +244,7 @@ function calcCartPrice() {
     const productPrice = productsInCart[productIndex].productInfo.originPrice;
     const amount = productsInCart[productIndex].amount;
 
-    totalProductPrice += (productPrice * amount);
+    totalProductPrice += productPrice * amount;
   });
 
   $receiptPrice.textContent = `${totalProductPrice}원`;
@@ -240,10 +259,10 @@ function calcCartPrice() {
   $receiptTotal.textContent = `${totalProductPrice + deliveryPrice}원`;
 }
 
-
-
 function buyCartProducts() {
-  const checkedRows = document.querySelectorAll('.exist-cart input[name="price"]:checked');
+  const checkedRows = document.querySelectorAll(
+    '.exist-cart input[name="price"]:checked'
+  );
 
   if (checkedRows.length === 0) {
     alert('구매할 상품이 없습니다.');
@@ -253,7 +272,7 @@ function buyCartProducts() {
   const productsInCart = getProductsInCart();
 
   const buyProducts = [];
-  checkedRows.forEach(elm => {
+  checkedRows.forEach((elm) => {
     const rowElm = elm.parentNode.parentNode.parentNode;
     const productId = rowElm.getAttribute('data-id');
     const productIndex = getProductInCartIndex(productId);
@@ -269,8 +288,15 @@ function buyCartProducts() {
 
     buyProducts.push(buyProduct);
   });
-  
 
   localStorage.setItem('buyProducts', JSON.stringify(buyProducts));
-  window.location.href = `../order/order.html`;
+
+  const token = sessionStorage.getItem('token');
+  let userInfo = sessionStorage.getItem('userInfo');
+
+  if (token === null || userInfo === null) {
+    alert('비회원은 권한이 없습니다.');
+  } else {
+    window.location.href = `../order/order.html`;
+  }
 }

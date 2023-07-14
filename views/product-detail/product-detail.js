@@ -103,7 +103,15 @@ function getProductInfo(productId) {
         };
 
         localStorage.setItem('buyProducts', JSON.stringify([product]));
-        window.location.href = `../order/order.html`;
+
+        const token = sessionStorage.getItem('token');
+        let userInfo = sessionStorage.getItem('userInfo');
+
+        if (token === null || userInfo === null) {
+          alert('로그인 한 고객만 구매가 가능합니다.');
+        } else {
+          window.location.href = `../order/order.html`;
+        }
       };
 
       buyButton.addEventListener('click', onBuyProduct);
