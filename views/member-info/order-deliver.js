@@ -1,57 +1,30 @@
-// 토큰 가져오기
-const token = sessionStorage.getItem('token');
+initMypageOrderListPage();
 
-// 토큰 유효성 검사 함수
-function isValidToken(token) {
-  return token !== null && token !== undefined && token.trim() !== '';
-}
+function initMypageOrderListPage() {
+  const token = sessionStorage.getItem('token');
 
-if (isValidToken(token)) {
-  fetchMemberInfo();
-} else {
-  // 로그인되지 않은 상태 처리
-  alert('로그인이 필요한 페이지입니다.');
-  location.href = 'http://127.0.0.1:5500/views/login/login.html'
-}
-
-// 회원정보 조회 함수
-async function fetchMemberInfo() {
-  try {
-    const response = await fetch('http://127.0.0.1:5555/api/users/my-orders', {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
-    });
-
-    if (response.ok) {
-      const orders = await response.json();
-      console.log('orders:', orders);
-      // 회원정보를 화면에 표시하는 함수 호출
-      fetchOrders(orders);
-    } else {
-      // 회원정보 조회 실패 처리
-      console.error('회원정보 조회 실패');
-    }
-  } catch (error) {
-    console.error('회원정보 조회 에러:', error);
+  if (token === null) {
+    alert('로그인이 필요합니다.');
+    location.href = '../login/login.html';
+    return;
   }
+
+  getOrderList(token);
 }
 
-async function fetchOrders(orders) {
+async function getOrderList(token) {
   try {
-    const response = await fetch('http://127.0.0.1:5555/api/users/my-orders', {
+    const response = await fetch('http://kdt-sw-5-team02.elicecoding.com/api/users/my-orders', {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        'Authorization': token
       }
     });
 
     if (response.ok) {
       orders = await response.json();
-      console.log('orders:', orders);
       // 주문정보를 화면에 표시하는 함수 호출
-      orderView(orders);
+      orderView(orders.data);
     } else {
       // 주문정보 조회 실패 처리
       console.error('주문정보 조회 실패');
@@ -60,32 +33,10 @@ async function fetchOrders(orders) {
     console.error('주문정보 조회 에러:', error);
   }
 }
-//달력에서 시작날짜와 종료날짜 지정
-function getSelectedDateRange() {
-  const startDate = document.querySelector('input[name="startDate"]').value;
-  const endDate = document.querySelector('input[name="endDate"]').value;
-  
-  return { startDate, endDate };
-}
-//주문검색 버튼 클릭이벤트 리스너
-function handleSearchButtonClick(event) {
-    event.preventDefault();
-    performSearch();
-}
-  //startDate, endDate, orders 변수 지정=>지정한 날짜에 맞는 orders데이터 출력
-async function performSearch() {
-  const { startDate, endDate } = getSelectedDateRange();
-  const orders = await fetchOrders();
-  //!오류발생)order-deliver.js:48 Uncaught (in promise) ReferenceError: fetchOrders is not defined at performSearch
 
-  const filteredOrders = orders.filter(order => {
-    const orderDate = new Date(order.createdAt.substring(0, 10));
-    return orderDate >= new Date(startDate) && orderDate <= new Date(endDate);
-  });
-  orderView(filteredOrders);
-}
+function orderView(data) {
+  const orders = data.orders;
   
-function orderView(orders) {
   //표를 불러와서
   const orderTable = document.querySelector('.orderTable');
   orderTable.innerHTML = '';
@@ -134,6 +85,35 @@ function orderView(orders) {
     });
   
 }
+
+
+
+
+//달력에서 시작날짜와 종료날짜 지정
+function getSelectedDateRange() {
+  const startDate = document.querySelector('input[name="startDate"]').value;
+  const endDate = document.querySelector('input[name="endDate"]').value;
+  
+  return { startDate, endDate };
+}
+//주문검색 버튼 클릭이벤트 리스너
+function handleSearchButtonClick(event) {
+    event.preventDefault();
+    performSearch();
+}
+  //startDate, endDate, orders 변수 지정=>지정한 날짜에 맞는 orders데이터 출력
+async function performSearch() {
+  const { startDate, endDate } = getSelectedDateRange();
+  const orders = await fetchOrders();
+  //!오류발생)order-deliver.js:48 Uncaught (in promise) ReferenceError: fetchOrders is not defined at performSearch
+
+  const filteredOrders = orders.filter(order => {
+    const orderDate = new Date(order.createdAt.substring(0, 10));
+    return orderDate >= new Date(startDate) && orderDate <= new Date(endDate);
+  });
+  orderView(filteredOrders);
+}
+
 //기간 버튼 별 클릭이벤트
 const periodButtons = document.querySelectorAll('.period input[type="button"]');
 periodButtons.forEach(button => {
@@ -183,5 +163,5 @@ periodButtons.forEach(button => {
     
   });
   
-  const searchButton = document.querySelector('.period button[type="submit"]');
-  searchButton.addEventListener('click', handleSearchButtonClick);
+  //const searchButton = document.querySelector('.period button[type="submit"]');
+  //searchButton.addEventListener('click', handleSearchButtonClick);
