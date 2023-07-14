@@ -3,11 +3,11 @@
   margin: 0 auto;
   position: relative;
   font-family: 'Noto Sans KR', sans-serif;
-
-  position: absolute;
+  margin-top: 60px;
+  /*position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);*/
 }
 
 .delivery-complete-container,
