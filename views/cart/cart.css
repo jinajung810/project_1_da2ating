@@ -277,7 +277,8 @@ dd {    margin-inline-start: 40px; }
     flex-direction: column;
 } */
 
-.order-buttons li a {
+.order-buttons li a,
+.order-buttons li button {
     /* display: table-cell; */
     width: 27%;
     align-items: center;
@@ -292,6 +293,7 @@ dd {    margin-inline-start: 40px; }
     border-radius: 3px;
     padding: 10px 0 10px 0;
     margin: 3px;
+    cursor: pointer;
 }
 /* .order-buttons  {
     width: 360px;

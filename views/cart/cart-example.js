@@ -239,3 +239,38 @@ function calcCartPrice() {
   $receiptDelivery.textContent = `${deliveryPrice}원`;
   $receiptTotal.textContent = `${totalProductPrice + deliveryPrice}원`;
 }
+
+
+
+function buyCartProducts() {
+  const checkedRows = document.querySelectorAll('.exist-cart input[name="price"]:checked');
+
+  if (checkedRows.length === 0) {
+    alert('구매할 상품이 없습니다.');
+    return;
+  }
+
+  const productsInCart = getProductsInCart();
+
+  const buyProducts = [];
+  checkedRows.forEach(elm => {
+    const rowElm = elm.parentNode.parentNode.parentNode;
+    const productId = rowElm.getAttribute('data-id');
+    const productIndex = getProductInCartIndex(productId);
+    const productData = productsInCart[productIndex];
+
+    const buyProduct = {
+      productId: productData.productInfo._id,
+      amount: productData.amount,
+      productImage: productData.productInfo.thumbnail.path,
+      productName: productData.productInfo.name,
+      productPrice: productData.productInfo.originPrice,
+    };
+
+    buyProducts.push(buyProduct);
+  });
+  
+
+  localStorage.setItem('buyProducts', JSON.stringify(buyProducts));
+  window.location.href = `../order/order.html`;
+}

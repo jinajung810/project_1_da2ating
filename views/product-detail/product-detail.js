@@ -97,15 +97,13 @@ function getProductInfo(productId) {
         const product = {
           productId: productId,
           amount: Number(amount.value),
-          productImage: `http://kdt-sw-5-team02.elicecoding.com${detailInfo.thumbnail.path}`,
+          productImage: detailInfo.thumbnail.path,
           productName: detailInfo.name,
           productPrice: detailInfo.originPrice,
         };
   
-        console.log(product);
-  
-        localStorage.setItem('buyProduct', JSON.stringify([product]));
-        window.location.href = `/views/order/order.html`;
+        localStorage.setItem('buyProducts', JSON.stringify([product]));
+        window.location.href = `../order/order.html`;
       };
   
       buyButton.addEventListener('click', onBuyProduct);

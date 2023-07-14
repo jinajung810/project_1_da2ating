@@ -1,4 +1,4 @@
-const API_BASE_URL = `http://127.0.0.1:5555`;
+const API_BASE_URL = `http://kdt-sw-5-team02.elicecoding.com`;
 
 // 구매자 정보(이름, 번호, 주소, 이메일, 배송 메세지)
 const deliveryName = document.querySelector('#deliveryName');
@@ -11,7 +11,7 @@ const addressDetail = document.querySelector('#addressDetail');
 const deliveryMessage = document.querySelector('#deliveryMessage');
 
 //구매 상품 데이터(localStorage)
-const productData = JSON.parse(localStorage.getItem('buyProduct'));
+const productData = JSON.parse(localStorage.getItem('buyProducts'));
 
 // 구매자 정보 확인하기
 const onCheckInfo = () => {
@@ -82,8 +82,13 @@ const onClickPurchaseBtn = async (e) => {
 
       // 성공 시 페이지 이동
       if (res.ok) {
+        localStorage.setItem('buyProducts', JSON.stringify([]));
+        localStorage.setItem('cartProducts', JSON.stringify([]));
+        
         // 주문 완료
-        window.location.href = '/views/order/order-complete.html';
+        window.location.href = '../order/order-complete.html';
+        
+        
       } else {
         alert('다시 시도해주세요!');
       }
@@ -134,12 +139,10 @@ productData.forEach((v, i) => {
   document.querySelector('.product-info-table').innerHTML += `
     <tr class="trhr"></tr>
     <tr>
-      <td><a href ='#'><img id="order-product-img"src=${v.productImage} ${
-    v.productName
-  }/></a></td>
+      <td><a href ='#'><img id="order-product-img"src="${API_BASE_URL}${v.productImage}" /></a></td>
       <td>${v.productName}</td>
       <td>${v.amount}개</td>
-      <td>${v.productPrice.toLocaleString()}원</td>
+      <td>${v.productPrice}원</td>
     </tr>
     <tr class="trhr"></tr>
   `;
