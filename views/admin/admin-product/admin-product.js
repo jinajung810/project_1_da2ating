@@ -23,13 +23,13 @@ const onGetProduct = async () => {
         let desImages = '';
 
         v.descriptions.forEach((image) => {
-          desImages += `<li><img src="http://127.0.0.1:5555${image.path}" alt=${image.originalName}/></li>`;
+          desImages += `<li><img src="${API_BASE_URL}${image.path}" alt=${image.originalName}/></li>`;
         });
 
         productList.innerHTML += `
         <li>
           <div class="product-images">
-            <ul><li><img src="http://127.0.0.1:5555${v.thumbnail.path}" alt=${
+            <ul><li><img src="${API_BASE_URL}${v.thumbnail.path}" alt=${
           v.name
         }/></li>${desImages}</ul>
           </div>

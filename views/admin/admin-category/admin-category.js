@@ -59,7 +59,7 @@ const onGetCategory = async () => {
           // 이미지가 있는 경우에만 출력함
           let image =
             v.bannerImage !== null
-              ? `<img src="http://127.0.0.1:5555${v.bannerImage.path}" alt="${v.bannerImage.originalName}" />`
+              ? `<img src=${API_BASE_URL}${v.bannerImage.path} alt="${v.bannerImage.originalName}" />`
               : '';
 
           categoryList.innerHTML += `
