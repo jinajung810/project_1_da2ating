@@ -62,7 +62,9 @@ const onClickPurchaseBtn = async (e) => {
       products: products,
       receiverName: deliveryName.value,
       receiverPhone: `${phoneNumber1.value}-${phoneNumber2.value}-${phoneNumber3.value}`,
-      receiverAddress: addressBasic.value + addressDetail.value,
+      receiverZipCode: addressCode.value,
+      receiverAddress: addressBasic.value,
+      receiverDetailAddress: addressDetail.value,
       deliveryMessage:
         deliveryMessage.value === '' ? undefined : deliveryMessage.value,
     };

@@ -29,7 +29,9 @@ const getUserData = async () => {
     data.data.forEach((v, i) => {
       const {
         account,
+        zipCode,
         address,
+        detailAddress,
         createdAt,
         email,
         name,
@@ -45,7 +47,7 @@ const getUserData = async () => {
                 <p id="user-id">아이디: ${id}</p>
                 <p id="user-email">이메일: ${email}</p>
                 <p id="user-num">전화번호: ${phone}</p>
-                <p id="user-address">주소: ${address}</p>
+                <p id="user-address">주소: (${zipCode}) ${address} ${detailAddress}</p>
                 <p id="user-date">가입일자: ${createdAt.split('T')[0]}</p>
             
                 
