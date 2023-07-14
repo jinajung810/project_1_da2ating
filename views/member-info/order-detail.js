@@ -1,6 +1,6 @@
-initMypageOrderListPage();
+initMypageOrderDetailPage();
 
-function initMypageOrderListPage() {
+function initMypageOrderDetailPage() {
   const token = sessionStorage.getItem('token');
 
   if (token === null) {
@@ -9,12 +9,21 @@ function initMypageOrderListPage() {
     return;
   }
 
-  getOrderList(token);
+  const urlParams = new URLSearchParams(window.location.search);
+  const orderId = urlParams.get('order');
+
+  if (orderId === null) {
+    alert('잘못된 경로입니다.');
+    location.href = '/';
+    return;
+  }
+
+  getOrderDetail(token, orderId);
 }
 
-async function getOrderList(token) {
+async function getOrderDetail(token, orderId) {
   try {
-    const response = await fetch('http://kdt-sw-5-team02.elicecoding.com/api/users/my-orders', {
+    const response = await fetch(`http://kdt-sw-5-team02.elicecoding.com/api/users/my-orders/${orderId}`, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': token
@@ -34,54 +43,81 @@ async function getOrderList(token) {
   }
 }
 
-function orderView(data) {
-  const orders = data.orders;
-
-  //표를 불러와서
-  const $orderHistory = document.querySelector('#order-history');
-
-  //주문내역이 없으면 표에 5칸 병합한 셀을 붙인다.
-  if (orders.length === 0) {
-    $orderHistory.innerHTML = `<div class="empty-box">주문 내역이 없습니다.</div>`;
-    return;
-  }
-
-  orders.forEach(item => {
-    const $orderRow = document.createElement('a');
-    $orderRow.classList.add('order-history-item');
-    $orderRow.setAttribute('href', `./order-detail.html?order=${item._id}`)
-
-    let productName = item.repProductName;
-    if (1 < item.productCount) {
-      productName += ` 외 ${item.productCount - 1}건`;
-    }
-
-    const date = new Date(item.createdAt);
-
-    $orderRow.innerHTML = `
-      <div class="order-history-item-inner">
-        <div class="img-box">
-          <img
-            src="http://kdt-sw-5-team02.elicecoding.com${item.repProductImage}"
-          />
-        </div>
-        <div class="info-panel">
-          <div class="product-name">${productName}</div>
-          <div class="info-row">
-            <div class="info-label">주문 일시</div>
-            <div class="info-value">${date.toLocaleString()}</div>
-          </div>
-          <div class="info-row">
-            <div class="info-label">결제 금액</div>
-            <div class="info-value">${item.totalProductPrice.toLocaleString()}원</div>
-          </div>
-          <div class="status">${getStatusKorText(item.status)}</div>
-        </div>
-      </div>
+function orderView(item) {
+  console.log('test', item);
+  
+  const date = new Date(item.createdAt);
+  
+  document.querySelector('#payment-price').textContent = (item.totalProductPrice + item.deliveryPrice).toLocaleString() + '원';
+  document.querySelector('#order-date').textContent = date.toLocaleString();
+  document.querySelector('#order-status').textContent = getStatusKorText(item.status);
+  if (item.status === 'order-receipt') {
+    document.querySelector('.info-right-box').innerHTML = `
+      <button class="">주문 취소</button>
     `;
+  }
+  
+  
+  
+  
+//  {
+//    "_id": "64b15bc6cf692c216ec88574",
+//    "orderUser": "64b1277a5e67af884c3ebd80",
+//    "totalProductPrice": 19400,
+//    "deliveryPrice": 3000,
+//    "status": "order-receipt",
+//    "deliveryMessage": null,
+//    "receiverName": "최원진",
+//    "receiverPhone": "010-1234-1234",
+//    "receiverZipCode": "06541",
+//    "receiverAddress": "서울 서초구 강남대로 477",
+//    "receiverDetailAddress": "123123123",
+//    "productCount": 2,
+//    "repProductName": "야채 볶음밥&햄에그롤",
+//    "repProductImage": "/public/09c67fb9-fa17-4912-8337-6926acb117fd-283_detail_01.jpg",
+//    "createdAt": "2023-07-14T14:29:26.929Z",
+//    "updatedAt": "2023-07-14T14:29:26.929Z",
+//    "__v": 0,
+//    "orderDetails": [
+//        {
+//            "_id": "64b15bc6cf692c216ec88576",
+//            "orderId": "64b15bc6cf692c216ec88574",
+//            "product": {
+//                "_id": "64b15adccf692c216ec884b3",
+//                "name": "야채 볶음밥&햄에그롤",
+//                "thumbnail": {
+//                    "_id": "64b15adccf692c216ec884af",
+//                    "path": "/public/09c67fb9-fa17-4912-8337-6926acb117fd-283_detail_01.jpg"
+//                }
+//            },
+//            "amount": 1,
+//            "productPrice": 4700,
+//            "productDiscountRate": null,
+//            "__v": 0,
+//            "createdAt": "2023-07-14T14:29:26.939Z",
+//            "updatedAt": "2023-07-14T14:29:26.939Z"
+//        },
+//        {
+//            "_id": "64b15bc6cf692c216ec88577",
+//            "orderId": "64b15bc6cf692c216ec88574",
+//            "product": {
+//                "_id": "64b157cdcf692c216ec8829a",
+//                "name": "취나물밥&매콤 제육볶음",
+//                "thumbnail": {
+//                    "_id": "64b157cdcf692c216ec88296",
+//                    "path": "/public/8b63efaf-ddd0-4ee2-a8df-9323c6bb9670-263_detail_016.jpg"
+//                }
+//            },
+//            "amount": 3,
+//            "productPrice": 4900,
+//            "productDiscountRate": null,
+//            "__v": 0,
+//            "createdAt": "2023-07-14T14:29:26.939Z",
+//            "updatedAt": "2023-07-14T14:29:26.939Z"
+//        }
+//    ]
+//}
 
-    $orderHistory.appendChild($orderRow);
-  });
 }
 
 function getStatusKorText(status) {

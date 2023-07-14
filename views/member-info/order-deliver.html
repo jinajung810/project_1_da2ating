@@ -14,67 +14,33 @@
     <script src="./order-deliver.js" defer></script>
 </head>
 <body>
-    <section class="wrap">
-        <!-- HEADER -->
-        <header id="header"></header>
-        <aside id="sidebar"></aside>
+    <!-- HEADER -->
+    <header id="header"></header>
+    <aside id="sidebar"></aside>
 
-        <!-- 메인 본문 -->
-        <main>
-            <aside id="mypage">
-                <h1>마이페이지</h1>
-                <div>
-                    <h2>회원정보</h2>
-                    <a href="./mypage-view.html">-회원정보 조회</a></br>
-                    <a href="./info-change.html">-회원정보 변경</a></br>
-                    <a href="./delete-account.html">-회원탈퇴</a></br>
-                  </div>
-                  <div>
-                    <h2>주문/배송 조회</h2>
-                    <a href="./order-deliver.html" style="font-weight:bold; color:#10a2a7">-주문목록/배송조회</a></br>
-                  </div>
-                        <h2>나의 상품문의</h2>
-                      <a href="">-나의 상품 문의</a></br>
-                  </div>
-            </aside>
+    <main class="mypage-container">
+        <aside id="mypage-sidebar">
+            <h1>마이페이지</h1>
+            <div>
+                <h2>회원정보</h2>
+                <a href="./mypage-view.html">-회원정보 조회</a></br>
+                <a href="./info-change.html">-회원정보 변경</a></br>
+                <a href="./delete-account.html">-회원탈퇴</a></br>
+            </div>
+            <div>
+                <h2>주문/배송 조회</h2>
+                <a href="./order-deliver.html" style="font-weight:bold; color:#10a2a7">-주문목록/배송조회</a></br>
+            </div>
+        </aside>
 
-            <article>
-                <h1>주문목록/배송조회</h1>
-                <!--<div class="period">
-                    <label class="">조회기간</label>
-                    <input type="button" value="오늘" >
-                    <input type="button" value="7일">
-                    <input type="button" value="15일">
-                    <input type="button" value="1개월">
-                    <input type="button" value="3개월">
-                    <input type="button" value="1년">
-                    <form name="dateRangeForm" action="값을 보낼 주소" method="get">
-                        <input type='date' name='startDate' value='서버에 전송할 값'/>~
-                        <input type='date' name='endDate' value='서버에 전송할 값'/>
-                    </form>
-                    <button type="submit" onclick="">조회</button>
-                </div>-->
-                <div class="orderDeliver">
-                    <table class="orderTable">
-                        <tr class="ordercontent">
-                            <td class="date">날짜/주문번호</td>
-                            <td class="option">상품명</td>
-                            <td class="price">상품금액</td>
-                            <td class="count">수량</td>
-                            <td class="status">주문상태</td>
-                        </tr>
-                        <tr class="orderview">
-                            <td colspan="5" class="noneView">조회 내역이 없습니다.</td>
-                        </tr>
-                    </table>
-                </div>
-            </article>
-        </main>
-        <!-- 메인 하단 -->
-          <!-- FOOTER -->
-          <footer id="footer">
-        </footer>
-    </section>
+        <article class="mypage-order-page">
+            <h1>주문목록/배송조회</h1>
+            <div id="order-history"></div>
+        </article>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer"></footer>
 
 </body>
 </html>
