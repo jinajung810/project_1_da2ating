@@ -13,6 +13,11 @@ const deliveryMessage = document.querySelector('#deliveryMessage');
 //구매 상품 데이터(localStorage)
 const productData = JSON.parse(localStorage.getItem('buyProducts'));
 
+// 가격
+const orderProductPrice = document.querySelector('#order-product-price');
+const orderDeliveryPrice = document.querySelector('#order-delivery-price');
+const orderTotal = document.querySelector('#order-total');
+
 // 구매자 정보 확인하기
 const onCheckInfo = () => {
   const regex = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
@@ -86,11 +91,9 @@ const onClickPurchaseBtn = async (e) => {
       if (res.ok) {
         localStorage.setItem('buyProducts', JSON.stringify([]));
         localStorage.setItem('cartProducts', JSON.stringify([]));
-        
+
         // 주문 완료
         window.location.href = '../order/order-complete.html';
-        
-        
       } else {
         alert('다시 시도해주세요!');
       }
@@ -141,10 +144,12 @@ productData.forEach((v, i) => {
   document.querySelector('.product-info-table').innerHTML += `
     <tr class="trhr"></tr>
     <tr>
-      <td><a href ='#'><img id="order-product-img"src="${API_BASE_URL}${v.productImage}" /></a></td>
+      <td><a href ='#'><img id="order-product-img"src="${API_BASE_URL}${
+    v.productImage
+  }" /></a></td>
       <td>${v.productName}</td>
       <td>${v.amount}개</td>
-      <td>${v.productPrice}원</td>
+      <td>${v.productPrice.toLocaleString()}원</td>
     </tr>
     <tr class="trhr"></tr>
   `;
@@ -158,6 +163,22 @@ const getProductSum = () => {
 };
 
 // 총 상품 금액 출력
-document.querySelector('.product-sum').innerHTML += `
-  <h3 class="sum-number">${getProductSum().toLocaleString()}원</h3>
-`;
+const showTotal = () => {
+  const productSum = getProductSum();
+  let receiptDelivery;
+
+  if (productSum >= 50000) {
+    receiptDelivery = 0;
+  } else {
+    receiptDelivery = 3500;
+  }
+
+  // 값 출력
+  orderProductPrice.textContent = `${productSum.toLocaleString()}원`;
+  orderDeliveryPrice.textContent = `+ ${receiptDelivery.toLocaleString()}원`;
+  orderTotal.textContent = `= ${(
+    productSum + receiptDelivery
+  ).toLocaleString()}원`;
+};
+
+showTotal();

@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Da2Ating - 샐러드 판매 쇼핑몰</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Da2Ating - 샐러드 판매 쇼핑몰</title>
 
-  <!-- Common Import -->
-  <link rel="stylesheet" href="../../common/common.css">
-  <link rel="stylesheet" href="../../common/layout.css">
-  <script src="../../common/makeLayout.js" defer></script>
+    <!-- Common Import -->
+    <link rel="stylesheet" href="../../common/common.css" />
+    <link rel="stylesheet" href="../../common/layout.css" />
+    <script src="../../common/makeLayout.js" defer></script>
 
-  <link rel="stylesheet" href="./login.css">
-  <script defer src="./login.js"></script>
+    <link rel="stylesheet" href="./login.css" />
+    <script defer src="./login.js"></script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header id="header"></header>
+    <aside id="sidebar"></aside>
 
-</head>
-<body>
-
-  <!-- HEADER -->
-  <header id="header"></header>
-  <aside id="sidebar"></aside>
-
-  <section class="loginPage">
-    <div class="inner">
-      <div class="loginBox">
-        <h2>로그인</h2>
-        <form>
-          <input type="email" placeholder="Email" id="emailInput"/>
-          <input type="password" placeholder="password" id="passwordInput"/>
-          <input type="submit" value="로그인" id="submitInput"/>
-        </form>
-        <button class="joinBtn">회원가입</button>
+    <section class="loginPage">
+      <div class="inner">
+        <div class="loginBox">
+          <h2>로그인</h2>
+          <form>
+            <input type="email" placeholder="Email" id="emailInput" />
+            <input type="password" placeholder="password" id="passwordInput" />
+            <input type="submit" value="로그인" id="submitInput" />
+          </form>
+          <button
+            class="joinBtn"
+            onclick="location.href='../register/register.html'"
+          >
+            회원가입
+          </button>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer id="footer"></footer>
-
-</body>
+    <!-- FOOTER -->
+    <footer id="footer"></footer>
+  </body>
 </html>
