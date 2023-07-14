@@ -67,9 +67,6 @@ const onEmailInput = (e) => {
   if (!validateEmail(e.target.value)) {
     userEmailError.textContent = '올바른 이메일을 입력해주세요';
     userEmail.focus();
-  } else if (emailDoubleCheck()) {
-    userEmailError.textContent = '중복된 이메일입니다.';
-    userEmail.focus();
   } else {
     userEmailError.textContent = '';
   }
@@ -124,9 +121,20 @@ const onSubmit = async (e) => {
     return;
   } else if (!validatePassword(userPw.value)) {
     return;
-  } else if (emailDoubleCheck()) {
+  }
+  
+  
+  const isExists = await emailDoubleCheck();
+  if (isExists === true || isExists === null || isExists === undefined) {
+    alert('중복된 이메일입니다.');
     return;
   }
+  
+  
+  
+  
+  
+  
 
   // 유효성 검사 통과시 회원가입 api 요청
   const userData = {
