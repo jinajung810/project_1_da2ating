@@ -20,6 +20,7 @@ header{
 .header-top .search {
     position: relative;
     width: 250px;
+    display: none;
 }
 .header-top .search .fa-search {
   position: absolute;
@@ -49,32 +50,46 @@ header{
     justify-content: flex-end;
     align-items: center;
 }
-.header-top .form .welcome{
-    display: inline;
-    color:#000000;
-    margin: 20px;
-    font-size: 18px;
+.header-top .form .header-form-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  margin-right: 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
-.header-top .form .login{
-    width: 100px;
-    height: 40px;
-    border-radius: 5px;
-    border:#10a2a7 solid 3px;
-    margin: 20px;
-    font-family: "Noto Sans KR", sans-serif !important;
-    font-size: 16px;
+.header-top .form .sign-up-btn,
+.header-top .form .logout-btn  {
+  border:#10a2a7 solid 3px;
+  color: #10a2a7;
 }
-.header-top .form .mypage > span {
-    font-size: 30px;
-    padding-right: 30px;
-    color:#10a2a7;
-    font-weight: bold;
+.header-top .form .login-btn {
+  background-color: #10a2a7;
+  color: #fff;
 }
-.header-top .form .cart > span {
-    font-size: 30px;
-    color:#10a2a7;
-    font-weight: bold;
+
+.header-top .form .header-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
 }
+.header-top .form .header-icon-btn span {
+  font-size: 30px;
+  color:#10a2a7;
+  font-weight: bold;
+}
+.header-top .form .welcome {
+    margin-right: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
 
 /* 헤더 카테고리 */
 .header2 {

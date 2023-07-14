@@ -4,33 +4,51 @@ function makeLayout() {
   initHeader();
   initSidebar();
   initFooter();
+  initCategory();
 }
 
 function initHeader() {
-  const $header = document.querySelector('#header');
+  const token = sessionStorage.getItem('token');
+  let userInfo = sessionStorage.getItem('userInfo');
+  if (userInfo !== null) {
+    userInfo = JSON.parse(userInfo);
+  }
+
+  let formTags = '';
+  if (token === null || userInfo === null) {
+    formTags = `
+      <a class="header-form-btn sign-up-btn" href="../register/register.html">회원가입</a>
+      <a class="header-form-btn login-btn" href="../login/login.html">로그인</a>
+      <a class="header-icon-btn" href="../cart/cart.html">
+        <span class="material-symbols-outlined" onclick="">shopping_cart</span>
+      </a>
+    `;
+
+  } else {
+    formTags = `
+      <p class="welcome">반갑습니다. ${userInfo?.name}님</p>
+      <button class="header-form-btn logout-btn" onclick="logout()">로그아웃</button>
+      <a class="header-icon-btn" href="../member-info/mypage-view.html">
+        <span class="material-symbols-outlined">face</span>
+      </a>
+      <a class="header-icon-btn" href="../cart/cart.html">
+        <span class="material-symbols-outlined" onclick="">shopping_cart</span>
+      </a>
+    `;
+
+  }
 
   const headerTags = `
     <nav class="header-top">
       <a class="logo" href="/">
-          <img src="/resources/logo2.gif">
+        <img src="/resources/logo2.gif">
       </a>
       <div class="search">
-          <i class="fas fa-search" type="button" onclick="doSearch()"></i>
-          <input class="keyword" type="search" placeholder="상품검색" onkeyup="performSearch(event)">
+        <i class="fas fa-search" type="button" onclick="doSearch()"></i>
+        <input class="keyword" type="search" placeholder="상품검색" onkeyup="performSearch(event)">
       </div>
       <div class="form">
-          <a href="http://127.0.0.1:5500/views/register/register.html">
-            <p class="welcome">회원가입</p>
-          </a>
-          <a href="http://127.0.0.1:5500/views/login/login.html">
-            <button class="login" type="submit" onclick="login()" style="cursor: pointer">로그인</button>
-          </a>
-          <a class="mypage" href="">
-              <span class="material-symbols-outlined" onclick="mypage(e)">face</span>
-          </a>
-          <a class="cart" href="http://127.0.0.1:5500/views/cart/cart.html">
-              <span class="material-symbols-outlined" onclick="">shopping_cart</span>
-          </a>
+        ${formTags}
       </div>
     </nav>
     <nav class="header2">
@@ -38,21 +56,20 @@ function initHeader() {
     </nav>
   `;
 
+  const $header = document.querySelector('#header');
   $header.innerHTML = headerTags;
 }
 
 function initSidebar() {
-  const $sidebar = document.querySelector('#sidebar');
-
   const sidebarTags = `
     <div class="menu-side">
       <div class="easyskills">
-        <a href="/views/member-info/order-deliver.html">
-          <span class="material-symbols-outlined" style="cursor: pointer;">local_shipping</span></br>
+        <a href="../member-info/order-deliver.html">
+          <span class="material-symbols-outlined">local_shipping</span></br>
         </a>
         <span class="material-symbols-outlined">maximize</span></br>
-        <a href="http://127.0.0.1:5500/views/cart/cart.html">
-          <span class="material-symbols-outlined" style="cursor: pointer;">shopping_cart</span></br>
+        <a href="../cart/cart.html">
+          <span class="material-symbols-outlined">shopping_cart</span></br>
         </a>
         </div>
       <div class="topBottom">
@@ -64,10 +81,12 @@ function initSidebar() {
         </a>
       </div>
     </div>
-    <link rel="stylesheet" href="sidebar.css">
-  `
+  `;
 
-  $sidebar.innerHTML = sidebarTags;
+  const $sidebar = document.querySelector('#sidebar');
+  if ($sidebar !== null) {
+    $sidebar.innerHTML = sidebarTags;
+  }
 }
 
 function initFooter() {
@@ -118,4 +137,47 @@ function initFooter() {
   `
 
   $footer.innerHTML = footerTags;
+}
+
+async function initCategory() {
+  try {
+    const res = await fetch('http://kdt-sw-5-team02.elicecoding.com/api/categories', {
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+    });
+    const datas = await res.json();
+    const data = datas.data;
+    categoryAdd(data);
+
+  } catch (error) {
+    console.error('get 에러 발생', error);
+  }
+}
+
+function categoryAdd(data) {
+  const category = document.querySelector('.header-category');
+  for (let i = 0; i < data.length; i++) {
+    const categoryContent = document.createElement('a');
+    categoryContent.textContent = `${data[i].name}`;
+    const sanitizedToken = data[i].name.replace(/[\s<>]/g, '_');
+    categoryContent.classList.add(sanitizedToken);
+    categoryContent.href = `../product-list/product-list.html?category=${data[i]._id}`;
+    category.appendChild(categoryContent);
+  }
+
+  // 카테고리 클릭 시 글자색 변화
+  const categoryLinks = document.querySelectorAll('.category a');
+  categoryLinks.forEach((link) => {
+    link.addEventListener('click', function () {
+      this.classList.toggle('clicked');
+    });
+  });
+}
+
+function logout() {
+  sessionStorage.removeItem('token');
+  sessionStorage.removeItem('userInfo');
+
+  location.href = '/';
 }

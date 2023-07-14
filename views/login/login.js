@@ -49,6 +49,7 @@ submitInput.addEventListener("click", async (event) => {
       // 로그인 성공
       console.log('로그인 성공!');
       sessionStorage.setItem('token', data.data.token);
+      sessionStorage.setItem('userInfo', JSON.stringify(data.data.userInfo));
       alert(`로그인되었습니다.`)
 
       window.location.href = "/";

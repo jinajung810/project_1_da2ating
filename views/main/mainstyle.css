@@ -1,3 +1,7 @@
+.header-top .search {
+    display: block;
+  }
+
 
 /* 메인-슬라이드 */
 /* slide.css, slide.js 참조 */
@@ -20,6 +24,7 @@
     height: 100%;
     width: 100%;
 }
+
 
 /* 메인 */
 main {
