@@ -44,8 +44,8 @@ function initHeader() {
         <img src="/resources/logo2.gif">
       </a>
       <div class="search">
-        <i class="fas fa-search" type="button" onclick="doSearch()"></i>
-        <input class="keyword" type="search" placeholder="상품검색" onkeyup="performSearch(event)">
+        <i class="fas fa-search"></i>
+        <input class="keyword" type="search" placeholder="상품검색" onkeyup="searchProduct(event)">
       </div>
       <div class="form">
         ${formTags}
@@ -180,4 +180,23 @@ function logout() {
   sessionStorage.removeItem('userInfo');
 
   location.href = '/';
+}
+
+function searchProduct(e) {
+  if (e.key === "Enter") {
+    const searchInput = document.querySelector(".keyword");
+    const searchQuery = searchInput.value;
+    doSearch(searchQuery);
+  }
+}
+
+async function doSearch(keyword) {
+  const _keyword = keyword.trim();
+
+  if (_keyword.length < 2) {
+    alert('2글자 이상 검색해주세요.');
+    return;
+  }
+
+  location.href = `../search/search.html?keyword=${_keyword}`;
 }

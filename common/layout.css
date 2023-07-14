@@ -20,7 +20,6 @@ header{
 .header-top .search {
     position: relative;
     width: 250px;
-    display: none;
 }
 .header-top .search .fa-search {
   position: absolute;

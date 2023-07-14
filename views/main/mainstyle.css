@@ -32,6 +32,7 @@
 .product-item-list .product-item-price {
     padding-bottom: 8px;
     border-bottom: 3px solid #10a2a7;
+    text-align: right;
 }
 .product-item-list .product-item-price span {
     font-weight: 700;
