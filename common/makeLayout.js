@@ -36,6 +36,11 @@ function initHeader() {
       </a>
     `;
 
+    if (userInfo.type === 'admin') {
+      formTags += `
+        <a href="../admin/admin-product/admin-product.html">관리자기능</a>
+      `;
+    }
   }
 
   const headerTags = `
