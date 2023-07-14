@@ -1,58 +1,59 @@
-const receivedData = location.href.split('?')[1];
-console.log(receivedData); // data
+initProductListPage();
 
-// 전달받은 데이터가 한글일 경우
-console.log(decodeURI(receivedData));
+function initProductListPage() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const categoryId = urlParams.get('category');
 
-fetch(`http://127.0.0.1:5555/api/categories?category/${receivedData}`, {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json;charset=utf-8'
-  },
-})
-  .then((res) => res.json())
-  .then((data) => {
-    const category = data.data;
-    console.log(category)
+  getCategoryInfo(categoryId);
+  getProductsInCategory(categoryId);
+}
 
-    document.getElementById("category").innerHTML += `
-      <h2>${category[0].name}</h2>
-      <img src="http://127.0.0.1:5555${category[0].bannerImage.path}" alt="식단관리에 가장 기본이 되는 데일리 샐러드 10종 모음" />
-    `
-  });
-
-  fetch(`http://127.0.0.1:5555/api/products?category=${receivedData}`, {
+function getCategoryInfo(categoryId) {
+  fetch(`http://kdt-sw-5-team02.elicecoding.com/api/categories/${categoryId}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
     },
   })
-    .then((res)=> res.json())
-    .then((data)=>{
-      const ListInfo = data.data; 
-      console.log(ListInfo)
-  
-      document.querySelector('.list-num').textContent = ListInfo.length; 
-  
-      for (let i = 0; i < ListInfo.length; i++) {
+    .then((res) => res.json())
+    .then((data) => {
+      const category = data.data;
 
-        const Price = ListInfo[i].originPrice.toLocaleString()
-        document.getElementById("categoryList").innerHTML += `
-          <li>
-            <a href="../product-detail/product-detail.html?${ListInfo[i]._id}">
-              <img src= 'http://127.0.0.1:5555${ListInfo[i].thumbnail.path}' />
-              <h3>${ListInfo[i].name}</h3>
-            </a>
-            <div class="cart">
-              <a href="javascript:void(0)">
-                <img src="./images/cart_icn.png" alt="">
-              </a>
-            </div>
-            <strong>
-              ${Price}<span>원</span>
-            </strong>
-          </li>
-        `
+      let tags = `<h2>${category.name}</h2>`;
+      if (category.bannerImage !== null) {
+        tags += `<img src="http://kdt-sw-5-team02.elicecoding.com${category.bannerImage.path}" alt="${category.name}" />`
       }
-    })
 
+      document.getElementById("category").innerHTML = tags;
+    });
+}
+
+function getProductsInCategory(categoryId) {
+  fetch(`http://127.0.0.1:5555/api/products?category=${categoryId}`, {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8'
+  },
+})
+  .then((res)=> res.json())
+  .then((data)=>{
+    const listInfo = data.data; 
+
+    document.querySelector('.list-num').textContent = listInfo.length; 
+
+    for (let i = 0; i < listInfo.length; i++) {
+      const price = listInfo[i].originPrice.toLocaleString()
+      document.getElementById("categoryList").innerHTML += `
+        <li>
+          <a href="../product-detail/product-detail.html?${listInfo[i]._id}">
+            <img src= 'http://127.0.0.1:5555${listInfo[i].thumbnail.path}' />
+            <h3>${listInfo[i].name}</h3>
+          </a>
+          <strong>
+            ${price}<span>원</span>
+          </strong>
+        </li>
+      `
+    }
+  })
+}

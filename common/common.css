@@ -1,3 +1,5 @@
+@import url('https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css');
+
 /* 폰트 */
 @import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
@@ -58,7 +60,16 @@ body {
     margin:0;
     padding: 0;
     font-family: "Noto Sans KR", sans-serif;
+    color: #333;
 }
+img {
+    display: block;
+}
+a {
+    text-decoration: none;
+    color:#333
+}
+
 /*
 html, body{
     width: 100%;
