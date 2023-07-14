@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://127.0.0.1:5555';
+const API_BASE_URL = 'http://kdt-sw-5-team02.elicecoding.com';
 
 const categoryList = document.querySelector('#category-list');
 const categoryName = document.querySelector('#categoryName');
@@ -12,12 +12,10 @@ const submitButton = document.querySelector('#submitButton');
 const changeBtn = document.querySelector('#changeBtn');
 const changeSubmitButton = document.querySelector('#changeSubmitButton');
 
-let token = '';
-let selectedId = '';
+const token = sessionStorage.getItem('token');
 
 // 카테고리 삭제
 const onDeleteCategory = async (id) => {
-  console.log('이벤트');
   const options = {
     method: 'DELETE',
     headers: {
@@ -109,7 +107,6 @@ const onAddCategory = async (e) => {
 
   try {
     const res = await fetch(`${API_BASE_URL}/api/categories/tier1`, options);
-    console.log(res, token);
 
     if (res.ok) {
       categoryName.value = '';
@@ -139,7 +136,6 @@ const onChangeCategory = async (e) => {
   // if (categoryImage.files.length !== 0) {
   //   formData.append('bannerImage', categoryImage.files[0]);
   // }
-  console.log(selectedId);
 
   const options = {
     method: 'PUT',
@@ -154,7 +150,6 @@ const onChangeCategory = async (e) => {
       `${API_BASE_URL}/api/categories/tier1/${selectedId}`,
       options
     );
-    console.log(res, token);
 
     if (res.ok) {
       categoryChangeName.value = '';
@@ -185,36 +180,7 @@ const imagePreview = (e) => {
   reader.readAsDataURL(file);
 };
 
-// 임시 테스트용 admin 로그인
-const adminLogin = async () => {
-  const data = {
-    email: 'admin@admin.com',
-    password: '1234',
-  };
-
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: null,
-    },
-    body: JSON.stringify(data),
-  };
-
-  try {
-    const res = await fetch(`${API_BASE_URL}/api/users/login`, options);
-    const data = await res.json();
-    console.log(res);
-    if (res.ok) {
-      token = data.data.token;
-    }
-  } catch (error) {
-    console.log('test admin login error', error);
-  }
-};
-
 onGetCategory();
-adminLogin();
 
 // 카테고리 추가 모달 이벤트
 const open = () => {
@@ -223,7 +189,6 @@ const open = () => {
 
 // 카테고리 수정 모달 이벤트
 const changeOpen = (selected, name) => {
-  console.log(name, selected);
   document.querySelector('.category-change-modal').classList.remove('hidden');
   categoryChangeName.value = name;
   selectedId = selected;

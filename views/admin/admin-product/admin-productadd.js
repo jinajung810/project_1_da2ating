@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://127.0.0.1:5555';
+const API_BASE_URL = 'http://kdt-sw-5-team02.elicecoding.com';
 
 // 상품 정보
 const productName = document.querySelector('#productName');
@@ -18,7 +18,7 @@ const thumbnailDeleteBtn = document.querySelector('.thumbnail-deleteBtn');
 
 const receivedData = location.href.split('?')[1];
 
-let token = '';
+const token = sessionStorage.getItem('token');
 
 // 카테고리 목록 가져오기(select)
 const onGetCategory = async () => {
@@ -292,32 +292,3 @@ thumbnailDeleteBtn.addEventListener('click', () => {
   thumbnailPreview.src = '';
   thumbnailDeleteBtn.classList.add('hidden');
 });
-
-// 임시 테스트용 admin 로그인
-const adminLogin = async () => {
-  const data = {
-    email: 'admin@admin.com',
-    password: '1234',
-  };
-
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: null,
-    },
-    body: JSON.stringify(data),
-  };
-
-  try {
-    const res = await fetch(`${API_BASE_URL}/api/users/login`, options);
-    const data = await res.json();
-    if (res.ok) {
-      token = data.data.token;
-    }
-  } catch (error) {
-    console.log('test admin login error', error);
-  }
-};
-
-adminLogin();
