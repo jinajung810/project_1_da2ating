@@ -14,84 +14,74 @@
     <script src="./delete-account.js" defer></script>
 </head>
 <body>
-    <section class="wrap">
-        <!-- HEADER -->
-        <header id="header"></header>
-        <aside id="sidebar"></aside>
+    <!-- HEADER -->
+    <header id="header"></header>
+    <aside id="sidebar"></aside>
 
-        <!-- 메인 본문 -->
-        <main>
-            <aside id="mypage">
-                <h1>마이페이지</h1>
-                <div>
-                  <h2>회원정보</h2>
-                  <a href="./mypage-view.html">-회원정보 조회</a></br>
-                  <a href="./info-change.html">-회원정보 변경</a></br>
-                  <a href="./delete-account.html" style="font-weight:bold; color:#10a2a7">-회원탈퇴</a></br>
-                </div>
-                <div>
-                  <h2>주문/배송 조회</h2>
-                  <a href="./order-deliver.html">-주문목록/배송조회</a></br>
-                </div>
-                      <h2>나의 상품문의</h2>
-                    <a href="">-나의 상품 문의</a></br>
-                </div>
+    <main class="mypage-container">
+        <aside id="mypage-sidebar">
+            <h1>마이페이지</h1>
+            <div>
+                <h2>회원정보</h2>
+                <a href="./mypage-view.html">-회원정보 조회</a></br>
+                <a href="./info-change.html">-회원정보 변경</a></br>
+                <a href="./delete-account.html" style="font-weight:bold; color:#10a2a7">-회원탈퇴</a></br>
+            </div>
+            <div>
+                <h2>주문/배송 조회</h2>
+                <a href="./order-deliver.html">-주문목록/배송조회</a></br>
+            </div>
         </aside>
 
-            <article>
-                <h1>회원탈퇴</h1>
-                <div id="deleteAcount">
-                    <div class="deleteInfo">
-                        <h2>01.회원탈퇴 안내</h2>
-                        <p>
-                            포켓샐러드 탈퇴안내
-                            <br><br>
-                            회원님께서 회원 탈퇴를 원하신다니 저희 쇼핑몰의 서비스가 많이 부족하고 미흡했나 봅니다.
-                            불편하셨던 점이나 불만사항을 알려주시면 적극 반영해서 고객님의 불편함을 해결해 드리도록 노력하겠습니다.
-                            <br><br>
-                            ■ 아울러 회원 탈퇴시의 아래 사항을 숙지하시기 바랍니다.<br>
-                            1. 회원 탈퇴 시 회원님의 정보는 상품 반품 및 A/S를 위해 전자상거래 등에서의 소비자 보호에 관한 법률에 의거한
-                            고객정보 보호정책에따라 관리 됩니다.<br>
-                            2. 탈퇴 시 회원님께서 보유하셨던 마일리지는 삭제 됩니다.
-                        </p>
-                    </div>
-                    <form class="deleteReason" action="" method="post">
-                        <table>
-                          <h2>02.회원탈퇴 하기</h2>
-                          <tr class="table1">
-                            <td class="classReason">탈퇴사유</td>
-                            <td class="reason1">
-                              <input type="checkbox" name="reason" value="제품 불만족">제품 불만족<br>
-                              <input type="checkbox" name="reason" value="배송불만">배송불만<br>
-                              <input type="checkbox" name="reason" value="방문빈도가 낮음">방문빈도가 낮음<br>
-                              <input type="checkbox" name="reason" value="쇼핑몰의 신뢰도 불만">쇼핑몰의 신뢰도 불만<br>
-                              <input type="checkbox" name="reason" value="고객서비스(상담, 포장 등)불만족">고객서비스(상담, 포장 등)불만족<br>
-                              <input type="checkbox" name="reason" value="교환/환불/반품 불만">교환/환불/반품 불만<br>
-                              <input type="checkbox" name="reason" value="상품가격 불만">상품가격 불만<br>
-                              <input type="checkbox" name="reason" value="기타">기타
-                            </td>
-                          </tr>
-                          <tr class="table2">
-                            <td class="classReason">남길실 말씀</td>
-                            <td class="reason2">
-                              <input type="text" name="comment">
-                            </td>
-                          </tr>
-                        </table>
-                      </form>
-                      <div>
-                        <a href="./mypage-view.html">
-                          <button type="reset">취소</button>
-                        </a>
-                          <button class="deleteBtn" type="submit" onclick="confirmDeleteMemberInfo()">탈퇴</button>
-                      </div>
-                    </article>
-                </main>
-        <!-- 메인 하단 -->
-          <!-- FOOTER -->
-          <footer id="footer">
-        </footer>
-    </section>
+        <article class="mypage-delete-info-page">
+            <h1>회원탈퇴</h1>
+            
+            <div class="delete-info">
+                <h2>01.회원탈퇴 안내</h2>
+                <p>
+                    포켓샐러드 탈퇴안내
+                    <br><br>
+                    회원님께서 회원 탈퇴를 원하신다니 저희 쇼핑몰의 서비스가 많이 부족하고 미흡했나 봅니다.
+                    불편하셨던 점이나 불만사항을 알려주시면 적극 반영해서 고객님의 불편함을 해결해 드리도록 노력하겠습니다.
+                    <br><br>
+                    ■ 아울러 회원 탈퇴시의 아래 사항을 숙지하시기 바랍니다.<br>
+                    1. 회원 탈퇴 시 회원님의 정보는 상품 반품 및 A/S를 위해 전자상거래 등에서의 소비자 보호에 관한 법률에 의거한
+                    고객정보 보호정책에따라 관리 됩니다.<br>
+                    2. 탈퇴 시 회원님께서 보유하셨던 마일리지는 삭제 됩니다.
+                </p>
+            </div>
+
+            <form class="deleteReason" action="" method="post">
+                <table>
+                    <h2>02.회원탈퇴 하기</h2>
+                    <tr class="table1">
+                    <td class="classReason">탈퇴사유</td>
+                    <td class="reason1">
+                        <input type="checkbox" name="reason" value="제품 불만족">제품 불만족<br>
+                        <input type="checkbox" name="reason" value="배송불만">배송불만<br>
+                        <input type="checkbox" name="reason" value="방문빈도가 낮음">방문빈도가 낮음<br>
+                        <input type="checkbox" name="reason" value="쇼핑몰의 신뢰도 불만">쇼핑몰의 신뢰도 불만<br>
+                        <input type="checkbox" name="reason" value="고객서비스(상담, 포장 등)불만족">고객서비스(상담, 포장 등)불만족<br>
+                        <input type="checkbox" name="reason" value="교환/환불/반품 불만">교환/환불/반품 불만<br>
+                        <input type="checkbox" name="reason" value="상품가격 불만">상품가격 불만<br>
+                        <input type="checkbox" name="reason" value="기타">기타
+                    </td>
+                    </tr>
+                    <tr class="table2">
+                    <td class="classReason">남기실 말씀</td>
+                    <td class="reason2">
+                        <input type="text" name="comment">
+                    </td>
+                    </tr>
+                </table>
+            </form>
+
+            <button class="deleteBtn" type="button" onclick="confirmDeleteMemberInfo()">탈퇴</button>
+        </article>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer"></footer>
 
 </body>
 </html>
