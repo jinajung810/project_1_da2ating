@@ -1,125 +1,121 @@
-const token = sessionStorage.getItem('token');
-const isLoggedIn = isValidToken(token);
+initMypageInfoChangePage();
 
-// 로그인되지 않은 상태 처리
-if (!isLoggedIn) {
-  let answer = confirm("로그인이 필요한 페이지입니다.");
-  if (answer === true) {
-    location.href = 'http://127.0.0.1:5500/views/login/login.html';
-  } else {
-    location.href = 'http://127.0.0.1:5500/views/main/main.html';
+function initMypageInfoChangePage() {
+  const token = sessionStorage.getItem('token');
+
+  if (token === null) {
+    alert('로그인이 필요합니다.');
+    location.href = '../login/login.html';
+    return;
   }
-} else {
+
+  infoView();
+}
+
+function infoView() {
+  const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+
+  document.querySelector('.userName').value = userInfo.name;
+  document.querySelector('.email').value = userInfo.email;
+  document.querySelector('.phone1').value = userInfo.phone || '';
+
   // 회원 정보 수정 로직 실행
   const infoForm = document.querySelector('.changeInfo');
   const addressCodeBtn = document.querySelector('#addressCodeBtn');
   const addressCodeInput = document.querySelector('#addressCode');
   const addressBasicInput = document.querySelector('#addressBasic');
   const addressDetailInput = document.querySelector('#addressDetail');
-
+  
   // 유효한 토큰일 경우에만 정보 요청 후 화면에 출력
   infoForm.addEventListener('submit', handleInfoSubmit);
   addressCodeBtn.addEventListener('click', DaumPostcode);
+}
 
-  getInfo();
+async function handleInfoSubmit(event) {
+  event.preventDefault();
 
-  async function getInfo() {
+  const userName = document.querySelector('.userName').value;
+  const userEmail = document.querySelector('.email').value;
+  const phone = document.querySelector('.phone1').value;
+  //const addressCode = addressCodeInput.value;
+  //const addressBasic = addressBasicInput.value;
+  //const addressDetail = addressDetailInput.value;
+
+  const data = {
+    name: userName,
+    email: userEmail,
+    phone: phone,
+  };
+
+  const token = sessionStorage.getItem('token');
+
+  try {
     const response = await fetch('http://127.0.0.1:5555/api/users/my-info', {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
+        'Authorization': token
+      },
+      body: JSON.stringify(data),
     });
 
     if (response.ok) {
-      const data = await response.json();
-      console.log('회원정보', data);
-
-      document.querySelector('.userName').value = data.userName;
-      document.querySelector('.email').value = data.userEmail;
-      document.querySelector('.phone1').value = data.phone;
-      addressCodeInput.value = data.addressCode;
-      addressBasicInput.value = data.addressBasic;
-      addressDetailInput.value = data.addressDetail;
+      const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+      const newUserInfo = {
+        ...userInfo,
+        name: userName,
+        email: userEmail,
+        phone: phone,
+      }
+      sessionStorage.setItem('userInfo', JSON.stringify(newUserInfo));
+      alert('회원 정보를 수정했습니다.');
+      location.href = './mypage-view.html';
     } else {
-      console.error('회원정보 조회 실패');
+      alert('회원 정보 수정 실패');
     }
+  } catch (error) {
+    console.error('회원 정보 수정 에러', error);
   }
+}
 
-  async function handleInfoSubmit(event) {
-    event.preventDefault();
+function DaumPostcode() {
+  new daum.Postcode({
+    oncomplete: function(data) {
+      let addr = '';
+      let extraAddr = '';
 
-    const userName = document.querySelector('.userName').value;
-    const userEmail = document.querySelector('.email').value;
-    const phone = document.querySelector('.phone1').value;
-    const addressCode = addressCodeInput.value;
-    const addressBasic = addressBasicInput.value;
-    const addressDetail = addressDetailInput.value;
-
-    const data = {
-      userName,
-      userEmail,
-      phone,
-      addressCode,
-      addressBasic,
-      addressDetail,
-    };
-
-    try {
-      const response = await fetch('http://127.0.0.1:5555/api/users/my-info', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        alert('회원 정보를 수정했습니다.');
-        location.href = 'http://127.0.0.1:5500/f2ting_client/src/views/member-info/mypage-view.html';
+      if (data.userSelectedType === 'R') {
+        addr = data.roadAddress;
       } else {
-        alert('회원 정보 수정 실패');
+        addr = data.jibunAddress;
       }
-    } catch (error) {
-      console.error('회원 정보 수정 에러', error);
+
+      if (data.userSelectedType === 'R') {
+        if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+          extraAddr += data.bname;
+        }
+
+        if (data.buildingName !== '' && data.apartment === 'Y') {
+          extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+        }
+
+        if (extraAddr !== '') {
+          extraAddr = ' (' + extraAddr + ')';
+        }
+
+        document.getElementById('sample6_extraAddress').value = extraAddr;
+      } else {
+        document.getElementById('sample6_extraAddress').value = '';
+      }
+
+      addressCodeInput.value = data.zonecode;
+      addressBasicInput.value = addr;
+      addressDetailInput.focus();
     }
-  }
+  }).open();
+}
 
-  function DaumPostcode() {
-    new daum.Postcode({
-      oncomplete: function(data) {
-        let addr = '';
-        let extraAddr = '';
-
-        if (data.userSelectedType === 'R') {
-          addr = data.roadAddress;
-        } else {
-          addr = data.jibunAddress;
-        }
-
-        if (data.userSelectedType === 'R') {
-          if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
-            extraAddr += data.bname;
-          }
-
-          if (data.buildingName !== '' && data.apartment === 'Y') {
-            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-          }
-
-          if (extraAddr !== '') {
-            extraAddr = ' (' + extraAddr + ')';
-          }
-
-          document.getElementById('sample6_extraAddress').value = extraAddr;
-        } else {
-          document.getElementById('sample6_extraAddress').value = '';
-        }
-
-        addressCodeInput.value = data.zonecode;
-        addressBasicInput.value = addr;
-        addressDetailInput.focus();
-      }
-    }).open();
-  }
+function changePassword() {
+  alert('todo')
+  //const pwd = document.querySelector('#userPw').value;
 }
