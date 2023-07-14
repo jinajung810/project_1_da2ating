@@ -295,7 +295,7 @@ function buyCartProducts() {
   let userInfo = sessionStorage.getItem('userInfo');
 
   if (token === null || userInfo === null) {
-    alert('비회원은 권한이 없습니다.');
+    alert('로그인 한 고객만 구매가 가능합니다.');
   } else {
     window.location.href = `../order/order.html`;
   }
