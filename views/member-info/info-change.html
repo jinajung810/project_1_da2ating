@@ -15,104 +15,74 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
-    <section class="wrap">
-        <!-- 메인 상단 -->
-        <header id="header">
-        </header>
+    <!-- HEADER -->
+    <header id="header"></header>
+    <aside id="sidebar"></aside>
 
-            <!-- 메인 본문 -->
-            <main>
-                <aside id="mypage">
-                    <h1>마이페이지</h1>
-                    <div>
-                      <h2>회원정보</h2>
-                      <a href="./mypage-view.html">-회원정보 조회</a></br>
-                      <a href="./info-change.html" style="font-weight:bold; color:#10a2a7">-회원정보 변경</a></br>
-                      <a href="./delete-account.html">-회원탈퇴</a></br>
-                    </div>
-                    <div>
-                      <h2>주문/배송 조회</h2>
-                      <a href="./order-deliver.html">-주문목록/배송조회</a></br>
-                    </div>
-                          <h2>나의 상품문의</h2>
-                        <a href="">-나의 상품 문의</a></br>
-                    </div>
-                </aside>
+    <main class="mypage-container">
+        <aside id="mypage-sidebar">
+            <h1>마이페이지</h1>
+            <div>
+                <h2>회원정보</h2>
+                <a href="./mypage-view.html">-회원정보 조회</a></br>
+                <a href="./info-change.html" style="font-weight:bold; color:#10a2a7">-회원정보 변경</a></br>
+                <a href="./delete-account.html">-회원탈퇴</a></br>
+            </div>
+            <div>
+                <h2>주문/배송 조회</h2>
+                <a href="./order-deliver.html">-주문목록/배송조회</a></br>
+            </div>
+        </aside>
 
-                <article>
-                    <h1>회원정보 변경</h1>
-                    <div id="memberInfo">
-                        <form class="changeInfo" action="" method="post">
-                            <table>
-                              <tr>
-                                <td class="className">이름</td>
-                                <td>
-                                  <input class="infoInput userName" name="userName" type="text" value="" style="width:500px" maxlength="12">
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="className">이메일</td>
-                                <td>
-                                  <input class="infoInput email" type="email" name="email" placeholder="email@example.com" style="width:500px" />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="className">휴대폰번호</td>
-                                <td>
-                                  <input type="text" class="infoInput phone1" id="phone1" style="width:500px" />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="className">주소</td>
-                                <td class="table-address">
-                                  <input type="text" id="addressCode" placeholder="우편번호">
-                                  <input type="button" id="addressCodeBtn" onclick="DaumPostcode()" value="우편번호 찾기"><br>
-                                  <input type="text" id="addressBasic" placeholder="주소"><br>
-                                  <input type="text" id="addressDetail" placeholder="상세주소">
-                                  <input type="text" id="sample6_extraAddress" placeholder="참고항목">
-                                </td>
-                              </tr>
-                            </table>
-                            <div class="button">
-                              <button type="reset" value="다시작성">취소</button>
-                              <button class="changeBtn" type="submit" value="변경">변경</button>
-                            </div>
-                          </form>
-                          <form class="changePsw" action="" method="post">
-                            <h1>비밀번호 변경</h1>
-                            <table>
-                              <tr>
-                                <td class="className">새 비밀번호</td>
-                                <td>
-                                  <input type="password" id="userPw" name="pw1" maxlength="15" style="width:500px" autocomplete="off" required>
-                                </td>
-                              </tr>
-                              <tr id="pwError">
-                                <td class="className"></td>
-                                <td>
-                                  <p class="userPwError">*변경할 비밀번호를 작성해주세요.</p>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="className">새 비밀번호 확인</td>
-                                <td>
-                                  <input type="password" id="userPwConfirm" name="pw2" maxlength="15" style="width:500px" autocomplete="off" required>
-                                </td>
-                              </tr>
-                            </table>
-                            <div class="button">
-                              <a href="./info-change.html">
-                                <button type="reset" value="다시작성">취소</button>
-                              </a>
-                              <button class="changeBtn" type="submit" value="수정" onclick="changePassword()">비밀번호 재설정</button>
-                            </div>
-                          </form>
-                        </div>
-                </article>
-            </main>
-            <!-- 메인 하단 -->
-          <!-- FOOTER -->
-          <footer id="footer">
-        </footer>
+        <article class="mypage-info-change-page">
+            <h1>회원정보 변경</h1>
+            <div class="mypage-info-change-table">
+                <div class="mypage-info-change-row">
+                    <div class="mypage-info-change-label">이름</div>
+                    <div class="mypage-info-change-value">
+                        <input class="info-input info-input-name" name="name" type="text" maxlength="12">
+                    </div>
+                </div>
+                <div class="mypage-info-change-row">
+                    <div class="mypage-info-change-label">휴대폰 번호</div>
+                    <div class="mypage-info-change-value">
+                        <input class="info-input info-input-phone" id="phone" type="text" maxlength="14" />
+                    </div>
+                </div>
+                <div class="mypage-info-change-row">
+                    <div class="mypage-info-change-label">주소</div>
+                    <div class="mypage-info-change-addr">
+                        <input type="text" class="info-input info-input-zip-code" id="addressCode" placeholder="우편번호" readonly>
+                        <input type="button" class="info-addr-btn" id="addressCodeBtn" onclick="DaumPostcode()" value="우편번호 찾기"><br>
+                        <input type="text" class="info-input" id="addressBasic" placeholder="주소"><br>
+                        <input type="text" class="info-input" id="addressDetail" placeholder="상세주소">
+                    </div>
+                </div>
+
+                <button class="info-change-submit-btn" onclick="changeInfo()">변경하기</button>
+            </div>
+
+            <h1>비밀번호 변경</h1>
+            <div class="mypage-info-change-table">
+                <div class="mypage-info-change-row">
+                    <div class="mypage-info-change-label">새 비밀번호</div>
+                    <div class="mypage-info-change-value">
+                        <input class="info-input info-input-pwd" type="password" id="userPw" name="pw1" autocomplete="off">
+                    </div>
+                </div>
+                <div class="mypage-info-change-row">
+                    <div class="mypage-info-change-label">새 비밀번호 확인</div>
+                    <div class="mypage-info-change-value">
+                        <input class="info-input info-input-pwd" type="password" id="userPwConfirm" name="pw2" autocomplete="off">
+                    </div>
+                </div>
+
+                <button class="info-change-submit-btn" onclick="changePassword()">변경하기</button>
+            </div>
+        </article>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer"></footer>
 </body>
 </html>

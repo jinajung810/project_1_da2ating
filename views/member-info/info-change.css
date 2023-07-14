@@ -1,125 +1,94 @@
-.header-top .search {
-  display: none;
-}
-
-
-/* main */
-main{
-  top: 100px;
-  width: 100%;
-  min-height: 500px;
-  position: relative;
+.mypage-container {
+  padding-top: 60px;
+  width: 1200px;
+  margin: auto;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
+  min-height: 500px;
 }
+
 /* 마이페이지 좌측 사이드바 */
-aside{
+#mypage-sidebar {
   width: 300px;
   justify-content:flex-start;
   text-align: left;
-  padding: 50px 0 50px 30px;
-  border-right: #a5a5a5 solid 1px;
+  padding: 50px 0;
+  border-right: #e2e2e2 solid 1px;
 }
-aside h1 {
-  font-size: 35px;
+#mypage-sidebar h1 {
+  font-size: 32px;
   margin-bottom: 40px;
 }
-aside div {
+#mypage-sidebar div {
   padding: 30px 0px;
   line-height: 35px;
 }
-aside h2 {
+#mypage-sidebar h2 {
   padding-bottom: 15px;
   font-size: 25px;
 }
-aside a {
+#mypage-sidebar a {
   padding-bottom: 20px;
   font-size: 20px;
 }
 
 /* 마이페이지 정보 확인창-회원정보변경 */
-article{
-  width: 900px;
-  padding: 100px 0 50px 50px;
+.mypage-info-change-page {
+  flex: 1;
+  padding: 50px 0 50px 50px;
 }
-article h1{
-  font-size: 35px;
+.mypage-info-change-page h1 {
+  font-size: 32px;
+  margin-bottom: 40px;
 }
-#memberInfo{
- margin-top: 50px;
-}
-.changeInfo {
-  padding: 15px;
-  font-size: 22px;
-  line-height: 70px;
-}
-.changeInfo table{
-  width: 950px;
-}
-.className{
-  width: 180px;
-}
-.infoInput{
-  border-radius: 10px;
-  height: 40px;
-  font-size: 20px;
-  padding-left: 10px;
-  border:#a5a5a5 solid 0.5px;
-}
-.changeBtn{
-  background-color: #10a2a7;
-  border: none;
-  color: #fff
-}
-.changePsw{
-  padding: 15px;
-  font-size: 20px;
-  line-height: 70px;
 
+.mypage-info-change-table .mypage-info-change-row {
+  display: flex;
+  margin-bottom: 16px;
 }
-.changePsw input{
-  border-radius: 10px;
-  height: 40px;
-  border:#a5a5a5 solid 0.5px;
-}
-.userPwError{
-  margin: -40px 0 -40px 20px;
-  color: #10a2a7;
-  font-size: 13px;
-}
-.button {
-  display:flex;
-  justify-content: center;
-}
-button{
-  margin: 50px 50px 0 0;
-  padding: 15px;
-  width: 220px;
-  font-size: 20px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-.table-address input {
-  height: 40px;
-  line-height: 50px;
-  border:#a5a5a5 solid 0.5px;
-  border-radius: 10px;
-  outline: none;
-  margin: 0.5rem;
-  padding: 5px 10px;
-}
-#addressCodeBtn {
-  height: 45px;
+.mypage-info-change-table .mypage-info-change-label {
   width: 150px;
-  padding: 0 10px;
+  font-size: 16px;
+  line-height: 40px;
+}
+.mypage-info-change-table .info-input {
+  border-radius: 10px;
+  height: 40px;
+  padding-left: 10px;
+  border: #a5a5a5 solid 0.5px;
+  width: 360px;
+  font-size: 15px;
+}
+.mypage-info-change-table .mypage-info-change-addr .info-input {
+  margin-bottom: 8px;
+  width: unset;
+  width: 360px;
+}
+.mypage-info-change-table .mypage-info-change-addr .info-input.info-input-zip-code {
+  width: 140px;
+  margin-right: 8px;
+}
+.mypage-info-change-table .mypage-info-change-addr .info-addr-btn {
+  cursor: pointer;
+  width: 140px;
+  height: 40px;
   background-color: #e7e4e4;
   align-self: baseline;
   border: none;
+  border-radius: 10px;
 }
-#deliveryMessage,
-#addressBasic,
-#addressDetail {
-  width: 25rem;
+.mypage-info-change-table .info-change-submit-btn {
+  display: block;
+  width: 140px;
+  height: 46px;
+  background-color: #10a2a7;
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  margin-left: 260px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+}
+.mypage-info-change-table:nth-child(2) {
+  margin-bottom: 40px;
 }

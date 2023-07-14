@@ -43,9 +43,9 @@
 
 /* 전체 */
 * {
-    background-color: #FFF;
+    /*background-color: #FFF;
     margin: 0;
-    padding: 0;
+    padding: 0;*/
     box-sizing: border-box;
 }
 html, body {
