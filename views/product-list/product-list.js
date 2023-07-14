@@ -45,7 +45,7 @@ function getProductsInCategory(categoryId) {
       const price = listInfo[i].originPrice.toLocaleString()
       document.getElementById("categoryList").innerHTML += `
         <li>
-          <a href="../product-detail/product-detail.html?${listInfo[i]._id}">
+          <a href="../product-detail/product-detail.html?product=${listInfo[i]._id}">
             <img src= 'http://kdt-sw-5-team02.elicecoding.com${listInfo[i].thumbnail.path}' />
             <h3>${listInfo[i].name}</h3>
           </a>
