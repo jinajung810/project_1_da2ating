@@ -16,8 +16,6 @@ const getUserData = async () => {
     const res = await fetch(`${url}/api/users`, options);
     const data = await res.json();
 
-    console.log(res);
-    console.log(data);
 
     if (!res.ok) {
       const errorContent = await res.json();
@@ -25,37 +23,28 @@ const getUserData = async () => {
 
       throw new Error(reason);
     }
-
+    
+    const userList = document.querySelector('.order-tbody');
     data.data.forEach((v, i) => {
-      const {
-        account,
-        zipCode,
-        address,
-        detailAddress,
-        createdAt,
-        email,
-        name,
-        phone,
-        type,
-        updatedAt,
-        val,
-        id,
-      } = v;
-      container.innerHTML += `<div class="user-data">
-              <div class="user-info">
-                <p id="user-name">이름: ${name}</p>
-                <p id="user-id">아이디: ${id}</p>
-                <p id="user-email">이메일: ${email}</p>
-                <p id="user-num">전화번호: ${phone}</p>
-                <p id="user-address">주소: (${zipCode}) ${address} ${detailAddress}</p>
-                <p id="user-date">가입일자: ${createdAt.split('T')[0]}</p>
-            
-                
-              </div>
-            </div>`;
+
+      let addr = '';
+      if (v.zipCode !== null) addr += `(${v.zipCode})`;
+      if (v.address !== null) addr += ` ${v.address}`;
+      if (v.detailAddress !== null) addr += `(${v.detailAddress})`;
+
+      userList.innerHTML += `
+        <tr>
+          <td>${v.name}</td>
+          <td>${v.email}</td>
+          <td>${v.phone || ''}</td>
+          <td>${addr}</td>
+          <td>${v.createdAt.split('T')[0]}</td>
+        </tr>
+      `;
     });
+
   } catch (error) {
-    console.log(err);
+    console.log(error);
   }
 };
 
