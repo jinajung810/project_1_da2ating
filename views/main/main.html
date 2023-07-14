@@ -10,120 +10,100 @@
     <link rel="stylesheet" href="../../common/layout.css">
     <script src="../../common/makeLayout.js" defer></script>
 
+    <link rel="stylesheet" href="./slide.css">
     <link rel="stylesheet" href="./mainstyle.css">
-    <script src="./new-product.js" defer></script>
+    <script src="./slide.js" defer></script>
     <script src="./best-product.js" defer></script>
-    <script src="./search-product.js" defer></script>
+    <script src="./new-product.js" defer></script>
 
 </head>
 <body>
-    <section class="wrap">
-        <!-- 메인 상단 -->
-        <header id="header"></header>
-        <aside id="sidebar"></aside>
-        <!-- 메인 본문 -->
-        <main>
-            <div id="slide-div">
-                <!-- 이미지 자동 슬라이드 -->
-                <script src="slide.js" defer></script>
-                <link rel="stylesheet" href="slide.css">
-                <div id="slide">
-                    <div class="slider-container">
-                        <p class="leftBtn">
-                            <span class="material-symbols-outlined">arrow_back_ios</span>
-                        </p>
-                        <div class="slider">
-                            <span class="first-img">
-                                <img src="./images/slideimg/slide3.jpg" href="" alt="0" />
-                            </span>
-                            <span>
-                                <img src="./images/slideimg/slide1.jpg" href="" alt="1" />
-                            </span>
-                            <span>
-                                <img src="./images/slideimg/slide2.jpg" href="" alt="2" />
-                            </span>
-                            <span>
-                                <img src="./images/slideimg/slide3.jpg" href="" alt="3" />
-                            </span>
-                            <span class="last-img">
-                                <img src="./images/slideimg/slide1.jpg" href="" alt="4" />
-                            </span>
-                        </div>
-                        <p class="rightBtn">
-                            <span class="material-symbols-outlined">arrow_forward_ios</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="division">
-                <article>
-                    <!-- 대표 메뉴 소개 -->
-                    <div class="menu">
-                        <h2>BEST</h2>
-                        <div id="bestMenu">
-                        <!-- 할인율 높은 순으로 메뉴 출력 -->
-                        </div>
-                    </div>
-                    <div class="menu">
-                        <h2>NEW</h2>
-                        <div id="newMenu">
-                        <!-- 업데이트 최근 순으로 메뉴 출력 -->
-                        </div>
-                    </div>
-                    <div class="event">
-                        <a class="event1" href="">
-                            <img src="./images/event/join.jpg" alt="회원 혜택">
-                        </a>
-                        <a class="event2" href="">
-                            <img src="./images/event/review.jpg" alt="리뷰">
-                        </a>
-                    </div>
-                </article>
+    <header id="header"></header>
+    <aside id="sidebar"></aside>
 
-                    <!-- 메인 하단 -->
-            <div id="service">
-                <div class="information">
-                    <div class="serviceCenter">
-                        <div>
-                            <h1>고객센터</h1>
-                            <button type="button" class="qnaBtn" href="">1:1문의</button>    
-                        </div>
-                        <div>
-                            <h2>7777-7777</h2>
-                            <a href="http://127.0.0.1:5500/views/cart/cart.html">
-                                <button type="button" class="deliveryBtn">배송조회</button>    
-                            </a>
-                        </div>
-                        <h3>월 ~ 금 : 오전 10시 ~ 오후 5시<br>
-                        점심시간 : 오후 12시 30분 ~ 오후 1시 30분<br>
-                        토요일/일요일/공휴일은 휴무 입니다.</h3>
-                        <h5>고객센터가 종료된 5시 이후와 토요일/일요일/공휴일에는 1:1 문의 게시판을 이용바랍니다.</h5>
-                    </div>
+    <div id="slide-div">
+        <!-- 이미지 자동 슬라이드 -->
+        <div id="slide">
+            <div class="slider-container">
+                <p class="leftBtn">
+                    <span class="material-symbols-outlined">arrow_back_ios</span>
+                </p>
+                <div class="slider">
+                    <span class="first-img">
+                        <img src="./images/slideimg/slide3.jpg" href="" alt="0" />
+                    </span>
+                    <span>
+                        <img src="./images/slideimg/slide1.jpg" href="" alt="1" />
+                    </span>
+                    <span>
+                        <img src="./images/slideimg/slide2.jpg" href="" alt="2" />
+                    </span>
+                    <span>
+                        <img src="./images/slideimg/slide3.jpg" href="" alt="3" />
+                    </span>
+                    <span class="last-img">
+                        <img src="./images/slideimg/slide1.jpg" href="" alt="4" />
+                    </span>
                 </div>
-                <div class="information">
-                    <div class="accountNumber">
-                        <h1>입금계좌 안내</h1>
-                        <p>
-                            신한은행: 0000-0000-0000<br>
-                            농협은행: 1111-1111-1111<br>
-                            국민은행: 2222-2222-2222<br>
-                            우리은행: 3333-3333-3333<br>
-                        </p>
-                    </div>
-                </div>
-                <!-- <div class="information">
-                    <div class="announcement">
-                        <h1>공지사항</h1>
-                        <a href="">
-                            <p>더보기</p>
-                        </a>
-                    </div>
-                </div> -->
+                <p class="rightBtn">
+                    <span class="material-symbols-outlined">arrow_forward_ios</span>
+                </p>
             </div>
-        </main>
+        </div>
+    </div>
 
-          <!-- FOOTER -->
-        <footer id="footer"></footer>
-    </section>
+    <article>
+        <!-- 대표 메뉴 소개 -->
+        <div class="menu">
+            <h2>BEST</h2>
+            <div id="bestMenu" class="product-item-list"></div>
+        </div>
+        <div class="menu">
+            <h2>NEW</h2>
+            <div id="newMenu" class="product-item-list"></div>
+        </div>
+        <div class="event">
+            <a class="event1" href="">
+                <img src="./images/event/join.jpg" alt="회원 혜택">
+            </a>
+            <a class="event2" href="">
+                <img src="./images/event/review.jpg" alt="리뷰">
+            </a>
+        </div>
+    </article>
+    
+    <div id="service">
+        <div class="information">
+            <div class="serviceCenter">
+                <div>
+                    <h1>고객센터</h1>
+                    <button type="button" class="qnaBtn" href="">1:1문의</button>    
+                </div>
+                <div>
+                    <h2>7777-7777</h2>
+                    <a href="http://127.0.0.1:5500/views/cart/cart.html">
+                        <button type="button" class="deliveryBtn">배송조회</button>    
+                    </a>
+                </div>
+                <h3>월 ~ 금 : 오전 10시 ~ 오후 5시<br>
+                점심시간 : 오후 12시 30분 ~ 오후 1시 30분<br>
+                토요일/일요일/공휴일은 휴무 입니다.</h3>
+                <h5>고객센터가 종료된 5시 이후와 토요일/일요일/공휴일에는 1:1 문의 게시판을 이용바랍니다.</h5>
+            </div>
+        </div>
+        <div class="information">
+            <div class="accountNumber">
+                <h1>입금계좌 안내</h1>
+                <p>
+                    신한은행: 0000-0000-0000<br>
+                    농협은행: 1111-1111-1111<br>
+                    국민은행: 2222-2222-2222<br>
+                    우리은행: 3333-3333-3333<br>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer"></footer>
 </body>
 </html>

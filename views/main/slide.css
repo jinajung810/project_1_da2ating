@@ -1,5 +1,27 @@
+/* 메인-슬라이드 */
+/* slide.css, slide.js 참조 */
+#slide-div{
+    margin: auto;
+    width: 1200px;
+    justify-content: flex-start;
+    text-align: left;
+    display: flex;
+    justify-content: space-around;
+    /*margin: 0 120px;*/
+}
+.slider-container {
+    margin: 30px 0 100px 0;
+}
+.slider-container > span {
+    background-color: #ffffff00;
+}
+.slider img {
+    height: 100%;
+    width: 100%;
+}
+
 #slide {
-    width:1000px;
+    width:1200px;
     padding: 0 5px;
     position: relative;
     display: flex;

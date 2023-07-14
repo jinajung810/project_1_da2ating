@@ -1,7 +1,7 @@
 // 업데이트 날짜 순서로 new product 생성
 async function fetchAndSearchImages(searchQuery) {
   try {
-    const res = await fetch(`http://127.0.0.1:5555/api/products`, {
+    const res = await fetch(`kdt-sw-5-team02.elicecoding.com/api/products`, {
       headers: {
         "Content-Type": "application/json;charset=utf-8",
       },
