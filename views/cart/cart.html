@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Da2Ating - 샐러드 판매 쇼핑몰</title>
+
+		<!-- Common Import -->
+		<link rel="stylesheet" href="../../common/common.css">
+		<link rel="stylesheet" href="../../common/layout.css">
+		<script src="../../common/makeLayout.js" defer></script>
+		
+		<link rel="stylesheet" href="cart.css">
+		<script src="cart-example.js" defer></script>
+</head>
+<body>
+	<!-- 메인 상단 -->
+	<header id="header"></header>
+	<aside id="sidebar"></aside>
+
+	<section class="container">
+		<div class="content">
+			<div class="subtitle-wrap">
+				<h2 id="subtitle">장바구니</h2>
+				<ul class="order-step">
+					<li>01 장바구니<span class="material-symbols-outlined">
+						chevron_right
+						</span></li>
+					<li>02 주문/결제<span class="material-symbols-outlined">
+						chevron_right
+						</span></li>
+					<li>03 주문완료</li>
+				</ul>
+			</div>
+			<div class="cartlist-wrap">
+				<div class="itemlist">
+					<h3 id="cart-cnt">
+						<button onclick="deleteAllProducts()">전체 삭제</button>
+					</h3>
+					<table class="cols table-pdg">
+						<colgroup>
+							<col style="width: 30px;">
+							<col style="width: 450px;">
+							<col style="width: 120px;">
+							<col style="width: 120px;">
+							<col style="width: 140px;">
+							<col style="width: 140px;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>
+									<span class="chk-button">
+										<input type="checkbox" name="totalPrice" id="chkAll" onchange="changeAllCheckbox(this)" placeholder="" checked="checked">
+										<label for="chkAll"></label>
+									</span>
+								</th>
+								<th>상품정보</th>
+								<th>수량</th>
+								<th>가격</th>
+								<th>상품금액</th>
+								<th>주문 선택</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+				<div class="total-price"></div>
+				<div class="cartlist-payment">
+					<div class="receipt">
+					
+								<dl>
+									<dt>
+										<strong>총 상품금액</strong>
+									</dt>
+									<dd><span id="receipt-price">0원</span></dd>
+								</dl>
+								<!-- <dl>
+									<dt>
+										<strong>총 할인금액</strong>
+									</dt>
+										<dd id="counter-discount-fee"><span>- <em>0</em>원</span></dd>
+								</dl> -->
+								<dl>
+									<dt>
+										<strong>배송비</strong>
+									</dt>
+										<dd><span id="receipt-delivery">+ 0원</span></dd>
+								</dl>
+								<dl>
+									<dt><strong>총 합계금액</strong></dt>
+									<dd><strong>
+										<span id="receipt-total">0원</span>
+										<br>
+									</strong></dd>
+								</dl>
+								
+					</div>
+					<div class="order-buttons">
+						<ul>
+							<li><a href="../main/main.html" id="continue-btn">쇼핑 계속하기</a></li>
+							<!-- button으로 변환 -->
+							<li><button onclick="buyCartProducts()" id="order-btn">주문하기</button></li>
+						</ul>
+						
+					</div>
+				</div>
+				
+			</div>
+			<div id="chickenCategory"></div>
+		</div>
+		
+		<footer id="footer"></footer>
+	</section>
+</body>
+</html>

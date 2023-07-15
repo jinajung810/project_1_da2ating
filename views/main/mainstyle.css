@@ -1,0 +1,185 @@
+.menu:nth-child(1) > h2 {
+    font-size: 60px;
+    text-align: center;
+}
+.menu:nth-child(2) > h2 {
+    font-size: 60px;
+    text-align: center;
+    margin-top: 70px;
+}
+
+.product-item-list {
+    margin: 20px auto 0 auto;
+    width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 40px;
+    column-gap: 30px;
+}
+.product-item-list .product-item {
+    display: block;
+}
+.product-item-list .product-item img {
+    display: block;
+    width: 100%;
+}
+.product-item-list .product-item-name {
+    padding-top: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+}
+.product-item-list .product-item-price {
+    padding-bottom: 8px;
+    border-bottom: 3px solid #10a2a7;
+    text-align: right;
+}
+.product-item-list .product-item-price span {
+    font-weight: 700;
+    font-size: 20px;
+    margin-right: 4px;
+}
+
+/* 메인-이벤트 */
+.event {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 80px;
+}
+.event img{
+    width: 100%;
+}
+
+/* 서비스 */
+#service {
+    margin: auto;
+    width: 1200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /*position: absolute;
+    bottom:50px;*/
+    color:#858585;
+
+}
+.serviceCenter {
+    width: 550px;
+    height: 300px;
+    line-height: 30px;
+}
+.serviceCenter > div{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-around;
+}
+.serviceCenter > div:nth-child(1){
+    margin-left:-70px;
+}
+.serviceCenter > div:nth-child(2){
+    margin-left:-70px;
+}
+
+.qnaBtn{
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    font-family: "Noto Sans KR", sans-serif !important;
+    margin: 0 0 10px 60px;
+    border-radius: 10px;
+    border: #858585 solid 2px;
+    cursor: pointer;
+    color: #858585;
+}
+.deliveryBtn{
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    font-family: "Noto Sans KR", sans-serif !important;
+    border-radius: 10px;
+    border: #858585 solid 2px;
+    cursor: pointer;
+    color:#858585;
+}
+.serviceCenter > div > h1 {
+    font-size: 35px;
+}
+.serviceCenter > div > h2 {
+    font-size: 40px;
+}
+.serviceCenter > div > h3 {
+    font-size: 30px;
+}
+
+.accountNumber {
+    width: 300px;
+    height: 300px;
+    line-height: 35px;
+    margin-left: 300px;
+}
+.accountNumber > h1 {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+/* 
+.announcement{
+    width: 450px;
+    height: 300px;
+    line-height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.announcement > h1{
+    margin-top: 6px;
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+.announcement > a{
+    width: 320px;
+}
+
+.announcement > a > p{
+    font-size: 18px;
+    display: flex;
+    justify-content: end;
+    color: #bbb
+} */
+
+  
+
+/* search 아이템
+#newMenu{
+    max-width: 1200px;
+    margin-top: 85px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 0px;
+}
+.item-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    margin: 20px 50px;
+}
+.item-container > a {
+    color: black;
+    text-align: center;
+    font-size: 17px;
+    width: 270px;
+}
+.item-container > img{
+    height: 270px;
+    width: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+} */

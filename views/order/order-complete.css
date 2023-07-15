@@ -1,0 +1,37 @@
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin-top: 60px;
+}
+
+.delivery-complete-container,
+.delivery-border {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.delivery-border {
+  width: 500px;
+  height: 300px;
+  border: 1px solid #606463a9;
+  border-radius: 15px;
+}
+
+.delivery-complete-container button {
+  border: 0 none;
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+  background: #00af85;
+}
+
+#delivery-main-button {
+  margin-top: 40px;
+  width: 200px;
+  height: 45px;
+  font-size: 20px;
+}

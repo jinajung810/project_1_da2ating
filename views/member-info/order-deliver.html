@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Da2Ating - 샐러드 판매 쇼핑몰</title>
+
+    <!-- Common Import -->
+    <link rel="stylesheet" href="../../common/common.css">
+    <link rel="stylesheet" href="../../common/layout.css">
+    <script src="../../common/makeLayout.js" defer></script>
+
+    <link rel="stylesheet" href="./order-deliver.css">
+    <script src="./order-deliver.js" defer></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <header id="header"></header>
+    <aside id="sidebar"></aside>
+
+    <main class="mypage-container">
+        <aside id="mypage-sidebar">
+            <h1>마이페이지</h1>
+            <div>
+                <h2>회원정보</h2>
+                <a href="./mypage-view.html">-회원정보 조회</a></br>
+                <a href="./info-change.html">-회원정보 변경</a></br>
+                <a href="./delete-account.html">-회원탈퇴</a></br>
+            </div>
+            <div>
+                <h2>주문/배송 조회</h2>
+                <a href="./order-deliver.html" style="font-weight:bold; color:#10a2a7">-주문목록/배송조회</a></br>
+            </div>
+        </aside>
+
+        <article class="mypage-order-page">
+            <h1>주문목록/배송조회</h1>
+            <div id="order-history"></div>
+        </article>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer"></footer>
+
+</body>
+</html>

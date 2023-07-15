@@ -1,0 +1,176 @@
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 숫자 input의 위 아래 화살표 제거 */
+.delivery-info-table input[type='number']::-webkit-inner-spin-button,
+.delivery-info-table input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* 구매 상품 테이블 */
+.delivery-order-container h1 {
+  font-size: 25px;
+  font-weight: 600;
+  margin: 30px 0 15px 0;
+}
+
+.delivery-order-container h3 {
+  font-size: 23px;
+  font-weight: 600;
+  margin: 20px 0;
+}
+
+.product-info-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-info-table tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+tbody:not(:last-child) {
+  width: 100%;
+  line-height: 3rem;
+  border-bottom: 0.5px solid rgba(197, 193, 193, 0.753);
+}
+
+.trhr {
+  height: 10px;
+}
+
+/* 구매자 정보 테이블 */
+.delivery-info-table {
+  padding: 0.5rem 2rem;
+}
+
+.delivery-info-table input {
+  height: 2rem;
+  line-height: 50px;
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  outline: none;
+  margin: 0.5rem;
+  padding: 5px 10px;
+}
+
+.delivery-info-table input[type='text'] {
+  margin: 0.5rem;
+  margin-left: 5rem;
+}
+
+.deliveryName {
+  width: 15rem;
+}
+
+.phonenumber {
+  width: 4rem;
+}
+
+#phoneNumber1 {
+  margin-left: 5rem;
+}
+
+.explanation {
+  font-size: 13px;
+}
+
+#deliveryMessage,
+#addressBasic,
+#addressDetail {
+  width: 25rem;
+}
+
+td > .important {
+  font-size: 1px;
+  color: #00af85;
+  margin-left: 3px;
+  font-weight: 700;
+}
+
+/* 버튼 */
+.purchase {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delivery-order-container button {
+  border: 0 none;
+  cursor: pointer;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background: #00af85;
+}
+
+#addressCodeBtn {
+  padding: 5px 10px;
+  height: 2rem;
+}
+
+#purchaseButton {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  width: 13rem;
+  height: 3.5rem;
+  margin: 5rem 0 2rem 0;
+  padding: 5px 10px;
+}
+
+#order-product-img {
+  width: 150px;
+  height: 150px;
+}
+
+/* 주문 금액 */
+.product-sum {
+  margin: 30px 30px 0 20px;
+}
+
+.product-sum dl {
+  display: table;
+  width: 100%;
+  margin: 0 0 15px 0;
+}
+
+.product-sum dl dt {
+  display: table-cell;
+  width: 50%;
+  font-size: 17px;
+  color: #2c2c2c;
+  padding-left: 15px;
+}
+
+dd {
+  margin-inline-start: 40px;
+}
+
+.product-sum dl dd {
+  display: table-cell;
+  width: 50%;
+  text-align: right;
+  color: #2c2c2c;
+  padding-right: 15px;
+}
+
+.product-sum dl.total {
+  padding: 15px 0 15px 0;
+  border-top: 1px solid #a9a9a9;
+}
+
+.product-sum dl.total dd span {
+  color: rgb(255, 101, 18);
+}

@@ -1,0 +1,87 @@
+
+.inner {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.productList {
+  width: 100%;
+}
+.productList h2 {
+  margin: 50px 0;
+  font-size: 32px;
+  font-weight: 700;
+}
+.productList p {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+.productList p span.list-num {
+  font-weight: 700;
+  margin: 0 3px;
+}
+
+#categoryList {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 150px;
+} 
+#categoryList li {
+  width: 278px;
+  margin-bottom: 20px;
+  position: relative;
+  margin-right: 29px;
+}
+
+#categoryList li:nth-child(4n) {
+  margin-right: 0
+}
+
+#categoryList li a img {
+  width: 278px;
+}
+
+#categoryList li a h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+#categoryList li .cart {
+  position: absolute;
+  right: 15px;
+  bottom: 85px;
+}
+
+#categoryList li .cart a img {
+  width: 51px;
+  height: 50px;
+}
+
+#categoryList li > span {
+  color:#f5634b;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+#categoryList li strong {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -.5px;
+  float: right;
+}
+
+#categoryList li strong span {
+  font-size: 18px; 
+  font-weight: 400;
+}
+
+#categoryList li strong b {
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration:line-through;
+  color: #afafaf;
+  margin-right: 50px;
+}

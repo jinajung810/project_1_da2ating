@@ -1,0 +1,193 @@
+.mypage-container {
+  padding-top: 60px;
+  width: 1200px;
+  margin: auto;
+  display: flex;
+  min-height: 500px;
+}
+
+/* 마이페이지 좌측 사이드바 */
+#mypage-sidebar {
+  width: 300px;
+  justify-content:flex-start;
+  text-align: left;
+  padding: 50px 0;
+  border-right: #e2e2e2 solid 1px;
+}
+#mypage-sidebar h1 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+#mypage-sidebar div {
+  padding: 30px 0px;
+  line-height: 35px;
+}
+#mypage-sidebar h2 {
+  padding-bottom: 15px;
+  font-size: 25px;
+}
+#mypage-sidebar a {
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+
+/* 마이페이지 정보 확인창-주문/배송조회 */
+.mypage-order-page {
+  flex: 1;
+  padding: 50px 0 50px 50px;
+}
+.mypage-order-page h1 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+#order-history .empty-box {
+  border: 1px solid #b2b2b2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+}
+
+.order-history-item {
+  display: block;
+  border-top: 1px solid #e2e2e2;
+  border-bottom: 1px solid #e2e2e2;
+  padding: 16px 0;
+}
+.order-history-item-inner {
+  display: flex;
+}
+.order-history-item-inner .img-box {
+  width: 160px;
+  margin-right: 16px;
+}
+.order-history-item-inner .img-box img {
+  display: block;
+  width: 100%;
+}
+.order-history-item-inner .info-panel {
+  flex: 1;
+}
+.order-history-item-inner .product-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.order-history-item-inner .info-row {
+  display: flex;
+  margin-bottom: 6px;
+}
+.order-history-item-inner .info-label {
+  width: 100px;
+}
+.order-history-item-inner .info-value {
+  font-weight: 500;
+}
+
+.order-history-item-inner .status {
+  color: #10a2a7;
+  font-weight: 700;
+}
+
+
+
+
+
+
+/*<div class="info-panel">
+          <div class="product-name">${productName}</div>
+          <div class="info-row">
+            <div class="info-label">주문 일시</div>
+            <div class="info-label">${test}</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">결제 금액</div>
+            <div class="info-label">${item.totalProductPrice.toLocaleString()}원</div>
+          </div>
+          <div>${item.status}</div>
+        </div>*/
+
+
+/*
+article{
+  width: 900px;
+  padding: 100px 0 50px 50px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+article h1{
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.period{
+  font-size: 15px;
+  border: #a5a5a5 solid 0.5px;
+  width: 900px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  padding: 5px;
+}
+.period> label {
+  margin-right: 20px;
+  color: #444444;
+}
+.period > input{
+  font-size: 12px;
+  width: 50px;
+  height: 40px;
+  border-radius: 0px;
+  padding: 0px;
+  color: #444444;
+  cursor: pointer;
+}
+.period > form {
+  margin: 0 20px;
+}
+.period > form > input {
+  width: 110px;
+  height: 40px;
+  border-radius: 0px;
+  font-size: 12px;
+  color: #444444;
+}
+.period > button {
+  width: 80px;
+  font-size: 18px;
+  height: 40px;
+  background-color: #10a2a7;
+  color: #FFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.orderDeliver{
+  margin-top: 50px;
+}
+.orderTable{
+  font-size: 17px;
+}
+.ordercontent{
+  margin-right: 10px;
+}
+.ordercontent > td{
+  width: 150px;
+  height: 70px;
+  background-color: #e9e9e9;
+  text-align: center;
+}
+.ordercontent > .date{
+ width: 250px;
+}
+.ordercontent > .option{
+ width: 300px;
+}
+.orderview > td {
+  text-align: center;
+  padding: 50px 0;
+  border: #e9e9e9 solid 1px;
+}
+*/

@@ -1,0 +1,94 @@
+.mypage-container {
+  padding-top: 60px;
+  width: 1200px;
+  margin: auto;
+  display: flex;
+  min-height: 500px;
+}
+
+/* 마이페이지 좌측 사이드바 */
+#mypage-sidebar {
+  width: 300px;
+  justify-content:flex-start;
+  text-align: left;
+  padding: 50px 0;
+  border-right: #e2e2e2 solid 1px;
+}
+#mypage-sidebar h1 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+#mypage-sidebar div {
+  padding: 30px 0px;
+  line-height: 35px;
+}
+#mypage-sidebar h2 {
+  padding-bottom: 15px;
+  font-size: 25px;
+}
+#mypage-sidebar a {
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+
+/* 마이페이지 정보 확인창-회원정보변경 */
+.mypage-info-change-page {
+  flex: 1;
+  padding: 50px 0 50px 50px;
+}
+.mypage-info-change-page h1 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.mypage-info-change-table .mypage-info-change-row {
+  display: flex;
+  margin-bottom: 16px;
+}
+.mypage-info-change-table .mypage-info-change-label {
+  width: 150px;
+  font-size: 16px;
+  line-height: 40px;
+}
+.mypage-info-change-table .info-input {
+  border-radius: 10px;
+  height: 40px;
+  padding-left: 10px;
+  border: #a5a5a5 solid 0.5px;
+  width: 360px;
+  font-size: 15px;
+}
+.mypage-info-change-table .mypage-info-change-addr .info-input {
+  margin-bottom: 8px;
+  width: unset;
+  width: 360px;
+}
+.mypage-info-change-table .mypage-info-change-addr .info-input.info-input-zip-code {
+  width: 140px;
+  margin-right: 8px;
+}
+.mypage-info-change-table .mypage-info-change-addr .info-addr-btn {
+  cursor: pointer;
+  width: 140px;
+  height: 40px;
+  background-color: #e7e4e4;
+  align-self: baseline;
+  border: none;
+  border-radius: 10px;
+}
+.mypage-info-change-table .info-change-submit-btn {
+  display: block;
+  width: 140px;
+  height: 46px;
+  background-color: #10a2a7;
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  margin-left: 260px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+}
+.mypage-info-change-table:nth-child(2) {
+  margin-bottom: 40px;
+}

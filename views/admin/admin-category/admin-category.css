@@ -1,0 +1,211 @@
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 200px;
+  position: relative;
+}
+
+.category-section {
+  margin: 60px 80px;
+}
+
+#sidebar {
+  position: fixed;
+  z-index: 9999;
+  top: 20%;
+  left: 20px;
+}
+
+#sidebar h2 {
+  padding-left: 20px;
+}
+
+ul,
+li,
+.left-sidebar a {
+  list-style: none;
+  position: relative;
+  text-decoration: none;
+}
+
+.left-sidebar li {
+  font-size: 20px;
+  padding: 20px 0;
+}
+
+.left-sidebar li:hover {
+  text-decoration: underline;
+}
+
+a {
+  color: black;
+}
+
+/* 카테고리 목록 */
+
+#category-control {
+  width: 300px;
+  margin-top: 30px;
+}
+
+#category-list li {
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* 카테고리 버튼 */
+button {
+  border: 0 none;
+  cursor: pointer;
+  color: white;
+  border: none;
+  border-radius: 5px;
+
+  display: inline-block;
+  font-weight: 500;
+}
+
+#category-buttons button {
+  font-size: 13px;
+  width: 40px;
+  height: 25px;
+}
+
+#changeBtn {
+  background: #00af85;
+}
+
+#deleteBtn {
+  background: #f86f7a;
+}
+
+#openBtn {
+  font-size: 16px;
+  background: #00af85;
+  width: 60px;
+  height: 30px;
+}
+
+.add-button {
+  margin-left: 70%;
+}
+
+/* category modal */
+
+.category-add-modal,
+.category-change-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.category-add-modal .bg,
+.category-change-modal .bg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.category-add-container,
+.category-change-container {
+  position: absolute;
+  background-color: #fff;
+  width: 600px;
+  height: 300px;
+  padding: 15px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+input[type='text'] {
+  width: 10rem;
+  height: 2rem;
+  line-height: 50px;
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  outline: none;
+  margin: 0.5rem;
+  padding: 0 10px;
+  margin-left: 5rem;
+}
+
+.imageButton {
+  cursor: pointer;
+  color: white;
+  border: none;
+  border-radius: 5px;
+
+  background: #00af85;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 0.5rem;
+  margin-left: 5rem;
+
+  padding: 3px 5px;
+}
+
+input[type='file'] {
+  visibility: hidden;
+}
+
+#image-preview {
+  max-width: 200px;
+  max-height: 200;
+  overflow: hidden;
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+}
+
+#submitButton,
+#changeSubmitButton {
+  font-size: 18px;
+  background: #00af85;
+  width: 120px;
+  height: 35px;
+}
+
+.close-container {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+#closeBtn,
+#change-closeBtn {
+  font-size: 25px;
+  cursor: pointer;
+}

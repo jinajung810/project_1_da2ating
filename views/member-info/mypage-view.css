@@ -1,0 +1,50 @@
+.mypage-container {
+  padding-top: 60px;
+  width: 1200px;
+  margin: auto;
+  display: flex;
+  min-height: 500px;
+}
+
+/* 마이페이지 좌측 사이드바 */
+#mypage-sidebar {
+  width: 300px;
+  justify-content:flex-start;
+  text-align: left;
+  padding: 50px 0;
+  border-right: #e2e2e2 solid 1px;
+}
+#mypage-sidebar h1 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+#mypage-sidebar div {
+  padding: 30px 0px;
+  line-height: 35px;
+}
+#mypage-sidebar h2 {
+  padding-bottom: 15px;
+  font-size: 25px;
+}
+#mypage-sidebar a {
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+
+.mypage-view-page {
+  flex: 1;
+  padding: 50px 0 50px 50px;
+}
+.mypage-view-page h1 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+.mypage-view-page .my-info-row {
+  margin-bottom: 20px;
+  display: flex;
+  font-size: 18px;
+}
+.mypage-view-page .my-info-label {
+  flex-basis: 150px;
+  font-weight: 500;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Da2ating</title>
+    <link rel="stylesheet" href="./admin-productadd.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+    </style>
+  </head>
+  <body>
+    <img
+    src="../../../resources/icons/home_icon.png"
+    onclick="location.href='/'"
+    style="cursor: pointer"
+  />
+    <!-- side bar -->
+    <nav id="sidebar">
+      <div class="left-sidebar">
+        <h2>관리자 메뉴</h2>
+        <ul class="menu-list">
+          <li>
+            <a href="admin-product.html"
+              >상품 관리</a
+            >
+          </li>
+          <li>
+            <a href="../admin-order/admin-order.html">주문 관리</a>
+          </li>
+          <li>
+            <a href="../admin-category/admin-category.html"
+              >카테고리 관리</a
+            >
+          </li>
+          <li><a href="../admin-user/admin-user-service.html">회원 관리</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- 상품 추가 -->
+    <div class="container">
+      <div class="product-add-container">
+        <h2>상품 추가</h2>
+        <div class="form-container">
+          <form class="category-add-form" enctype="multipart/form-data">
+            <table class="category-add-table">
+              <tr>
+                <td>상품 이름</td>
+                <td>
+                  <input type="text" id="productName" />
+                </td>
+              </tr>
+              <tr>
+                <td>카테고리</td>
+                <td>
+                  <select id="category-select"></select>
+                </td>
+              </tr>
+              <tr>
+                <td>상품 가격</td>
+                <td>
+                  <input type="number" id="productPrice" />
+                </td>
+              </tr>
+              <tr>
+                <td>할인률</td>
+                <td>
+                  <input type="number" id="productDiscountRate" />
+                </td>
+              </tr>
+              <tr>
+                <td>메인 사진</td>
+                <td>
+                  <label for="productThumbnail" class="imageButton"
+                    >파일 업로드</label
+                  >
+                  <input
+                    type="file"
+                    id="productThumbnail"
+                    name="productThumbnail"
+                    accept="image/*"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><img id="thumbnail-preview"/><span class = "thumbnail-deleteBtn hidden" >X</span></td>
+              </tr>
+              <tr>
+                <td>상세 사진</td>
+                <td>
+                  <label for="productDescriptions" class="imageButton"
+                    >파일 업로드</label
+                  >
+                  <input
+                    type="file"
+                    id="productDescriptions"
+                    name="productDescriptions"
+                    accept="image/*"
+                    multiple
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><div class="descriptions-preview-container"><ul class="descriptions-preview-list"></div></ul></td>
+              </tr>
+            </table>
+            <div class="button-container">
+              <button type="submit" id="submitButton">추가하기</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="admin-productadd.js" defer></script>
+</html>

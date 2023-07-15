@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Da2ating</title>
+    <link rel="stylesheet" href="./admin-product.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+    </style>
+  </head>
+  <body>
+    <img
+      src="../../../resources/icons/home_icon.png"
+      onclick="location.href='/'"
+      style="cursor: pointer"
+    />
+    <!-- side bar -->
+    <nav id="sidebar">
+      <div class="left-sidebar">
+        <h2>관리자 메뉴</h2>
+        <ul class="menu-list">
+          <li>
+            <a href="admin-product.html">상품 관리</a>
+          </li>
+          <li>
+            <a href="../admin-order/admin-order.html">주문 관리</a>
+          </li>
+          <li>
+            <a href="../admin-category/admin-category.html">카테고리 관리</a>
+          </li>
+          <li><a href="../admin-user/admin-user-service.html">회원 관리</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- 상품 관리 -->
+    <div class="container">
+      <section class="product-section">
+        <h2>상품 관리</h2>
+        <div class="add-button">
+          <button id="addBtn" onclick="location.href='admin-productadd.html'">
+            추가
+          </button>
+        </div>
+        <div class="product-control">
+          <ul id="product-list"></ul>
+        </div>
+      </section>
+    </div>
+  </body>
+  <script src="admin-product.js" defer></script>
+</html>

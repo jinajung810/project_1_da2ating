@@ -1,0 +1,94 @@
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.register-title h1 {
+  padding-top: 60px;
+  overflow: hidden;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+
+/* 입력 폼 */
+
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-box {
+  border: 1px solid #e2e2e2;
+  padding: 70px;
+  width: 60%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-box input {
+  width: 320px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  outline: none;
+  padding: 5px 10px;
+  margin: 0.5rem;
+  margin-left: 5rem;
+  font-size: 15px;
+}
+#userPw::placeholder {
+  font-size: 13px;
+}
+
+td > .important {
+  font-size: 1px;
+  color: #00af85;
+  margin-left: 3px;
+  font-weight: 700;
+}
+
+.error-warning {
+  margin: 0.3rem;
+  margin-left: 5rem;
+  color: #00af85;
+  font-size: 13px;
+}
+
+/* 버튼 */
+
+.register-box button {
+  border: 0 none;
+  cursor: pointer;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  background: #00af85;
+}
+
+#submitButton {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 500;
+  width: 12rem;
+  height: 3.5rem;
+  margin: 5rem 0 0 0;
+  padding: 5px 10px;
+}
+
+.email-check-button {
+  width: 70px;
+  height: 30px;
+  padding: 5px 5px;
+  position: fixed;
+}

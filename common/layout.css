@@ -1,0 +1,294 @@
+/* 헤더로고 */
+header{
+  position: relative;
+}
+.header-top {
+    display: flex;
+    align-items: center;
+    width: 1200px;
+    margin: 0 auto;
+}
+.header-top .logo {
+    width: 180px;
+    margin: 20px 60px 0 0;
+}
+.header-top .logo img {
+    background-color: blue;
+    display: block;
+    width: 100%;
+}
+.header-top .search {
+    position: relative;
+    width: 250px;
+}
+.header-top .search .fa-search {
+  position: absolute;
+  left: 220px;
+  top: 25px;
+  margin: 0;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.header-top .search input {
+    border-radius: 20px;
+    border: 4px solid #10a2a7;
+    margin: 10px 0;
+    padding: 10px 12px;
+    width: 253px;
+    height: 42px;
+    line-height: 42px;
+    border-radius: 999px;
+    background: #ffffff;
+    font-family: "Noto Sans KR", sans-serif !important;
+    font-size: 20px;
+    color: rgb(14, 81, 83);
+}
+.header-top .form {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.header-top .form .header-form-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  margin-right: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.header-top .form .sign-up-btn,
+.header-top .form .logout-btn  {
+  border:#10a2a7 solid 3px;
+  color: #10a2a7;
+}
+.header-top .form .login-btn {
+  background-color: #10a2a7;
+  color: #fff;
+}
+
+.header-top .form .header-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+}
+.header-top .form .header-icon-btn span {
+  font-size: 30px;
+  color:#10a2a7;
+  font-weight: bold;
+}
+.header-top .form .welcome {
+    margin-right: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* 헤더 카테고리 */
+.header2 {
+  margin-top: 30px;
+  position: relative;
+  border-bottom: 1px solid #e2e2e2;
+  height: 60px;
+}
+.header-category {
+  width: 1200px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.header-category > a {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size : 20px;
+  color:#10a2a7;
+  font-weight: bold;
+}
+.header-category > a.clicked {
+    color: rgb(0, 0, 0); /* 클릭 후 색깔 */
+}
+
+/* 사이드바 */
+#aside {
+    width: 200px;
+    margin-left: 10px;
+    box-sizing: border-box;
+}
+
+/*사이드바고정*/
+.menu-side {
+    justify-content: start;
+    line-height: 30px;
+    position: fixed;
+    right: 100px;
+    bottom: 350px;
+    z-index: 9999;
+    margin-top: 200px;
+    height: 120px;
+}
+.easyskills {
+    width: 40px;
+    height: 120px;
+    border-radius: 20px;
+    border: #10a2a7 solid 3px;
+    text-align: center;
+    padding-top: 20px;
+    line-height: 20px;
+}
+.material-symbols-outlined{
+    color: #10a2a7;
+}
+.topBottom {
+    margin-left: 1.5px;
+    line-height: 15px;
+}
+.topBottom > a > span {
+    font-size: 40px;
+    color: #10a2a7;
+}
+
+/* footer */
+footer {
+    width: 100%;
+    background: #f7f7f7;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 60px;
+  }
+  footer .inner {
+    padding: 40px 0;
+    background: #f7f7f7;
+  }
+  footer .top {
+    position:relative;
+    background: #f7f7f7;
+  }
+  footer .top::after {
+    content: "";
+    display: block;
+    width: 1200px;
+    height: .8px;
+    background-color: #333;
+    margin-top: 50px;
+  }
+  footer .top .footerMenu {
+    display: flex;
+    color:#999;
+    background: #f7f7f7;
+    background: #f7f7f7;
+  }
+  footer .top .footerMenu li {
+    margin-left: 40px;
+    background: #f7f7f7;
+    background: #f7f7f7;
+  }
+  footer .top .footerMenu li:last-child {
+    margin-right: 0;
+    background: #f7f7f7;
+  }
+  footer .top .footerMenu li a {
+    color:#999;
+    letter-spacing: -.8px;
+    background: #f7f7f7;
+  }
+  footer .top .sns {
+    position: absolute;
+    top: 0;
+    right: 0;  
+    display: flex;
+    background: #f7f7f7;
+  }
+  footer .top .sns li {
+    margin-left: 10px;
+    background: #f7f7f7;
+  }
+  footer .top .sns li a img {
+    width: 30px;
+    height: 30px;
+    background: #f7f7f7;
+  }
+  footer .companyInfo {
+    margin-top: 40px;
+    position: relative;
+    background: #f7f7f7;
+  }
+  footer .companyInfo .infoList {
+    display: flex;
+    margin-bottom: 7px;
+    background: #f7f7f7;
+  }
+  footer .companyInfo .infoList li {
+    font-size: 15px;
+    color: #999;
+    margin-left: 28px;
+    position: relative;
+    background: #f7f7f7;
+  }
+  footer .companyInfo .infoList li::after {
+    content:"";
+    display: block;
+    width: 1px;
+    height: 10px;
+    background-color: #999;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -14px;
+    margin: auto;
+  }
+  footer .companyInfo .infoList li:last-child::after {
+    display: none;
+  }
+  footer .companyInfo .infoList li:last-child {
+    margin-right: 0;
+  }
+  footer .companyInfo .infoList li span {
+    font-weight: 700;
+    background: #f7f7f7;
+  }
+  footer .companyInfo .infoList li button {
+    width: 105px;
+    height: 24px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    color:#999;
+    cursor: pointer;
+    font-size: 13px;
+    text-align: center;
+    background: #f7f7f7;
+  }
+  
+  footer .companyInfo .copyright {
+    font-weight: 400;
+    color:#999;
+    margin-left: 10px;
+    background: #f7f7f7;
+  }
+  footer .companyInfo .copyright span {
+    font-weight: 700;
+    background: #f7f7f7;
+  }
+  
+  footer .companyInfo .footerLogo {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #f7f7f7;
+  }
+  footer .companyInfo .footerLogo img {
+    width: 100px;
+    height: 100px;
+    background: #f7f7f7;
+  }

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Da2Ating - 샐러드 판매 쇼핑몰</title>
+
+    <!-- Common Import -->
+    <link rel="stylesheet" href="../../common/common.css" />
+    <link rel="stylesheet" href="../../common/layout.css" />
+    <script src="../../common/makeLayout.js" defer></script>
+
+    <link rel="stylesheet" href="./register.css" />
+    <script src="./register.js" defer></script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header id="header"></header>
+    <aside id="sidebar"></aside>
+
+    <div class="container">
+      <div class="register-title">
+        <h1>회원가입</h1>
+      </div>
+      <!-- 회원가입 폼 -->
+      <article class="register">
+        <div class="register-box">
+          <form>
+            <table class="register-info-table">
+              <tr>
+                <td>이름<span class="important">＊</span></td>
+                <td>
+                  <input type="text" id="userName" />
+                  <div id="name-error" class="error-warning"></div>
+                </td>
+              </tr>
+              <tr>
+                <td>이메일<span class="important">＊</span></td>
+                <td>
+                  <input
+                    type="email"
+                    id="userEmail"
+                    placeholder="email@example.com"
+                  />
+                  <div id="email-error" class="error-warning"></div>
+                </td>
+              </tr>
+              <tr>
+                <td>비밀번호<span class="important">＊</span></td>
+                <td>
+                  <input
+                    type="password"
+                    id="userPw"
+                    autocomplete="off"
+                    placeholder="8~16자의 영문 대/소문자, 숫자, 특수문자"
+                  />
+                  <div id="pw-error" class="error-warning"></div>
+                </td>
+              </tr>
+              <tr>
+                <td>비밀번호 확인<span class="important">＊</span></td>
+                <td>
+                  <input
+                    type="password"
+                    autocomplete="off"
+                    id="userPwConfirm"
+                  />
+                  <div id="pwconfirm-error" class="error-warning"></div>
+                </td>
+              </tr>
+            </table>
+            <div class="button-container">
+              <button type="submit" id="submitButton">가입하기</button>
+            </div>
+          </form>
+        </div>
+      </article>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="footer"></footer>
+  </body>
+</html>

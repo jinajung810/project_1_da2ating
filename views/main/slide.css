@@ -1,0 +1,113 @@
+/* 메인-슬라이드 */
+/* slide.css, slide.js 참조 */
+#slide-div{
+    margin: auto;
+    width: 1200px;
+    justify-content: flex-start;
+    text-align: left;
+    display: flex;
+    justify-content: space-around;
+    /*margin: 0 120px;*/
+}
+.slider-container {
+    margin: 30px 0 100px 0;
+}
+.slider-container > span {
+    background-color: #ffffff00;
+}
+.slider img {
+    height: 100%;
+    width: 100%;
+}
+
+#slide {
+    width:1200px;
+    padding: 0 5px;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+#slide p{
+    font-size: 30px;
+}
+
+#slide .slider-container {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+}
+#slide .slider-container span{
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    cursor: pointer;
+}
+.leftBtn > span{
+
+    left: 1.5%;
+    transform: translate(0,-200%);
+    background-color: #ffffff00;
+}
+
+.rightBtn > span{
+    right: 1.5%;
+    transform: translate(0,-200%);
+    background-color: #ffffff00;
+}
+
+#slide .slider-container .slider{
+    display:flex;
+    width: 100%;
+}
+
+#slide .slider-container .slider span{
+    display: block;
+    position: relative;
+    min-width: 100%;
+}
+
+#slide .slider-container .slider span .text-wrap{
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform:translate(0,-50%);
+    width:29%;
+    color:#fff;
+}
+
+#slide .slider-container .slider span .text-wrap h1{
+    line-height: 140%;
+    font-size: 33px;
+}
+
+#slide .slider-container .slider span .text-wrap h4{
+    font-size: 13px;
+    margin:30px 0 0 0;
+}
+
+#slide .slider-container .slider span .text-wrap h5{
+    line-height: 140%;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin:0 0 10px 0;
+}
+
+/* 하단바
+.pagination{
+    display:flex;
+    position: absolute;
+    bottom:120px;
+    left:18.5%;
+    z-index: 1;
+}
+
+.pagination p{
+    width:60px;
+    height:2px;
+    background:#fff;
+}
+
+.pagination .active{
+    background:#000;
+} */
